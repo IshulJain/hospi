@@ -1,0 +1,641 @@
+ <!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{parentEventname}} | Technex '17</title>
+		{% for metaTag in metaTags %}
+   <meta name="{{metaTag.name}}" content="{{metaTag.content|safe}}">
+   {% endfor %}
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize3.css" />
+		<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/style2-3.css" />
+		<!-- <link rel="shortcut icon" href="/static/images/favicon.ico"> -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/static/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/static/favicon/manifest.json">
+<link rel="shortcut icon" href="/static/favicon/favicon.ico">
+<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+<meta name="theme-color" content="#000000">
+
+
+		<script src="/static/js/modernizr.custom.js"></script>
+		<script src="/static/js/jquery1.12.4.js"></script>
+		<!-- <script src="/static/js/kall.js"></script> -->
+		<script src="/static/js/classie.js"></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68539305-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+        <script>
+function navFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+        </script>
+        <script>
+function navFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+
+</head>
+  <body>
+<!--   NAVBAR   -->
+<!--   /NAVBAR   -->
+      <!----------NAVBAR-------->
+<div class="jnavbar" id="abcde">
+		<ul class="topnav" id="myTopnav">
+  <li class="topnav-li"><a href="/" style="padding:0px 0px;border:none;">
+    <img src="/static/images/logo-technex-nav.png" height="40px" class="desktopLogo" style="padding-left:8px;padding-right:8px;">
+    <img src="/static/images/technexLogoMobile.png" height="40px" class="mobLogo" style="padding-left:8px;padding-right:8px;">
+  </a></li>
+  <li class="topnav-li"><a class="active" href="/events">EVENTS</a></li>
+  <li class="topnav-li"><a href="/workshops">WORKSHOPS</a></li>
+  <li class="topnav-li"><a href="/talks">THINK TALKS</a></li>
+  <li class="topnav-li"><a href="/sponsors">SPONSORS</a></li>
+  <li class="topnav-li"><a href="/kaleidoscope">KALEIDOSCOPE</a></li>
+  <li class="topnav-li"><a href="/startupfair">STARTUP FAIR</a></li>
+  <li class="topnav-li"><a href="/contacts">CONTACTS</a></li>
+  <!-- <li class="topnav-li"><a href="http://ca.technex.in">CAMPUS AMBASSADOR</a></li> -->
+  <li class="topnav-li"><a href="/hospitality">HOSPITALITY</a></li>
+  <li class="topnav-li" id="reg"><a href="/register" style="font-weight:600;background:#0084ff;"> {% if user.is_authenticated %}
+  DASHBOARD
+  {% else %}
+  REGISTER / LOGIN
+  {% endif %}</a></li>
+  <li class="icon">
+    <a href="javascript:void(0);" class="iconA" onclick="navFunction()">☰</a>
+  </li>
+</ul>
+</div>
+<!----------/NAVBAR-------->
+      <hr>
+		<div class="container">
+			<button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
+			<div id="theSidebar" class="sidebar">
+				<button class="close-button fa fa-fw fa-close"></button>
+                <a href="/events"><h1 class="category-name" style="color:white;letter-spacing:5px;">Events</h1></a>
+                <div class="loader"></div>
+				<div class="related" id="menu-bar">
+                    			<a  href="/events/robonex"><h2 class="solid-border">Robonex</h2></a>
+					<a href="/events/ascension"><h2>Ascension</h2></a>
+					<a href="/events/extreme-engineering"><h2>Extreme Engineering</h2></a>
+					<a href="/events/modex"><h2>Modex</h2></a>
+					<a href="/events/byte-the-bits"><h2>Byte the Bits</h2></a>
+					<a href="/events/riqueza"><h2>Riqueza</h2></a>
+					<a href="/events/creatrix"><h2>Creatrix</h2></a>
+                 			<a href="/events/supernova"><h2>Supernova</h2></a>
+					<a href="/events/pahal"><h2>Pahal</h2></a>
+					<a href="/events/clutch"><h2>Game Dungeon</h2></a>
+				</div>
+							<div class="events-name" id="internal-menu-bar" style="display:none;">
+					</div>
+			</div>
+            <div class="event-dis">
+           <a target="_blank" class="titlespon" style="display: none;"><img style="max-height: 70px" class="titlesponimg"/></a>
+            <h2 style="display: none;margin:1px;font-weight:100;letter-spacing:1px;" class="association">in association with</h2>
+            <a target="_blank" class="assospon" style="display: none;"><img style="max-height: 70px" class="assosponimg">
+            </a>
+            <h2 style="display: none;margin: 1px;font-weight: 100;letter-spacing: 1px;" class="presents">presents</h2>
+
+                <h1></h1>
+                <h3>                </h3>
+                <hr>
+            </div>
+			<div id="theGrid" class="main">
+
+				<section class="grid" id="event-grid">
+				</section>
+				<section class="content">
+					<div class="scroll-wrap" id="event-descrip">
+
+
+					</div>
+					<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>
+				</section>
+			</div>
+            <script>$("<select />").appendTo("nav");
+
+// Create default option "Go to..."
+$("<option />", {
+   "selected": "selected",
+   "value"   : "",
+   "text"    : "Go to..."
+}).appendTo("nav select");
+
+// Populate dropdown with menu items
+$("nav a").each(function() {
+ var el = $(this);
+ $("<option />", {
+     "value"   : el.attr("href"),
+     "text"    : el.text()
+ }).appendTo("nav select");
+});
+           $("nav select").change(function() {
+  window.location = $(this).find("option:selected").val();
+});
+
+</script>
+<!-- footer -->
+<div style="display:none;">
+<footer class="techfooter">
+  <ul>
+    <a href="/corporate-conclave"><li>Corporate Conclave</li></a>
+    <a href="/hospitality"><li>Hospitality & Payments</li></a>
+    <a href="/exhibitions"><li>Exhibitions</li></a>
+    <a><li>Airshow</li></a>
+  </ul>
+</footer>
+</div>
+<!-- /footer -->
+		</div><!-- /container -->
+
+<!-- 		<script src='js/data.js'></script>	 -->
+
+	</body>
+<script type="text/javascript">
+		var data= {{ parentEvent|safe}}
+	myfunction(data);
+	myfunc(data);
+	function myfunc(data){
+	var i,j;
+	var out="";
+	// console.log(data.events.length);
+
+	for(i=0;i<data.events.length;i++)
+	{
+		out+='<article class="content__item"><h2 class="title title--full"><a href="/dashboard/#/eventReg/'+ data.slug +'/' + data.events[i].eventSlug +'"><button class="eventRegister">REGISTER TEAM</button></a>'+data.events[i].eventName+'</h2><p style="text-align:center;">'+data.events[i].description+'</p><hr class="events-hr"><br><br><div class="meta meta--full">\
+		<div class="events-name">';
+		// for(j=0;j<data.events.length;j++)
+		// {
+		// 	out+="<a><h2>"+data.events[j].eventName+"</h2></a>";
+		// }
+		out+='</div><nav class="article-nav">\
+						<button><i class="fa fa-angle-left"></i> <span>Previous</span></button>\
+									<button><span>Next</span> <i class="fa fa-angle-right"></i></button>\
+								</nav></div>\
+                            <div><div class="event-info">';
+                            for(j=0;j<data.events[i].eventOptions.length;j++)
+                            {
+                              if(j==0)
+                            	out+='<div class="event-nav event-nav-active">'+data.events[i].eventOptions[j].optionName+"</div>";
+                              else
+                                out+='<div class="event-nav">'+data.events[i].eventOptions[j].optionName+"</div>";
+                            }
+                            out+='<br><br><br><br><br><div class="description" id="option-'+i+'">';
+                            for(j=0;j<data.events[i].eventOptions.length;j++)
+                            {
+                              if(j==0)
+                            	out+='<div class="description-data">'+data.events[i].eventOptions[j].optionDescription+"</div>";
+                            else
+                              out+='<div class="description-data" style="display:none">'+data.events[i].eventOptions[j].optionDescription+"</div>";
+                            }
+                            out+='</div></div><div class="mob-event-content"><ul class="content-ul">';
+                            for(j=0;j<data.events[i].eventOptions.length;j++)
+                            {
+                              out+='<li class="content-li"><h3>'+data.events[i].eventOptions[j].optionName+'</h3><h4>'+data.events[i].eventOptions[j].optionDescription+'</h4></li>'
+                            }
+                            out+="</ul></div></article>"
+
+
+	}
+	document.getElementById("event-descrip").innerHTML = out;
+  console.log("kodkldklfd");
+  console.log(data.sponimage);
+  console.log("djkdkjdljdkj");
+  if(data.sponimage == "" || data.sponimage==null)
+  {
+    $(".event-dis h1").html(data.name);
+    $(".event-dis h3").html(data.description);
+  }
+  else
+  {
+     $(".titlesponimg").attr("src",data.sponimage);
+    $(".event-dis h1").html(data.name);
+    $(".event-dis h3").html(data.description);
+    // $(".event-dis h2").show();
+    $(".titlespon").attr("href",data.sponlink);
+    $(".titlespon").css("display","block");
+    $(".presents").css("display","block");
+
+  }
+  if(data.assosponimage == "" || data.assosponimage == null)
+  {
+    $(".association").css("display","none");
+    $(".assospon").css("display","none");
+    $(".assosponimg").css("display","none");
+  }
+  else
+  {
+    $(".association").css("display","block");
+    $(".assospon").attr("href", data.assosponlink);
+    $(".assospon").css("display","block");
+    $(".assosponimg").attr("src" , data.assosponimage);
+  }
+
+  out="";
+  for(i=0;i<data.events.length;i++)
+  {
+    out+='<div class="abcd"><h2>'+data.events[i].eventName+'</h2></div>';
+  }
+  document.getElementById("internal-menu-bar").innerHTML= out;
+	}
+
+	function myfunction(data){
+	var i;
+	var out='';
+
+	for(i=0;i<data.events.length;i++)
+	{
+		out +='<a class="grid__item" href="#"><h2 class="title title--preview">' + data.events[i].eventName + '</h2>'+'<div class="loader"></div><h3>Prizes worth</br> ₹ '+data.events[i].prizeMoney+'</h3></a>';
+		document.getElementById("event-grid").innerHTML = out;
+
+	}
+
+	}
+	$(document).ready(function(){
+  // console.log("ready");
+ $("a.grid__item").on("click",function(){
+  $("#menu-bar").hide();
+  $("#internal-menu-bar").show();
+        });
+	$(".close-button").on("click",function(){
+  $("#menu-bar").show();
+  $("#internal-menu-bar").hide();
+	});
+
+	$("#internal-menu-bar div").on("click",function(){
+  console.log("ajaj");
+  console.log($(this).index());
+	});
+  var bodyEl = document.body,
+    docElem = window.document.documentElement,
+    support = { transitions: Modernizr.csstransitions },
+    // transition end event name
+    transEndEventNames = { 'WebkitTransition': 'webkitTransitionEnd', 'MozTransition': 'transitionend', 'OTransition': 'oTransitionEnd', 'msTransition': 'MSTransitionEnd', 'transition': 'transitionend' },
+    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+    onEndTransition = function( el, callback ) {
+      var onEndCallbackFn = function( ev ) {
+        if( support.transitions ) {
+          if( ev.target != this ) return;
+          this.removeEventListener( transEndEventName, onEndCallbackFn );
+        }
+        if( callback && typeof callback === 'function' ) { callback.call(this); }
+      };
+      if( support.transitions ) {
+        el.addEventListener( transEndEventName, onEndCallbackFn );
+      }
+      else {
+        onEndCallbackFn();
+      }
+    },
+    gridEl = document.getElementById('theGrid'),
+    sidebarEl = document.getElementById('theSidebar'),
+    innermenubar = document.getElementById('internal-menu-bar'),
+    innermenubaritems = innermenubar.querySelectorAll('.abcd'),
+    gridItemsContainer = gridEl.querySelector('section.grid'),
+    contentItemsContainer = gridEl.querySelector('section.content'),
+    gridItems = gridItemsContainer.querySelectorAll('.grid__item'),
+    contentItems = contentItemsContainer.querySelectorAll('.content__item'),
+    closeCtrl = contentItemsContainer.querySelector('.close-button'),
+    e1 = document.getElementById('event-descrip'),
+    e2 = e1.querySelectorAll('.event-info'),
+
+
+
+    current = -1,
+    lockScroll = false, xscroll, yscroll,
+    isAnimating = false,
+    menuCtrl = document.getElementById('menu-toggle'),
+    menuCloseCtrl = sidebarEl.querySelector('.close-button');
+    var ji;
+
+    // console.log(e2.length);
+    var e3=[];
+    var e4=[];
+
+    for(ji=0;ji<e2.length;ji++)
+    {
+      // console.log(e2[ji]);
+       e3[ji] = e2[ji].querySelectorAll('.event-nav');
+       e4[ji] = e2[ji].querySelectorAll('.description-data');
+        // console.log(e3[ji]);
+    }
+    // console.log(e3[0][1]);
+    // console.log(e3.length);
+    //  for(ji=0;ji<e3.length;ji++)
+    // {
+    //     // var jih;
+    //     // for(jih=0;jih<e3[ji].length;jih++)
+    //      // {
+    //       console.log(e3[ji]);
+    //      // }
+
+    // }
+
+
+       // console.log(e3[1]);
+         // console.log(gridItems)
+         // console.log(innermenubaritems)
+  /**
+   * gets the viewport width and height
+   * based on http://responsejs.com/labs/dimensions/
+   */
+  function getViewport( axis ) {
+    var client, inner;
+    if( axis === 'x' ) {
+      client = docElem['clientWidth'];
+      inner = window['innerWidth'];
+    }
+    else if( axis === 'y' ) {
+      client = docElem['clientHeight'];
+      inner = window['innerHeight'];
+    }
+
+    return client < inner ? inner : client;
+  }
+  function scrollX() { return window.pageXOffset || docElem.scrollLeft; }
+  function scrollY() { return window.pageYOffset || docElem.scrollTop; }
+
+  function init() {
+    initEvents();
+  }
+
+  function initEvents() {
+
+    console.log("jsjkdkjdjkd");
+     [].slice.call(e3).forEach(function(item,pos){
+         [].slice.call(item).forEach(function(itemwa,position){
+          // console.log(itemwa);
+          // console.log(position);
+          itemwa.addEventListener('click', function()
+          {
+            console.log(itemwa);
+            var k;
+            for(k=0;k<item.length;k++)
+            {
+              if(k!=position)
+              {
+              e4[pos][k].style.display='none';
+             classie.remove(e3[pos][k],'event-nav-active');
+            }
+              // else
+              // e4[pos][k].style.dispaly='';
+             }
+             e4[pos][position].style.display='';
+             classie.add(e3[pos][position],'event-nav-active');
+
+          });
+
+         });
+            // }
+     });
+
+
+
+    [].slice.call(innermenubaritems).forEach(function(item, pos) {
+      // grid item click event
+      item.addEventListener('click', function(ev) {
+
+        ev.preventDefault();
+        current = pos;
+       console.log($(this));
+      var i;
+          for(i=0;i<contentItems.length;i++)
+          {
+            contentItem = contentItems[i];
+            console.log(contentItems[i]);
+          classie.remove(contentItem, 'content__item--show');
+          }
+           loadcontentwa(gridItems[pos]);
+      });
+    });
+
+
+    // l,flfv,lg,lg,lth,lgh
+    [].slice.call(gridItems).forEach(function(item, pos) {
+      // console.log(item);
+      // console.log(pos);
+      // grid item click event
+
+      item.addEventListener('click', function(ev) {
+      console.log("abcd"),
+        ev.preventDefault();
+        if(isAnimating || current === pos) {
+          return false;
+        }
+        isAnimating = true;
+        // index of current item
+        current = pos;
+        console.log(pos);
+
+        // simulate loading time..
+        classie.add(item, 'grid__item--loading');
+        setTimeout(function() {
+          classie.add(item, 'grid__item--animate');
+          // reveal/load content after the last element animates out (todo: wait for the last transition to finish)
+          setTimeout(function() {
+          console.log(item); loadContent(item); }, 500);
+        }, 1000);
+                $(".event-dis").hide();
+                // $(".grid__item").hide();
+
+      });
+    });
+
+    closeCtrl.addEventListener('click', function() {
+      // hide content
+      console.log("abcd");
+      hideContent();
+              $(".event-dis").show();
+              $(".grid__item").show();
+    });
+
+    // keyboard esc - hide content
+    document.addEventListener('keydown', function(ev) {
+      if(!isAnimating && current !== -1) {
+        var keyCode = ev.keyCode || ev.which;
+        if( keyCode === 27 ) {
+          ev.preventDefault();
+          if ("activeElement" in document)
+              document.activeElement.blur();
+          hideContent();
+        }
+      }
+    } );
+
+    // hamburger menu button (mobile) and close cross
+    menuCtrl.addEventListener('click', function() {
+      if( !classie.has(sidebarEl, 'sidebar--open') ) {
+        classie.add(sidebarEl, 'sidebar--open');
+      }
+    });
+
+    menuCloseCtrl.addEventListener('click', function() {
+      if( classie.has(sidebarEl, 'sidebar--open') ) {
+        classie.remove(sidebarEl, 'sidebar--open');
+      }
+    });
+  }
+   function loadcontentwa(item)
+   {
+
+
+      contentItemsContainer.style.top = scrollY() + 'px';
+     classie.add(contentItemsContainer, 'content--show');
+      // show content item:
+      classie.add(contentItems[current], 'content__item--show');
+      // show close control
+      classie.add(closeCtrl, 'close-button--show');
+
+      // sets overflow hidden to the body and allows the switch to the content scroll
+      classie.addClass(bodyEl, 'noscroll');
+      $(".grid__item").hide();
+
+      isAnimating = false;
+   }
+  function loadContent(item) {
+    // add expanding element/placeholder
+    var dummy = document.createElement('div');
+    dummy.className = 'placeholder';
+
+    // set the width/heigth and position
+    dummy.style.WebkitTransform = 'translate3d(' + (item.offsetLeft - 5) + 'px, ' + (item.offsetTop - 5) + 'px, 0px) scale3d(' + item.offsetWidth/gridItemsContainer.offsetWidth + ',' + item.offsetHeight/getViewport('y') + ',1)';
+    dummy.style.transform = 'translate3d(' + (item.offsetLeft - 5) + 'px, ' + (item.offsetTop - 5) + 'px, 0px) scale3d(' + item.offsetWidth/gridItemsContainer.offsetWidth + ',' + item.offsetHeight/getViewport('y') + ',1)';
+
+    // add transition class
+    classie.add(dummy, 'placeholder--trans-in');
+
+    // insert it after all the grid items
+    gridItemsContainer.appendChild(dummy);
+
+    // body overlay
+    // classie.add(bodyEl, 'view-single');
+
+    setTimeout(function() {
+      // expands the placeholder
+      dummy.style.WebkitTransform = 'translate3d(-5px, ' + (scrollY() - 5) + 'px, 0px)';
+      dummy.style.transform = 'translate3d(-5px, ' + (scrollY() - 5) + 'px, 0px)';
+      // disallow scroll
+      window.addEventListener('scroll', noscroll);
+    }, 25);
+
+    onEndTransition(dummy, function() {
+      // add transition class
+      classie.remove(dummy, 'placeholder--trans-in');
+      classie.add(dummy, 'placeholder--trans-out');
+      // position the content container
+      contentItemsContainer.style.top = scrollY() + 'px';
+      // show the main content container
+      classie.add(contentItemsContainer, 'content--show');
+      // show content item:
+      classie.add(contentItems[current], 'content__item--show');
+      // show close control
+      classie.add(closeCtrl, 'close-button--show');
+      // sets overflow hidden to the body and allows the switch to the content scroll
+      classie.addClass(bodyEl, 'noscroll');
+      $(".grid__item").hide();
+
+      isAnimating = false;
+    });
+  }
+
+  function hideContent() {
+    var gridItem = gridItems[current], contentItem = contentItems[current];
+  console.log("1");
+    classie.remove(contentItem, 'content__item--show');
+    classie.remove(contentItemsContainer, 'content--show');
+    classie.remove(closeCtrl, 'close-button--show');
+
+    // classie.remove(bodyEl, 'view-single');
+
+    setTimeout(function() {
+      var dummy = gridItemsContainer.querySelector('.placeholder');
+       console.log("2");
+      classie.removeClass(bodyEl, 'noscroll');
+      console.log("3")
+      dummy.style.WebkitTransform = 'translate3d(' + gridItem.offsetLeft + 'px, ' + gridItem.offsetTop + 'px, 0px) scale3d(' + gridItem.offsetWidth/gridItemsContainer.offsetWidth + ',' + gridItem.offsetHeight/getViewport('y') + ',1)';
+      dummy.style.transform = 'translate3d(' + gridItem.offsetLeft + 'px, ' + gridItem.offsetTop + 'px, 0px) scale3d(' + gridItem.offsetWidth/gridItemsContainer.offsetWidth + ',' + gridItem.offsetHeight/getViewport('y') + ',1)';
+        console.log("5");
+         var i;
+        for(i=0;i<gridItems.length;i++)
+        {
+           gridItem = gridItems[i];
+        classie.remove(gridItem, 'grid__item--loading');
+        console.log(gridItem);
+        console.log("7");
+        classie.remove(gridItem, 'grid__item--animate');
+        console.log("8");
+        }
+        // console.log(dummy);
+      onEndTransition(dummy, function() {
+        // reset content scroll.. crollTop = 0;
+        // console.log(gridItemsContainer);
+        gridItemsContainer.removeChild(dummy);
+        console.log("6");
+        // console.log(gridItemsContainer);
+        var i;
+        for(i=0;i<gridItems.length;i++)
+        {
+           gridItem = gridItems[i];
+        classie.remove(gridItem, 'grid__item--loading');
+        console.log(gridItem);
+        console.log("7");
+        classie.remove(gridItem, 'grid__item--animate');
+        console.log("8");
+        }
+
+        lockScroll = false;
+        window.removeEventListener( 'scroll', noscroll );
+      });
+
+      // reset current
+      current = -1;
+    }, 25);
+  }
+
+  function noscroll() {
+    if(!lockScroll) {
+      lockScroll = true;
+      xscroll = scrollX();
+      yscroll = scrollY();
+    }
+    window.scrollTo(xscroll, yscroll);
+  }
+
+  init();
+
+
+	});
+</script>
+
+<!--    navbar   -->
+    <script>
+function myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+
+</html>

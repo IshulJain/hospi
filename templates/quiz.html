@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Intellecx | Online Round | Technex '17 IIT(BHU) Varanasi</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/ihover.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/css/quiz.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+      <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/static/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/static/favicon/manifest.json">
+<link rel="shortcut icon" href="/static/favicon/favicon.ico">
+<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+<meta name="theme-color" content="#000000">
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68539305-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <script type="text/javascript">
+	    $(window).load(function(){
+	        $('#myModal').modal('show');
+	    });
+      function help_modal(){
+	    $('#myModal').modal('show');
+	  }
+
+	  function cont_modal(){
+	    $('#contModal').modal('show');
+	  }
+	</script>
+  <script language="javascript" type="text/javascript">
+  var seconds = {{timer}}
+
+function secondPassed() {
+  var minutes = Math.round((seconds - 30)/60),
+      remainingSeconds = seconds % 60;
+  
+  if (remainingSeconds < 10) {
+    remainingSeconds = "0" + remainingSeconds;  
+  }
+  
+  document.getElementById('countdown').innerHTML = minutes + ":" + remainingSeconds;
+  if (seconds == 0) {
+    clearInterval(countdownTimer);
+    document.getElementById('countdown').innerHTML = "00:00";
+    // $("#lock").tigger("click");
+    window.location = '/finishQuiz/{{responseId}}'
+  } else {
+    seconds--;
+  }
+}
+ 
+var countdownTimer = setInterval('secondPassed()', 1000);
+  </script>
+</head>
+
+
+{% autoescape off %}
+
+<body>
+	<nav class="navbar navbar-inverse">
+	<div class="container-fluid" id="navigationBar">
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand img-responsive" href="http://cesiitbhu.in/" id ="headernav" style="color:#fff;font-weight:bold;">INTELLECX</a>
+	  </div>
+	  <div class="collapse navbar-collapse" id="myNavbar">
+	    <ul class="nav navbar-nav navbar-right">
+	      {# <li><a href="#" id="timer"></a></li> #}
+	      
+	      <li><a href="#myModal" onclick="help_modal()" style="color:#fff">Rules</a></li>
+	      <li><a href="#contModal" onclick="cont_modal()" style="color:#fff;">Contacts</a></li>
+	      <li><a href="/finishQuiz/{{responseId}}" id="lock" style="color:#fff; font-weight: 1000;">LOCK</a></li>
+	    </ul>
+	  </div>
+	</div>
+	</nav>
+
+
+	<div class="container">
+		<div class="container" id="circleContainer">
+			{% for question in questions %}
+				<div class="full-circle ih-item circle colored effect15 left_to_right">
+					<!-- <a href="question1"> -->
+					<a href="#questionModal{{question.questionId}}" data-toggle="modal" data-target="#questionModal{{question.questionId}}">
+						<h1 id="questionMark">{{ forloop.counter }}</h1>
+		        	</a>
+				</div>
+			{% endfor %}	
+		</div>
+		{% for question in questions %}
+			<div id="questionModal{{question.questionId}}" class="modal fade" role="dialog">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Question {{ forloop.counter }}</h4>
+						</div>
+
+						<form method="post" id="form{{ question.questionId }}">
+
+							<div class="modal-body">
+								<p>{{question.question}}</p>								
+								<input name="answername" value="{{question.questionId}}" type="hidden" id="input{{question.questionId}}">
+								<label >Answer: </label>
+								<input name="answer{{question.questionId}}" step="1" type="number" style="width:90%;margin:auto;" required>
+								
+							</div>
+							<div class="modal-footer">
+								<p>Submitted answer: <span id="answer{{question.questionId}}{{question.questionId}}"></span></p>
+								<button type="submit" id="button{{question.questionId}}" class="btn btn-primary" >Submit</button>
+								<button type="button"  class="btn btn-default" data-dismiss="modal">Close</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Rules | Can be viewed again from top nav bar.</h4>
+		      </div>
+		      <div class="modal-body">
+<p>1. You have been provided with extra <b>2</b> minutes for reading the <b>instructions</b>. Please read them carefully.</p>		      
+<p>2. The online round consists of 10 logical reasoning questions</p>
+<p>3. Duration of the test is 40 minutes.</p>
+<p>4. There is NO provision for negative marking in the test.</p>
+<p>5. Only integer answers will be entertained. Only write the option number in the box or the integer answer.</p> 
+<p>6. If you are participating with a team member you can take the test together on a single system or you can take the test individually with your respective links but do remember that your answers are integrated.</p>
+<p>7. All the links in the mail are unique and you can access your test ID with your link only.</p>
+
+
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<div id="questionModal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">asdf</h4>
+					</div>
+					<div class="modal-body">
+						<p><br></p>
+						<textarea cols="40"></textarea>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="contModal" class="modal fade" role="dialog">
+	      <div class="modal-dialog">
+	        <div class="modal-content">
+	          <div class="modal-header">
+	            <button type="button" class="close" data-dismiss="modal">&times;</button>
+	            <h4 class="modal-title" style="color:#000;font-family:Ubuntu">Contacts</h4>
+	          </div>
+	          <div class="modal-body" style="color:#888">
+	             <h4>For any queries contact<br><br> 
+	                <span style="color:#000;font-family:Ubuntu">Mail</span> : support@technex.in<br><br>
+	                <span style="color:#000;font-family:Ubuntu">Mobile</span> : +91-9935504188; +91-7270975614</h4>
+	          </div>
+	          <div class="modal-footer">
+	            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	</div> 
+<nav class="navbar navbar-inverse navbar-fixed-bottom">
+  <div class="container-fluid">
+       <div class="app">
+  <time id="countdown">25:00</time>
+  <ul id="timerul">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<!--       <a href="/finishQuiz/{{responseId}}"><button id="lock" class="btn btn-danger btn-lg" style="float:right;padding:10px 50px"><span class="glyphicon glyphicon-lock" style="padding:5px"></span>LOCK</button></a> -->
+  </div>
+</nav>
+</body>
+{% endautoescape %}
+  <script type="text/javascript">
+
+ 
+
+ var answer = []
+ {% for question in questions  %}
+  answer["{{question.questionId}}"] = "{{question.responseOfUser}}"
+{% endfor %}
+
+
+
+  {% for question in questions  %}
+  
+
+  $("#answer{{question.questionId}}{{question.questionId}}").html(answer["{{question.questionId}}"]);
+
+  {% endfor %}
+
+
+
+  // Set the type of input End -->
+
+  {% for question in questions %}	
+
+    $("#form{{ question.questionId }}").on("submit", function(e) {
+      
+       e.preventDefault();
+      $('#button{{question.questionId}}').val( "Submitting...");
+      $('#button{{question.questionId}}').attr("disabled","disabled");
+
+    var url = "/registerResponse/"; // the script where you handle the form input.
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: {
+"questionId":"{{question.questionId}}",
+"responseId":"{{responseId}}",
+"integerAnswer":$("input[name='answer{{question.questionId}}'").val()
+},
+           //$("#form{{question.questionId}}").serialize(), // serializes the form's elements.
+           success: function(data)
+           {
+           	// data = JSON.parse(data);
+           	console.log(data);
+
+        
+            $('#button{{question.questionId}}').val( "Submit");
+            $('#button{{question.questionId}}').removeAttr("disabled");
+
+               
+               if (data.status == 1) {
+               	$("#answer{{question.questionId}}{{question.questionId}}").html(data.answer);
+                text = 'Answer submitted'
+                console.log("done")
+                alert(text);
+               }
+               else if(data.status == 3)
+               {
+               	window.location.reload()
+               }
+               else if (data.error=="true") {
+               	if(data.type=="noanswer")
+                alert("Some error occured. Please refresh the page and try again.");
+            	else if(data.type=="notest"){
+            		alert("Time over! Please click the lock button to proceed further.");
+            	}
+            	else if(data.type=="lock"){
+            		alert("Your test response has been locked. Please click the lock button to proceed further.")
+            	}
+               }
+               
+            },
+
+            error: function(data){
+            $('#button{{question.tag}}').val( "Submit");
+            $('#button{{question.tag}}').removeAttr("disabled");
+            alert("Some error occured. Please check your internet settings.");
+            }
+         });
+        return false; // avoid to execute the actual submit of the form.
+    });   
+
+    {% endfor %} 
+
+
+  </script>
+
+
+
+</html>

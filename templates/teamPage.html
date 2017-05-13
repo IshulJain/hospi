@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="/static/team/css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="/static/team/css/style.css"> <!-- Resource style -->
+	<link rel="shortcut icon" href="/static/images/favicon.ico">
+	<script src="/static/team/js/modernizr.js"></script> <!-- Modernizr -->
+
+	<title>Contacts | Technex '17</title>
+	<meta name="description" content="Contacts: Phone: +91-756-581-6969 Email: technex@iitbhu.ac.in Address: IIT (BHU) Gymkhana, IIT (BHU), Varanasi">
+    <meta name="keywords" content="technex contact, technex mobile number, technex address, technex email id, mobile number, contact, phone, email, call, address">
+	<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68539305-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<script>
+function navFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+</script>
+</head>
+<body>
+<!----------NAVBAR-------->
+<div class="jnavbar">
+		<ul class="topnav" id="myTopnav">
+  <li class="topnav-li"><a href='/' style="padding:0px;border:none;"><img src="/static/images/logo-technex-nav.png" height="40px" class="desktopLogo" style="padding-left:8px;padding-right:8px;">
+	<img src="/static/images/technexLogoMobile.png" height="40px" class="mobLogo" style="padding-left:8px;padding-right:8px;"></a></li>
+	<li class="topnav-li"><a class="active" href="/events">EVENTS</a></li>
+	<li class="topnav-li"><a href="/workshops">WORKSHOPS</a></li>
+	<li class="topnav-li"><a href="/talks">THINK TALKS</a></li>
+	<li class="topnav-li"><a href="/sponsors">SPONSORS</a></li>
+	<li class="topnav-li"><a href="/kaleidoscope">KALEIDOSCOPE</a></li>
+	<li class="topnav-li"><a href="/startupfair">STARTUP FAIR</a></li>
+	<li class="topnav-li"><a href="/contacts">CONTACTS</a></li>
+	<!-- <li class="topnav-li"><a href="http://ca.technex.in">CAMPUS AMBASSADOR</a></li> -->
+	<li class="topnav-li"><a href="/hospitality">HOSPITALITY</a></li>
+  <li class="topnav-li" id="reg"><a href="/register" style="font-weight:600;background:#0084ff;"> {% if user.is_authenticated %}
+  DASHBOARD
+  {% else %}
+  REGISTER / LOGIN
+  {% endif %}</a></li>
+  <li class="icon">
+    <a href="javascript:void(0);" style="font-size:15px;padding:14px;" onclick="navFunction()">☰</a>
+  </li>
+</ul></div>
+	<main class="cd-main-content">
+		<div class="cd-tab-filter-wrapper">
+			<div class="cd-tab-filter">
+				<ul class="cd-filters">
+					<li class="placeholder">
+						<a data-type="all" href="#0">CORE</a> <!-- selected option on mobile -->
+					</li>
+					<li class="filter" style='display:none'><a class="selected" href="#0" data-type="all">All</a></li>
+					{% for team in teams|dictsort:"order"  %}
+					<li class="filter" data-filter=".color-{{forloop.counter}}"><a href="#0" data-type="color-{{forloop.counter}}">{{team.teamName}}</a></li>
+					{% endfor %}
+				</ul>			</div>
+		</div>
+
+		<section class="cd-gallery">
+
+            <ul class="team-ul">
+			{% for team in teams|dictsort:"order" %}
+			 {% with forloop.counter as outer_counter %}
+			{% for member in team.teammembers_set.all|dictsort:"order" %}
+			<li class="mix color-{{outer_counter}}"><img src="{{member.photo}}" alt="Image 1">
+                    <div class="num-mail"><p style="color:rgba(255,255,255,.8);">+91{{member.number}}</p></div>
+                    <p class="jname">{{member.name}}</p>
+                    <p class="post">{{member.designation}}</p><p class="membermail">{{member.email}}</p></li>
+			{% endfor %}
+			{% endwith %}
+			{% endfor %}
+
+				<li class="gap"></li>
+				<li class="gap"></li>
+				<li class="gap"></li>
+			</ul>
+			<div class="cd-fail-message" style="color: white;">Will be displayed soon</div>
+		</section>
+	</main>
+<script src="/static/team/js/jquery-2.1.1.js"></script>
+<script src="/static/team/js/jquery.mixitup.min.js"></script>
+<script src="/static/team/js/main.js"></script>
+
+<script>
+
+$(document).ready(function() {
+	$("a[data-type=color-1]").trigger('click');
+});
+
+</script>
+</body>
+</html>

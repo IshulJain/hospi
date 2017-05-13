@@ -1,0 +1,104 @@
+ <!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{{parentEvent.name}}</title>
+		<link rel="stylesheet" type="text/css" href="/static/css/normalize3.css" />
+		<link rel="stylesheet" type="text/css" href="/static/fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="/static/css/style2-3.css" />
+
+		<script src="/static/js/modernizr.custom.js"></script>
+		<script src="/static/js/jquery1.12.4.js"></script>
+		<script src="/static/js/kall.js"></script>
+	
+	</head>
+	<body>
+		<div class="container">
+			<button id="menu-toggle" class="menu-toggle"><span>Menu</span></button>
+			<div id="theSidebar" class="sidebar">
+				<button class="close-button fa fa-fw fa-close"></button>
+                <a href="/events"><h1 class="category-name" style="color:white;letter-spacing:5px;">Events</h1></a>
+				<div class="related">
+                    <a href="/events/robonex"><h2>Robonex</h2></a>
+					<a href="/events/extreme-engineering"><h2>Extreme Engineering</h2></a>
+					<a href="/events/byte-the-bits"><h2>Byte the Bits</h2></a>
+					<a href="/events/riqueza"><h2>Riqueza</h2></a>
+					<a href="/events/creatrix"><h2>Creatrix</h2></a>
+                    <a href="/events/clutch"><h2>Clutch</h2></a>
+                    <a href="/events/superNova"><h2>SuperNova</h2></a>
+					<a href="/events/pahal"><h2>Pahal</h2></a>
+					<a href="/events/modex"><h2>Modex</h2></a>	
+					<a href="/events/ascension"><h2>Ascension</h2></a>
+				</div>
+			</div>
+			<div id="theGrid" class="main">
+				<section class="grid">
+					<header class="top-bar">
+						
+					</header>
+					{% autoescape off %}
+					{% for event in parentEvent.events %}
+					<a class="grid__item" href="#">
+						<h2 class="title title--preview">{{event.eventName}}</h2>
+						<div class="loader"></div>
+						<span class="category">{{parentEvent.name}}</span>
+						<div class="meta meta--preview"> 
+						</div>
+					</a>
+					{% endfor %}
+				</section>
+				
+				<section class="content">
+					<div class="scroll-wrap">
+					{% for event in parentEvent.events %}
+						<article class="content__item" id="">
+							<h2 class="title title--full">{{ event.eventName }}</h2>
+                            <span class="category category--full">{{ event.description }}</span><br><br>
+							<div class="meta meta--full">
+								<img class="meta__avatar" src="/static/img/authors/4.png" alt="author04" />
+								<h1 style="text-align:center">{{ parentEvent.name }}</h1>
+                                <div class="events-name">
+                                    {% for parent_event in parentEvent.events %}
+                                    <a href="#"><h2>{{ parent_event.eventName }}</h2></a>
+                                    {% endfor %}
+                                    </div>
+								<nav class="article-nav">
+									<button><i class="fa fa-angle-left"></i> <span>Previous</span></button>
+									<button><span>Next</span> <i class="fa fa-angle-right"></i></button>
+								</nav>
+							</div>
+                            <div>
+                        <nav class="navbar navbar-default">
+                          <div class="container-fluid">
+                            <ul class="nav navbar-nav">
+                              {% for eventOption in event.eventOptions %}
+                              <li><a href="#">{{ eventOption.optionName }}</a></li>
+                              {% endfor %}
+                            </ul>
+                          </div>
+                        </nav><br><br><br>
+                                <div><br><br>
+                            {% for eventOption in event.eventOptions %}    
+							<div id="description"><p>
+							{{ eventOption.optionDescription }}
+							</p></div>
+							{% endfor %}
+							
+							
+						</article>
+						{% endfor %}
+						{% endautoescape %}
+									</div>
+					<button class="close-button"><i class="fa fa-close"></i><span>Close</span></button>
+				</section>
+			</div>
+		</div><!-- /container -->
+		<script src='/static/js/data.js'></script>	
+		<script src="/static/js/classie.js"></script>
+		<script src="/static/js/main.js"></script>
+		<!-- <script type=""></script> -->
+		
+	</body>
+</html>

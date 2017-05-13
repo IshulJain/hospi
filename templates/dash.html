@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="evnt" id="abcdlf" style="background: black;">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-navbutton-color" content="#000000">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title id="dashtitle">Dashboard | Technex '17</title>
+    <link href="/static/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <link href="/static/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <link href="/static/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <link href="/static/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <link href="/static/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <link href="/static/build/css/custom.min.css" rel="stylesheet">
+    <link href="/static/vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="/static/vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/vendors/select2/dist/css/select2.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="/static/favicon/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16">
+<link rel="manifest" href="/static/favicon/manifest.json">
+<link rel="shortcut icon" href="/static/favicon/favicon.ico">
+<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+<meta name="theme-color" content="#000000">
+    <script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/static/vendors/angular.min.js"></script>
+    <script src="/static/angular-route.js"></script>
+    <script src="/static/genmain.js"></script>
+
+
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68539305-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+    <style>
+      @font-face {
+   font-family: codebold;
+   src: url(/static/fonts/code_BOLD.otf) format("opentype");
+  }
+    .input-error 
+    {
+        border-color: red;
+    }
+  .member-input
+  {
+   margin-left: -10px;
+   width: 80%;
+  }
+  @media (max-width: 919px)
+  {
+    .imp-links
+    {
+      display: none;
+    }
+    .non-imp
+    {
+      width: 75%;
+    }
+  }
+   @media (min-width: 919px)
+  {
+    .non-imp
+    {
+      width: 25%;
+    }
+  }
+
+  </style>
+  <style type="text/css">
+/*  body
+  {
+    background-image: url(/static/technex-loader-1.gif);
+    background-size: contain;
+  }*/
+#patanahi
+{
+  background: url(/static/images/logo-technex-nav.png);
+  background-size: cover;
+      -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+.clock {
+
+  color: #aaa;
+  height: 63px;
+  float: left;
+  font-size: 35px;
+  line-height: 100%;
+  margin-left: 10px;
+  position: relative;
+  width: 75px;
+}
+.clock .digit_1 {
+  margin-right: 3.333333%;
+}
+.clock .digit_1,
+.clock .digit_2 {
+  float: left;
+  line-height: 50px;
+  position: relative;
+  text-align: center;
+  width: 48.3333%;
+}
+.clock .digit_1 .upper,
+.clock .digit_2 .upper {
+  height: 19px;
+  line-height: 100%;
+  overflow: hidden;
+  padding-top: 3px;
+  background: 50% 21px no-repeat #222;
+}
+.clock .digit_1 .lower,
+.clock .digit_2 .lower {
+  height: 23px;
+  line-height: 0px;
+  margin-top: 2px;
+  overflow: hidden;
+  background: 50% 0 no-repeat #222;
+}
+.clock .label {
+    display: block;
+  padding: 0;
+  bottom: 0px;
+  clear: both;
+  color: #fff;
+  font-family: 'Helvetica';
+  font-size: 12px;
+  line-height: 20px;
+  position: absolute;
+  text-align: center;
+  text-transform: uppercase;
+  width: 100%;
+  background: #444;
+}
+.clock .copy {
+  color: #fff;
+  font-family: 'DINBold';
+  font-size: 14px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.glyphicon
+{
+  margin-left: 5px;
+    margin-right: 5px;
+}
+.modal-backdrop {
+z-index: -90;
+  }
+</style>
+  </head>
+  <body class="nav-md footer_fixed">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view" style="min-height: 1023px">
+            <div class="navbar nav_title" id="patanahi" style="border: 0;">
+              <!-- <a href="/" class="site_title"></a> -->
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="profile">
+              <div class="profile_pic">
+                <img src={% if techProfile.fb %}"{{techProfile.fb.profileImage}}"{% else %} "/static/profile.png"{% endif %} alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2 id="user_name">{{user.first_name}}</h2>
+              </div>
+            </div>
+            <br />
+            <br/>
+            <br/>
+            <br/>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section" style="margin-top: 30px;">
+
+                <ul class="nav side-menu" style="margin-bottom: 16px">
+                <li><a href="#profile"><i class="fa fa-user"></i> View Profile</a>
+                  </li>
+                  <li><a href="#eventReg"><i class="fa fa-plus-circle"></i>Event Registration</a>
+                  </li>
+                   <li><a href="#startupreg"><i class="fa fa-plus-circle"></i>StartupFair Registration</a>
+                  </li>
+                    <li><a href="#workshopreg"><i class="fa fa-plus-circle"></i>Workshop Registration</a>
+
+                  </li>
+                                     <li><a href="#payment"><i class="fa fa-inr"></i>Payments <span class="label label-success pull-right">New</span></a>
+                  </li>
+
+               <li><a data-toggle="modal" data-target=".bs-example-modal-md"><i class="fa fa-users"></i> Contacts</a>
+                  </li>
+                  <li><a href="#changepassword"><i class="fa fa-cogs"></i> Change Password</a>
+                  </li>
+               
+                </ul>
+               <!-- <div style="background-color: red;height: 3px;"></div> -->
+
+             <!--    <ul class="nav side-menu" style="margin-top: 16px">
+                <li><h2 style="color: white;text-align: center;font-size:16.5px">Important Links</h2></li>
+                <li>
+                          <a href="/" target="_blank">Technex '17 | Home</a>
+                        </li>
+                        <li>
+                          <a href="/events/" target="_blank">Events</a>
+                        </li>
+                        <li>
+                        <a href="/talks/" target="_blank">Talks</a>
+                        </li>
+                        <li>
+                         <a href="/startupfair/" target="_blank">Startup Fair</a>
+                        </li>
+                                                </li>
+                        <li>
+                         <a href="/workshops/" target="_blank">Workshops</a>
+                        </li>
+
+               
+                </ul> -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle" style="color: black"><i class="fa fa-bars"></i></a>
+              </div>
+              <ul class="nav navbar-nav navbar-left imp-links">
+                
+                <li><a href="/events">EVENTS</a></li>
+                <li><a href="/talks">THINK TALKS</a></li>
+                <li><a href="/workshops">WORKSHOPS</a></li>
+                <li><a href="/hospitality"><b style="font-size: 19px;">HOSPITALITY</b></a></li>
+
+                <li><a href="/"></a></li>
+              </ul>
+
+              <ul class="non-imp nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false"  id="chhota_user">
+                    <img src={% if techProfile.fb %}"{{techProfile.fb.profileImage}}"{% else %} "/static/profile.png"{% endif %} alt=""><span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    <li><a href="#profile"> Profile</a></li>
+                    <li><a href="#changepassword">Change Password</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                  </ul>
+                </li>
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-envelope-o"></i>
+                    <span class="badge bg-green notification-count">{{notifications.unread}}</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                  {% for notification in notifications.notifications %}
+                    <li onclick="new PNotify({
+                                  title: '{{notification.title}}',
+                                  text: '{{notification.description}}',
+                                  type: 'info',
+                                  styling: 'bootstrap3'
+                              });
+                            url = '/notificationRead/'
+                          $.ajax({
+                            type : 'POST',
+                            url : url,
+                            data: {
+                            'notificationId' : '{{notification.notificationId}}',
+                            },
+                            success: function(data)
+                            {
+                              if(data.status == 1)
+                              {
+                                $('.notification-count').html(data.unread);
+                              }
+                            }
+                          })
+
+
+                              ">
+                      <a>
+                        <span class="image"><img src="{{notification.photo}}" alt="Profile Image" /></span>
+                        <span>
+                          <span>{{notification.title}}</span>
+                          <span class="time">{{notification.time}}</span>
+                        </span>
+                        <span class="message">
+                          {{notification.description}}
+                        </span>
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>     
+    <div ng-view>
+    </div>
+
+    <div class="modal fade bs-example-modal-md in" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 21px;">
+                    <div class="modal-dialog modal-md">
+                      <div class="modal-content">
+
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">CONTACTS</h4>
+                        </div>
+                        <div class="modal-body">
+
+<!--                           <p><i class="glyphicon glyphicon-phone"></i> +91-9935504188</p>
+                          <p><i class="glyphicon glyphicon-phone"></i> +91-7270975614</p>  -->
+                          <h4>For any non-technical queries, Contact:</h4>
+                          <p><i class="glyphicon glyphicon-phone"></i> +91-9198517176</p>
+                          <p><i class="glyphicon glyphicon-phone"></i> +91-7565816969</p>
+                          <h4>For any technical queries, Contact:</h4>
+                          <p><i class="glyphicon glyphicon-envelope"></i> 
+                           tech@technex.in</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+    <!-- <footer style="background: #cccccc;">
+          <div class="pull-left" style="width: 100%;color: black;">
+          For any technical queries regarding Registration, Contact:
+          
+          <i class="glyphicon glyphicon-phone"></i>9935504188
+            <i class="glyphicon glyphicon-envelope"></i>ishantdeep.sgandhi.eee15@iitbhu.ac.in  |<i class="glyphicon glyphicon-phone"></i>7270975614
+          <i class="glyphicon glyphicon-envelope"></i>bikram.bharti.ece15@iitbhu.ac.in
+        
+          </div>
+          <div class="clearfix">
+          </div>
+     -->     <!--  <div class="pull-left"></div> -->
+    <!--     </footer> -->
+        </div>
+      </div>
+    <!-- </div> -->
+  <input type='hidden' id='userEmail' value="{{ request.user.techprofile.email }}" /> 
+
+
+
+    <script src="/static/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/static/vendors/nprogress/nprogress.js"></script>
+    <script src="/static/vendors/pnotify/dist/pnotify.js"></script>
+    <script src="/static/vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="/static/vendors/select2/dist/js/select2.full.min.js"></script>
+
+   <script src="/static/build/js/custom.min.js"></script> 
+<script type="text/javascript">
+app.service("profileData", function(){
+        var staffArray = [
+            {
+                name: "{{user.first_name}}",
+                technexId: "{{techProfile.technexId}}",
+                college: "{{techProfile.college.collegeName}}",
+                year: "{{techProfile.year}}",
+                city: "{{techProfile.city}}",
+                email: "{{techProfile.email}}",
+                mobile: "{{techProfile.mobileNumber}}",
+                profileImage: ({% if techProfile.fb %}"{{techProfile.fb.profileImage}}"{% else %} "/static/profile.png"{% endif %}).replace("&amp;","&a")
+            }
+
+        ];
+        var workshopData = [
+             {% for workshop in workshops %}
+             {
+           workshop: "{{workshop.workshop}}",
+           teamId : "{{workshop.teamId}}",
+      },
+           {% endfor %}
+        ];
+        var events = [
+        {% for team in teams %}
+          "{{team.event}}",
+          {% endfor %}
+
+        ];
+        var teamsData = [
+        {% for team in teams %}
+        {
+          teamName: "{{team.teamName}}",
+          leader: "{{team.leader}}",
+          leaderEmail: "{{team.leaderEmail}}",
+          teamId: "{{team.teamId}}",
+          memberNames: {{team.memberNames|safe}},
+          memberUrls: {{team.memberUrls|safe}},
+          event: "{{team.event}}",
+          parentEvent: "{{team.parentEvent}}",
+          parentEventLink: "{{team.parentEventLink}}"
+          
+        },
+        {% endfor %}
+        ];
+        this.getTeamData = function(){
+          return teamsData;
+        };
+        this.getStaffArray = function(){
+            return staffArray;
+        };
+        this.getWorkshopData = function(){
+              return workshopData
+        };
+        this.getEventData = function(){
+          return events;
+        }
+        //updating person
+        this.updateInfo = function(personIndex, obj){
+            staffArray.splice(personIndex, 1, obj)
+        }
+    });
+app.service('fileUpload', ['$http', function ($http) {
+    this.uploadFileToUrl = function(file, uploadUrl,data){
+        var fd = new FormData();
+        fd.append('file', file);
+        fd.append('parentEvent', data['parentEvent']);
+        fd.append('event',data['event']);
+        $http.post(uploadUrl,fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .success(function(){
+          console.log("jdjdj");
+        })
+        .error(function(){
+          console.log("loose");
+        });
+    }
+}]);
+function makeimg(name){
+   console.log(name);
+    nameSplit = name.split(" ");
+    var i,initials="";
+
+    for(i=0;i<Math.min(nameSplit.length,2);i++)
+    {
+    initials += nameSplit[i].charAt(0).toUpperCase();
+  }
+
+var charIndex = initials.charCodeAt(0) - 65,
+    colourIndex = charIndex % 19;
+
+var canvas = document.getElementById("user-icon");
+var context = canvas.getContext("2d");
+
+var canvasWidth = $(canvas).attr("width"),
+    canvasHeight = $(canvas).attr("height"),
+    canvasCssWidth = canvasWidth,
+    canvasCssHeight = canvasHeight;
+console.log(canvasWidth);
+console.log(canvasHeight);
+$("#user-icon").css("border-radius", "200px");
+context.fillStyle = "#2980b9"
+context.fillRect (0, 0, canvas.width, canvas.height);
+context.font = "128px Arial";
+context.textAlign = "center";
+context.fillStyle = "#FFF";
+context.border="3px solid white";
+context.fillText(initials, canvasCssWidth / 2, canvasCssHeight / 1.45);
+}
+</script>
+  </body>
+</html>
