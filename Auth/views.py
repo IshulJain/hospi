@@ -2673,7 +2673,31 @@ def paymentdata(beginIndex,endIndex):
             fail = fail + 1
     print fail
 
+def spontypefill():
+	rb = open_workbook('SponsorTypeData.xls')
+	s = rb.sheet_by_index(0)
+	for i in range(1,36):
+		stype = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
+		order = int(literal_eval(str(s.cell(i,2)).split(':')[1]))
+		spon = SponsorshipType(title = stype, order = order)
+		spon.save()
 
+def sponsorfill():
+	rb  = open_workbook('SponsorData.xls')
+	st = SponsorshipType.objects.all()
+	s = rb.sheet_by_index(0)
+	for i in range(1,58):
+		index = int(literal_eval(str(s.cell(i,0)).split(':')[1]))
+		title = literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
+		order = int(literal_eval(str(s.cell(i,1)).split(':')[1]))
+		imageLink = literal_eval(str(s.cell(i,3))[6:].encode("utf-8"))
+		websiteLink = literal_eval(str(s.cell(i,4))[6:].encode("utf-8"))
+		print literal_eval(str(s.cell(i,2)).split(':')[1])
+		print imageLink
+		print websiteLink
+		spons = Sponsors(sponsorType = st[index-1], name = title, order = order, imageLink = imageLink, websiteLink = websiteLink)
+		spons.save()	
+		
 
 def astro():
     quizs = quiz.objects.get(name = "Astro Quiz")
@@ -2883,4 +2907,8 @@ def tshirtdatafill():
         }   
         print dic
         requests.post(url, data=dic)
+
+
+
+
 
