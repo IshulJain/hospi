@@ -55,7 +55,7 @@
       <script src="js/loader.js"></script> -->
 		<div id="tf_loading" class="tf_loading"></div>
 		<div id="tf_bg" class="tf_bg">
-			<!-- <img src="images/1.jpg" class="deskt" alt="Image 1" longdesc="images/thumbs/1.jpg" /> -->
+<img src="/static/kaleidoscope/images/1.jpg" class="deskt" alt="Image 1" longdesc="/static/kaleidoscope/images/thumbs/1.jpg"/>
 			<img src="/static/kaleidoscope/images/2.jpg" class="deskt" alt="Image 2" longdesc="/static/kaleidoscope/images/thumbs/2.jpg"/>
 			<img src="/static/kaleidoscope/images/3.jpg" class="deskt" alt="Image 3" longdesc="/static/kaleidoscope/images/thumbs/3.jpg"/>
       <img src="/static/kaleidoscope/images/day1.jpg" class="deskt" alt="Image 4" longdesc="/static/kaleidoscope/images/day1.jpg"/>
@@ -69,14 +69,14 @@
 			<div class="tf_pattern"></div>
 		</div>
 		<div id="tf_content_wrapper" class="tf_content_wrapper">
-			<!-- <div class="tf_content" id="content1" style="display:block;">
+			<div class="tf_content" id="content1" style="display:block;">
 				<h2>SHIRLEY SETIA | DAY-3</h2>
 				<p>
           26 FEBRUARY 2017<br>
           VANUE: ADV GROUND<br>
           TIME: 08:00 PM (IST)
       </p>
-			</div> -->
+			</div>
 			<div class="tf_content" id="content2">
 				<h2>TVF HUMOROUSLY YOURS | DAY-3</h2>
         <p>
@@ -101,7 +101,7 @@
           TIME: 08:00 PM (IST)
       </p>
 			</div>
-			<!--<div class="tf_content" id="content5">
+			<div class="tf_content" id="content5">
 				<h2>Visioneer | DAY-2</h2>
         <p>
           26 FEBUARY 2017<br>
@@ -116,7 +116,7 @@
           VANUE: ADV GROUND<br>
           TIME: 08:00 PM (IST)
       </p>
-			</div> -->
+			</div> 
 		</div>
 
 		<div id="tf_thumbs" class="tf_thumbs">
@@ -133,16 +133,21 @@
         <img src="/static/images/logo-technex-nav.png" height="40px" class="desktopLogo" style="padding-left:8px;padding-right:8px;">
         <img src="/static/images/technexLogoMobile.png" height="40px" class="mobLogo" style="padding-left:8px;padding-right:8px;">
         </a></li>
-        <li class="topnav-li"><a class="active" href="/events">EVENTS</a></li>
-        <li class="topnav-li"><a href="/workshops">WORKSHOPS</a></li>
-        <li class="topnav-li"><a href="/talks">THINK TALKS</a></li>
-        <li class="topnav-li"><a href="/sponsors">SPONSORS</a></li>
-        <li class="topnav-li"><a href="/kaleidoscope">KALEIDOSCOPE</a></li>
-        <li class="topnav-li"><a href="/startupfair">STARTUP FAIR</a></li>
-        <li class="topnav-li"><a href="/contacts">CONTACTS</a></li>
-        <!-- <li class="topnav-li"><a href="http://ca.technex.in">CAMPUS AMBASSADOR</a></li> -->
-        <li class="topnav-li"><a href="/hospitality">HOSPITALITY</a></li>
-        <li class="topnav-li" id="reg"><a href="/register" style="font-weight:600;background:#0084ff;">REGISTER / LOGIN</a></li>
+     <li class="topnav-li"><a class="active" href="/events">EVENTS</a></li>
+      <!-- <li class="topnav-li"><a href="/workshops">WORKSHOPS</a></li> -->
+      <li class="topnav-li"><a href="/talks">THINK TALKS</a></li>
+      <li class="topnav-li"><a href="/sponsors">SPONSORS</a></li>
+      <li class="topnav-li"><a href="/kaleidoscope">KALEIDOSCOPE</a></li>
+      <li class="topnav-li"><a href="/startupfair">STARTUP FAIR</a></li>
+      <li class="topnav-li"><a href="/contacts">CONTACTS</a></li>
+     
+      <li class="topnav-li"><a href="/hospitality">HOSPITALITY</a></li>
+       <li class="topnav-li"><a href="http://ca.technex.in">CAMPUS AMBASSADOR</a></li>
+<!--   <li class="topnav-li" id="reg"><a href="/register" style="font-weight:600;background:#0084ff;"> {% if user.is_authenticated %}
+  DASHBOARD
+  {% else %}
+  REGISTER / LOGIN
+  {% endif %}</a></li> -->
         <li class="icon">
         <a href="javascript:void(0);" class="iconA" onclick="navFunction()">☰</a>
         </li>
