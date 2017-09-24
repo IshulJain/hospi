@@ -2908,7 +2908,70 @@ def tshirtdatafill():
         print dic
         requests.post(url, data=dic)
 
+def parenetevenetdataerror():
+    rb = open_workbook('ParentEventsData.xls')
+    s = rb.sheet_by_index(0)
+    for i in range(0,11):
+        peventId = int(literal_eval(str(s.cell(i,1)).split(':')[1]))
+        cName = literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
+        description = literal_eval(str(s.cell(i,3)).split(':')[1]).encode("utf-8")
+        order = int(literal_eval(str(s.cell(i,4)).split(':')[1]))
+        nameSlug =  literal_eval(str(s.cell(i,9)).split(':')[1]).encode("utf-8")
+        pevent = ParentEvent(parentEventId = peventId, categoryName = cName, description = description, order = order, nameSlug = nameSlug)
+        pevent.save()
+
+def eventdataerror():
+    rb = open_workbook('eventsData.xls')
+    s = rb.sheet_by_index(0)
+    for i in range(0,47):
+        eventId = int(literal_eval(str(s.cell(i,1)).split(':')[1]))
+        eventOrder = int(literal_eval(str(s.cell(i,2)).split(':')[1]))
+        eventName = literal_eval(str(s.cell(i,3)).split(':')[1]).encode("utf-8")
+        parentEventSlug = literal_eval(str(s.cell(i,4)).split(':')[1]).encode("utf-8")
+        print parentEventSlug
+        parentEvent = ParentEvent.objects.get(nameSlug = parentEventSlug)
+        description = literal_eval(str(s.cell(i,5)).split(':')[1]).encode("utf-8")
+        prizeMoney = literal_eval(str(s.cell(i,7)).split(':')[1]).encode("utf-8")
+        maxMembers = int(literal_eval(str(s.cell(i,8)).split(':')[1]))
+        nameSlug = literal_eval(str(s.cell(i,9)).split(':')[1]).encode("utf-8")
+        event = Event(eventId = eventId, eventOrder = eventOrder, eventName = eventName, parentEvent = parentEvent, description = description, prizeMoney = prizeMoney, maxMembers = maxMembers, nameSlug = nameSlug)
+        event.save()
 
 
+def eventoptionsfill():
+    rb = open_workbook('EventOptionData.xls')
+    s = rb.sheet_by_index(0)
+    for i in range(0, 244):
+        optionName = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")  
+        optionDescription = literal_eval(str(s.cell(i,2))[6:].encode("utf-8"))
+        event = Event.objects.get(eventId = int(literal_eval(str(s.cell(i,4)).split(':')[1])))
+        eventOptionOrder = int(literal_eval(str(s.cell(i,3)).split(':')[1]))
+        print optionName
+        eventOption = EventOption(event = event, optionName = optionName,eventOptionOrder = eventOptionOrder, optionDescription = optionDescription)
+        eventOption.save()
 
 
+# def spontypefill():
+#     rb = open_workbook('SponsorTypeData.xls')
+#     s = rb.sheet_by_index(0)
+#     for i in range(1,36):
+#         stype = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
+#         order = int(literal_eval(str(s.cell(i,2)).split(':')[1]))
+#         spon = SponsorshipType(title = stype, order = order)
+#         spon.save()
+
+# def sponsorfill():
+#     rb  = open_workbook('SponsorData.xls')
+#     st = SponsorshipType.objects.all()
+#     s = rb.sheet_by_index(0)
+#     for i in range(1,58):
+#         index = int(literal_eval(str(s.cell(i,0)).split(':')[1]))
+#         title = literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
+#         order = int(literal_eval(str(s.cell(i,1)).split(':')[1]))
+#         imageLink = literal_eval(str(s.cell(i,3))[6:].encode("utf-8"))
+#         websiteLink = literal_eval(str(s.cell(i,4))[6:].encode("utf-8"))
+#         print literal_eval(str(s.cell(i,2)).split(':')[1])
+#         print imageLink
+#         print websiteLink
+#         spons = Sponsors(sponsorType = st[index-1], name = title, order = order, imageLink = imageLink, websiteLink = websiteLink)
+#         spons.save()    
