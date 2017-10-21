@@ -141,17 +141,22 @@ def sponsors(request):
 
 def team(request):
     teams = TeamList.objects.all()
-    return render(request,"teamPage.html",{"teams":teams})
+    print teams
+    if(get_flavour(request)=='full'):
+        return render(request,"contactsnew.html",{"teams":teams})
+    else:    
+        return render(request,"contactsmobilenew.html",{"teams":teams})
+
 @csrf_exempt
 def IndexView(request):
     if request.method == 'POST':
-        return render(request, "mobile.html")
+        return render(request, "indexmobilenew.html")
     agent = parse(request.META['HTTP_USER_AGENT'])
 
     if(get_flavour(request) == 'full'):
-        return render(request,"index.html",{'browser':agent.browser.family})
+        return render(request,"indexnew.html",{'browser':agent.browser.family})
     else:
-        return render(request,"mobile.html")
+        return render(request,"indexmobilenew.html")
 def contextCall(request):
     response = {}
     try:
@@ -587,7 +592,51 @@ def eventApi(request):
 
 @csrf_exempt
 def events(request):
-    return render(request,'index2.html')
+    response = {}
+    if request.method == 'GET':
+        response['status'] = 1
+        # response['type'] = 0
+        data = []
+        parentEvents = ParentEvent.objects.all()
+        for parentEvent in parentEvents:
+            dataObject = {}
+            dataObject['parentEventId'] = parentEvent.nameSlug
+            dataObject['events'] = []
+            dataObject['parentEventName'] = parentEvent.categoryName
+            events = Event.objects.filter(parentEvent = parentEvent)
+            for event in events:
+                eventData = {}
+                eventData['event_name'] = event.eventName
+                eventData['event_content'] = event.description
+                eventData['event_register'] = "Register Team"
+                eventData['register_link'] = "#"
+                # eventData['deadLine'] = event.deadLine
+                eventData['prizeMoney'] = event.prizeMoney
+                eventData['maxMembers'] = event.maxMembers
+                eventData['eventOrder'] = event.eventOrder
+                eventData['eventSlug']=event.nameSlug
+                eventData['eventOptions'] = []
+                eventData['eventId'] = event.nameSlug
+                eventOptions = EventOption.objects.filter(event = event)
+                for eventOption in eventOptions:
+                    eventOptionData = {}
+                    eventOptionData['optionName'] = eventOption.optionName
+                    eventOptionData['optionDescription'] = eventOption.optionDescription
+                    eventOptionData['eventOptionOrder'] = eventOption.eventOptionOrder
+                    eventData['eventOptions'].append(eventOptionData)
+                eventData['eventOptions'].sort(key=lambda x: x['eventOptionOrder'])
+                dataObject['events'].append(eventData)
+            data.append(dataObject)
+            response['data'] = data 
+            print response   
+    else:
+        response['error'] = True
+        response['status'] = 'Invalid Request'
+        return JsonResponse(response)    
+    if(get_flavour(request)=='full'):      
+        return render(request,'eventnew.html',{'response':json.dumps(response),'eventdata':response})
+    else:
+        return render(request,'eventmobilenew.html',{'response':json.dumps(response),'eventdata':response})
 
 def event2api(request):
     return JsonResponse(response)
@@ -660,9 +709,13 @@ def guestLecture(request):
             lectureData['lectureType'] = lecture.lectureType.encode('ascii','ignore')
             lectureData['photo'] = lecture.photo.encode('ascii','ignore')
             response['lectures'].append(lectureData)
+        print response
     except:
         response['status'] = 0
-    return render(request, 'guest.html', {'lectures':response})
+    if(get_flavour(request)=='full'):
+        return render(request, 'guestlecturenew.html', {'lectures':response})
+    else:
+        return render(request, 'guestmobilenew.html', {'lectures':response})
 
 def error404(request):
     return render(request, '404.html')
@@ -775,8 +828,10 @@ def cdncheck(request):
     return render(request, 'cdn_check.html', {})
 
 def startupFair(request):
-    return render(request, 'startupfair.html', {})
-
+    if(get_flavour(request)=='full'):
+        return render(request, 'startupnew.html', {})
+    else:
+        return render(request, 'startupmobilenew.html', {})        
 def hospitality(request):
     return render(request, 'hospitality.html', {})
 def airshow(request):
@@ -1145,32 +1200,47 @@ def workshop(request):
     if True:#try:
         workshops = Workshops.objects.all()
         response['status'] = 1
-        response['workshops'] = []
+        response['type'] = 0
+        # response['data'] = []
+        data = []
+        dataObject = {}
+        dataObject['parentEventId'] = "workshops"
+        dataObject['events'] = []
+        dataObject['parentEventName'] = "Workshops"
+        WorkshopData = []
         for workshop in workshops:
             workshopData = {}
-            workshopData['title'] = workshop.title
+            workshopData['event_name'] = workshop.title
             workshopData['image'] = workshop.image
-            workshopData['description'] = workshop.description
-            workshopData['dateTime'] = workshop.dateTime
+            workshopData['event_content'] = workshop.description
+            workshopData['event_register'] = "Register"
+            workshopData['register_link'] = "#"
             workshopData['workshopFees'] = workshop.workshopFees
-            workshopData['order'] = workshop.order
-            workshopData['link'] = workshop.slug
+            workshopData['eventOrder'] = workshop.order
+            # workshopData['']
+            workshopData['eventSlug'] = workshop.slug
+            workshopData['eventId'] = workshop.slug
             workshopData['sponlink'] = workshop.sponlink
             workshopData['sponimage'] = workshop.sponimage
-            workshopData['workshopOptions'] = []
+            # workshopData['workshopId'] = workshop.slug
+            workshopData['eventOptions'] = []
             workshopOptions = WorkshopOptions.objects.filter(workshop = workshop)
             for workshopOption in workshopOptions:
                 workshopOptionData = {}
                 workshopOptionData['optionName'] = workshopOption.optionName
                 workshopOptionData['optionDescription'] = workshopOption.optionDescription
-                workshopOptionData['optionOrder'] = workshopOption.optionOrder
-                workshopData['workshopOptions'].append(workshopOptionData)
-            workshopData['workshopOptions'].sort(key=lambda x: x['optionOrder'])
-            response['workshops'].append(workshopData)
-        response['workshops'].sort(key=lambda x: x['order'])
+                workshopOptionData['eventOptionOrder'] = workshopOption.optionOrder
+                workshopData['eventOptions'].append(workshopOptionData)
+            workshopData['eventOptions'].sort(key=lambda x: x['eventOptionOrder'])
+            dataObject['events'].append(workshopData)
+        data.append(dataObject)
+        # WorkshopData.sort(key=lambda x: x['order'])
+        # data.append(WorkshopData)
+        response['data'] = data
     else:#except:
         response['status'] = 0
-    return render(request,'workshop.html',{"workshops":response})
+    print json.dumps(response)    
+    return render(request,'workshopnew.html',{"eventdata":response,"response":json.dumps(response)})
 '''
 def event(request, key):
     response = {}

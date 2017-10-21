@@ -1,0 +1,303 @@
+	<!doctype html>
+{% load staticfiles %}
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+	<head>
+	<title>Workshops | Technex '18</title>
+		<meta charset="utf-8">
+	   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   		<meta name="description" content="Professsional certified workshops by experts on modern technologies at IIT (BHU)" />
+    	<meta name="keywords" content="workshops, iit workshops, workshop in iit, iit bhu workshop, technex, technex 2017, technex 17, iit bhu, events, techfest, iot, android app, plc, scada, automation, data mining, 3D printing, digital marketing, bridge design, workshop IIT, workshop IIT BHU, workshop IIT Varanasi, workshop BHU" />
+	    <meta property="fb:app_id" content="461359507257085" />
+	    <meta property="og:title" content="Technex '17 | 24th - 27th Feb 2017 | IIT (BHU), Varanasi">
+	    <meta property="og:url" content="http://www.technex.in">
+	    <meta property="og:description" content="Annual techno-management festival of IIT (BHU), Varanasi">
+	    <meta property="og:image" content="http://www.technex.in/static/css/images/img-fb.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="/static/favicon/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/static/favicon/manifest.json">
+		<link rel="shortcut icon" href="/static/favicon/favicon.ico">
+		<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#000000">
+		<link rel='stylesheet' id='stylesheet-css'  href="/static/history/css/main.css" type='text/css' media='all' />
+	</head>
+	<body class="device-desktop   " >
+		<header id="nav-header" class="shown" >
+			<a class="logo" href="/" rel="nofollow">
+				<img src="/static/admin2/img/technexLogoMobile.png" alt="Technex" style=" height:45px;">
+			</a>
+			<nav class="nav" role="navigation">
+				<div class="container container--full">
+					<ul class="menu">
+						<li class="menu__item " data-href="/events">
+							<a class="" href="/events">EVENTS</a>
+						</li>
+						<li class="menu__item " data-href="/talks">
+							<a class="" href="/talks">THINK TALKS</a>
+						</li>
+						<li class="menu__item " data-href="/sponsors">
+							<a class="" href="/sponsors">SPONSORS</a>
+						</li>
+						<li class="menu__item " data-href="/kaleidoscope">
+							<a class="" href="/kaleidoscope">KALIEDOSCOPE</a>
+						</li>
+						<li class="menu__item " data-href="/startupfair">
+							<a class="" href="/startupfair">STARTUP FAIR</a>
+						</li>
+						<li class="menu__item " data-href="/contacts">
+							<a class="" href="/contacts">CONTACTS</a>
+						</li>
+						<li class="menu__item " data-href="/hospitality">
+							<a class="" href="/hospitality">HOSPITALITY</a>
+						</li>
+						<li class="menu__item " data-href="/campusambassador">
+							<a class="" href="/campusambassador">CAMPUS AMBASSADOR</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</header>	
+<section id="container" role="main">
+	<div id="subsidiaries-participations" class="subsidiaries-participations">
+		<div class="scrollable">
+			<header class="ct--header ct--header--center  fs">
+
+				<div class="wrapper fs">
+					<div class="ct--header__content c8">
+					<img class="t t--dy t--header" style="display: initial;" src="/static/technex-logo-small.png"/>
+						<span class="h4 t t--dy t--header"><span class="t--mask">Presents</span></span>
+
+						<h1 class="h1 t t--dy t--header">
+							<span class="t--mask">
+								Workshops
+							</span>
+						</h1>
+						<span class="h4 t t--dy t--header"><span class="t--mask">
+							Professional and Certified<br>
+							Contact:<br>
+							<strong>Raushan Kumar</strong><br>
+							<strong>+91-919-851-7176</strong>
+
+
+						</span></span>	
+
+						
+						<div class="preloader">
+							<span class="progress"><span class="bar"></span></span>
+							<span class="btn btn--rect">Suite</span>
+						</div>
+
+
+
+					</div>
+
+					<span class="ct--header__line t t--dy t--sy t--header"></span>
+
+
+					<span class="ct--header__cta ct--header__cta--1 force-to-bottom">
+						<span class="ct--header__cta__label t t--dy t--header"><span class="t--mask">Scroll</span></span>
+						<span class="ct--header__cta__line t t--dy t--sy t--header"></span>
+					</span>
+
+
+					<div class="ct--header__background r r--16-9" >
+						<video class="media" autoplay="autoplay" poster="/static/event-back.jpg" loop="loop" muted="muted">
+								</video>
+							</div>
+						</div>
+
+
+						<div class="mask">
+							<span class="mask__item c6"></span>
+
+							<div class="container">
+								<span class="mask__item c4"></span>
+								<span class="mask__item c6"></span>
+								<span class="mask__item c4"></span>
+							</div>
+
+							<span class="mask__item c6"></span>
+						</div>
+
+					</header>
+
+					<div class="subsidiaries-participations__container">
+
+						<div id="ct--mapbox" class="subsidiaries-participations__container__map ct--mapbox abs"></div>
+
+						<div class="subsidiaries-participations__container__titles abs" style="display: none;">
+							<div class="title c6 m4 first">
+								<h3>
+									WORKSHOPS
+								</h3>
+							</div>
+						</div>
+	<div class="subsidiaries-participations__container__menu c4 abs">
+							<div class="wrapper">
+								<ul>
+								{{response.data}}
+								{% for parentEvent in eventdata.data %}
+								 <li class="h4 country first-level js-item-industry" data-industry-id="{{parentEvent.parentEventId}}">
+										<span class="title">
+											{{parentEvent.parentEventName}}
+										</span>
+										<span class="cross first-level"></span>
+										<span class="sub-overflow">
+											<ul class="sub">
+											{% for event in parentEvent.events %}
+
+												<li class="p js-item-subsidiary" data-id="{{event.eventId}}">
+													{{event.event_name}}<span class="cross"></span>
+												</li>
+											{% endfor %}	
+											</ul>
+										</span>
+									</li>
+									{% endfor %} 	
+								</ul>
+							</div>
+						</div>
+
+						<div class="subsidiaries-participations__container__popin abs" style="visibility: hidden; ">
+							<span class="ct--close close-container js-close blue p">
+								<span class="label">
+									Close
+								</span>
+								<svg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
+							</span>			<div class="background clouds"></div>
+							<div class="background js-background"></div>
+							<div class="scrollable-wrapper scrollable js-target-content container container--full">
+							</div>
+						</div>
+						<div class="data-container subsidiaries-participations" data-subsidiaries-participations="[{{response}}]" 
+						></div>
+					</div>
+
+					<footer class="footer">
+						<div class="container container--full">
+							<ul class="footer__links">
+								<li >
+									<a href="https://www.ariane.group/en/contact/" target="">
+										Contact
+									</a>
+								</li>
+								<li >
+									<a href="https://www.ariane.group/en/sitemap/" target="">
+										Site map
+									</a>
+								</li>
+								<li >
+									<a href="https://www.ariane.group/en/legal-notice/" target="">
+										Legal notice
+									</a>
+								</li>
+								<li >
+									<a href="https://airbusdefenceandspace.com/" target="_blank">
+										Airbus
+									</a>
+								</li>
+								<li >
+									<a href="https://www.safran-group.com/" target="_blank">
+										Safran
+									</a>
+								</li>
+								<li class="js-open-alert">
+									<a href="#" target="">
+										Alerts
+									</a>
+								</li>
+							</ul>
+							<ul class="footer__socials">
+								<li>
+									<a href="https://www.facebook.com/ArianeGroup" target="_blank" title="Join us on Facebook">
+										Facebook<svg class="i-facebook-wrap"><use xlink:href="#i-facebook"></use></svg>
+									</a>
+								</li>
+								<li>
+									<a href="https://twitter.com/ArianeGroup" target="_blank" title="Join us on Twitter">
+										Twitter<svg class="i-twitter-wrap"><use xlink:href="#i-twitter"></use></svg>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.instagram.com/ArianeGroup" target="_blank" title="Join us on Instagram">
+										Instagram<svg class="i-instagram-wrap"><use xlink:href="#i-instagram"></use></svg>
+									</a>
+								</li>
+								<li>
+									<a href="https://www.linkedin.com/company/airbus-safran-launchers" target="_blank" title="Join us on Linkedin">
+										Linkedin<svg class="i-linkedin-wrap"><use xlink:href="#i-linkedin"></use></svg>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</footer>
+					
+
+					<div class="line-wrapper">
+						<span class="container"><i class="line m4"></i></span>
+					</div>
+					<div class="line-wrapper line-wrapper--center">
+						<span class="container"><i class="line m7"></i></span>
+					</div>
+					<div class="line-wrapper">
+						<span class="container"><i class="line m10"></i></span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="mask mask--page">
+			<span class="mask__item c6"></span>
+
+			<div class="container">
+				<span class="mask__item c4"></span>
+				<span class="mask__item c6"></span>
+				<span class="mask__item c4"></span>
+			</div>
+
+			<span class="mask__item c6"></span>
+		</div>
+
+		<div class="async-list-manager__no-result">
+			<div class="relative">
+				<div class="wrapper abs">
+					<div class="close abs js-close">
+						<span class="label">
+							Close
+						</span>
+						<span class="cross"></span>
+					</div>
+					<div class="content abs">
+						<h5 class="h3">
+							Your search yielded no results. <br /> Try again using other criteria.
+						</h5>
+
+
+
+
+
+						<button
+						class="btn btn--rect btn--rect--center btn--validate js-btn"
+						>
+						<span class="btn__content">
+							<span class="btn__content-label">New search</span>
+							<span class="btn__content-layer" data-content="New search"></span>
+						</span>
+						<span class="btn__loading">
+							<span class="btn__loading-container">
+								<span class="btn__loading-i btn__loading-i--first"></span>
+								<span class="btn__loading-i btn__loading-i--middle"></span>
+								<span class="btn__loading-i btn__loading-i--last"></span>
+								<div class="clear"></div>
+							</span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src='/static/new/new.js'></script>
+
+
+</body>
+</html>

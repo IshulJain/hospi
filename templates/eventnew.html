@@ -1,0 +1,273 @@
+	<!doctype html>
+{% load staticfiles %}
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+	<head>
+	<title>Events | Technex '18</title>
+		<meta charset="utf-8">
+	   	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+   		<meta name="description" content="50+ events and competitions with prizes worth 2 million.">
+    	<meta name="keywords" content="technex, technex18, technex 18, iitbhu, bhu, varanasi, big, best, biggest, awesome, large, largest, online, online events, iit fest, robots, science, technology, management, competitions, events, games, informals, robonex, ascension, byte-the-bits, extreme engineering, modex, pahal, supernova, prizes, riqueza, creatrix">
+	    <meta property="fb:app_id" content="461359507257085" />
+	    <meta property="og:title" content="Technex '17 | 24th - 27th Feb 2017 | IIT (BHU), Varanasi">
+	    <meta property="og:url" content="http://www.technex.in">
+	    <meta property="og:description" content="Annual techno-management festival of IIT (BHU), Varanasi">
+	    <meta property="og:image" content="http://www.technex.in/static/css/images/img-fb.png">
+		<link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="/static/favicon/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="/static/favicon/favicon-16x16.png" sizes="16x16">
+		<link rel="manifest" href="/static/favicon/manifest.json">
+		<link rel="shortcut icon" href="/static/favicon/favicon.ico">
+		<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
+		<meta name="theme-color" content="#000000">
+		<link rel='stylesheet' id='stylesheet-css'  href="/static/history/css/main.css" type='text/css' media='all' />
+	</head>
+	<body class="device-desktop   " >
+		<header id="nav-header" class="shown" >
+			<a class="logo" href="/" rel="nofollow">
+				<img src="/static/admin2/img/technexLogoMobile.png" alt="Technex" style=" height:45px;">
+			</a>
+			<nav class="nav" role="navigation">
+				<div class="container container--full">
+					<ul class="menu">
+						<li class="menu__item " data-href="/events">
+							<a class="" href="/events">EVENTS</a>
+						</li>
+						<li class="menu__item " data-href="/talks">
+							<a class="" href="/talks">THINK TALKS</a>
+						</li>
+						<li class="menu__item " data-href="/sponsors">
+							<a class="nosamepage" href="/sponsors">SPONSORS</a>
+						</li>
+						<li class="menu__item " data-href="/kaleidoscope">
+							<a class="nosamepage" href="/kaleidoscope">KALIEDOSCOPE</a>
+						</li>
+						<li class="menu__item " data-href="/startupfair">
+							<a class="" href="#">STARTUP FAIR</a>
+						</li>
+						<li class="menu__item " data-href="/contacts">
+							<a class="" href="/contacts">CONTACTS</a>
+						</li>
+						<li class="menu__item " data-href="/hospitality">
+							<a class="" href="/hospitality">HOSPITALITY</a>
+						</li>
+						<li class="menu__item " data-href="/campusambassador">
+							<a class="" href="/campusambassador">CAMPUS AMBASSADOR</a>
+						</li>
+					</ul>
+			</div>
+		</nav>
+	</header>	
+<section id="container" role="main">
+	<div id="subsidiaries-participations" class="subsidiaries-participations">
+		<div class="scrollable">
+			<header class="ct--header ct--header--center  fs">
+
+				<div class="wrapper fs">
+					<div class="ct--header__content c8">
+					<img class="t t--dy t--header" style="display: initial;" src="/static/technex-logo-small.png"/>
+						<!-- <span class="icon-wrapper"><span class="t t--dy t--alpha t--header"><svg class="i-header-wrap"><use xlink:href="#i-header"></use></svg></span></span>
+ -->
+						<span class="h4 t t--dy t--header"><span class="t--mask">Presents</span></span>
+
+						<h1 class="h1 t t--dy t--header">
+							<span class="t--mask">
+								Events
+							</span>
+						</h1>
+						<span class="h4 t t--dy t--header"><span class="t--mask">
+							50+ Events and Competitions.<br>
+							An International Techno-management Extravaganza<br>
+							<strong>Prizes Worth 2 million</strong>
+
+						</span></span>	
+
+						
+						<div class="preloader">
+							<span class="progress"><span class="bar"></span></span>
+							<span class="btn btn--rect">Suite</span>
+						</div>
+
+
+
+					</div>
+
+					<span class="ct--header__line t t--dy t--sy t--header"></span>
+
+
+					<span class="ct--header__cta ct--header__cta--1 force-to-bottom">
+						<span class="ct--header__cta__label t t--dy t--header"><span class="t--mask">Scroll</span></span>
+						<span class="ct--header__cta__line t t--dy t--sy t--header"></span>
+					</span>
+
+
+					<div class="ct--header__background r r--16-9" >
+						<video class="media" autoplay="autoplay" poster="/static/event-back.jpg" loop="loop" muted="muted">
+								</video>
+							</div>
+						</div>
+
+
+						<div class="mask">
+							<span class="mask__item c6"></span>
+
+							<div class="container">
+								<span class="mask__item c4"></span>
+								<span class="mask__item c6"></span>
+								<span class="mask__item c4"></span>
+							</div>
+
+							<span class="mask__item c6"></span>
+						</div>
+
+					</header>
+
+					<div class="subsidiaries-participations__container">
+
+						<div id="ct--mapbox" class="subsidiaries-participations__container__map ct--mapbox abs"></div>
+
+						<div class="subsidiaries-participations__container__titles abs" style="display: none;">
+							<div class="title c6 m4 first">
+								<h3>
+									EVENTS
+								</h3>
+							</div>
+						</div>
+
+						<div class="subsidiaries-participations__container__menu c4 abs">
+							<div class="wrapper">
+								<ul>
+								{{response.data}}
+								{% for parentEvent in eventdata.data %}
+								 <li class="h4 country first-level js-item-industry" data-industry-id="{{parentEvent.parentEventId}}">
+										<span class="title">
+											{{parentEvent.parentEventName}}
+										</span>
+										<span class="cross first-level"></span>
+										<span class="sub-overflow">
+											<ul class="sub">
+											{% for event in parentEvent.events %}
+
+												<li class="p js-item-subsidiary" data-id="{{event.eventId}}">
+													{{event.event_name}}<span class="cross"></span>
+												</li>
+											{% endfor %}	
+											</ul>
+										</span>
+									</li>
+									{% endfor %} 	
+								</ul>
+							</div>
+						</div>
+
+						<div class="subsidiaries-participations__container__popin abs" style="visibility: hidden; ">
+							<span class="ct--close close-container js-close blue p">
+								<span class="label">
+									Close
+								</span>
+								<svg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
+							</span>			<div class="background clouds"></div>
+							<div class="background js-background"></div>
+							<div class="scrollable-wrapper scrollable js-target-content container container--full">
+							</div>
+						</div>
+						<div class="data-container subsidiaries-participations" data-subsidiaries-participations="[{{response}}]" 
+						></div>
+					</div>
+
+			<footer class="footer">
+	<div class="container container--full">
+
+        <ul class="footer__socials" style="z-index: 900">
+                                <li>
+                <a href="https://www.facebook.com/technexiitbhu/" target="_blank" title="Join us on Facebook">
+                    Facebook<img src="/static/admin2/img/fb.png" style="width:20px;height:20px;"/> 
+                </a>
+            </li>
+                                <li>
+                <a href="https://twitter.com/technexiitbhu" target="_blank" title="Join us on Twitter">
+                    Twitter<img src="/static/admin2/img/twitter (1).png" style="width:20px;height:20px;"/>
+                </a>
+            </li>
+                                <li>
+                <a href="https://www.instagram.com/technexiitbhu/" target="_blank" title="Join us on Instagram">
+                    Instagram<img src="/static/admin2/img/insta (1).png" style="width:20px;height:20px;"/>
+                </a>
+            </li>
+                                <li>
+                <a href="https://www.youtube.com/user/technexiitbhu" target="_blank" title="Join us on Youtube">
+                    Youtube<img src="/static/admin2/img/youtube.png" style="width:20px;height:20px;"/>
+                </a>
+            </li>
+                </ul>
+	</div>
+</footer>
+					
+
+					<div class="line-wrapper">
+						<span class="container"><i class="line m4"></i></span>
+					</div>
+					<div class="line-wrapper line-wrapper--center">
+						<span class="container"><i class="line m7"></i></span>
+					</div>
+					<div class="line-wrapper">
+						<span class="container"><i class="line m10"></i></span>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<div class="mask mask--page">
+			<span class="mask__item c6"></span>
+
+			<div class="container">
+				<span class="mask__item c4"></span>
+				<span class="mask__item c6"></span>
+				<span class="mask__item c4"></span>
+			</div>
+
+			<span class="mask__item c6"></span>
+		</div>
+
+		<div class="async-list-manager__no-result">
+			<div class="relative">
+				<div class="wrapper abs">
+					<div class="close abs js-close">
+						<span class="label">
+							Close
+						</span>
+						<span class="cross"></span>
+					</div>
+					<div class="content abs">
+						<h5 class="h3">
+							Your search yielded no results. <br /> Try again using other criteria.
+						</h5>
+
+
+
+
+
+						<button
+						class="btn btn--rect btn--rect--center btn--validate js-btn"
+						>
+						<span class="btn__content">
+							<span class="btn__content-label">New search</span>
+							<span class="btn__content-layer" data-content="New search"></span>
+						</span>
+						<span class="btn__loading">
+							<span class="btn__loading-container">
+								<span class="btn__loading-i btn__loading-i--first"></span>
+								<span class="btn__loading-i btn__loading-i--middle"></span>
+								<span class="btn__loading-i btn__loading-i--last"></span>
+								<div class="clear"></div>
+							</span>
+						</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type='text/javascript' src="/static/new/new.js"></script>
+
+
+</body>
+</html>
