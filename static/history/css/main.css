@@ -876,13 +876,6 @@ head:before {
 }
 body {
     color: #fff;
-  /*   left : 0;
-    bottom : 0;
-    right : 0;
-    top : 0;*/
- /*   background-repeat : no-repeat;
-    background-position : center;*/
-    background-image : url('/static/technex-loader-new.gif');
     background-color: #000;
     font-size: 1.6rem;
     -webkit-font-smoothing: antialiased;
