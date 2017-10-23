@@ -58,7 +58,7 @@
 		</nav>
 	</header>	
 <section id="container" role="main">
-	<div id="subsidiaries-participations" class="subsidiaries-participations">
+	<div id="events" class="events">
 		<div class="scrollable">
 			<header class="ct--header ct--header--center  fs">
 
@@ -121,11 +121,11 @@
 
 					</header>
 
-					<div class="subsidiaries-participations__container">
+					<div class="events__container">
 
-						<div id="ct--mapbox" class="subsidiaries-participations__container__map ct--mapbox abs"></div>
+						<div id="ct--mapbox" class="events__container__map ct--mapbox abs"></div>
 
-						<div class="subsidiaries-participations__container__titles abs" style="display: none;">
+						<div class="events__container__titles abs" style="display: none;">
 							<div class="title c6 m4 first">
 								<h3>
 									EVENTS
@@ -133,12 +133,12 @@
 							</div>
 						</div>
 
-						<div class="subsidiaries-participations__container__menu c4 abs">
+						<div class="events__container__menu c4 abs">
 							<div class="wrapper">
 								<ul>
 								{{response.data}}
 								{% for parentEvent in eventdata.data %}
-								 <li class="h4 country first-level js-item-industry" data-industry-id="{{parentEvent.parentEventId}}">
+								 <li class="h4 country first-level js-item-parentevent" data-parentevent-id="{{parentEvent.parentEventId}}">
 										<span class="title">
 											{{parentEvent.parentEventName}}
 										</span>
@@ -147,7 +147,7 @@
 											<ul class="sub">
 											{% for event in parentEvent.events %}
 
-												<li class="p js-item-subsidiary" data-id="{{event.eventId}}">
+												<li class="p js-item-event" data-id="{{event.eventId}}">
 													{{event.event_name}}<span class="cross"></span>
 												</li>
 											{% endfor %}	
@@ -159,7 +159,7 @@
 							</div>
 						</div>
 
-						<div class="subsidiaries-participations__container__popin abs" style="visibility: hidden; ">
+						<div class="events__container__popin abs" style="visibility: hidden; ">
 							<span class="ct--close close-container js-close blue p">
 								<span class="label">
 									Close
@@ -170,7 +170,7 @@
 							<div class="scrollable-wrapper scrollable js-target-content container container--full">
 							</div>
 						</div>
-						<div class="data-container subsidiaries-participations" data-subsidiaries-participations="[{{response}}]" 
+						<div class="data-container events" data-events="[{{response}}]" 
 						></div>
 					</div>
 
