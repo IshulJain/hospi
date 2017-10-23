@@ -30,9 +30,9 @@
 		
 		<div class="container container--full">
 			<ul class="menu">
-				<li class="menulogo"><img src="/static/history/img/logo_white.png"/></li>
+				<li class="menulogo"><a href="\"><img src="/static/history/img/logo_white.png"/></a></li>
 				<li class="menu__item " data-href="/events">
-					<a class="" href="/events/">EVENTS</a>
+					<a class="" href="/events">EVENTS</a>
 				</li>
 				<li class="menu__item " data-href="/talks">
 					<a class="" href="/talks">THINK TALKS</a>
@@ -58,9 +58,7 @@
 		</ul>
 	</div>
 </nav>
-<!-- <span class="search-toggle">
-<svg class="i-search-wrap"><use xlink:href="#i-search"></use></svg>
-</span> -->
+
 <div class="wrapper-toggle">
 <span class="menu-toggle js-toggle">
 <i class="fa fa-bars"></i><span>MENU</span>
@@ -68,57 +66,9 @@
 </div>
 <div class="nav-header__overlay"></div>
 </header>
-<!-- <section id="cookies-ribbon">
-<span class="close">
-<svg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
-</span>
-<div class="content-ribbon">
-<p>
-The website uses cookies. By using the website and agreeing to this policy, you consent to our use of cookies in accordance with the terms of this policy.
-</p>
-</div>
-</section> -->
-<!-- <div class="popin-alert">
-<span class="ct--close close js-close-alert">
-<svg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
-</span>	<div class="layer subscribe">
-<h3 class="h2">
-Subscribe to alerts
-</h3>
-<div class="input-text input-alert">
-<input type="email" placeholder="E-mail">
-</div>
-<span class="error-message">
-Adress invalid
-</span>
-<button
-class="btn file btn--rect btn--rect--picto js-alert-validate"
->
-<span class="i-more-wrap"></span>
-<span class="btn__content">
-<span class="btn__content-label">Subscribe</span>
-</span>
-<span class="btn__loading">
-<span class="btn__loading-container">
-<span class="btn__loading-i btn__loading-i--first"></span>
-<span class="btn__loading-i btn__loading-i--middle"></span>
-<span class="btn__loading-i btn__loading-i--last"></span>
-<div class="clear"></div>
-</span>
-</span>
-</button>
-<p class="warning-message">
-Due to a technical problem, your contact request could not be sent. Please try again in a few moments. Thank you
-</p>
-</div>
-<div class="layer thanks">
-<h3 class="h2">
-Thank you, your registration has been taken into account.
-</h3>
-</div>
-</div> -->
+
 <section id="container" role="main">
-<div id="legacy" class="legacy">
+<div id="home" class="home">
 <div class="scrollable">
 <header class="ct--header ct--header--left  ">
 <div class="wrapper fs">
@@ -154,8 +104,8 @@ Thank you, your registration has been taken into account.
 </div>
 </header>
 <div class="container container--full">
-<section class="legacy__year" data-year="2017">
-<section class="legacy__block animated m4 c6 image left">
+<section class="home__part" data-part="events">
+<section class="home__block animated m4 c6 image left">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -163,7 +113,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			EVENTS
 		</span>
 		<p>
@@ -173,8 +123,8 @@ Thank you, your registration has been taken into account.
 </div>
 </section>
 </section>
-<section class="legacy__year" data-year="2016">
-<section class="legacy__block animated m4 c6 image ">
+<section class="home__part" data-part="workshops">
+<section class="home__block animated m4 c6 image ">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -182,7 +132,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			WORKSHOPS
 		</span>
 		<p>
@@ -192,7 +142,7 @@ Thank you, your registration has been taken into account.
 </div>
 </section>
 
-<section class="legacy__block animated m4 c6 image left">
+<section class="home__block animated m4 c6 image left">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -200,7 +150,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			THINK TALKS
 		</span>
 		<p>
@@ -211,8 +161,8 @@ Thank you, your registration has been taken into account.
 </section>
 
 </section>
-<section class="legacy__year" data-year="2015">
-<section class="legacy__block animated m4 c6 image">
+<section class="home__part" data-part="exhibitions">
+<section class="home__block animated m4 c6 image">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -220,7 +170,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			EXHIBITIONS
 		</span>
 		<p>
@@ -230,8 +180,8 @@ Thank you, your registration has been taken into account.
 </div>
 </section>
 </section>
-<section class="legacy__year" data-year="2010">
-<section class="legacy__block animated m4 c6 image left">
+<section class="home__part" data-part="startupfair">
+<section class="home__block animated m4 c6 image left">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -239,7 +189,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			STARTUP FAIR
 		</span>
 		<p>
@@ -249,8 +199,8 @@ Thank you, your registration has been taken into account.
 </div>
 </section>
 </section>
-<section class="legacy__year" data-year="2003">
-<section class="legacy__block animated m4 c6 image ">
+<section class="home__part" data-part="initiatives">
+<section class="home__block animated m4 c6 image ">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -258,7 +208,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			INITIATIVES
 		</span>
 		<p>
@@ -268,8 +218,8 @@ Thank you, your registration has been taken into account.
 </div>
 </section>
 </section>
-<section class="legacy__year" data-year="1998">
-<section class="legacy__block animated m4 c6 image left">
+<section class="home__part" data-part="sponsors">
+<section class="home__block animated m4 c6 image left">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -277,7 +227,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			SPONSORS
 		</span>
 		<p>
@@ -287,8 +237,8 @@ Thank you, your registration has been taken into account.
 </div>
 </section>
 </section>
-<section class="legacy__year" data-year="1979">
-<section class="legacy__block animated m4 c6 image ">
+<section class="home__part" data-part="simulation">
+<section class="home__block animated m4 c6 image ">
 <div class="flex">
 	<div class="media">
 		<div class="wrapper">
@@ -296,7 +246,7 @@ Thank you, your registration has been taken into account.
 		</div>
 	</div>
 	<div class="content">
-		<span class="year">
+		<span class="part">
 			SIMULATION
 		</span>
 		<p>

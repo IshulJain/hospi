@@ -1,6 +1,6 @@
 	<!doctype html>
 {% load staticfiles %}
-<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<html>
 	<head>
 	<title>Events | Technex '18</title>
 		<meta charset="utf-8">
@@ -136,7 +136,6 @@
 						<div class="events__container__menu c4 abs">
 							<div class="wrapper">
 								<ul>
-								{{response.data}}
 								{% for parentEvent in eventdata.data %}
 								 <li class="h4 country first-level js-item-parentevent" data-parentevent-id="{{parentEvent.parentEventId}}">
 										<span class="title">
@@ -164,7 +163,7 @@
 								<span class="label">
 									Close
 								</span>
-								<svg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
+								<s></s>vg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
 							</span>			<div class="background clouds"></div>
 							<div class="background js-background"></div>
 							<div class="scrollable-wrapper scrollable js-target-content container container--full">

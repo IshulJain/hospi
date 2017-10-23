@@ -534,7 +534,7 @@
         }, {
             key: "_check",
             value: function() {
-                if (this._actions = ["ariane_search_photos_videos", "ariane_search_news", "ariane_search_social_medias", "ariane_search_subsidiaries", "ariane_search_legacy_launches", "ariane_search_site"],
+                if (this._actions = ["technex_search_photos_videos", "technex_search_news", "technex_search_social_medias", "technex_search_tevents", "technex_search_home_launches", "technex_search_site"],
                 this._actions.indexOf(this._action) == -1)
                     throw new Error('AsyncListManager :: this action "' + this._action + "\" dosen't exists.")
             }
@@ -769,8 +769,8 @@
     );
     e.default = s,
     s.DEBUG = "8888" === window.location.port || "3000" === window.location.port || /\.dev$/.test(window.location.host),
-    s.TITLE = "Ariane Group",
-    s.LIBRARY = "/wp-content/themes/arianegroup/library/"
+    s.TITLE = "Technex Group",
+    s.LIBRARY = "/wp-content/themes/technexgroup/library/"
 }
 , function(t, e, i) {
     "use strict";
@@ -3203,7 +3203,7 @@
     Object.defineProperty(e, "__esModule", {
         value: !0
     }),
-    e.ArianeMapEvent = e.default = void 0;
+    e.TechnexMapEvent = e.default = void 0;
     var l = function() {
         function t(t, e) {
             for (var i = 0; i < e.length; i++) {
@@ -3235,7 +3235,7 @@
             return n._defaults = i,
             n._opts = {
                 interval: 200,
-                lib: "/wp-content/themes/arianegroup/library/js/ressources/mapbox-gl.min.js",
+                lib: "/wp-content/themes/technexgroup/library/js/ressources/mapbox-gl.min.js",
                 map: {
                     token: "pk.eyJ1Ijoic3lsdmFpbnBvdXlldCIsImEiOiJjaXp6cmViZGYwMDYyMzJwMHFlaXJsdmgwIn0.0eZOPEF0pfRpKaMc7-r7ew",
                     zoom: {
@@ -3436,7 +3436,7 @@
                     }
                 });
                 var i = new Image;
-                p.default.is() ? i.src = "/wp-content/themes/arianegroup/library/img/arianemap/arianemap-icon.png" : i.src = "/wp-content/themes/arianegroup/library/svg/map-icon.svg",
+                p.default.is() ? i.src = "/wp-content/themes/technexgroup/library/img/technexmap/technexmap-icon.png" : i.src = "/wp-content/themes/technexgroup/library/svg/map-icon.svg",
                 i.addEventListener("load", function() {
                     e._map.addImage("map-icon", i),
                     e._map.addLayer({
@@ -3530,7 +3530,7 @@
         e
     }(c.default));
     e.default = _;
-    var v = e.ArianeMapEvent = {
+    var v = e.TechnexMapEvent = {
         READY: "__ame_ready",
         LOADED: "__ame_loaded",
         RENDERED: "__ame_rendered",
@@ -5287,7 +5287,7 @@
             key: "init",
             value: function() {
                 l(e.prototype.__proto__ || Object.getPrototypeOf(e.prototype), "init", this).call(this),
-                this._background = $(".ariane-legacy-chapter__background", this.dom)[0],
+                this._background = $(".technex-home-chapter__background", this.dom)[0],
                 this._link = $(".btn--picto--inline", this.dom);
                 for (var t = 0; t < this._link.length; t++)
                     this._link[t].addEventListener("click", function() {
@@ -8246,7 +8246,7 @@
                   , o = n.parseFromString(t, "text/html")
                   , s = $("#container", o)
                   , r = s.children[s.children.length - 1];
-                "ariane-legacy-chapter" == r.classList && r.classList.add("fix-perf"),
+                "technex-home-chapter" == r.classList && r.classList.add("fix-perf"),
                 this._content.appendChild(r);
                 var a = $("title", o)[0];
                 if (e.currentId = r.getAttribute("id"),
@@ -9137,9 +9137,9 @@
             key: "init",
             value: function() {
                 var t = this;
-                this._blocksHeader = Array.prototype.slice.call($(".ariane-legacy__block", this.dom)),
-                this._search = new v.default($(".ariane-legacy__search", this.dom)[0]),
-                this._searchWrapper = $(".ariane-legacy__search", this.dom)[0],
+                this._blocksHeader = Array.prototype.slice.call($(".technex-home__block", this.dom)),
+                this._search = new v.default($(".technex-home__search", this.dom)[0]),
+                this._searchWrapper = $(".technex-home__search", this.dom)[0],
                 this._url = document.location.href,
                 this.on(f.default.SHOWN, function() {
                     if (t._url.indexOf("#filters") != -1) {
@@ -9250,7 +9250,7 @@
                 closes: []
             },
             this._fc = new l.default,
-            this._ALM = new h.default("ariane_search_legacy_launches"),
+            this._ALM = new h.default("technex_search_home_launches"),
             this._fc.register({
                 name: "launchers",
                 type: a.FiltersComponentType.MULTIPLE_SELECTION,
@@ -9284,7 +9284,7 @@
             value: function() {
                 this._body = document.body,
                 this._btnSearch = $(".btn--search", this.dom)[0],
-                this._legacyWrapper = $(".ariane-legacy__search", this._body)[0],
+                this._homeWrapper = $(".technex-home__search", this._body)[0],
                 this._filters = $(".filters", this.dom)[0],
                 this._validate = $(".btn--validate", this.dom),
                 this._validateAll = $(".js-validate", this.dom)[0],
@@ -9409,13 +9409,13 @@
             key: "showFilterContainer",
             value: function() {
                 this._filters.classList.add("shown"),
-                this._legacyWrapper.classList.add("shown")
+                this._homeWrapper.classList.add("shown")
             }
         }, {
             key: "hideFilterContainer",
             value: function() {
                 this._filters.classList.remove("shown"),
-                this._legacyWrapper.classList.remove("shown")
+                this._homeWrapper.classList.remove("shown")
             }
         }, {
             key: "showFilter",
@@ -9867,9 +9867,9 @@
             value: function() {
                 x.mapEnabled === !0 && (this._intro.off(k.FLY_TO),
                 this._menu.off(j.FLY_TO),
-                this._am.off(f.ArianeMapEvent.MARKER_CLICKED),
-                this._am.off(f.ArianeMapEvent.LOADED),
-                this._am.off(f.ArianeMapEvent.RENDERED)),
+                this._am.off(f.TechnexMapEvent.MARKER_CLICKED),
+                this._am.off(f.TechnexMapEvent.LOADED),
+                this._am.off(f.TechnexMapEvent.RENDERED)),
                 this._intro.off(k.END),
                 this._menu.off(j.LOCATION_CLICKED),
                 this._menu.destroyEvents(),
@@ -9902,7 +9902,7 @@
                         t._menu.open()
                     })
                 }),
-                x.mapEnabled === !0 && this._am.on(f.ArianeMapEvent.MARKER_CLICKED, function(e) {
+                x.mapEnabled === !0 && this._am.on(f.TechnexMapEvent.MARKER_CLICKED, function(e) {
                     var i = t._locations[e.id];
                     t._states.popinOpened = !0,
                     t._menu.close(),
@@ -10645,7 +10645,7 @@
             key: "_request",
             value: function() {
                 f.default.AJAX({
-                    url: "/ajax.php?action=ariane_contact",
+                    url: "/ajax.php?action=technex_contact",
                     data: this._contact,
                     success: this._response.bind(this)
                 })
@@ -11105,7 +11105,7 @@
                 this._dom = {},
                 this._players = {},
                 this._dom.body = document.body,
-                this._dom.container = $(".legacy .container--full", this._dom.body)[0]
+                this._dom.container = $(".home .container--full", this._dom.body)[0]
             }
         }, {
             key: "destroy",
@@ -11576,9 +11576,9 @@
         }, {
             key: "_initALM",
             value: function() {
-                this._ALM.news = new f.default("ariane_search_news"),
+                this._ALM.news = new f.default("technex_search_news"),
                 this._ALM.news.addExclusion(this._exclude),
-                this._ALM.posts = new f.default("ariane_search_social_medias")
+                this._ALM.posts = new f.default("technex_search_social_medias")
             }
         }, {
             key: "_events",
@@ -11770,7 +11770,7 @@
                 before: ""
             },
             n._fc = new c.default,
-            n._ALM = new _.default("ariane_search_news"),
+            n._ALM = new _.default("technex_search_news"),
             n._fc.register({
                 name: "categories",
                 type: u.FiltersComponentType.MULTIPLE_SELECTION,
@@ -12330,7 +12330,7 @@
                 l(e.prototype.__proto__ || Object.getPrototypeOf(e.prototype), "init", this).call(this),
                 this._opts = {},
                 this._listeners = {},
-                this._ALM = new m.default("ariane_search_photos_videos"),
+                this._ALM = new m.default("technex_search_photos_videos"),
                 this.isLoading = !1,
                 this._Filters = new v.default(this.dom,"mobile"),
                 this.PhotosVideosSlider = new j,
@@ -13075,7 +13075,7 @@
                 before: ""
             },
             n._fc = new c.default,
-            n._ALM = new _.default("ariane_search_photos_videos"),
+            n._ALM = new _.default("technex_search_photos_videos"),
             n._fc.register({
                 name: "categories",
                 type: u.FiltersComponentType.MULTIPLE_SELECTION,
@@ -13519,9 +13519,9 @@
             value: function() {
                 var t = this;
                 (0,
-                h.default)(this.dom, ".js-item-subsidiary", "click", function(e) {
+                h.default)(this.dom, ".js-item-event", "click", function(e) {
                     console.log(e.delegateTarget.getAttribute("data-id")),
-                    t.emit("SUBSIDIARY_CLICKED", e.delegateTarget.getAttribute("data-id"))
+                    t.emit("EVENTS_CLICKED", e.delegateTarget.getAttribute("data-id"))
                 })
             }
         }]),
@@ -13561,7 +13561,7 @@
     Object.defineProperty(e, "__esModule", {
         value: !0
     }),
-    e.SubsidiariesParticipationsMenuEvent = e.SubsidiariesParticipationsIntroEvent = e.SubsidiariesParticipationsIntro = e.SubsidiariesParticipationsPopinEvent = e.SubsidiariesParticipationsPopin = e.SubsidiariesParticipationsManager = e.default = void 0;
+    e.EventsParticipationsMenuEvent = e.EventsParticipationsIntroEvent = e.EventsParticipationsIntro = e.EventsParticipationsPopinEvent = e.EventsParticipationsPopin = e.EventsParticipationsManager = e.default = void 0;
     var a = function() {
         function t(t, e) {
             for (var i = 0; i < e.length; i++) {
@@ -13641,25 +13641,25 @@
         e
     }(c.default);
     e.default = L;
-    var j = (e.SubsidiariesParticipationsManager = function() {
+    var j = (e.EventsParticipationsManager = function() {
         function t() {
             var e = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
             o(this, t),
             this._am = e,
             null !== this._am && (j.mapEnabled = !0);
-            var i = $(".data-container.subsidiaries-participations", this.dom)[0];
-            var z = JSON.parse(i.getAttribute("data-subsidiaries-participations"));
+            var i = $(".data-container.events", this.dom)[0];
+            var z = JSON.parse(i.getAttribute("data-events"));
             this._data=z[0].data,
             this._geoJson = JSON.parse(i.getAttribute("data-geojson")),
             j.mapEnabled === !0 && this._am.setGeoJson(this._geoJson),
-            this._popin = new x($(".subsidiaries-participations__container__popin", this.dom)[0]),
-            this._intro = new C($(".subsidiaries-participations__container__titles", this.dom)[0]),
-            j.mapEnabled === !1 ? this._menuMobile = new b.default($(".subsidiaries-participations__container__menu", this.dom)[0]) : this._menu = new S($(".subsidiaries-participations__container__menu", this.dom)[0]),
+            this._popin = new x($(".events__container__popin", this.dom)[0]),
+            this._intro = new C($(".events__container__titles", this.dom)[0]),
+            j.mapEnabled === !1 ? this._menuMobile = new b.default($(".events__container__menu", this.dom)[0]) : this._menu = new S($(".events__container__menu", this.dom)[0]),
             this._states = {
                 popinOpened: !1,
                 popinOpacify: !1
             },
-            this._subsidiaries = {},
+            this._tevents = {},
             this._locations = {},
             this._getDom(),
             this._events(),
@@ -13680,9 +13680,9 @@
             key: "destroyEvents",
             value: function() {
                 j.mapEnabled === !0 && (this._intro.off(M.FLY_TO),
-                this._am.off(v.ArianeMapEvent.MARKER_CLICKED),
-                this._am.off(v.ArianeMapEvent.LOADED),
-                this._am.off(v.ArianeMapEvent.RENDERED)),
+                this._am.off(v.TechnexMapEvent.MARKER_CLICKED),
+                this._am.off(v.TechnexMapEvent.LOADED),
+                this._am.off(v.TechnexMapEvent.RENDERED)),
                 this._intro.off(M.END),
                 this._am.destroyEvents(),
                 this._popin.destroyEvents()
@@ -13697,16 +13697,16 @@
                 this._intro.on(M.END, function() {
                     t._menu.open()
                 }),
-                this._menu.on(D.SUBSIDIARY_CLICKED, function(e) {
-                    var i = t._subsidiaries[e];
+                this._menu.on(D.EVENTS_CLICKED, function(e) {
+                    var i = t._tevents[e];
                     t._states.popinOpened = !0,
                     t._popin.setContent(i),
                     t._popin.open(function() {
                         t._popin.setOpacity(.65)
                     })
                 })),
-                j.mapEnabled === !1 && this._menuMobile.on("SUBSIDIARY_CLICKED", function(e) {
-                    var i = t._subsidiaries[e];
+                j.mapEnabled === !1 && this._menuMobile.on("EVENTS_CLICKED", function(e) {
+                    var i = t._tevents[e];
                     console.log(t);
                     t._states.popinOpened = !0,
                     t._popin.setContent(i),
@@ -13714,8 +13714,8 @@
                         t._popin.setOpacity(.65)
                     })
                 }),
-                j.mapEnabled === !0 && this._am.on(v.ArianeMapEvent.MARKER_CLICKED, function(e) {
-                    var i = t._subsidiaries[e.parent_id];
+                j.mapEnabled === !0 && this._am.on(v.TechnexMapEvent.MARKER_CLICKED, function(e) {
+                    var i = t._tevents[e.parent_id];
                     t._states.popinOpened = !0,
                     t._popin.setContent(i),
                     t._popin.open(function() {
@@ -13739,12 +13739,12 @@
             key: "_updateMarkers",
             value: function(t) {
                 this._am.removeMarkers(),
-                this._subsidiaries = {},
+                this._tevents = {},
                 this._locations = {},
-                this._am.setGeoJson(t.subsidiaries.geojson),
+                this._am.setGeoJson(t.tevents.geojson),
                 this._am.initClustering(),
                 this._am.postLoadedEvents(),
-                this._data = t.subsidiaries.data,
+                this._data = t.tevents.data,
                 this._init()
             }
         }, {
@@ -13754,11 +13754,7 @@
                     for (var t = 0, e = this._data.length; t < e; t++)
                         for (var i = this._data[t], n = 0, o = i.events.length; n < o; n++) {
                             var s = i.events[n];
-                            this._subsidiaries[s.eventId] = s;
-                            // for (var r = 0, a = s.subsidiary_locations.length; r < a; r++) {
-                            //     var l = s.subsidiary_locations[r];
-                            //     this._locations[l.id] = l
-                            // }
+                            this._tevents[s.eventId] = s;
                         }
             }
         }]),
@@ -13767,7 +13763,7 @@
     {
         mapEnabled: !1
     })
-      , x = e.SubsidiariesParticipationsPopin = function(t) {
+      , x = e.EventsParticipationsPopin = function(t) {
         function e(t) {
             o(this, e);
             var i = s(this, (e.__proto__ || Object.getPrototypeOf(e)).call(this));
@@ -13869,22 +13865,6 @@
                     this._dom.popin_target_companies.innerHTML = n
                 } else
                     this._dom.popin_target_companies.classList.add("hidden")
-				
-				/* var i = t.subsidiary_locations.length;
-				
-                if (i > 0) {
-                    for (var n = "", o = (t.subsidiary_locations,
-                    0); o < i; o++) {
-						
-                        var s = t.subsidiary_locations[o];
-						
-						
-                        n += k.default.Parser(E, s)
-                    }
-					
-                    this._dom.popin_target_companies.innerHTML = n
-                } else
-                    this._dom.popin_target_companies.classList.add("hidden") */
             }
         }, {
             key: "setOpacity",
@@ -13924,10 +13904,10 @@
         }]),
         e
     }(_.default)
-      , T = e.SubsidiariesParticipationsPopinEvent = {
+      , T = e.EventsParticipationsPopinEvent = {
         CLOSE: "__sppe_location_close"
     }
-      , C = e.SubsidiariesParticipationsIntro = function(t) {
+      , C = e.EventsParticipationsIntro = function(t) {
         function e(t) {
             o(this, e);
             var i = s(this, (e.__proto__ || Object.getPrototypeOf(e)).call(this));
@@ -13976,7 +13956,7 @@
         }]),
         e
     }(_.default)
-      , M = e.SubsidiariesParticipationsIntroEvent = {
+      , M = e.EventsParticipationsIntroEvent = {
         FLY_TO: "__blie_fly_to",
         END: "__blie_end"
     }
@@ -13985,8 +13965,8 @@
             o(this, e);
             var i = s(this, (e.__proto__ || Object.getPrototypeOf(e)).call(this));
             return i._listeners = {
-                industries: [],
-                subsidiaries: []
+                parentEvents: [],
+                tevents: []
             },
             i._idIndexes = {},
             i._heights = [],
@@ -14002,62 +13982,62 @@
             value: function(t) {
                 this._dom = {},
                 this._dom.menu = t,
-                this._dom.industries = $(".js-item-industry", this._dom.menu),
-                this._dom.overflows = $(".js-item-industry .sub-overflow", this._dom.menu),
-                this._dom.subsidiaries = $(".js-item-subsidiary", this._dom.menu)
+                this._dom.parentEvents = $(".js-item-parentevent", this._dom.menu),
+                this._dom.overflows = $(".js-item-parentevent .sub-overflow", this._dom.menu),
+                this._dom.tevents = $(".js-item-event", this._dom.menu)
             }
         }, {
             key: "_events",
             value: function() {
                 var t = void 0;
                 if (j.mapEnabled === !0) {
-                    t = this._dom.industries.length;
+                    t = this._dom.parentEvents.length;
                     for (var e = 0; e < t; e++) {
-                        var i = this._dom.industries[e];
-                        this._idIndexes[i.getAttribute("data-industry-id")] = e,
-                        this._listeners.industries.push({
+                        var i = this._dom.parentEvents[e];
+                        this._idIndexes[i.getAttribute("data-parentevent-id")] = e,
+                        this._listeners.parentEvents.push({
                             el: i,
                             listener: this._toggle.bind(this, e, i)
                         }),
-                        i.addEventListener("click", this._listeners.industries[e].listener)
+                        i.addEventListener("click", this._listeners.parentEvents[e].listener)
                     }
                 }
-                t = this._dom.subsidiaries.length;
+                t = this._dom.tevents.length;
                 for (var n = 0; n < t; n++) {
-                    var o = this._dom.subsidiaries[n];
-                    this._listeners.subsidiaries.push({
+                    var o = this._dom.tevents[n];
+                    this._listeners.tevents.push({
                         el: o,
-                        listener: this.emit.bind(this, D.SUBSIDIARY_CLICKED, o.getAttribute("data-id"))
+                        listener: this.emit.bind(this, D.EVENTS_CLICKED, o.getAttribute("data-id"))
                     }),
-                    o.addEventListener("click", this._listeners.subsidiaries[n].listener)
+                    o.addEventListener("click", this._listeners.tevents[n].listener)
                 }
             }
         }, {
             key: "destroyEvents",
             value: function() {
-                for (var t = this._listeners.subsidiaries.length, e = 0; e < t; e++) {
-                    var i = this._listeners.subsidiaries[e];
+                for (var t = this._listeners.tevents.length, e = 0; e < t; e++) {
+                    var i = this._listeners.tevents[e];
                     i.el.removeEventListener("click", i.listener)
                 }
-                t = this._listeners.industries.length;
+                t = this._listeners.parentEvents.length;
                 for (var n = 0; n < t; n++) {
-                    var o = this._listeners.industries[n];
+                    var o = this._listeners.parentEvents[n];
                     o.el.removeEventListener("click", o.listener)
                 }
-                this._listeners.industries = null,
-                this._listeners.subsidiaries = null
+                this._listeners.parentEvents = null,
+                this._listeners.tevents = null
             }
         }, {
             key: "openById",
             value: function(t) {
                 var e = this._idIndexes[t];
-                this._toggle(e, this._dom.industries[e])
+                this._toggle(e, this._dom.parentEvents[e])
             }
         }, {
             key: "_getHeights",
             value: function() {
-                for (var t = this._dom.industries.length, e = 0; e < t; e++) {
-                    var i = this._dom.industries[e]
+                for (var t = this._dom.parentEvents.length, e = 0; e < t; e++) {
+                    var i = this._dom.parentEvents[e]
                       , n = $("ul.sub", i)[0];
                     this._heights.push(n.getBoundingClientRect().height)
                 }
@@ -14078,7 +14058,7 @@
             key: "_reset",
             value: function() {
                 if (this._current !== -1) {
-                    var t = this._dom.industries[this._current]
+                    var t = this._dom.parentEvents[this._current]
                       , e = this._dom.overflows[this._current];
                     t.classList.remove("shown"),
                     e.style.height = "0px"
@@ -14097,8 +14077,8 @@
         }]),
         e
     }(_.default)
-      , D = e.SubsidiariesParticipationsMenuEvent = {
-        SUBSIDIARY_CLICKED: "__spme_industry_clicked",
+      , D = e.EventsParticipationsMenuEvent = {
+        EVENTS_CLICKED: "__spme_parentEvent_clicked",
         FLY_TO: "__spme_fly_to"
     }
 }
@@ -14179,7 +14159,7 @@
         }, {
             key: "_events",
             value: function() {
-                this._BLM = new l.SubsidiariesParticipationsManager(null)
+                this._BLM = new l.EventsParticipationsManager(null)
             }
         }, {
             key: "destroy",
@@ -14299,7 +14279,7 @@
                 this._data.action = "subscribe",
                 this._data.email = this._value,
                 a.default.AJAX({
-                    url: "/ajax.php?action=ariane_newsletter_subscribe",
+                    url: "/ajax.php?action=technex_newsletter_subscribe",
                     data: this._data,
                     success: this._response.bind(this)
                 })
@@ -14827,28 +14807,28 @@
             m51: {
                 class: i(70)
             },
-            ariane5: {
+            technex5: {
                 class: i(26)
             },
-            ariane6: {
+            technex6: {
                 class: i(26)
             },
-            "ariane-legacy": {
+            "technex-home": {
                 class: i(58)
             },
-            "ariane-legacy-chapter": {
+            "technex-home-chapter": {
                 class: i(27)
             },
-            "ariane-legacy-launch": {
+            "technex-home-launch": {
                 class: i(61)
             },
-            "ariane-legacy-search-results": {
+            "technex-home-search-results": {
                 class: i(27)
             },
             "business-locations": {
                 class: i(63)
             },
-            "subsidiaries-participations": {
+            "events": {
                 class: i(81)
             },
             master: {
@@ -14857,7 +14837,7 @@
             contact: {
                 class: i(65)
             },
-            legacy: {
+            home: {
                 class: i(69)
             },
             "photos-videos": {
@@ -14872,10 +14852,10 @@
             "single-news": {
                 class: i(13)
             },
-            "subsidiary-homepage": {
+            "events-homepage": {
                 class: i(13)
             },
-            "subsidiary-subpage": {
+            "events-subpage": {
                 class: i(13)
             }
         }
@@ -16404,7 +16384,7 @@
 }
 , function(t, e) {
     t.exports = {
-        file: "/wp-content/themes/arianegroup/library/svg/sprite.svg",
+        file: "/wp-content/themes/technexgroup/library/svg/sprite.svg",
         revision: "97ae3b97"
     }
 }
