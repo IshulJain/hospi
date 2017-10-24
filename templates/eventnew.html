@@ -1,6 +1,6 @@
 	<!doctype html>
 {% load staticfiles %}
-<html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
 	<head>
 	<title>Events | Technex '18</title>
 		<meta charset="utf-8">
@@ -136,6 +136,7 @@
 						<div class="events__container__menu c4 abs">
 							<div class="wrapper">
 								<ul>
+								{{response.data}}
 								{% for parentEvent in eventdata.data %}
 								 <li class="h4 country first-level js-item-parentevent" data-parentevent-id="{{parentEvent.parentEventId}}">
 										<span class="title">
@@ -163,7 +164,7 @@
 								<span class="label">
 									Close
 								</span>
-								<s></s>vg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
+								<svg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
 							</span>			<div class="background clouds"></div>
 							<div class="background js-background"></div>
 							<div class="scrollable-wrapper scrollable js-target-content container container--full">
@@ -200,17 +201,6 @@
                 </ul>
 	</div>
 </footer>
-					
-
-					<div class="line-wrapper">
-						<span class="container"><i class="line m4"></i></span>
-					</div>
-					<div class="line-wrapper line-wrapper--center">
-						<span class="container"><i class="line m7"></i></span>
-					</div>
-					<div class="line-wrapper">
-						<span class="container"><i class="line m10"></i></span>
-					</div>
 				</div>
 			</div>
 		</section>
@@ -227,44 +217,6 @@
 			<span class="mask__item c6"></span>
 		</div>
 
-		<div class="async-list-manager__no-result">
-			<div class="relative">
-				<div class="wrapper abs">
-					<div class="close abs js-close">
-						<span class="label">
-							Close
-						</span>
-						<span class="cross"></span>
-					</div>
-					<div class="content abs">
-						<h5 class="h3">
-							Your search yielded no results. <br /> Try again using other criteria.
-						</h5>
-
-
-
-
-
-						<button
-						class="btn btn--rect btn--rect--center btn--validate js-btn"
-						>
-						<span class="btn__content">
-							<span class="btn__content-label">New search</span>
-							<span class="btn__content-layer" data-content="New search"></span>
-						</span>
-						<span class="btn__loading">
-							<span class="btn__loading-container">
-								<span class="btn__loading-i btn__loading-i--first"></span>
-								<span class="btn__loading-i btn__loading-i--middle"></span>
-								<span class="btn__loading-i btn__loading-i--last"></span>
-								<div class="clear"></div>
-							</span>
-						</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
 	<script type='text/javascript' src="/static/new/new.js"></script>
 
 

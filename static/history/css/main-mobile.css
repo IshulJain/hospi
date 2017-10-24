@@ -12872,7 +12872,7 @@
 	    overflow: hidden
 	}
 	.home__part .home__block.image .media .wrapper img {
-	    opacity: 1;
+	    opacity: 0.4;
 	    position: relative;
 	    width: 100%;
 	    will-change: transform
