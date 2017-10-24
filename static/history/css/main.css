@@ -2032,7 +2032,7 @@ textarea {
     position: relative;
     z-index: 3;
     display: block;
-    width: 1px;
+    width: 0px;
     background: #fff;
     -webkit-transform-origin: 0 0;
     -ms-transform-origin: 0 0;
@@ -2536,7 +2536,7 @@ textarea {
     line-height: 30px
 }
 .ct--two-cols .content p {
-    margin-bottom: 20px
+    /*margin-bottom: 20px*/
 }
 .ct--two-cols .content ul {
     padding: 0px 0 20px 50px
