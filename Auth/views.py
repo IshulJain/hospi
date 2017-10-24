@@ -299,25 +299,32 @@ def spreadsheetfill_register(techprofile):
     'city' : techprofile.city,
     }
 
-    url = 'https://script.google.com/macros/s/AKfycbzYXljFklasr5Mx6wHtD_Jc2wONXuqumDTRJ1rM3oMR2MDySiAr/exec'
+    url = 'https://script.google.com/macros/u/1/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec'
     requests.post(url,data=dic)
 
+@csrf_exempt
 def register(request):
-    if request.user.is_authenticated():
-        return redirect('/dashboard')
+    # if request.user.is_authenticated():
+        # return redirect('/dashboard')
     if request.method == 'POST':
         data = request.POST
         email = data.get('email',None)
-        print 'code base 0'
+        # print 'code base 0111'
+        print email
         try:
+
+            # print "code base 01"  
             techProfile = TechProfile.objects.get(email__iexact = email)
+            print techProfile
             #user = User.objects.get(email = email)
             #messages.warning(request,"Email Already Registered !")
-            return HttpResponse("Email Already Registered!") #redirect('/register')
+            return HttpResponse("Email Already Registered!")
+            # return redirect('/register')
         except:
             bugUsername = User.objects.latest('id').id
-            user = User.objects.create_user(username=str(bugUsername+1))
+            user = User.objects.create_user(username=str(bugUsername+1), email=email)
             techprofile = TechProfile(user = user,email = email)
+
         user.first_name = data.get('name',None)
         password = data.get('password',None)
         user.set_password(password)
@@ -354,7 +361,6 @@ def register(request):
             techprofile.save()
         print "codeBaes 2"
         techprofile =TechProfile.objects.get(email=email)
-        # print techprofile.user.first_name
         spreadsheetfill_register(techprofile)
         subject = "[Technex'17] Confirmation of Registration"
         body = "Dear "+ data.get('name',None) +''',
@@ -379,12 +385,12 @@ Regards
 Team Technex.'''%(techprofile.technexId)
         send_email(email,subject,body)
         message="Registration successful. Your registration ID is "+ str(techprofile.technexId) + " . Visit www.fb.com/technex for updates. \nRegards\nTeam Technex"
-        send_sms_single(message,str(techprofile.mobileNumber))
+        # send_sms_single(message,str(techprofile.mobileNumber))
         #newUser = authenticate(username=email, password=password)
         #print 'code base 3'
         user.backend = 'django.contrib.auth.backends.ModelBackend'
-        login(request, user)
-        return HttpResponse('1')
+        # login(request, user)
+        # return HttpResponse('1')
     else:
         context= {}
         context['all_colleges'] = College.objects.filter(status = True).values_list('collegeName',flat=True).distinct()
@@ -1338,6 +1344,8 @@ def registrationData(request):
             number += workshopteam.members.count() + 1
         workshopcountobj['count'] = workshopteams.count()
         if workshopcountobj['count'] is 0:
+
+
             number = 0
         workshopcountobj['participantcount'] = number
         workshopcount['workshopdata'].append(workshopcountobj)
