@@ -8,7 +8,6 @@ django-ckeditor==5.1.1
 django-mobile==0.7.0
 django-widget-tweaks==1.4.1
 dropbox==7.1.1
-Facebook==0.0
 facebook-sdk==2.0.0
 gunicorn==19.6.0
 mechanize==0.2.5
