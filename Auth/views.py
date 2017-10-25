@@ -3045,3 +3045,11 @@ def eventoptionsfill():
 #         print websiteLink
 #         spons = Sponsors(sponsorType = st[index-1], name = title, order = order, imageLink = imageLink, websiteLink = websiteLink)
 #         spons.save()    
+
+
+
+def initiative(request):
+    if(get_flavour(request) == 'full' ):
+        return render(request, 'initiativenew.html')
+    else:
+        return render(request, 'initiativemobilenew.html') 
