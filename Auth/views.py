@@ -2282,7 +2282,8 @@ def registerResponse(request):
     if request.method == 'POST':
         post = request.POST
         quizResponse = quizResponses.objects.get(responseId = post['responseId'])
-        question = questions.objects.get(questionId = post['questionId'])
+        question = questions.o
+        bjects.get(questionId = post['questionId'])
         if quizResponse.quiz.activeStatus is not 1:
             response['status'] = 4 # Quiz Not Active Right Now
             return HttpResponse("Quiz not active right now!!")
