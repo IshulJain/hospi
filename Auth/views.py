@@ -380,7 +380,7 @@ All the best!
 Regards
 
 Team Technex.'''%(techprofile.technexId)
-        #send_email(email,subject,body)
+        send_email(email,subject,body)
         print "codeBaes 4"
 
         message="Registration successful. Your registration ID is "+ str(techprofile.technexId) + " . Visit www.fb.com/technex for updates. \nRegards\nTeam Technex"
