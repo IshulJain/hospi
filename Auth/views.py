@@ -380,7 +380,7 @@ All the best!
 Regards
 
 Team Technex.'''%(techprofile.technexId)
-        send_email(email,subject,body)
+        #send_email(email,subject,body)
         print "codeBaes 4"
 
         message="Registration successful. Your registration ID is "+ str(techprofile.technexId) + " . Visit www.fb.com/technex for updates. \nRegards\nTeam Technex"
@@ -390,9 +390,7 @@ Team Technex.'''%(techprofile.technexId)
         #user.backend = 'django.contrib.auth.backends.ModelBackend'
         print "codeBaes 5"
         #login(request, user)
-        context = {}
-        context['status'] = 1;
-        return render(request,'signUp.html',context)
+        return HttpResponse('1')
     else:
         context= {}
         context['all_colleges'] = College.objects.filter(status = True).values_list('collegeName',flat=True).distinct()
