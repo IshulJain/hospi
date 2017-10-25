@@ -9,7 +9,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 import json
 import os
-# import facebook
+import facebook
 from Auth.models import *
 from django_mobile import get_flavour
 from user_agents import parse
@@ -312,14 +312,12 @@ def register(request):
         # print 'code base 0111'
         print email
         try:
-
             # print "code base 01"  
             techProfile = TechProfile.objects.get(email__iexact = email)
             print techProfile
             #user = User.objects.get(email = email)
-            #messages.warning(request,"Email Already Registered !")
-            return HttpResponse("Email Already Registered!")
-            # return redirect('/register')
+            #return HttpResponse("Email Already Registered!")
+            return redirect('/register')
         except:
             bugUsername = User.objects.latest('id').id
             user = User.objects.create_user(username=str(bugUsername+1), email=email)
@@ -361,9 +359,10 @@ def register(request):
             techprofile.save()
         print "codeBaes 2"
         techprofile =TechProfile.objects.get(email=email)
-        spreadsheetfill_register(techprofile)
+        #spreadsheetfill_register(techprofile)
+        print "codeBase 3"
         subject = "[Technex'17] Confirmation of Registration"
-        body = "Dear "+ data.get('name',None) +''',
+        body = "Dear "+ user.first_name +''',
 
 You have successfully registered for Technex 2017 with Technex Id %s . Team Technex welcomes you aboard!
 
@@ -384,13 +383,18 @@ Regards
 
 Team Technex.'''%(techprofile.technexId)
         send_email(email,subject,body)
+        print "codeBaes 4"
+
         message="Registration successful. Your registration ID is "+ str(techprofile.technexId) + " . Visit www.fb.com/technex for updates. \nRegards\nTeam Technex"
         # send_sms_single(message,str(techprofile.mobileNumber))
         #newUser = authenticate(username=email, password=password)
         #print 'code base 3'
         user.backend = 'django.contrib.auth.backends.ModelBackend'
+        print "codeBaes 5"
         # login(request, user)
-        # return HttpResponse('1')
+        # context = {}
+        # context['status'] = 1;
+        # return render(request,'signUp.html',context)
     else:
         context= {}
         context['all_colleges'] = College.objects.filter(status = True).values_list('collegeName',flat=True).distinct()
