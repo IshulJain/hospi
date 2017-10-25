@@ -9,7 +9,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 import json
 import os
-import facebook
+#import facebook
 from Auth.models import *
 from django_mobile import get_flavour
 from user_agents import parse
@@ -314,10 +314,8 @@ def register(request):
         try:
             # print "code base 01"  
             techProfile = TechProfile.objects.get(email__iexact = email)
-            print techProfile
-            #user = User.objects.get(email = email)
-            #return HttpResponse("Email Already Registered!")
-            return redirect('/register')
+            user = User.objects.get(email = email)
+            return HttpResponse("Email Already Registered!")
         except:
             bugUsername = User.objects.latest('id').id
             user = User.objects.create_user(username=str(bugUsername+1), email=email)
@@ -389,12 +387,12 @@ Team Technex.'''%(techprofile.technexId)
         # send_sms_single(message,str(techprofile.mobileNumber))
         #newUser = authenticate(username=email, password=password)
         #print 'code base 3'
-        user.backend = 'django.contrib.auth.backends.ModelBackend'
+        #user.backend = 'django.contrib.auth.backends.ModelBackend'
         print "codeBaes 5"
-        # login(request, user)
-        # context = {}
-        # context['status'] = 1;
-        # return render(request,'signUp.html',context)
+        #login(request, user)
+        context = {}
+        context['status'] = 1;
+        return render(request,'signUp.html',context)
     else:
         context= {}
         context['all_colleges'] = College.objects.filter(status = True).values_list('collegeName',flat=True).distinct()
