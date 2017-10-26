@@ -3070,4 +3070,23 @@ def simulation(request):
         return render(request,"simulationnew.html")
     else:
         return render(request,"simulationmobile.html")
-#>>>>>>> 8d6f64d0a07bf71e21d4305a5212117a7303a775
+
+
+def exhibition(request):
+    if(get_flavour(request) == 'full'):
+        return render(request,"exhibitionnew.html")
+    else:
+        return render(request,"exhibitionm.html")
+
+def conclave(request):
+    if(get_flavour(request) == 'full'):
+        return render(request,"corporate-conclavenew.html")
+    else:
+        return render(request,"conclavenewm.html")
+
+def sponsor(request):
+    if(get_flavour(request) == 'full'):
+        return render(request,"sponsor18d.html")
+    else:
+        return render(request,"sponsor18m.html")        
+

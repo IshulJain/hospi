@@ -80,6 +80,10 @@ urlpatterns = [
 	url(r'coreteam/$',coreteam,name='coreteams'),
 	url(r'app/$',applink,name='applink'),
 	url(r'simulation/$',simulation,name='simulation'),
+        url(r'exhibition/$',exhibition,name='exhibition'),
+        url(r'conclave/$',conclave,name='conclave'),
+        url(r'sponsor/$',sponsor,name='sponsor'),
+        
 
 
 	# url(r'^quiz/$',quizI, name='quiz'),
