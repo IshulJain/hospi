@@ -9,7 +9,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 import json
 import os
-import facebook
+#import facebook
 from Auth.models import *
 from django_mobile import get_flavour
 from user_agents import parse
@@ -152,7 +152,7 @@ def IndexView(request):
     if request.method == 'POST':
         return render(request, "indexmobilenew.html")
     agent = parse(request.META['HTTP_USER_AGENT'])
-
+    print "hi"
     if(get_flavour(request) == 'full'):
         return render(request,"indexnew.html",{'browser':agent.browser.family})
     else:
@@ -299,25 +299,28 @@ def spreadsheetfill_register(techprofile):
     'city' : techprofile.city,
     }
 
-    url = 'https://script.google.com/macros/s/AKfycbzYXljFklasr5Mx6wHtD_Jc2wONXuqumDTRJ1rM3oMR2MDySiAr/exec'
+    url = 'https://script.google.com/macros/u/1/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec'
     requests.post(url,data=dic)
 
+@csrf_exempt
 def register(request):
-    if request.user.is_authenticated():
-        return redirect('/dashboard')
+    # if request.user.is_authenticated():
+        # return redirect('/dashboard')
     if request.method == 'POST':
         data = request.POST
         email = data.get('email',None)
-        print 'code base 0'
+        # print 'code base 0111'
+        print email
         try:
+            # print "code base 01"  
             techProfile = TechProfile.objects.get(email__iexact = email)
-            #user = User.objects.get(email = email)
-            #messages.warning(request,"Email Already Registered !")
-            return HttpResponse("Email Already Registered!") #redirect('/register')
+            user = User.objects.get(email = email)
+            return HttpResponse("Email Already Registered!")
         except:
             bugUsername = User.objects.latest('id').id
-            user = User.objects.create_user(username=str(bugUsername+1))
+            user = User.objects.create_user(username=str(bugUsername+1), email=email)
             techprofile = TechProfile(user = user,email = email)
+
         user.first_name = data.get('name',None)
         password = data.get('password',None)
         user.set_password(password)
@@ -354,10 +357,10 @@ def register(request):
             techprofile.save()
         print "codeBaes 2"
         techprofile =TechProfile.objects.get(email=email)
-        # print techprofile.user.first_name
-        spreadsheetfill_register(techprofile)
+        #spreadsheetfill_register(techprofile)
+        print "codeBase 3"
         subject = "[Technex'17] Confirmation of Registration"
-        body = "Dear "+ data.get('name',None) +''',
+        body = "Dear "+ user.first_name +''',
 
 You have successfully registered for Technex 2017 with Technex Id %s . Team Technex welcomes you aboard!
 
@@ -378,12 +381,15 @@ Regards
 
 Team Technex.'''%(techprofile.technexId)
         send_email(email,subject,body)
+        print "codeBaes 4"
+
         message="Registration successful. Your registration ID is "+ str(techprofile.technexId) + " . Visit www.fb.com/technex for updates. \nRegards\nTeam Technex"
-        send_sms_single(message,str(techprofile.mobileNumber))
+        # send_sms_single(message,str(techprofile.mobileNumber))
         #newUser = authenticate(username=email, password=password)
         #print 'code base 3'
-        user.backend = 'django.contrib.auth.backends.ModelBackend'
-        login(request, user)
+        #user.backend = 'django.contrib.auth.backends.ModelBackend'
+        print "codeBaes 5"
+        #login(request, user)
         return HttpResponse('1')
     else:
         context= {}
@@ -828,6 +834,7 @@ def cdncheck(request):
     return render(request, 'cdn_check.html', {})
 
 def startupFair(request):
+    print "coodod"
     if(get_flavour(request)=='full'):
         return render(request, 'startupnew.html', {})
     else:
@@ -1338,6 +1345,8 @@ def registrationData(request):
             number += workshopteam.members.count() + 1
         workshopcountobj['count'] = workshopteams.count()
         if workshopcountobj['count'] is 0:
+
+
             number = 0
         workshopcountobj['participantcount'] = number
         workshopcount['workshopdata'].append(workshopcountobj)
@@ -2274,7 +2283,8 @@ def registerResponse(request):
     if request.method == 'POST':
         post = request.POST
         quizResponse = quizResponses.objects.get(responseId = post['responseId'])
-        question = questions.objects.get(questionId = post['questionId'])
+        question = questions.o
+        bjects.get(questionId = post['questionId'])
         if quizResponse.quiz.activeStatus is not 1:
             response['status'] = 4 # Quiz Not Active Right Now
             return HttpResponse("Quiz not active right now!!")
@@ -3048,8 +3058,16 @@ def eventoptionsfill():
 
 
 
+
 def initiative(request):
     if(get_flavour(request) == 'full' ):
         return render(request, 'initiativenew.html')
     else:
         return render(request, 'initiativemobilenew.html') 
+
+def simulation(request):
+    if(get_flavour(request) == 'full'):
+        return render(request,"simulationnew.html")
+    else:
+        return render(request,"simulationmobile.html")
+#>>>>>>> 8d6f64d0a07bf71e21d4305a5212117a7303a775
