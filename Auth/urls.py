@@ -79,6 +79,8 @@ urlpatterns = [
 	url(r'slowConnection/$',slowConnection,name='slowConnection'),
 	url(r'coreteam/$',coreteam,name='coreteams'),
 	url(r'app/$',applink,name='applink'),
+	url(r'simulation/$',simulation,name='simulation'),
+
 
 	# url(r'^quiz/$',quizI, name='quiz'),
 	#url(r'^genetella/',genetella, name='Mission Dashboard'),

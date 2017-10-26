@@ -152,7 +152,7 @@ def IndexView(request):
     if request.method == 'POST':
         return render(request, "indexmobilenew.html")
     agent = parse(request.META['HTTP_USER_AGENT'])
-
+    print "hi"
     if(get_flavour(request) == 'full'):
         return render(request,"indexnew.html",{'browser':agent.browser.family})
     else:
@@ -828,6 +828,7 @@ def cdncheck(request):
     return render(request, 'cdn_check.html', {})
 
 def startupFair(request):
+    print "coodod"
     if(get_flavour(request)=='full'):
         return render(request, 'startupnew.html', {})
     else:
@@ -3045,3 +3046,10 @@ def eventoptionsfill():
 #         print websiteLink
 #         spons = Sponsors(sponsorType = st[index-1], name = title, order = order, imageLink = imageLink, websiteLink = websiteLink)
 #         spons.save()    
+
+
+def simulation(request):
+    if(get_flavour(request) == 'full'):
+        return render(request,"simulationnew.html")
+    else:
+        return render(request,"simulationmobile.html")
