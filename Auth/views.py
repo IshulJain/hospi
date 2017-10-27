@@ -3057,11 +3057,20 @@ def eventoptionsfill():
 #         spons.save()    
 
 
+
+
+def initiative(request):
+    if(get_flavour(request) == 'full' ):
+        return render(request, 'initiativenew.html')
+    else:
+        return render(request, 'initiativemobilenew.html') 
+
 def simulation(request):
     if(get_flavour(request) == 'full'):
         return render(request,"simulationnew.html")
     else:
         return render(request,"simulationmobile.html")
+
 
 def exhibition(request):
     if(get_flavour(request) == 'full'):
@@ -3080,3 +3089,4 @@ def sponsor(request):
         return render(request,"sponsor18d.html")
     else:
         return render(request,"sponsor18m.html")        
+
