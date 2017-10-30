@@ -34,33 +34,48 @@
 	<body class="device-desktop   " >
 			<header id="nav-header" class="shown" >
 			<a class="logo" href="/" rel="nofollow">
-				<img src="/static/admin2/img/technexLogoMobile.png" alt="Technex" style=" height:45px;">
+			<!--	<img src="/static/admin2/img/technexLogoMobile.png" alt="Technex" style=" height:45px;">-->
 			</a>
 			<nav class="nav" role="navigation">
-				<div class="container container--full">
+				<div class="container container--full" style="margin-left:-40px;">
 					<ul class="menu">
-						<li class="menu__item " data-href="/events">
+						<li class="menu__item" data-href="/events">
 							<a class="" href="/events">Events</a>
 						</li>
-						<li class="menu__item " data-href="/talks">
+						<li class="menu__item" data-href="/talks">
 							<a class="" href="/talks">Think Talks</a>
 						</li>
-						<li class="menu__item " data-href="/exhibition">
-							<a class="" href="/exhibition">Exhibitions</a>
-						</li>
-						<li class="menu__item " data-href="//startupfair">
-							<a class="" href="/startupfair">Startup Fair</a>
-						</li>
-						<li class="menu__item " data-href="/simulation">
-							<a class="" href="/simulation">Simulation Challenge</a>
-						</li>
-						<li class="menu__item " data-href="/conclave">
+
+
+
+
+
+						
+    <li class="menu__item" data-href="/conclave">
 							<a class="" href="/conclave">Corporate Conclave</a>
 						</li>
-						<li class="menu__item " data-href="/initiative">
+						
+    
+    <li class="menu__item" data-href="/simulation">
+							<a class="" href="/simulation">Simulation Challenge</a>
+						</li>
+<li class="menu__item" data-href="/startupfair" style="margin-top:-15px;">
+							<a class="" href="/"><img src="/static/admin2/img/technexLogoMobile.png" alt="Technex" style=" height:45px;"></a>
+						</li>
+
+
+						<li class="menu__item" data-href="/startupfair">
+							<a class="" href="/startupfair">Startup Fair</a>
+						</li>
+						<li class="menu__item" data-href="/exhibition">
+							<a class="" href="/exhibition">Exhibitions</a>
+						</li>
+						
+						
+						<li class="menu__item" data-href="/initiative">
 							<a class="" href="/initiative">Initiative</a>
 						</li>
-						<li class="menu__item " data-href="/campusambassador">
+						<li class="menu__item" data-href="/campusambassador">
 							<a class="" target="_blank" href="http://ca.technex.in">Campus Ambassador</a>
 						</li>
 					</ul>
@@ -142,7 +157,7 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 	</div>
 
 </header>
-		<!-- {% for lecture in lectures.lectures %}
+		{% for lecture in lectures.lectures %}
     
 			<section class="master__section two-cols container first">
 			<div class="ct--master ct--two-cols">
@@ -158,55 +173,13 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 			</div>
 	<div class="col right c6 illustrate">
 		<div class="content">
-			<p style="text-align: justify;">{{lecture.description | safe}}</p>
+			<p>{{lecture.description | safe}}</p>
 
 		</div>
 	</div>
 
 </div>		</section>
-{% endfor %} -->
-<section class="master__section logos-grid container " >
-			<div class="ct--master ct--logos-grid c12 m" style="margin:2px auto;">
-    		<h2 class="h1">
-			OUR PREVIOUS YEAR THINK TALKS
-		</h2>
-	
-    <ul style="">
-    {% for lecture in lectures.lectures %}
-				                    <li>
-                <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}">
-				<div class="container1">
-                    <img src="{{lecture.photo}}" class="image" >
-					<!-- 	<div class="middle">
-							<div class="text" style="text-align: center">{{member.number}}</div>
-                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>
-						</div> -->
-				</div>
-                    
-                </a>
-                    <p style="text-align: center;">{{lecture.title}}</p>
-                    <p style="text-align: center; font-size: 13px;">{{lecture.designation}}</p>
-            </li>
-            <div class="tingle-demo" style="display: none;" id="lecture{{forloop.counter}}">
-            {{lecture.description | safe}}
-        </div>
-
-           {% endfor %}			        					
-		    </ul>
-</div>
-
-		</section>
-		<script type="text/javascript">
-		{% for lecture in lectures.lectures %}
-			    var modalBigContent{{forloop.counter}} = new tingle.modal();
-    var btn{{forloop.counter}} = document.getElementById("lecturemain{{forloop.counter}}");
-    btn{{forloop.counter}}.addEventListener('click', function(){
-        modalBigContent{{forloop.counter}}.open();
-        console.log("hi");
-    });
-    modalBigContent{{forloop.counter}}.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
-    {% endfor %}
-		</script>
+{% endfor %}
 							<footer class="footer">
 	<div class="container container--full">
 
