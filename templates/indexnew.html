@@ -20,6 +20,8 @@
 		<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
 		<meta name="theme-color" content="#000000">
 		<link rel='stylesheet' id='stylesheet-css'  href="/static/history/css/main.css" type='text/css' media='all' />
+		<link rel='stylesheet' href='/static/tingle.css' type='text/css' media='all'>
+		<script type="text/javascript" src='/static/tingle.js'></script>
 	</head>
 	<body class="device-desktop   " >
 		<header id="nav-header" class="shown" >
@@ -321,8 +323,8 @@
 		<div  class="ct--related-pages__item" >
 							<img src="/static/register-back.jpg" alt="" class="cover" />
 
-						<a href="/register" class="nosamepage c5 m7" style="padding-left: 0px;">
-				<button style="transform:translate3d(-55px, 0, 0px)" class="btn btn--rect btn--rect--center js-validate-contact">
+						<a href="#" class="c5 m7" style="padding-left: 0px;">
+				<button style="transform:translate3d(-55px, 0, 0px)" id="register-btn-link" class="btn btn--rect btn--rect--center js-validate-contact">
                 <span  class="btn__content">
             <span class="btn__content-label">Register</span>
                             <span class="btn__content-layer" data-content="Register"></span>
@@ -340,6 +342,31 @@
 		</div>
 								
 	</div>
+	<script type="text/javascript">
+		 var modalTinyNoFooter = new tingle.modal({
+        onClose: function() {
+            console.log('close');
+        },
+        onOpen: function() {
+            console.log('open');
+        },
+        beforeOpen: function() {
+            console.log('before open');
+        },
+        beforeClose: function() {
+            console.log('before close');
+            return true;
+        },
+        cssClass: ['class1', 'class2']
+    });
+    var btn = document.getElementById('register-btn-link');
+    btn.addEventListener('click', function(){
+        modalTinyNoFooter.open();
+        console.log("Hi");
+    });
+    modalTinyNoFooter.setContent("<h2 style='color:black;'>Registration will be live soon!!</h2>");
+
+	</script>
     						
 
 

@@ -7,10 +7,10 @@
 		<meta charset="utf-8">
 
 		<meta name="description" content="Witness the stellar guest lecture series comprising gaints from different domains.">
-    <meta name="keywords" content="lectures, talks, guest lectures, think talks, nasa lecture, ceo lectures, vinod dham, guest, technex, technex17, technex 17, technex iit, technex bhu, techfest bhu, iitbhu, Indian Institute of technology, iit, bhu, iit festival, iit bhu technical festival, university, india, bhu, 2017, 2k17, 17, varanasi, big, best, biggest, awesome, large, largest">
+    <meta name="keywords" content="lectures, talks, guest lectures, think talks, nasa lecture, ceo lectures, vinod dham, guest, technex, technex17, technex 18, technex iit, technex bhu, techfest bhu, iitbhu, Indian Institute of technology, iit, bhu, iit festival, iit bhu technical festival, university, india, bhu, 2018, 2k18, 18, varanasi, big, best, biggest, awesome, large, largest">
 
     	 <meta property="fb:app_id" content="461359507257085" />
-	    <meta property="og:title" content="Technex '18 | 16th - 18th Feb 2017 | IIT (BHU), Varanasi">
+	    <meta property="og:title" content="Technex '18 | 16th - 18th Feb 2018 | IIT (BHU), Varanasi">
 	    <meta property="og:url" content="http://www.technex.in">
 	    <meta property="og:description" content="Annual techno-management festival of IIT (BHU), Varanasi">
 	    <meta property="og:image" content="http://www.technex.in/static/css/images/img-fb.png">
@@ -28,6 +28,8 @@
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel='stylesheet' id='stylesheet-css'  href='/static/history/css/main.css' type='text/css' media='all' />
+		<link rel='stylesheet' href='/static/tingle.css' type='text/css' media='all'>
+		<script type="text/javascript" src='/static/tingle.js'></script>
 			</head>
 	<body class="device-desktop   " >
 			<header id="nav-header" class="shown" >
@@ -140,7 +142,7 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 	</div>
 
 </header>
-		{% for lecture in lectures.lectures %}
+		<!-- {% for lecture in lectures.lectures %}
     
 			<section class="master__section two-cols container first">
 			<div class="ct--master ct--two-cols">
@@ -162,7 +164,49 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 	</div>
 
 </div>		</section>
-{% endfor %}
+{% endfor %} -->
+<section class="master__section logos-grid container " >
+			<div class="ct--master ct--logos-grid c12 m" style="margin:2px auto;">
+    		<h2 class="h1">
+			OUR PREVIOUS YEAR THINK TALKS
+		</h2>
+	
+    <ul style="">
+    {% for lecture in lectures.lectures %}
+				                    <li>
+                <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}">
+				<div class="container1">
+                    <img src="{{lecture.photo}}" class="image" >
+					<!-- 	<div class="middle">
+							<div class="text" style="text-align: center">{{member.number}}</div>
+                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>
+						</div> -->
+				</div>
+                    
+                </a>
+                    <p style="text-align: center;">{{lecture.title}}</p>
+                    <p style="text-align: center; font-size: 13px;">{{lecture.designation}}</p>
+            </li>
+            <div class="tingle-demo" style="display: none;" id="lecture{{forloop.counter}}">
+            {{lecture.description | safe}}
+        </div>
+
+           {% endfor %}			        					
+		    </ul>
+</div>
+
+		</section>
+		<script type="text/javascript">
+		{% for lecture in lectures.lectures %}
+			    var modalBigContent = new tingle.modal();
+    var btn{{forloop.counter}} = document.getElementById("lecturemain{{forloop.counter}}");
+    btn{{forloop.counter}}.addEventListener('click', function(){
+        modalBigContent.open();
+        console.log("hi");
+    });
+    modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
+    {% endfor %}
+		</script>
 							<footer class="footer">
 	<div class="container container--full">
 
