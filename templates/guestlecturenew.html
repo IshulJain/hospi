@@ -198,13 +198,13 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 		</section>
 		<script type="text/javascript">
 		{% for lecture in lectures.lectures %}
-			    var modalBigContent = new tingle.modal();
+			    var modalBigContent{{forloop.counter}} = new tingle.modal();
     var btn{{forloop.counter}} = document.getElementById("lecturemain{{forloop.counter}}");
     btn{{forloop.counter}}.addEventListener('click', function(){
-        modalBigContent.open();
+        modalBigContent{{forloop.counter}}.open();
         console.log("hi");
     });
-    modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
+    modalBigContent{{forloop.counter}}.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
     {% endfor %}
 		</script>
 							<footer class="footer">
