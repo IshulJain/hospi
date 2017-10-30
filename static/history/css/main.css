@@ -2859,7 +2859,7 @@ body.device-tablet .ct--submenu ul li:before {
 }
 #ct--mapbox,
 .ct--mapbox {
-    background: url(/static/events1.jpg) center center no-repeat;
+    background: url(http://res.cloudinary.com/technex-iit-bhu/image/upload/v1509302566/event2_zrujmi.jpg) center center no-repeat;
      background-size: cover;
     top: 0;
     left: 0;
