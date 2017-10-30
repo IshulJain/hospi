@@ -1,4 +1,5 @@
 	<!doctype html>
+	{% load staticfiles %}
 	<html lang="en-US" prefix="og: http://ogp.me/ns#">
 	<head>
 
@@ -8,7 +9,7 @@
 		<meta charset="utf-8">
 	  	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	    <meta name="description" content="Witness the oldest techno-management festival from 16th - 18th February. Prizes worth 2 million.">
-	    <meta name="keywords" content="technex, technex18, technex 18, technex 2018, technex iit, iit bhu fest, iit varanasi fest, bhu fest, technical fest, iit bhu workshop, iitbhu, workshops, iit workshops, workshop in iit, iit bhu workshop, iit events, iit startup, iit banaras, technex bhu, techfest bhu,  iitbhu, iit bhu techfest, technex iit bhu, Indian Institute of technology, iit, bhu, iit festival, iit bhu technical festival, university, india, techfest, bhu, 2018, 2k18, 18, varanasi, big, best, biggest, awesome, large, largest, february, online,  first, robots, science, technology, management, lectures, guest, startup fair, competitions, events, games, informals, iit fests">
+	    <meta name="keywosrds" content="technex, technex18, technex 18, technex 2018, technex iit, iit bhu fest, iit varanasi fest, bhu fest, technical fest, iit bhu workshop, iitbhu, workshops, iit workshops, workshop in iit, iit bhu workshop, iit events, iit startup, iit banaras, technex bhu, techfest bhu,  iitbhu, iit bhu techfest, technex iit bhu, Indian Institute of technology, iit, bhu, iit festival, iit bhu technical festival, university, india, techfest, bhu, 2018, 2k18, 18, varanasi, big, best, biggest, awesome, large, largest, february, online,  first, robots, science, technology, management, lectures, guest, startup fair, competitions, events, games, informals, iit fests">
 	    <meta property="fb:app_id" content="461359507257085" />
 	    <meta property="og:title" content="Technex '18 | 16th - 18th Feb 2017 | IIT (BHU), Varanasi">
 	    <meta property="og:url" content="http://www.technex.in">
@@ -127,7 +128,7 @@
 
 
 					<div class="ct--header__background r r--16-9" >
-						<video class="media test" autoplay="autoplay" poster="" loop="loop" muted="muted" style="background:url(http://res.cloudinary.com/technex-iit-bhu/image/upload/v1509024671/cover_pic__iolai6.jpg); background-size: cover;">
+						<video style="opacity: .75" class="media test" autoplay="autoplay" poster="" loop="loop" muted="muted" style="background:url(http://res.cloudinary.com/technex-iit-bhu/image/upload/v1509024671/cover_pic__iolai6.jpg); background-size: cover;">
 							</div>
 						</div>
 
@@ -144,12 +145,7 @@
 							<span class="mask__item c6"></span>
 						</div>
 
-					</header>
-
-
-
-
-					
+					</header>					
 					{% for data in response.data %}
 					<section class="master__section logos-grid container ">
 						<div class="ct--master ct--logos-grid c12 m1">
@@ -223,12 +219,24 @@
 	</div>
 </footer>
 					
-				</div>
-				</div>
-			</section>
+						<div class="line-wrapper">
+						<span class="container"><i class="line m4"></i></span>
+					</div>
+					<div class="line-wrapper line-wrapper--center">
+						<span class="container"><i class="line m7"></i></span>
+					</div>
+					<div class="line-wrapper">
+						<span class="container"><i class="line m10"></i></span>
+					</div>
+									</div>
+						<span class="ct--close btn btn--close">
+			
+		
+</span>			</div>
+		</section>
 
-			<div class="mask mask--page">
-				<span class="mask__item c6"></span>
+		<div class="mask mask--page">
+							<span class="mask__item c6"></span>
 
 				<div class="container">
 					<span class="mask__item c4"></span>
@@ -237,7 +245,8 @@
 				</div>
 				
 				<span class="mask__item c6"></span>
-			</div>
+					</div>
+
 		<script type='text/javascript' src='/static/new/new.js'></script>
 
 		

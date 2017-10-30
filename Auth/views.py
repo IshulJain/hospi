@@ -136,8 +136,10 @@ def sponsors(request):
         sponsorTypeArray.append(sponsorTypeObject)
     response['data'] = sponsorTypeArray
     print response
-    return render(request, 'sponsors.html',{'response':response})
-    # return redirect("http://16.technex.in/sponsors")
+    if(get_flavour(request) == 'full'):
+        return render(request,"sponsor18d.html",{'response':response})
+    else:
+        return render(request,"sponsor18m.html",{'response':response}) 
 
 def team(request):
     teams = TeamList.objects.all()
