@@ -25,6 +25,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
 <meta name="theme-color" content="#000000">
+<link rel='stylesheet' href='/static/tingle.css' type='text/css' media='all'>
+		<script type="text/javascript" src='/static/tingle.js'></script>
 			</head>
 	<body class="device-mobile   loading" >
 		
@@ -139,7 +141,9 @@ explore new avenues.
 
 </header>
 
-    {% for lecture in lectures.lectures %}
+    
+
+				 {% for lecture in lectures.lectures %}
 		<section class="master__section two-cols container first">
 			<div class="ct--master ct--two-cols">
 		<div class="col left m1 c3 illustrate">
@@ -162,8 +166,7 @@ explore new avenues.
 {% endfor %}
 
 	
-
-							<footer class="footer">
+		<footer class="footer">
 	<div class="container container--full">
 		<ul class="footer__links">
                                        <li class="js-open-alert">
@@ -194,12 +197,10 @@ explore new avenues.
                 </ul>
 	</div>
 </footer>
-</div>
-</div>
-</section>
-					
 
-					<script type='text/javascript' src='/static/history/js/main-mobile.js'></script>
-			</body>
+<div class="mask mask--page">
+<div class="loader"></div>
+</div>
+<script type='text/javascript' src='/static/history/js/main-mobile.js'></script>
+</body>
 </html>
-
