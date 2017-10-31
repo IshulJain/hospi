@@ -142,7 +142,7 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 	</div>
 
 </header>
-		<!-- {% for lecture in lectures.lectures %}
+		{% for lecture in lectures.lectures %}
     
 			<section class="master__section two-cols container first">
 			<div class="ct--master ct--two-cols">
@@ -158,55 +158,13 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 			</div>
 	<div class="col right c6 illustrate">
 		<div class="content">
-			<p style="text-align: justify;">{{lecture.description | safe}}</p>
+			<p>{{lecture.description | safe}}</p>
 
 		</div>
 	</div>
 
 </div>		</section>
-{% endfor %} -->
-<section class="master__section logos-grid container " >
-			<div class="ct--master ct--logos-grid c12 m" style="margin:2px auto;">
-    		<h2 class="h1">
-			OUR PREVIOUS YEAR THINK TALKS
-		</h2>
-	
-    <ul style="">
-    {% for lecture in lectures.lectures %}
-				                    <li>
-                <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}">
-				<div class="container1">
-                    <img src="{{lecture.photo}}" class="image" >
-					<!-- 	<div class="middle">
-							<div class="text" style="text-align: center">{{member.number}}</div>
-                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>
-						</div> -->
-				</div>
-                    
-                </a>
-                    <p style="text-align: center;">{{lecture.title}}</p>
-                    <p style="text-align: center; font-size: 13px;">{{lecture.designation}}</p>
-            </li>
-            <div class="tingle-demo" style="display: none;" id="lecture{{forloop.counter}}">
-            {{lecture.description | safe}}
-        </div>
-
-           {% endfor %}			        					
-		    </ul>
-</div>
-
-		</section>
-		<script type="text/javascript">
-		{% for lecture in lectures.lectures %}
-			    var modalBigContent{{forloop.counter}} = new tingle.modal();
-    var btn{{forloop.counter}} = document.getElementById("lecturemain{{forloop.counter}}");
-    btn{{forloop.counter}}.addEventListener('click', function(){
-        modalBigContent{{forloop.counter}}.open();
-        console.log("hi");
-    });
-    modalBigContent{{forloop.counter}}.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
-    {% endfor %}
-		</script>
+{% endfor %}
 							<footer class="footer">
 	<div class="container container--full">
 
