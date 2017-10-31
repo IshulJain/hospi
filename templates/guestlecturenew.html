@@ -174,7 +174,13 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
     <ul style="">
     {% for lecture in lectures.lectures %}
 				                    <li>
-                <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}">
+                <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}" onclick='
+                var modalBigContent = new tingle.modal();
+                modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
+                modalBigContent.open();
+
+
+                '>
 				<div class="container1">
                     <img src="{{lecture.photo}}" class="image" >
 					<!-- 	<div class="middle">
@@ -196,17 +202,6 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 </div>
 
 		</section>
-		<script type="text/javascript">
-		{% for lecture in lectures.lectures %}
-			    var modalBigContent{{forloop.counter}} = new tingle.modal();
-    var btn{{forloop.counter}} = document.getElementById("lecturemain{{forloop.counter}}");
-    btn{{forloop.counter}}.addEventListener('click', function(){
-        modalBigContent{{forloop.counter}}.open();
-        console.log("hi");
-    });
-    modalBigContent{{forloop.counter}}.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
-    {% endfor %}
-		</script>
 							<footer class="footer">
 	<div class="container container--full">
 
