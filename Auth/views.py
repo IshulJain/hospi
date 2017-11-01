@@ -636,7 +636,7 @@ def events(request):
                 dataObject['events'].append(eventData)
             data.append(dataObject)
             response['data'] = data 
-            print response   
+            # print response   
     else:
         response['error'] = True
         response['status'] = 'Invalid Request'
@@ -717,7 +717,7 @@ def guestLecture(request):
             lectureData['lectureType'] = lecture.lectureType.encode('ascii','ignore')
             lectureData['photo'] = lecture.photo.encode('ascii','ignore')
             response['lectures'].append(lectureData)
-        print response
+        # print response
     except:
         response['status'] = 0
     if(get_flavour(request)=='full'):
