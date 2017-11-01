@@ -14770,7 +14770,9 @@ body.is-deprecated section#container .browser-not-supported {
 .events__container__popin .scrollable-wrapper .content-wrapper {
     padding: 110px 0 215px 0;
     -webkit-box-sizing: border-box;
+    text-align: justify;
     box-sizing: border-box
+    
 }
 .events__container__popin .scrollable-wrapper .content-wrapper h2 {
     color: #fff;
