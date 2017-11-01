@@ -56,7 +56,7 @@ urlpatterns = [
     url(r'^theteam', fbReach, name='promotion'),
     url(r'^numberCopy/$',phoneNumberSepartion,name='Number Separator'),
     url(r'^separate/',phoneSep,name='phoneSep'),
-	url(r'^exhibitions/$',exhibitions,name='exhibitions'),
+	#url(r'^exhibitions/$',exhibitions,name='exhibitions'),
 	url(r'^corporate-conclave/$',corporateConclave, name='corporateConclave'),
 	url(r'^send_sms/$',sendSms, name='sendSms'),
 	#url(r'^quizRegister/$',quizRegister,name = 'quizRegistration'),
@@ -80,7 +80,7 @@ urlpatterns = [
 	url(r'coreteam/$',coreteam,name='coreteams'),
 	url(r'app/$',applink,name='applink'),
 	url(r'simulation/$',simulation,name='simulation'),
-        url(r'exhibition/$',exhibition,name='exhibition'),
+        url(r'exhibitions/$',exhibitions,name='exhibitions'),
         url(r'conclave/$',conclave,name='conclave'),
         url(r'sponsor/$',sponsor,name='sponsor'),
         

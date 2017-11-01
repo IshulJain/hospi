@@ -1591,8 +1591,8 @@ def eventRegistrationView(request):
     events = Events.objects.all();
     print events
 
-def exhibitions(request):
-    return render(request,'exhibitions.html')
+#def exhibitions(request):
+  #  return render(request,'exhibitions.html')
 
 def liteversion(request):
     return render(request,'mobile.html')
@@ -3074,7 +3074,7 @@ def simulation(request):
         return render(request,"simulationmobile.html")
 
 
-def exhibition(request):
+def exhibitions(request):
     if(get_flavour(request) == 'full'):
         return render(request,"exhibitionnew.html")
     else:
