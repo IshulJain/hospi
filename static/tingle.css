@@ -87,6 +87,11 @@
   padding: 3rem 3rem;
 }
 
+.tingle-modal-box__content a {
+  color: blue;
+  padding: 3rem 3rem;
+}
+
 
 .tingle-modal-box__footer {
   padding: 1.5rem 2rem;

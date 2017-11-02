@@ -143,37 +143,80 @@ explore new avenues.
 
     
 
-				 {% for lecture in lectures.lectures %}
-		<section class="master__section two-cols container first">
-			<div class="ct--master ct--two-cols">
-		<div class="col left m1 c3 illustrate">
-					<div class="picture">
-				<img src="{{lecture.photo}}" alt="" />
-			</div>
-			<div><h2 style="text-align: center;">{{lecture.title}}</h2><br/>
-						<p style="text-align: center;">{{lecture.designation}}</p></div>
-
+				
 		
-			</div>
-			<div class="col right c6 illustrate">
-		<div class="content">
-			<p>{{lecture.description | safe}}</p>
 
-		</div>
-	</div>
-
-</div>		</section>
-{% endfor %}
-
+				<section class="master__section logos-grid container ">
+			<div class="ct--master ct--logos-grid c12 m1">
+    		<h2 class="h1"style="text-align: center;">
+			OUR PREVIOUS YEAR THINK TALKS
+		</h2>
 	
+
+
+			<ul style="">
+			{% for lecture in lectures.lectures %}
+				                    <li style="width:100%">
+                	<a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}" onclick='
+                var modalBigContent = new tingle.modal();
+                modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
+                modalBigContent.open();
+
+
+                '>
+				<div class="container1">
+                    <img src="{{lecture.photo}}" class="image" >
+					<!-- 	<div class="middle">
+							<div class="text" style="text-align: center">{{member.number}}</div>
+                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>
+						</div> -->
+				</div>
+                    
+                </a>
+                <p style="text-align: center;">{{lecture.title}}</p>
+                <p style="text-align: center;">{{lecture.designation}}</p>
+            </li>
+            <div class="tingle-demo" style="display: none;" id="lecture{{forloop.counter}}">
+            {{lecture.description | safe}}
+        </div>
+
+	 {% endfor %}			
+</ul>	
+
+												        		    
+</div>
+		</section>
+			
+				
+	
+	
+
+					
+
+									</div>
+						<span class="ct--close btn btn--close">
+		<svg class="i-close-popin-wrap"><use xlink:href="#i-close-popin"></use></svg>
+</span>			</div>
+		</section>
 		<footer class="footer">
 	<div class="container container--full">
 		<ul class="footer__links">
-                                       <li class="js-open-alert">
+			<li>
+                <a href="/contacts">
+                    CONTACTS
+                </a>
+            </li>
+                    <li>
+                <a href="/sponsors">
+                    SPONSORS
+                </a>
+            </li>
+            <li></li>
+                                       <!--<li class="js-open-alert">
                 <a href="#" target="">
                     REGISTER
                 </a>
-            </li>
+            </li>-->
                 </ul>
         <ul class="footer__socials">
             <li>             
@@ -197,6 +240,7 @@ explore new avenues.
                 </ul>
 	</div>
 </footer>
+
 
 <div class="mask mask--page">
 <div class="loader"></div>

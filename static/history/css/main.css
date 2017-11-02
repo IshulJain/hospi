@@ -259,7 +259,7 @@ video {
     padding: 0;
     border: 0;
     font-size: 100%;
-    font: inherit;
+    /*font: inherit;*/
     vertical-align: baseline
 }
 article,
@@ -14770,7 +14770,9 @@ body.is-deprecated section#container .browser-not-supported {
 .events__container__popin .scrollable-wrapper .content-wrapper {
     padding: 110px 0 215px 0;
     -webkit-box-sizing: border-box;
+    text-align: justify;
     box-sizing: border-box
+    
 }
 .events__container__popin .scrollable-wrapper .content-wrapper h2 {
     color: #fff;
@@ -14861,7 +14863,8 @@ body.is-deprecated section#container .browser-not-supported {
 .events__container__popin .scrollable-wrapper .content-wrapper .col-container .locations .address-container .address .details {
     margin-top: 20px;
     width: 100%;
-    color: #979BA3
+    /*color: #979BA3*/
+    color: white;
 }
 .events__container__popin .scrollable-wrapper .content-wrapper .col-container .locations .address-container .address .address-link {
     margin: 25px 0 0 0
