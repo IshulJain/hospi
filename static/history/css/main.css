@@ -14747,7 +14747,7 @@ body.is-deprecated section#container .browser-not-supported {
     -o-transition: none;
     transition: none;
     z-index: 24;
-    background: url("/static/events1.jpg") center center no-repeat;
+    background: url(http://res.cloudinary.com/technex-iit-bhu/image/upload/v1509628614/events1_rbhm6s.jpg) center center no-repeat;
     background-size: cover
 }
 .events__container__popin .scrollable-wrapper {
