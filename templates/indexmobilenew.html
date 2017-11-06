@@ -36,6 +36,7 @@
         jQuery(".chandu-loader-overlay").fadeOut(500);
     });
 </script>
+<script type="text/javascript" src='/static/tingle.js'></script>
 	</head>
 	<body class="device-mobile loading" >
 		<div class="chandu-loader-overlay"></div>
@@ -286,7 +287,11 @@
 			
             
                                        <li class="js-open-alert">
-                <a href="#" target="">
+                <a href="#" onclick="
+	var modalTinyNoFooter = new tingle.modal();
+    modalTinyNoFooter.setContent('<h2>Registration will be live soon!!</h2>');
+        modalTinyNoFooter.open();
+    ">
                     REGISTER
                 </a>
             </li>
