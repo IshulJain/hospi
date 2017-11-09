@@ -195,7 +195,7 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 
     <ul style="">
     {% for lecture in lectures.lectures %}
-				                    <li>
+				                    <li style="margin:auto;">
                 <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}" onclick='
                 var modalBigContent = new tingle.modal();
                 modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
@@ -203,12 +203,13 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 
 
                 '>
-				<div class="container1">
-                    <img src="{{lecture.photo}}" class="image" >
+				<div class="container1" >
+                    <img src="{{lecture.photo}}" class="image"  style="width:130%; margin-left:-45px;" >
+                    <div class="middle">
 					<!-- 	<div class="middle">
 							<div class="text" style="text-align: center">{{member.number}}</div>
-                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>
-						</div> -->
+                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>-->
+						</div> 
 				</div>
 
                 </a>
