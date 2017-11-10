@@ -22,7 +22,7 @@
 	<meta name="msapplication-config" content="/static/favicon/browserconfig.xml">
 	<meta name="theme-color" content="#000000">
 	<style>
-	.chandu-loader-overlay {
+	.-loader-overlay {
 		width: 100%;
 		height: 100%;
 		background: url(/static/technex-loader-new.gif) center no-repeat gray;
@@ -33,14 +33,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>
 		jQuery(window).load(function(){
-			jQuery(".chandu-loader-overlay").fadeOut(500);
+			jQuery(".-loader-overlay").fadeOut(500);
 		});
 	</script>
 			<link rel='stylesheet' href='/static/tingle.css' type='text/css' media='all'>
 		<script type="text/javascript" src='/static/tingle.js'></script>
 </head>
 <body class="device-mobile loading" >
-	<div class="chandu-loader-overlay"></div>
+	<div class="-loader-overlay"></div>
 
 	<header id="nav-header" class="">
 		<img src="/static/history/img/logo_white.png" class="logo"/>
@@ -100,7 +100,7 @@
 						<div class="ct--header__content c8">
 							<h1 class="h3 t t--dy t--header">
 								<span class="t--mask" style="text-align: center;">
-									INNOVATION IS CONTAGIOUS
+									
 								</span>
 							</h1>
 						</div>
