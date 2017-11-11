@@ -28,6 +28,7 @@
 			<a class="logo" href="/" rel="nofollow">
 				<!--<img src="/static/admin2/img/technexLogoMobile.png" alt="Technex" style=" height:45px;">-->
 			</a>
+			<!--<button style="transform:translate3d(0px, 0, 0px)">Notify me!</button>-->
 			<nav class="nav" role="navigation">
 				<div class="container container--full" style="margin-left:-40px;">
 					<ul class="menu">
@@ -70,7 +71,11 @@
 						<li class="menu__item" data-href="/campusambassador">
 							<a class="" target="_blank" href="http://ca.technex.in">Campus Ambassador</a>
 						</li>
+						
 					</ul>
+					<button style="transform:translate3d(600px, -80px, 0px)">Notify me!</button>
+
+
 			</div>
 		</nav>
 		<span  class="search-toggle">
@@ -375,6 +380,7 @@
 
 
 	</script>
+	
 
 
 
@@ -418,8 +424,10 @@
                 </a>
             </li>
                 </ul>
+
 	</div>
 </footer>
+
 
 		<!--<div class="line-wrapper">
 						<span class="container"><i class="line m4"></i></span>
@@ -678,6 +686,66 @@
 				<span class="mask__item c6"></span>
 					</div>
 					<script type='text/javascript' src="/static/new/new.js"></script>
+					<script>window.addEventListener('load', function () {
+  // At first, let's check if we have permission for notification
+  // If not, let's ask for it
+  if (window.Notification && Notification.permission !== "granted") {
+    Notification.requestPermission(function (status) {
+      if (Notification.permission !== status) {
+        Notification.permission = status;
+      }
+    });
+  }
+
+  var button = document.getElementsByTagName('button')[0];
+
+  button.addEventListener('click', function () {
+    // If the user agreed to get notified
+    // Let's try to send ten notifications
+    if (window.Notification && Notification.permission === "granted") {
+      var i = 0;
+      // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
+      var interval = window.setInterval(function () {
+        // Thanks to the tag, we should only see the "Hi! 9" notification 
+        var n = new Notification("Hi! " + "event registrations will begin soon.", {tag: 'soManyNotification'});
+        if (i++ == 9) {
+          window.clearInterval(interval);
+        }
+      }, 200);
+    }
+
+    // If the user hasn't told if he wants to be notified or not
+    // Note: because of Chrome, we are not sure the permission property
+    // is set, therefore it's unsafe to check for the "default" value.
+    else if (window.Notification && Notification.permission !== "denied") {
+      Notification.requestPermission(function (status) {
+        // If the user said okay
+        if (status === "granted") {
+          var i = 0;
+          // Using an interval cause some browsers (including Firefox) are blocking notifications if there are too much in a certain time.
+          var interval = window.setInterval(function () {
+            // Thanks to the tag, we should only see the "Hi! 9" notification 
+            var n = new Notification("Hi! " + i, {tag: 'soManyNotification'});
+            if (i++ == 9) {
+              window.clearInterval(interval);
+            }
+          }, 200);
+        }
+
+        // Otherwise, we can fallback to a regular modal alert
+        else {
+          alert("Hi!");
+        }
+      });
+    }
+
+    // If the user refuses to get notified
+    else {
+      // We can fallback to a regular modal alert
+      alert("Hi!");
+    }
+  });
+});</script>
 					<!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109327246-1"></script>
 <script>
