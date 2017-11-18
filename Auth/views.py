@@ -1595,7 +1595,7 @@ def eventRegistrationView(request):
   #  return render(request,'exhibitions.html')
 
 def liteversion(request):
-    return render(request,'mobile.html')
+    return redirect('/')
 
 def workshop_spreadsheet(team):
     members = team.members.all()
