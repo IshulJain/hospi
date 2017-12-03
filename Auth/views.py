@@ -408,7 +408,7 @@ Team Technex.'''%(techprofile.technexId)
         except:
             context['status'] = 0;
             return render(request,'signUp.html',context)
-
+@csrf_exempt
 def loginView(request):
     response = {}
     if request.user.is_authenticated():

@@ -7,9 +7,9 @@ as:[1,1,1,1]
 },
 {
 parentEvent: 'modex',
-events:['green-tech', 'open-hardware', 'open-software'],
-max:[4,4,4],
-as:[1,1,1]
+events:['modex'],
+max:[4],
+as:[1]
 },
 {
 parentEvent: 'pahal',
@@ -31,15 +31,15 @@ as:[1,1,1,1,1,1]
 },
 {
 parentEvent: 'riqueza',
-events:['analiticity', 'bulls-floor', 'krackat', 'manthan', 'economists-enigma'],
-max:[2,0,0,4,4],
-as:[1,1,1,1,1]
+events:['analiticity', 'bulls-floor', 'krackat', 'manthan'],
+max:[2,0,0,4],
+as:[1,1,1,1]
 },
 {
 parentEvent: 'byte-the-bits',
-events:['mlware', 'international-coding-marathon', 'appathon', 'capture-the-flag'],
-max:[1,0,3,0],
-as:[0,0,0,1]
+events:[ 'international-coding-marathon', 'appathon', 'capture-the-flag'],
+max:[0,3,0],
+as:[0,0,1]
 },
 {
 parentEvent: 'extreme-engineering',
