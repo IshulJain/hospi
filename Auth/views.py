@@ -408,13 +408,53 @@ Team Technex.'''%(techprofile.technexId)
         except:
             context['status'] = 0;
             return render(request,'signUp.html',context)
-@csrf_exempt
+
+# def loginView(request):
+#     response = {}
+#     if request.user.is_authenticated():
+#         response['status'] = 0
+#         response['error'] = 'Already logged In'
+#         return JsonResponse(response)
+#     if request.method == 'POST':
+
+#         post = request.POST
+#         try:
+#             try:
+#                 techProfile = TechProfile.objects.get(email = post['email'])
+#             except:
+#                 techProfile = TechProfile.objects.get(technexId = post['email'])
+#         except:
+#             response['status'] = 0
+#             response['error'] = "No User registered with the email!"
+#             return JsonResponse(response)
+#         #user = authenticate(username = post['email'], email= post['email'], password = post['password'])
+#         kUser = techProfile.user
+#         user = authenticate(username = kUser.username, password = post['password'])
+
+#         if user is not None:
+#             login(request, user)
+#             response['status'] = 1
+#             return JsonResponse(response)
+#         else:
+#             response['status'] = 0
+#             response['error'] = "Invalid Credentials !"
+#             return JsonResponse(response)
+#     else:
+#         response['status'] = 0
+#         response['error'] = "Invalid Request!!"
+#         return JsonResponse(response)
+
 def loginView(request):
+    # if(request.method=='GET'):
+    #     print("bbo")
+
     response = {}
+    
     if request.user.is_authenticated():
         response['status'] = 0
         response['error'] = 'Already logged In'
         return JsonResponse(response)
+        print (request.method)
     if request.method == 'POST':
 
         post = request.POST
@@ -443,6 +483,7 @@ def loginView(request):
         response['status'] = 0
         response['error'] = "Invalid Request!!"
         return JsonResponse(response)
+
 
 @login_required(login_url='/register')
 def dashboardView(request):
@@ -650,56 +691,56 @@ def event2api(request):
     return JsonResponse(response)
 
 
-def event(request, key):
-    response = {}
-    if request.method == 'GET':
+# def event(request, key):
+#     response = {}
+#     if request.method == 'GET':
 
 
-        try:
-            parentEvent = ParentEvent.objects.get(nameSlug = key)
-            parentEventname = parentEvent.categoryName
-        except:
-            response['error'] = True
-            response['status'] = 'Invalid Slug for Parent Event'
-            return JsonResponse(response)
-        response['name'] = parentEvent.categoryName
-        response['description'] = parentEvent.description
-        response['order'] = parentEvent.order
-        response['slug'] = parentEvent.nameSlug
-        response['sponimage']=parentEvent.sponimage
-        response['assosponimage']=parentEvent.assosponimage
-        response['assosponlink']= parentEvent.assosponlink
-        response['sponlink']=parentEvent.sponlink
-        print parentEvent.sponimage
-        response['events'] = []
-        events = Event.objects.filter(parentEvent = parentEvent)
-        for event in events:
-            eventData = {}
-            eventData['eventName'] = event.eventName
-            eventData['description'] = event.description
-            # eventData['deadLine'] = event.deadLine
-            eventData['prizeMoney'] = event.prizeMoney
-            eventData['maxMembers'] = event.maxMembers
-            eventData['eventOrder'] = event.eventOrder
-            eventData['eventSlug']=event.nameSlug
-            eventData['eventOptions'] = []
-            eventOptions = EventOption.objects.filter(event = event)
-            for eventOption in eventOptions:
-                eventOptionData = {}
-                eventOptionData['optionName'] = eventOption.optionName
-                eventOptionData['optionDescription'] = eventOption.optionDescription
-                eventOptionData['eventOptionOrder'] = eventOption.eventOptionOrder
-                eventData['eventOptions'].append(eventOptionData)
-            eventData['eventOptions'].sort(key=lambda x: x['eventOptionOrder'])
-            response['events'].append(eventData)
-        response['events'].sort(key= lambda x: x['eventOrder'])
-        metaTags = MetaTags.objects.filter(event = parentEvent)
-        #print json.dumps(response)
-        return render(request,'index3.html',{'parentEvent':json.dumps(response), 'metaTags': metaTags,'parentEventname':parentEventname})
-    else:
-        response['error'] = True
-        response['status'] = 'Invalid Request'
-        return JsonResponse(response)
+#         try:
+#             parentEvent = ParentEvent.objects.get(nameSlug = key)
+#             parentEventname = parentEvent.categoryName
+#         except:
+#             response['error'] = True
+#             response['status'] = 'Invalid Slug for Parent Event'
+#             return JsonResponse(response)
+#         response['name'] = parentEvent.categoryName
+#         response['description'] = parentEvent.description
+#         response['order'] = parentEvent.order
+#         response['slug'] = parentEvent.nameSlug
+#         response['sponimage']=parentEvent.sponimage
+#         response['assosponimage']=parentEvent.assosponimage
+#         response['assosponlink']= parentEvent.assosponlink
+#         response['sponlink']=parentEvent.sponlink
+#         print parentEvent.sponimage
+#         response['events'] = []
+#         events = Event.objects.filter(parentEvent = parentEvent)
+#         for event in events:
+#             eventData = {}
+#             eventData['eventName'] = event.eventName
+#             eventData['description'] = event.description
+#             # eventData['deadLine'] = event.deadLine
+#             eventData['prizeMoney'] = event.prizeMoney
+#             eventData['maxMembers'] = event.maxMembers
+#             eventData['eventOrder'] = event.eventOrder
+#             eventData['eventSlug']=event.nameSlug
+#             eventData['eventOptions'] = []
+#             eventOptions = EventOption.objects.filter(event = event)
+#             for eventOption in eventOptions:
+#                 eventOptionData = {}
+#                 eventOptionData['optionName'] = eventOption.optionName
+#                 eventOptionData['optionDescription'] = eventOption.optionDescription
+#                 eventOptionData['eventOptionOrder'] = eventOption.eventOptionOrder
+#                 eventData['eventOptions'].append(eventOptionData)
+#             eventData['eventOptions'].sort(key=lambda x: x['eventOptionOrder'])
+#             response['events'].append(eventData)
+#         response['events'].sort(key= lambda x: x['eventOrder'])
+#         metaTags = MetaTags.objects.filter(event = parentEvent)
+#         #print json.dumps(response)
+#         return render(request,'index3.html',{'parentEvent':json.dumps(response), 'metaTags': metaTags,'parentEventname':parentEventname})
+#     else:
+#         response['error'] = True
+#         response['status'] = 'Invalid Request'
+#         return JsonResponse(response)
 
 def guestLecture(request):
     response = {}

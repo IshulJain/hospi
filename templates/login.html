@@ -32,6 +32,8 @@ Type your email: <input type='text' name='email' />
 var csrfmiddlewaretoken = '{{ csrf_token }}'
 
 	function theAjax(uri,data){
+    console.log(uri);
+    console.log(data);
  return $.ajax({
     type:"POST",
     dataType:"json",

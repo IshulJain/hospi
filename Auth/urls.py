@@ -19,7 +19,7 @@ urlpatterns = [
 	url(r'^register/$', register, name='register'),
 	url(r'^login/$', loginView, name='login'),
 	url(r'^events/$', events, name='event'),
-	url(r'^events/(?P<key>[\w\-]+)/$', event, name='events'),
+	#url(r'^events/(?P<key>[\w\-]+)/$', event, name='events'),
 	url(r'^dashboard/$', genetella,name='dashboard'),
 	#url(r'^logout/$', logoutView,name='logout'),
 	url(r'^logout/$', 'django.contrib.auth.views.logout',
