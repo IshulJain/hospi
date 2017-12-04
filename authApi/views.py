@@ -8,7 +8,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 import json
 import os
-# import facebook
+import facebook
 from Auth.models import *
 from Events.views import spreadsheetfill_register
 from django.core import serializers
