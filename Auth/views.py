@@ -404,10 +404,10 @@ Team Technex.'''%(techprofile.technexId)
                 context['email'] = get['email']
 
             context['status'] = 1;
-            return render(request,'signUp.html',context)
+            return render(request,'registernew.html',context)
         except:
             context['status'] = 0;
-            return render(request,'signUp.html',context)
+            return render(request,'registernew.html',context)
 
 # def loginView(request):
 #     response = {}
