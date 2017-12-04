@@ -9,7 +9,7 @@ import requests
 from django.views.decorators.csrf import csrf_exempt
 import json
 import os
-import facebook
+#import facebook
 from Auth.models import *
 from django_mobile import get_flavour
 from user_agents import parse
