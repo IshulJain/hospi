@@ -1,9 +1,10 @@
+  
 import os
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "technex17.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "technexUser.settings")
 application = get_wsgi_application()
-from Auth.models import *  
+from models import * 
 
 
 def college_data(names,ids,cities,states):

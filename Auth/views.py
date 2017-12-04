@@ -3135,7 +3135,7 @@ def sponsor(request):
 
 def college_data(names,ids,cities,states):
     for i in range(1,575):
-        a=college.objects.create()
+        a=College.objects.create()
         a.collegeName=names[i]
         a.city=cities[i]
         a.state=states[i]
