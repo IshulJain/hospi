@@ -3133,3 +3133,12 @@ def sponsor(request):
     else:
         return render(request,"sponsor18m.html")        
 
+def college_data(names,ids,cities,states):
+    for i in range(1,575):
+        a=College.objects.create()
+        a.collegeName=names[i]
+        a.city=cities[i]
+        a.state=states[i]
+        a.status=True
+        a.collegeWebsite=ids[i]
+        a.save()
