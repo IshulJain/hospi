@@ -58,6 +58,18 @@
 					<li class="menu__item" data-href="/campusambassador/">
 						<a class="" target="_blank" href="http://ca.technex.in">Campus Ambassador</a>
 					</li>
+					<li class="menu__item" data-href="/campusambassador/">
+							{% if user.is_authenticated %}
+								<a class="" target="_blank" href="/dashboard/">
+									Dashboard
+								</a>
+							{% else %}
+								<a class="" target="_blank" href="/register/">
+									Register/Login
+								</a>
+						  	{% endif %}
+				  		
+				  	</li>
 				</ul>
 			</div>
 		</nav>
