@@ -369,7 +369,11 @@
 		<div  class="ct--related-pages__item" >
 							<img src="/static/register-back.jpg" alt="" class="cover" />
 
-						<a href="/register" class="nosamepage c5 m7" style="padding-left: 0px;" target="_blank">
+						<a href="#"  class="c5 m7" style="padding-left: 0px;" onclick="
+								var modalTinyNoFooter = new tingle.modal();
+								modalTinyNoFooter.setContent('<h2>Registration will be live soon!!</h2>');
+								modalTinyNoFooter.open();
+								">
 				<button style="transform:translate3d(-55px, 0, 0px)" id="register-btn-link" class="btn btn--rect btn--rect--center js-validate-contact">
                 <span  class="btn__content">
             <span class="btn__content-label">Register</span>
