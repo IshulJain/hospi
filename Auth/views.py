@@ -306,8 +306,8 @@ def spreadsheetfill_register(techprofile):
 
 @csrf_exempt
 def register(request):
-    # if request.user.is_authenticated():
-        # return redirect('/dashboard')
+    if request.user.is_authenticated():
+        return redirect('/dashboard')
     if request.method == 'POST':
         data = request.POST
         email = data.get('email',None)
