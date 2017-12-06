@@ -1170,11 +1170,11 @@ def workshopRegister(request):
                             pass
                 team = WorkshopTeam(teamLeader = teamLeader,workshop = workshop, teamName = data['teamName'])
                 team.save()
-            subject = "[Technex'17] Successful Registration"
+            subject = "[Technex'18] Successful Registration"
             body = '''
 Dear %s,
 
-Thanks for registering for %s Technex'17.
+Thanks for registering for %s Technex'18.
 
 Your Team Details Are
 Team Name- %s
@@ -1188,7 +1188,7 @@ An important note to ensure that the team can contact you further:  If you find 
 Note : As this is an automatically generated email, please don't  reply to this mail. Please feel free to contact us either through mail or by phone incase of any further queries. The contact details are clearly mentioned on the website www.technex.in.
 
 
-Looking forward to seeing you soon at Technex 2017.
+Looking forward to seeing you soon at Technex 2018.
 
 All the best!
 
@@ -2484,7 +2484,7 @@ So, this spring, be prepared for a brainstorming ride into the mental domain at 
 
 --
 Regards
-Team Technex '17
+Team Technex '18
 
 Visit our website: www.technex.in
 Follow us on Facebook: www.facebook.com/technex
@@ -2558,11 +2558,11 @@ def quizRegister(request):
             slot = "SUNDAY 5/02/2017 22:00 - 22:40"
         quizteam.quizTeamId = "INX" + str(1000+quizteam.teamId)
         quizteam.save()
-        subject = "[Technex'17] Successful Registration for Intellecx"
+        subject = "[Technex'18] Successful Registration for Intellecx"
         body = '''
 Dear %s,
 
-Thanks for registering for Intellecx Technex'17.
+Thanks for registering for Intellecx Technex'18.
 
 Your Team Details Are
 TeamId- %s
@@ -2579,7 +2579,7 @@ An important note to ensure that the team can contact you further:  If you find 
 Note : As this is an automatically generated email, please don't  reply to this mail. Please feel free to contact us either through mail or by phone incase of any further queries. The contact details are clearly mentioned on the website www.technex.in.
 
 
-Looking forward to seeing you soon at Technex 2017.
+Looking forward to seeing you soon at Technex 2018.
 
 All the best!
 
