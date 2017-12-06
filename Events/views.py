@@ -139,11 +139,11 @@ def eventRegistration(request):
 				team.save()
 				team.technexTeamId = "TM"+str(1000+team.teamId)
 				team.save()
-			subject = "[Technex'17] Successful Registration"
+			subject = "[Technex'18] Successful Registration"
 			body = '''
 Dear %s,
 
-Thanks for registering for %s Technex'17.
+Thanks for registering for %s Technex'18.
 
 Your Team Details Are
 Team Name- %s
@@ -157,7 +157,7 @@ An important note to ensure that the team can contact you further:  If you find 
 Note : As this is an automatically generated email, please don't  reply to this mail. Please feel free to contact us either through mail or by phone incase of any further queries. The contact details are clearly mentioned on the website www.technex.in. 
               
 
-Looking forward to seeing you soon at Technex 2017.
+Looking forward to seeing you soon at Technex 2018.
 
 All the best!
 
