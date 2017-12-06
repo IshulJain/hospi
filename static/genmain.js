@@ -13,7 +13,7 @@ as:[1]
 },
 {
 parentEvent: 'pahal',
-events:['greenx', 'vision', 'swachch', 'sampann', 'aagaz'],
+events:['greenx', 'sampann', 'vikalp', 'saksham', 'aagaz'],
 max:[4,4,4,4,4],
 as:[1,1,1,1,1]
 },
