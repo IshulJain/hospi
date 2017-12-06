@@ -658,8 +658,7 @@ def events(request):
                 eventData['event_name'] = event.eventName
                 eventData['event_content'] = event.description
                 eventData['event_register'] = "Register Team"
-                url 
-                eventData['register_link'] = "/dashboard/#/eventReg/"+parentEvent.nameSlug+"/"+event.nameSlug+"/"
+                eventData['register_link'] = "/dashboard/#/eventReg/"
                 # eventData['deadLine'] = event.deadLine
                 eventData['prizeMoney'] = event.prizeMoney
                 eventData['maxMembers'] = event.maxMembers
