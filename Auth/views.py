@@ -361,20 +361,20 @@ def register(request):
         techprofile =TechProfile.objects.get(email=email)
         #spreadsheetfill_register(techprofile)
         print "codeBase 3"
-        subject = "[Technex'17] Confirmation of Registration"
+        subject = "[Technex'18] Confirmation of Registration"
         body = "Dear "+ user.first_name +''',
 
-You have successfully registered for Technex 2017 with Technex Id %s . Team Technex welcomes you aboard!
+You have successfully registered for Technex 2018 with Technex Id %s . Team Technex welcomes you aboard!
 
 An important note to ensure that the team can contact you further:  If you find this email in Spam folder, please right click on the email and click on 'NOT SPAM'.
 
-       Our team will be at the task of updating you from time to time, the  information regarding the festival. Please keep visiting the website and the facebook page of Technex '17 to stay up-to-date with the latest happenings at Technex '17.
+       Our team will be at the task of updating you from time to time, the  information regarding the festival. Please keep visiting the website and the facebook page of Technex '18 to stay up-to-date with the latest happenings at Technex '18.
 
 
 Note : As this is an automatically generated email, please don't  reply to this mail. Please feel free to contact us either through mail or by phone incase of any further queries. The contact details are clearly mentioned on the website www.technex.in.
 
 
-Looking forward to seeing you soon at Technex 2017.
+Looking forward to seeing you soon at Technex 2018.
 
 All the best!
 
@@ -783,7 +783,7 @@ def send_email(recipient, subject, body):
               "text": body})
 
 def send_email2(r,s,b):
-    return requests.post("https://api.mailgun.net/v3/mg32.technex.in/messages",auth=("api", "key-817973280a90a2a4c81a917cfe9a8503"),data={"from":"Technex 2017 IIT(BHU) Varanasi India <technex@iitbhu.ac.in>","to":r,"subject":s,"text":b})
+    return requests.post("https://api.mailgun.net/v3/mg32.technex.in/messages",auth=("api", "key-817973280a90a2a4c81a917cfe9a8503"),data={"from":"Technex 2018 IIT(BHU) Varanasi India <technex@iitbhu.ac.in>","to":r,"subject":s,"text":b})
 
 @csrf_exempt
 def botApi(request):
@@ -978,7 +978,7 @@ def startUpRegistration(request):
             for bty in btypes:
                 startUpFair.bType.add(bty)
             sf=StartUpFair.objects.get(teamLeader=request.user.techprofile)
-            subject = "[Technex'17] Successful Registration"
+            subject = "[Technex'18] Successful Registration"
             body = '''
 Dear %s,
 
@@ -2454,7 +2454,7 @@ Greetings from Team Technex,
 
 “Wisdom is not to a gift to be received, but a prize to be earned through experience and toils.”
 
-TECHNEX '17 gives you an opportunity to test your aptitude and reasoning skills in INTELLECX, an event where you push your intellectual limits to the fullest. With prizes of ₹ 90,000 and Internship opportunities up for grabs, INTELLECX is a two-stage event, the first round of which is an online round. Following are the rules for the first round:-
+TECHNEX '18 gives you an opportunity to test your aptitude and reasoning skills in INTELLECX, an event where you push your intellectual limits to the fullest. With prizes of ₹ 90,000 and Internship opportunities up for grabs, INTELLECX is a two-stage event, the first round of which is an online round. Following are the rules for the first round:-
 
 1. The online round consists of 10 aptitude questions to be answered in 40 minutes.
 
@@ -2468,7 +2468,7 @@ TECHNEX '17 gives you an opportunity to test your aptitude and reasoning skills 
 
 You can register in either of the slots for the event as per your convenience.
 
-4. The winners of the online round get prizes worth ₹ 15000 and will be called for the next (GD/PI) round of INTELLECX in TECHNEX '17
+4. The winners of the online round get prizes worth ₹ 15000 and will be called for the next (GD/PI) round of INTELLECX in TECHNEX '18
 
 Register for the event http://www.technex.in/intellecx .
 You can also find the Registration link on dashboard.
@@ -2479,7 +2479,7 @@ For any queries contact:
 Kuljeet Keshav +918009596212
 Kumar Anunay +919935009220
 
-So, this spring, be prepared for a brainstorming ride into the mental domain at TECHNEX '17
+So, this spring, be prepared for a brainstorming ride into the mental domain at TECHNEX '18
 
 
 --
