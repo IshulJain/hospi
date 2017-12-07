@@ -292,13 +292,13 @@ def emailUnique(request):
 
 def spreadsheetfill_register(techprofile):
     dic = {
-    "name" : str(techprofile.user.first_name),
-    "email" : str(techprofile.email),
-    "college" : str(techprofile.college.collegeName),
-    "technexId" : str(techprofile.technexId),
-    "year" : str(techprofile.year),
-    "mobileNumber" : str(techprofile.mobileNumber),
-    "city" : str(techprofile.city),
+        "name" : str(techprofile.user.first_name),
+        "email" : str(techprofile.email),
+        "college" : str(techprofile.college.collegeName),
+        "technexId" : str(techprofile.technexId),
+        "year" : str(techprofile.year),
+        "mobileNumber" : str(techprofile.mobileNumber),
+        "city" : str(techprofile.city),
     }
 
     url = "https://script.google.com/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec"
