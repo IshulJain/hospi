@@ -301,7 +301,7 @@ def spreadsheetfill_register(techprofile):
     'city' : techprofile.city,
     }
 
-    url = 'https://script.google.com/macros/u/1/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec'
+    url = 'https://script.google.com/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec'
     requests.post(url,data=dic)
 
 @csrf_exempt
@@ -359,7 +359,7 @@ def register(request):
             techprofile.save()
         print "codeBaes 2"
         techprofile =TechProfile.objects.get(email=email)
-        #spreadsheetfill_register(techprofile)
+        spreadsheetfill_register(techprofile)
         print "codeBase 3"
         subject = "[Technex'18] Confirmation of Registration"
         body = "Dear "+ user.first_name +''',
