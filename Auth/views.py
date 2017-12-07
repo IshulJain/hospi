@@ -293,7 +293,7 @@ def emailUnique(request):
 def spreadsheetfill_register(techprofile):
     dic = {
     "name" : str(techprofile.user.first_name),
-    "email" : strtechprofile.email,
+    "email" : str(techprofile.email),
     "college" : str(techprofile.college.collegeName),
     "technexId" : str(techprofile.technexId),
     "year" : str(techprofile.year),
