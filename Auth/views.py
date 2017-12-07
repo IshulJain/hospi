@@ -301,7 +301,7 @@ def spreadsheetfill_register(techprofile):
     "city" : techprofile.city.encode("utf-8"),
     }
 
-    url = "https://script.google.com/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec".encode("utf-8")
+    url = "https://script.google.com/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec"
     requests.post(url,data=dic)
 
 @csrf_exempt
