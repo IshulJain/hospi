@@ -292,16 +292,16 @@ def emailUnique(request):
 
 def spreadsheetfill_register(techprofile):
     dic = {
-    'name' : techprofile.user.first_name,
-    'email' : techprofile.email,
-    'college' : techprofile.college.collegeName,
-    'technexId' : techprofile.technexId,
-    'year' : techprofile.year,
-    'mobileNumber': techprofile.mobileNumber,
-    'city' : techprofile.city,
+    "name" : techprofile.user.first_name.encode("utf-8"),
+    "email" : techprofile.email.encode("utf-8"),
+    "college" : techprofile.college.collegeName.encode("utf-8"),
+    "technexId" : techprofile.technexId.encode("utf-8"),
+    "year" : techprofile.year.encode("utf-8"),
+    "mobileNumber" : techprofile.mobileNumber.encode("utf-8"),
+    "city" : techprofile.city.encode("utf-8"),
     }
 
-    url = 'https://script.google.com/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec'
+    url = "https://script.google.com/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec".encode("utf-8")
     requests.post(url,data=dic)
 
 @csrf_exempt
