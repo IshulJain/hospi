@@ -301,7 +301,7 @@ def spreadsheetfill_register(techprofile):
         "city" : techprofile.city,
     }
     print(dic)
-    url = "https://script.google.com/a/technex.in/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec"
+    url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec"
     requests.post(url,data=dic)
 
 @csrf_exempt
