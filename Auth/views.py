@@ -300,7 +300,7 @@ def spreadsheetfill_register(techprofile):
         "mobileNumber" : str(techprofile.mobileNumber),
         "city" : str(techprofile.city),
     }
-
+    print(dic)
     url = "https://script.google.com/macros/u/2/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec"
     requests.post(url,data=dic)
 
