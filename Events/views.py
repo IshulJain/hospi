@@ -42,7 +42,7 @@ sheetUrls = {
 	"astroquiz":"https://script.google.com/macros/s/AKfycbzAiILENMWurTcDePvF0_TRx3n57M7uGVOJ5lwMlMf48bQGQDmt/exec",
 	"astrophotography":"https://script.google.com/macros/s/AKfycbzrihE1zlcubi_u8Jk6sZryUgH1NCyBlktsdcL-zQUJqB4V158/exec",
 	"scientists-utopia":"https://script.google.com/macros/s/AKfycbwIPTv_aNfvOqn4EVi8LKJoOsI9xmGiv6fzU8hoNUekT1djVK5Z/exec",
-	"aagaz":"https://script.google.com/macros/s/AKfycbxnmQC1co_4hTsHYUlB2mhl0wVIG67hdGkIHTxUmtC6s4gpFSQi/exec",
+	"aagaz":"https://script.google.com/a/technex.in/macros/s/AKfycbywznIjTwBSYK3QLNHeCaCeXd19_y9B3Scxi6KrKocip4kq5piP/exec", #Updated (T-2018)
 	"sampann":"https://script.google.com/macros/s/AKfycbza0JY7Zl1-1Rp7WhtpzMHRdiX4A0aaVUMY_Ly9dExcC2QZxi77/exec",
 	"swachch":"https://script.google.com/macros/s/AKfycbyiLuidIIPe8q1Cc2JRctAYg7GuTb0ilRdB2U288cC6kgQcGFQF/exec",
 	"vision":"https://script.google.com/macros/s/AKfycbynUPef4u0AqxuGIaR_0_m35Ry6-KipzRkkQngaGjuTSuPupAU/exec",
