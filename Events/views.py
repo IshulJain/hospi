@@ -91,7 +91,7 @@ def eventRegistration(request):
 		event = Event.objects.get(nameSlug = data['eventSlug'])
 		print "here"
 		try:
-			# print "here"
+			print "here1"
 			team = Team.objects.get(teamName = data['teamName'], event = event)
 			response['status'] = 0
 			response['error'] = "TeamName Already exists"
@@ -102,7 +102,7 @@ def eventRegistration(request):
 			except:
 				teamLeader = TechProfile.objects.get(email = data['teamLeaderEmail'])
 			users = []
-			# print "here"
+			print "here2"
 			for member in data['members']:
 				try:	
 					try:
@@ -146,6 +146,7 @@ def eventRegistration(request):
 								users.remove(u)
 						except:
 							pass
+				print "here3"
 				team = Team(teamLeader = teamLeader,event = event, teamName = data['teamName'])
 				team.save()
 				team.technexTeamId = "TM"+str(1000+team.teamId)
