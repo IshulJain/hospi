@@ -327,7 +327,7 @@ def spreadsheetfill_delete(team):
 	url = sheetUrls[team.event.nameSlug.encode("utf-8")]
 	requests.post(url,data=dic)
 
-def fill_registrations():
+def fill_teams():
     teams = Team.objects.all()
     for team in teams:
         spreadsheetfill_register(team)
