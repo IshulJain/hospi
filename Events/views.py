@@ -18,7 +18,7 @@ sheetUrls = {
 	"robowars":"https://script.google.com/a/technex.in/macros/s/AKfycbzxGmuCC-cVEHecvxM8IoctqxjuRjpSpa8r4qO8GLOlx4kgEKQ/exec", #Updated
 	"pixelate":"https://script.google.com/a/technex.in/macros/s/AKfycbyj84WzvkzGgwe65KWrGrs7OvkpRjtMcwH6Ql4cV4JXu8yG0-WM/exec", #Updated
 	"hurdlemania":"https://script.google.com/a/technex.in/macros/s/AKfycbyk6Q2cVW8amUdgSayqSxHKF9wUiXJMvt7pwFxaP-Wzm6aZwKJY/exec", #Updated
-	"mazeXplorer":"https://script.google.com/a/technex.in/macros/s/AKfycbzHY2kN1hsH8zWUx2LFy1TuIr0D_P-CB7Res2BgbYr8UBTVZTM/exec", #Updated
+	"mazexplorer":"https://script.google.com/a/technex.in/macros/s/AKfycbzHY2kN1hsH8zWUx2LFy1TuIr0D_P-CB7Res2BgbYr8UBTVZTM/exec", #Updated
 	#
 	"open-software" : "https://script.google.com/macros/s/AKfycbxQeVLQzJ-l0HGdrovmvKRfStBmmrXzJlk5detmE6N037BzBAc6/exec",
 	"open-hardware": "https://script.google.com/macros/s/AKfycbwE6p7LyUHApX7oTnsmiR-Vk_Q2x1YJQd5fYcfn9bTjfLq35Wg/exec",
