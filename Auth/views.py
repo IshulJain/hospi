@@ -291,6 +291,7 @@ def emailUnique(request):
     return HttpResponse(response)
 
 def spreadsheetfill_register(techprofile):
+    timeFormat = '%d / %m / %Y'
     dic = {
         "name" : techprofile.user.first_name,
         "email" : techprofile.email,
@@ -299,6 +300,7 @@ def spreadsheetfill_register(techprofile):
         "year" : techprofile.year,
         "mobileNumber" : techprofile.mobileNumber,
         "city" : techprofile.city,
+        "date" : techprofile.user.date_joined.strftime(timeFormat)
     }
     print(dic)
     url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
@@ -3143,3 +3145,8 @@ def college_data(names,ids,cities,states):
         a.status=True
         a.collegeWebsite=ids[i]
         a.save()
+
+def fill_registrations():
+    profiles = TechProfile.objects.all()
+    for prof in profiles:
+        spreadsheetfill_register(prof)

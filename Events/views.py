@@ -326,3 +326,8 @@ def spreadsheetfill_delete(team):
 	print dic
 	url = sheetUrls[team.event.nameSlug.encode("utf-8")]
 	requests.post(url,data=dic)
+
+def fill_registrations():
+    teams = Team.objects.all()
+    for team in teams:
+        spreadsheetfill_register(team)
