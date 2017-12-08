@@ -302,7 +302,7 @@ def spreadsheetfill_register(techprofile):
         "city" : techprofile.city,
         "date" : techprofile.user.date_joined.strftime(timeFormat)
     }
-    print(dic)
+    # print(dic)
     url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
     #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
     requests.post(url,data=dic)
