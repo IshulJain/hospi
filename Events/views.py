@@ -14,50 +14,61 @@ from Auth.views import contextCall,send_email,send_sms_single
 
 server = "http://www.technex.in/"
 sheetUrls = {
-	"robowars":"https://script.google.com/macros/s/AKfycbx2vzxqBPhyG_107us9BAuESjk6vpKoCi1CMA5GIpdePy3oL04/exec",
-	"pixelate":"https://script.google.com/macros/s/AKfycbzRrPLuk16hrDOIh7AmQViE7sJmdTX7Vq-w1WShHJbDg1Cjylo/exec",
-	"hurdlemania":"https://script.google.com/macros/s/AKfycbwdqJGq0snCPSOL2vgRb0cxWUcTBOkBtp3Bk9zb2v615RxBb_k/exec",
-	"mazeXplorer":"https://script.google.com/macros/s/AKfycbyymc9N9q3oXwJThjON78Swa3fnKwD9bXbEEGdNT49XWdmBbYU/exec",
+	#Robonex
+	"robowars":"https://script.google.com/a/technex.in/macros/s/AKfycbzxGmuCC-cVEHecvxM8IoctqxjuRjpSpa8r4qO8GLOlx4kgEKQ/exec", #Updated
+	"pixelate":"https://script.google.com/a/technex.in/macros/s/AKfycbyj84WzvkzGgwe65KWrGrs7OvkpRjtMcwH6Ql4cV4JXu8yG0-WM/exec", #Updated
+	"hurdlemania":"https://script.google.com/a/technex.in/macros/s/AKfycbyk6Q2cVW8amUdgSayqSxHKF9wUiXJMvt7pwFxaP-Wzm6aZwKJY/exec", #Updated
+	"mazeXplorer":"https://script.google.com/a/technex.in/macros/s/AKfycbzHY2kN1hsH8zWUx2LFy1TuIr0D_P-CB7Res2BgbYr8UBTVZTM/exec", #Updated
+	#
 	"open-software" : "https://script.google.com/macros/s/AKfycbxQeVLQzJ-l0HGdrovmvKRfStBmmrXzJlk5detmE6N037BzBAc6/exec",
 	"open-hardware": "https://script.google.com/macros/s/AKfycbwE6p7LyUHApX7oTnsmiR-Vk_Q2x1YJQd5fYcfn9bTjfLq35Wg/exec",
 	"green-tech": "https://script.google.com/macros/s/AKfycbxPWMx8KBwuNLcBeG23QCaZX7FJ5lOAjStMxQ15S4z57X2xEUQ/exec",
-	"capture-the-flag" : "https://script.google.com/macros/s/AKfycby4I0Ve0lZVQkPbUk-Fzn-ik0gpZ0FYapfz8k30GmjcOVZxiNk/exec",
-	"appathon": "https://script.google.com/macros/s/AKfycbwppdd0aJyK6GD9VmmvlvsqSrr0LyjteBalFRMRWiFBTDqtqA2S/exec",
-	"international-coding-marathon": "https://script.google.com/macros/s/AKfycbxmIEJ-gdZOyvpAKm84L3eeMOnyavujg5kvLcj2jR7ctm1EqxY/exec",
+	#Byte-The-Bits
+	"capture-the-flag" : "https://script.google.com/a/technex.in/macros/s/AKfycbz5LqfYQpbor-tepRlu471FH_bmXlQKbdkbQcONy0EQ0jMXO_M/exec", #Updated
+	"appathon": "https://script.google.com/a/technex.in/macros/s/AKfycbxDM9__ELb9gDK-N7V_USeFfl0f6vNJTAR0EqgAzls0T2VQKkHZ/exec", #Updated
+	"international-coding-marathon": "https://script.google.com/a/technex.in/macros/s/AKfycbz4IN_Lfpm0w7UWDJ83XlNhRnxXvnjL6k8kSqvj5ykgBhA3bPWe/exec", #Updated
 	"mlware": "https://script.google.com/macros/s/AKfycbwfyM7gZ26iI17kQslhnw_1G_621t-XeDeuY8LBBcXiqN8ELHi_/exec",
-
-	"economists-enigma": "https://script.google.com/macros/s/AKfycbxMmy7yjzvDmLY83zkM--P86XVgnryuBkrJUuhM1C4XDY0qjm3z/exec",
-	"manthan": "https://script.google.com/macros/s/AKfycbwe6tPsgigg6-SX1WyUo00RQXM__tJh_01MNLBs5csQx2BC4HI/exec",
-	"krackat": "https://script.google.com/macros/s/AKfycbz6GS25vFDJsY02mX749TjC2YSnrXdvCcVZs5LWoaNbhGv_f6H0/exec",
-	"bulls-floor": "https://script.google.com/macros/s/AKfycbxucNiOHRGcshykqMiTgHdV7uCc3JkifXgsfPDReX-41-VkfAM/exec",
-	"analiticity": "https://script.google.com/macros/s/AKfycbxmDxWFuRA2PBu6e2GefsmeOPx4Q2inXbNHprheGUVn1XFa7h6A/exec",
-
+	#Modex
+	"modex" : "https://script.google.com/a/technex.in/macros/s/AKfycbwfziSXf-XUjwqXJybC8gGS72m0Wg-k3V4Do2JCoK4VNdn-rBE8/exec", #Updated (NEW)
+	#Riqueza
+	"economists-enigma": "https://script.google.com/a/technex.in/macros/s/AKfycbzTKcMBoQUL0o6kNtSECX8luZ2wAc3SFyv87Z6NC_lRfhZdKCs/exec", #Updated
+	"manthan": "https://script.google.com/a/technex.in/macros/s/AKfycbwZonmT5tptNSEZpMWumK0P5e1GkNseGopiqY0eQQIDm_mbcDA/exec", #Updated
+	"krackat": "https://script.google.com/a/technex.in/macros/s/AKfycbw9i2x2Upud6lw3zSEJZpGslYhclWEPoGMWu-solSAou4I7ny8/exec", #Updated
+	"bulls-floor": "https://script.google.com/a/technex.in/macros/s/AKfycbx4tEAIoBe2yWy3cUN_hE7f6JW6HcGAjDbk7sifisnpoJt_djo/exec", #Updated
+	"analiticity": "https://script.google.com/a/technex.in/macros/s/AKfycbwjXQ4hhWgON8oWMTeCpEMsIup_YPlouuoUqyiv__ufc5g5uQU-/exec", #Updated
+	#Creatrix
 	"2d":"https://script.google.com/macros/s/AKfycbwf1qvqJwVLgRNnD_JhZROI2r2AIrlOrTlxRAzAWRccS5pQerY/exec",
 	"animaze":"https://script.google.com/macros/s/AKfycbxS-q0nnu3BfadEq-QWU_KuR8v2FMk5Ji40Y3gBDHGmZ_E9n_s/exec",
 	"avant-garde":"https://script.google.com/macros/s/AKfycbzbMnYK0LUapV-62CKM3GrA61z8nEmPzJDnhbtUY2cXgQGX5vU/exec",
 	"iso":"https://script.google.com/macros/s/AKfycbxM9pEcYkjnFKMVWoRCAy_HayzgLuxaXDDD-ccGGkCi_Qgz2xw/exec",
 	"collage":"https://script.google.com/macros/s/AKfycbx-ElC8fhlP5h2lZucFVF01BzdMaPMW6GrsHfotZGYg-SOs_4Gj/exec",
 	"minimize":"https://script.google.com/macros/s/AKfycbwYTV5c6Yw5MRy1OxII-U6A78YsWz_iNqFqIzlS_eb6NJ408tY/exec",
-	"exploring-interstellar":"https://script.google.com/macros/s/AKfycbywyOuIP8aGFaCXhrhAtP8bmhV6KIyfnIcwWjnBe6nmVsycAPA/exec",
-	"astroquiz":"https://script.google.com/macros/s/AKfycbzAiILENMWurTcDePvF0_TRx3n57M7uGVOJ5lwMlMf48bQGQDmt/exec",
-	"astrophotography":"https://script.google.com/macros/s/AKfycbzrihE1zlcubi_u8Jk6sZryUgH1NCyBlktsdcL-zQUJqB4V158/exec",
-	"scientists-utopia":"https://script.google.com/macros/s/AKfycbwIPTv_aNfvOqn4EVi8LKJoOsI9xmGiv6fzU8hoNUekT1djVK5Z/exec",
-	"aagaz":"https://script.google.com/macros/s/AKfycbxnmQC1co_4hTsHYUlB2mhl0wVIG67hdGkIHTxUmtC6s4gpFSQi/exec",
-	"sampann":"https://script.google.com/macros/s/AKfycbza0JY7Zl1-1Rp7WhtpzMHRdiX4A0aaVUMY_Ly9dExcC2QZxi77/exec",
+	#Supernova
+	"exploring-interstellar":"https://script.google.com/a/technex.in/macros/s/AKfycbx0UoFd5lOjt0wUXWG4zkrmflUM0EIbFz5_n-BSUmBL_tNmdu4/exec", #Updated
+	"astroquiz":"https://script.google.com/a/technex.in/macros/s/AKfycbwd_Q6vy_EVp0_mpsQlczzNyfclXtIMj8VPwG0-nd6adO9T3gLC/exec", #Updated
+	"astrophotography":"https://script.google.com/a/technex.in/macros/s/AKfycbzYQmzwtPGLjXewjOUrXzbtgk2yUKGZRV5hAtC_Xi3rdNzh-FTv/exec", #Updated
+	"scientists-utopia":"https://script.google.com/a/technex.in/macros/s/AKfycbwtvaYhFdCRFBC6P-81wz087gY2no1Qg6ypARkjT_FHTdyzYwtx/exec", #Updated
+	#Pahal
+	"aagaz":"https://script.google.com/a/technex.in/macros/s/AKfycbywznIjTwBSYK3QLNHeCaCeXd19_y9B3Scxi6KrKocip4kq5piP/exec", #Updated
+	"sampann":"https://script.google.com/a/technex.in/macros/s/AKfycbxn2wNywiG6Zi4yqjVI2XryLkKBisvdXa7AC0RhrOLxQvUk1p4/exec", #Updated
 	"swachch":"https://script.google.com/macros/s/AKfycbyiLuidIIPe8q1Cc2JRctAYg7GuTb0ilRdB2U288cC6kgQcGFQF/exec",
 	"vision":"https://script.google.com/macros/s/AKfycbynUPef4u0AqxuGIaR_0_m35Ry6-KipzRkkQngaGjuTSuPupAU/exec",
-	"greenx":"https://script.google.com/macros/s/AKfycbzqPHVP19tDZaru1DBvp2GER_Ac9sXfwCKXakY2vj7ynwWZC_g/exec",
-
-	"drone-tech": "https://script.google.com/macros/s/AKfycbz6q2nFTvqrFky8ehK0H7Lavig-K9it8eky6r3o0g5W8Efc__F0/exec",
-	"daeroglisseur": "https://script.google.com/macros/s/AKfycbwNMPiqyEAMYJ2D9LEkpY-35HOtx7CuoiLRL86vxSQkqRLFYbo/exec",
-	"la-trajectoire":"https://script.google.com/macros/s/AKfycbyA7f6YhOCEBxDas3pkKuVj7f_l-wqMwMl7reNJy3DpG3kR0mE/exec",
-	"momentum":"https://script.google.com/macros/s/AKfycbwhENBDBnaEWYTJw-3opilMvz6BPGi3H3rR4f28Okp1IYNBSbE/exec",
-
-	"axelerate": "https://script.google.com/macros/s/AKfycbyKHb2ZmZ1UF8LId4ICMveb2ygx5cojpvNre8I5lju8ACjhQBxI/exec",
-	"goldbergs-alley": "https://script.google.com/macros/s/AKfycbyFAD8X7_ePW5ficdgcWPZ_obpxuly-5UAX26W9lj5VCJMTxZw/exec",
-	"bridgeit": "https://script.google.com/macros/s/AKfycby99ACnseBDFL7y2cmarSNrhIvzcHllw4SfHr4ovh0iHoBId-M/exec",
-	"hydracs": "https://script.google.com/macros/s/AKfycbz8bZZxxjZVIqS9virOgox90WmLjvGz0RK3m8cr9fv9q6BbpbY/exec",
+	"greenx":"https://script.google.com/a/technex.in/macros/s/AKfycbxid8faLDNZguA_u-fjAlwV_wXy1jJtdbVqWWGYCS1Fw9VJo0c/exec", #Updated
+	"saksham" : "https://script.google.com/a/technex.in/macros/s/AKfycbyi-O51gnbwMu4EQrH6i_E-9egJBTtEXLIowIK5LO7_onXbWCqK/exec", #Updated (NEW)
+	"vikalp" : "https://script.google.com/a/technex.in/macros/s/AKfycbyvux0-8B8uE2a6uN-o9F-Nd3S0VI4_qCgwl3xPBVzuUBLkWOs/exec", #Updated (NEW)
+	#Ascension
+	"drone-tech": "https://script.google.com/a/technex.in/macros/s/AKfycbxW3Sh25DzIT8_Akg6yrWIO4GAJSR2LT_i5FRzsCiRrqlOJ-gJo/exec", #Updated
+	"daeroglisseur": "https://script.google.com/a/technex.in/macros/s/AKfycbxtfBt1ytJFysy0br719IP8lUTNheAGU6GilmPXknBnDt2L3rw/exec", #Updated
+	"la-trajectoire":"https://script.google.com/a/technex.in/macros/s/AKfycbwOqjMYTF8uQPI_lbtzDZuRDw73GU6v5zr0BxQpu2lAJbk-RnPG/exec", #Updated
+	"momentum":"https://script.google.com/a/technex.in/macros/s/AKfycbwtxdtodY8WUmM01IQGD8rJuO7XXwE8Q__9gbFzLF5epghZTQ8/exec", #Updated
+	#Extreme-Engineering
+	"axelerate": "https://script.google.com/a/technex.in/macros/s/AKfycbyDiFjest66TfNsRlVjQNU5YbMY0DKUf56v8ryu-DqXVTRzi_Q/exec", #Updated
+	"goldbergs-alley": "https://script.google.com/a/technex.in/macros/s/AKfycbwoGV_VrDOueYNobdte9AH_mmb7UmpdIorACwMeapDm0pr6Eo0h/exec", #Updated
+	"bridgeit": "https://script.google.com/a/technex.in/macros/s/AKfycbw04ckemnWPfGIPn40X0MQroRc7uRX7CLicqcpMm8w-zyu-pgY/exec", #Updated
+	"hydracs": "https://script.google.com/a/technex.in/macros/s/AKfycbw9TQ5PY8dG8ucZqiMeM5WH7PPKIfAMkyzfnrZczeiHcpAFh0g/exec", #Updated
+	#Game-Dungeon
 	"cs-go" : "https://script.google.com/macros/s/AKfycbz2rizF0A3Ok97_nMSTnUA9oekEG4fNUrpIOb0ovNS6TgNDr6Dz/exec",
+	#Dih-Design-Contest
 	"classroom-furniture" : "https://script.google.com/macros/s/AKfycbyD1yAphlQUv1qVFlsj325iQvhvvJUkwMTs4pR79hkCG-JcTZDH/exec",
 	"classroom-cooling" : "https://script.google.com/macros/s/AKfycbx2y0dAhHHaH97HWYmdQuVUyYYgYF8MhKXCQqbWgVWS2-p_lGc/exec",
 	"classroom-sound-absorber" : "https://script.google.com/macros/s/AKfycbxFS5uSJPrrVZPTVNSsiuGvFPdjlcVFCZQkv1Ht9cHmFxokK2zi/exec",
@@ -80,7 +91,7 @@ def eventRegistration(request):
 		event = Event.objects.get(nameSlug = data['eventSlug'])
 		print "here"
 		try:
-			# print "here"
+			print "here1"
 			team = Team.objects.get(teamName = data['teamName'], event = event)
 			response['status'] = 0
 			response['error'] = "TeamName Already exists"
@@ -91,7 +102,7 @@ def eventRegistration(request):
 			except:
 				teamLeader = TechProfile.objects.get(email = data['teamLeaderEmail'])
 			users = []
-			# print "here"
+			print "here2"
 			for member in data['members']:
 				try:	
 					try:
@@ -135,6 +146,7 @@ def eventRegistration(request):
 								users.remove(u)
 						except:
 							pass
+				print "here3"
 				team = Team(teamLeader = teamLeader,event = event, teamName = data['teamName'])
 				team.save()
 				team.technexTeamId = "TM"+str(1000+team.teamId)
@@ -293,7 +305,7 @@ def spreadsheetfill_register(team):
 		dic['member4'] = 0
 		dic['college4'] = 0
 		dic['mobile4'] = 0
-	print dic
+	# print dic
 	url = sheetUrls[team.event.nameSlug.encode("utf-8")]
 	requests.post(url,data=dic)
  	
@@ -314,3 +326,8 @@ def spreadsheetfill_delete(team):
 	print dic
 	url = sheetUrls[team.event.nameSlug.encode("utf-8")]
 	requests.post(url,data=dic)
+
+def fill_teams():
+    teams = Team.objects.all()
+    for team in teams:
+        spreadsheetfill_register(team)

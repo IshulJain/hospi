@@ -291,23 +291,26 @@ def emailUnique(request):
     return HttpResponse(response)
 
 def spreadsheetfill_register(techprofile):
+    timeFormat = '%d / %m / %Y'
     dic = {
-    'name' : techprofile.user.first_name,
-    'email' : techprofile.email,
-    'college' : techprofile.college.collegeName,
-    'technexId' : techprofile.technexId,
-    'year' : techprofile.year,
-    'mobileNumber': techprofile.mobileNumber,
-    'city' : techprofile.city,
+        "name" : techprofile.user.first_name,
+        "email" : techprofile.email,
+        "college" : techprofile.college.collegeName,
+        "technexId" : techprofile.technexId,
+        "year" : techprofile.year,
+        "mobileNumber" : techprofile.mobileNumber,
+        "city" : techprofile.city,
+        "date" : techprofile.user.date_joined.strftime(timeFormat)
     }
-
-    url = 'https://script.google.com/macros/u/1/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec'
+    # print(dic)
+    url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
+    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
     requests.post(url,data=dic)
 
 @csrf_exempt
 def register(request):
-    # if request.user.is_authenticated():
-        # return redirect('/dashboard')
+    if request.user.is_authenticated():
+        return redirect('/dashboard')
     if request.method == 'POST':
         data = request.POST
         email = data.get('email',None)
@@ -359,7 +362,7 @@ def register(request):
             techprofile.save()
         print "codeBaes 2"
         techprofile =TechProfile.objects.get(email=email)
-        #spreadsheetfill_register(techprofile)
+        spreadsheetfill_register(techprofile)
         print "codeBase 3"
         subject = "[Technex'18] Confirmation of Registration"
         body = "Dear "+ user.first_name +''',
@@ -3142,3 +3145,8 @@ def college_data(names,ids,cities,states):
         a.status=True
         a.collegeWebsite=ids[i]
         a.save()
+
+def fill_registrations():
+    profiles = TechProfile.objects.all()
+    for prof in profiles:
+        spreadsheetfill_register(prof)
