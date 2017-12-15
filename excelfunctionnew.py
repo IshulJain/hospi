@@ -25,8 +25,8 @@ def eventSheetsTransfer():
         sheet1.write(m,11,str(event.image))
         m = m+1
         
-    x = "eventsDataNew.xls"
-    w.save(x)
+    
+    w.save('eventsDataNew.xls')
 
 eventSheetsTransfer()
 
