@@ -248,7 +248,7 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
   };
   $scope.submitForm = function(event)
   {
-     $(".team-reg-submit").html("Submitting. Please Wait!")
+     $(".team-reg-submit").html("Submitting!")
      var c = new Array();
      var i;
      for(i=0;i<$scope.counter;i++)
@@ -464,7 +464,7 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
            
            // window.location.assign("#profile"); 
             $scope.editObject = angular.copy();
-             //location.reload(true);
+            location.reload(true);
         }
         if(data.status==0)
         {
