@@ -71,7 +71,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
                                     <td>
                                         <a>{{team.teamName}}</a>
                                         <br>
-                                        <small ><a id='eventParentEvent' style="color: #000000;" href='/events' onmouseover="this.style.textDecoration='underline';" onmouseout="this.style.textDecoration='none';">{{team.parentEvent}}</a>/{{team.event}}
+                                        <small ><a id='eventParentEvent' style="color: #000000;" >{{team.parentEvent}}</a>/{{team.event}}
                                         </small>
                                     </td>
 
@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
                                     </td>
 
                                     <td>
-                                        <button type="button" class="btn btn-xs" ng-click='deleteTeam($index)' ng-disabled='team.leaderEmail != profileEmail' style="border-radius: 0px;color: white; font-size: 1.6rem; border: 0px; background-color:#b8212d;" >Delete</button>
+                                        <button type="button" class="btn btn-xs" ng-click='deleteTeam($index)' ng-disabled='team.leaderEmail != profileEmail' style="margin-top: 10px; border-radius: 0px;color: white; font-size: 1.6rem; border: 0px; background-color:#b8212d;" >Delete</button>
                                         <!-- ng-disabled='team.leaderEmail != profileEmail' -->
                                     </td>
                          <!--  <td>
