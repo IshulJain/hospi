@@ -61,7 +61,7 @@ sheetUrls = {
     "intellecxresult" : "https://script.google.com/macros/s/AKfycbysKSJ7spHDO5YMCVu82sDftLjhDTjom3r55b5tl3723_Slwsk/exec",
     "tshirt" : "https://script.google.com/macros/s/AKfycbydgOTlQjdiBzHd_10hh_zGZ372uaeNGtFIFNdw3Cbl6gKIf-8/exec"
     }
-
+    
 @csrf_exempt
 def profileValidation(request):
     response = {}

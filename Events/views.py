@@ -74,11 +74,6 @@ sheetUrls = {
 	"classroom-sound-absorber" : "https://script.google.com/macros/s/AKfycbxFS5uSJPrrVZPTVNSsiuGvFPdjlcVFCZQkv1Ht9cHmFxokK2zi/exec",
 	"hostel-room-furniture": "https://script.google.com/macros/s/AKfycbwImpuQnhpOsHN98KqYCDQj0HGD3z_TpTjEKU_90v_6t7E03Gw/exec",
 	"mess-furniture": "https://script.google.com/macros/s/AKfycbx25ucmWGPX4LGcwSDhTcobu8EX9ZsWqokB0kq-D8qVgRlRvtpO/exec",
-
-
-
-
-
 }
 
 @csrf_exempt

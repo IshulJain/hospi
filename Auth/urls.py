@@ -7,7 +7,6 @@ from Auth.views import *
 app_name='Auth'
 
 urlpatterns = [
-
 	#JsonResponse
 	#url(r'^api/login/$', ApiLoginView, name= 'api_login'),
 	#JsonResponse
