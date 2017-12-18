@@ -1,0 +1,98 @@
+<section class="content" ng-app="app" ng-controller='mainController' >
+    <header class="content__title"><h1 style="color: white; margin-left: 20px;">EDIT PROFILE</h1></header>
+<div class="card" ng-repeat="person in employeeArray track by $index" ng-switch on="(editIndex == $index)">
+
+                        <div class="card-body">
+                                
+
+                            <br>
+                            <div class="row" style="margin: auto;">
+                                <div class="col-sm-4 col-md-6">
+                                    <div class="form-group">
+
+                                        <input class="form-control" ng-focus="rmcls(this)" ng-model="editObject.name" placeholder="First Name"  id="forname" type="text"/>  
+
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: auto;">
+
+                                 <div class="col-sm-4 col-md-6" >
+                                    <div class="form-group">
+
+                                        <input class="form-control" ng-focus="rmcls(this)" ng-model="editObject.college" placeholder="College" id="forcollege" type="text"/>
+
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                                  <!-- <div class="row" style="margin: auto; ">
+                                <div class="col-sm-4 col-md-6">
+                                    <div class="form-group">
+
+
+                                        <input class="form-control" ng-focus="rmcls(this)" ng-model="editObject.year" placeholder="Year Between 1 to 5" id="forcollegeyear" type="text" maxlength="1"/>
+
+                                        <ul class="parsley-errors-list filled" id="collegeyearerr" style="display: none;margin-top: 7px"><li class="parsley-required">College Year between 1 to 5</li></ul>
+
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="row" style="margin: auto;">
+
+                                 <div class="col-sm-4 col-md-6" >
+                                    <div class="form-group">
+                           
+                                    <select ng-focus="rmcls(this)" ng-model="editObject.year" class="show-menu-arrow form-control" id="forcollegeyear" name="year" >
+                                        <option selected="selected" value="0" disabled="true">--Select Your Year--</option>
+                                            <option value="1">First</option>
+                                            <option value="2">Second</option>
+                                            <option value="3">Third</option>
+                                            <option value="4">Fourth</option>
+                                            <option value="5">Fifth</option>
+                                            <option value="6">Passout(Only for Startup Fair)</option>
+                                    </select>
+                        </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin: auto;">
+                                 <div class="col-sm-4 col-md-6" >
+                                    <div class="form-group">
+
+                                        <input class="form-control" ng-focus="rmcls(this)" ng-model="editObject.city" placeholder="City" id="forcity" type="text"/>
+
+                                        <i class="form-group__bar"></i>
+                                    </div>
+                                </div>
+                            </div> 
+
+                            <div class="row" style="margin: auto; ">
+                                <div class="col-sm-4 col-md-6" >
+                                <div class="form-group">
+
+
+                                    <input class="form-control" type="text" ng-focus="rmcls(this)" ng-model="editObject.mobile" id="formobile" placeholder="Mobile No. in 10 digits" maxlength="10"/>
+                                        <ul class="parsley-errors-list filled" id="mobileerr" style="display: none;margin-top: 7px"><li class="parsley-required"> Invalid Mobile Number</li></ul>
+
+                                        <i class="form-group__bar"></i>
+                                    </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin: auto; ">
+                                <div class="col-sm-4 " >    
+
+                            <button ng-click="saveEdit($index)"  class="btn btn-primary savechanges" type="submit" style="margin-left: 12px; margin-top: 25px;">Submit</button>
+
+                            <button ng-click="cancelEdit()" class="btn btn-danger" class="btn btn-light" type="submit" style="margin-left: 12px; margin-top: 25px;">Cancel</button>
+
+                            <button ng-click="editingPerson($index)"  class="btn btn-light" type="submit" style="margin-left: 12px; margin-top: 25px; background-color: #0000008c;">Auto Fill</button>
+                        </div>
+                    </div>
+
+</div>
+</section>

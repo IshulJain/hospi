@@ -1,0 +1,187 @@
+<style type="text/css">
+.fahome{
+    color:#000000;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #000000;
+    font-weight: 500;
+    line-height: 1.1;
+}
+</style>
+
+<section class="content" ng-app="app" ng-controller='mainController' style="color: #000000;">
+    <div class="content__inner content__inner--sm">
+        <header class="content__title">
+            <h1 >User Profile</h1>
+            
+        </header>
+
+                    <div class="card profile" ng-repeat="person in employeeArray track by $index">
+
+                        <div class="profile__img">
+
+                          <!-- Current avatar -->
+                           <!-- <img class=" " src="{{person.profileImage}}" alt="Avatar" title="{{person.name}}">  --> 
+
+                           <canvas class = " " id="user-icon" height="150" width="160" style="border: 5px solid white;" ></canvas>
+                         </div>
+                        <div class="profile__info"   style="color: #000000;">
+                        <!-- <p>Cras mattis consectetur purus sit amet fermentum. Maecenas sed diam eget risus varius blandit sit amet non magnae tiam porta sem malesuada magna mollis euismod.</p> -->
+
+                            <ul class="icon-list">
+                                <li id = "user_name"><i  class="fa fa-id-badge fahome" aria-hidden="true"></i>{{person.name}}</li>
+                                <li><i class="fa fa-id-card-o fahome" aria-hidden="true"></i>{{person.technexId}}</li>
+                                <li><i class="fa fa-building fahome" aria-hidden="true"></i>{{person.college}}</li>
+                                <li><i class="fa fa-handshake-o fahome" aria-hidden="true"></i></i>{{position(person.year)}}</li>
+                                <li><i class="fa fa-phone fahome" aria-hidden="true"></i>{{person.mobile}}</li>
+                                <li><i class="fa fa-envelope-o fahome" aria-hidden="true"></i>{{person.email }}</li>
+                                <!-- <li><i class="zmdi zmdi-twitter"></i> @mallinda-hollaway</li> -->
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                    <div class="card">
+                        <div class="card-body">
+                        <h4 class="card-title">EVENTS</h4>
+                        <!-- <h6 class="card-subtitle">Using the most basic table markup, here’s how <code>.table</code> -based tables
+                            look in Bootstrap.
+                        </h6> -->
+                        <div id="myTabContent" class="tab-content" style=" overflow: auto;">
+                          <div class="tab-pane fade" id="tab_content2" style="display: inline; opacity: 1;" ng-show="showteams" >
+                        <table class="table mb-0"  style="color: #000000;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Team Name</th>
+                                    <th>Team Members</th>
+                                    <th>Team Leader</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+
+                                <tr ng-repeat='team in teamArray track by $index'>
+                                    <th scope="row">{{$index+1}}</th>
+
+                                    <td>
+                                        <a>{{team.teamName}}</a>
+                                        <br>
+                                        <small ><a id='eventParentEvent' style="color: #000000;" >{{team.parentEvent}}</a>/{{team.event}}
+                                        </small>
+                                    </td>
+
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li ng-repeat='memberUrl in team.memberUrls track by $index'>
+                                                <span class="tooltip-nameDrama">
+                                                    <img src="{{memberUrl}}" class="avatar" alt="avatar" style="
+                                                        height: 50px; margin-right: 10px;" />
+                                                    <span class="tooltiptext-nameDrama">{{team.memberNames[$index]}}</span>
+                                                </span>                                
+                                            </li>
+                                        </ul>
+                                    </td>
+
+                                    <td class="project_progress">
+                                        <h4>{{team.leader}}</h4>
+                                    </td>
+
+                                    <td>
+                                        <button type="button" class="btn btn-xs" ng-click='deleteTeam($index)' ng-disabled='team.leaderEmail != profileEmail' style="margin-top: 10px; border-radius: 0px;color: white; font-size: 1.6rem; border: 0px; background-color:#b8212d;" >Delete</button>
+                                        <!-- ng-disabled='team.leaderEmail != profileEmail' -->
+                                    </td>
+                         <!--  <td>
+                          <a> Later</a>
+                      </td> -->
+                                </tr>
+
+
+
+
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+
+          <div class="container abcdf" ng-show="teamArray.length==0">
+            <div class="card" style="padding-top: 10px; margin-top: 45px">
+                <p class="card--text" style="text-align: center; padding: 5% 0%; font-size: 2.2rem; font-weight: 600;  ">
+
+                    Uh Oh! You have not registered for any event
+                    <br/>
+                    <br/>
+                    <a class="btn btn-primary" href="#eventreg" >Register Here</a>
+                    
+                    
+                </p>
+                
+            </div>
+        </div>
+
+
+                    </div>
+    </div>
+
+
+
+                <div class="card" ng-show="showWorkshops">
+                    <div class="card-body">
+                            <h4 class="card-title">WORKSHOPS</h4>
+                        <!-- <h6 class="card-subtitle">Using the most basic table markup, here’s how <code>.table</code> -based tables
+                            look in Bootstrap.
+                        </h6> -->
+                        <div id="myTabContent" class="tab-content" style=" overflow: auto; border: 3px solid white;">
+                          <div class="tab-pane fade" id="tab_content2" style="display: inline; opacity: 1;" ng-show="showteams" >
+                        <table class="table mb-0" style="color: white;">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Team ID</th>
+                                    <th>Workshop</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat='team in workshopArray track by $index'>
+                                    <th scope="row">{{$index+1}}</th>
+                                    <td class="project_progress">{{team.teamId}}
+                                    </td>
+                                    <td class="project_progress">
+                                        <h4>{{team.workshop}}</h4>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                        <div class="container abcdf" ng-show="workshopArray.length==0">
+            <div class="card" style="padding-top: 10px; margin-top: 45px">
+                <p class="card--text" style="text-align: center; padding: 5% 0%; font-size: 2.2rem; font-weight: 600;  ">
+
+                    Uh Oh! You have not registered for any workshop
+                    <br/>
+                    <br/>
+                    <a class="btn btn-primary" href="#workshop" >Register Here</a>
+                    
+                    
+                </p>
+                
+            </div>
+        </div>
+
+                    </div>
+                </div>
+
+
+
+            <script type="text/javascript" >
+                $(document).ready(function(){
+                    makeimg($("#user_name").text());
+                });
+            </script>
+</section>
