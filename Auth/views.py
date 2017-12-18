@@ -110,7 +110,7 @@ def profileData(request):
 @login_required(login_url='/register/')
 def genetella(request):
     response = contextCall(request)
-    return render(request, 'dash.html',response)
+    return render(request, 'index.html',response)
 
 
 def ca(request):
@@ -392,9 +392,9 @@ Team Technex.'''%(techprofile.technexId)
         # send_sms_single(message,str(techprofile.mobileNumber))
         #newUser = authenticate(username=email, password=password)
         #print 'code base 3'
-        #user.backend = 'django.contrib.auth.backends.ModelBackend'
+        user.backend = 'django.contrib.auth.backends.ModelBackend'
         print "codeBaes 5"
-        #login(request, user)
+        login(request, user)
         return HttpResponse('1')
     else:
         context= {}
@@ -407,10 +407,18 @@ Team Technex.'''%(techprofile.technexId)
                 context['email'] = get['email']
 
             context['status'] = 1;
-            return render(request,'registernew.html',context)
+            if(get_flavour(request)=='full'):
+                return render(request,'index_login.html',context)
+            else:    
+                return render(request,'index_login_mobile.html',context)
         except:
             context['status'] = 0;
-            return render(request,'registernew.html',context)
+            if(get_flavour(request)=='full'):
+                return render(request,'index_login.html',context)
+            else:    
+                return render(request,'index_login_mobile.html',context)
+
+
 
 # def loginView(request):
 #     response = {}
@@ -952,19 +960,19 @@ def startUpRegistration(request):
             response['error'] = 'Already registered !!'
             return JsonResponse(response)
         except:
-            startUpFair = StartUpFair(interests= post['interests'],description= post['description'],year=post['year'],teamLeader = request.user.techprofile, teamName = post['teamName'],angelListUrl = post['angel'],crunchBaseUrl = post['crunch'])
+            startUpFair = StartUpFair(startuptype= post['startuptype'],description= post['description'],year=post['year'],teamLeader = request.user.techprofile, teamName = post['teamName'],linkUrl = post['link'],funding = post['funding'])
             startUpFair.save()
             memberEmails = ""
-            pindustry = []
+            # pindustry = []
             btypes = []
             # print post['pindustry']
-            for industry in post['pindustry']:
-                try:
-                    pind = PrimaryIndustry.objects.get(name = industry)
-                    pindustry.append(pind)
-                except:
-                    response['status'] = 0
-                    response['error'] = 'Some Error Occured'
+            # for industry in post['pindustry']:
+            #     try:
+            #         pind = PrimaryIndustry.objects.get(name = industry)
+            #         pindustry.append(pind)
+            #     except:
+            #         response['status'] = 0
+            #         response['error'] = 'Some Error Occured'
 
             for btype in post['btype']:
                 bty = BusinessType.objects.get(name = btype)
@@ -974,10 +982,10 @@ def startUpRegistration(request):
                     s=StartUpMails(email=email,team=startUpFair,)
                     memberEmails += email+'  '
                     s.save()
-            pindustry = list(set(pindustry))
+            # pindustry = list(set(pindustry))
             btypes = list(set(btypes))
-            for pind in pindustry:
-                startUpFair.pindusry.add(pind)
+            # for pind in pindustry:
+            #     startUpFair.pindusry.add(pind)
             for bty in btypes:
                 startUpFair.bType.add(bty)
             sf=StartUpFair.objects.get(teamLeader=request.user.techprofile)
@@ -1860,25 +1868,25 @@ def quizI(request):
 
 def startupfair_spreadsheet(team):
     dic = {
-    "interests" : team.interests.encode("utf-8"),
+    "startuptype" : team.startuptype.encode("utf-8"),
     "description" : team.description.encode("utf-8"),
     "year" : team.year,
-    "angelListUrl" : team.angelListUrl,
-    "crunchBaseUrl" : team.crunchBaseUrl,
+    "linkUrl" : team.linkUrl,
+    "funding" : team.funding,
     "leaderName" :  team.teamLeader.user.first_name.encode("utf-8"),
     "leaderEmail" : team.teamLeader.email.encode("utf-8"),
     "leaderMobile" : str(team.teamLeader.mobileNumber),
     "leaderCollege" : team.teamLeader.college.collegeName.encode("utf-8")
     }
-    primaryindustry = team.pindusry.all()
+    # primaryindustry = team.pindusry.all()
     businesstype = team.bType.all()
-    pindustry = ""
+    # pindustry = ""
     btypes = ""
-    for p in primaryindustry:
-        pindustry = pindustry + str(p.name) + ","
+    # for p in primaryindustry:
+    #     pindustry = pindustry + str(p.name) + ","
     for p in businesstype:
         btypes = btypes + str(p.name) + ","
-    dic['pindustry'] = pindustry
+    # dic['pindustry'] = pindustry
     dic['btypes'] = btypes
     url = sheetUrls["startup-fair"]
     print dic

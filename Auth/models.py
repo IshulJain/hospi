@@ -220,13 +220,13 @@ class ReaderStatus(models.Model):
 
 class StartUpFair(models.Model):
     idea = models.CharField(max_length = 250, blank = True)
-    interests = models.CharField(max_length = 500, null=True, blank = True)
+    startuptype = models.CharField(max_length = 500, null=True)
     description = models.CharField(max_length = 20000, null=True, blank=True)
     year = models.SmallIntegerField(default = 0)
-    angelListUrl = models.CharField(max_length = 200, null = True, blank = True)
-    crunchBaseUrl = models.CharField(max_length = 200, null = True, blank = True)
-    pindusry = models.ManyToManyField(PrimaryIndustry,related_name="primary_industry",null = True)
-    bType = models.ManyToManyField(BusinessType,related_name="btype",null = True)  
+    linkUrl = models.CharField(max_length = 200, null = True, blank = True)
+    funding = models.CharField(max_length = 200, null = True, blank = True)
+    # pindusry = models.ManyToManyField(PrimaryIndustry,related_name="primary_industry",null = True)
+    bType = models.ManyToManyField(BusinessType,related_name="btype",null = True, blank = True)  
     teamLeader = models.OneToOneField(TechProfile)
     teamName = models.CharField(max_length = 35)
     def __unicode__(self):
