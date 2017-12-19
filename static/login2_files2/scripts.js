@@ -398,7 +398,7 @@ function validatePassword(){
                 $(this).next().fadeIn();
                 $($(this).next()).find('input[type="text"], input[type="password"], textarea').each(function()
                 {
-                $(this).css("border-color","#e45d5d");   
+                // $(this).css("border-color","#e45d5d");   
                });
 
             });

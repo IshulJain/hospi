@@ -375,7 +375,7 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
             console.log($scope.employeeArray[personIndex]);
         };
         $scope.rmcls = function(){
-          $("input").removeClass("parsley-error");
+          $("input").removeClass("input-error");
           $(".parsley-errors-list").hide();
           $("errormsg").hide();
 
@@ -398,17 +398,17 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
              {
               if($("#forname").val()=="")
               {
-                $("#forname").addClass("parsley-error");
+                $("#forname").addClass("input-error");
                 y=false;
               }
                 if($("#forcollege").val()=="")
                 {
-                   $("#forcollege").addClass("parsley-error");
+                   $("#forcollege").addClass("input-error");
                 y=false;
                 }
                 if($("#forcollegeyear").val()=="" || (isNaN(parseInt($("#forcollegeyear").val()))))
                 {
-                  $("#forcollegeyear").addClass("parsley-error");
+                  $("#forcollegeyear").addClass("input-error");
                   y=false;  
                 }
                 if(!(isNaN(parseInt($("#forcollegeyear").val()))))
@@ -416,19 +416,19 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
                    var x=parseInt($("#forcollegeyear").val());
                   if(x>5 || x<1)
                   {
-                    $("#forcollegeyear").addClass("parsley-error");
+                    $("#forcollegeyear").addClass("input-error");
                     $("#collegeyearerr").show();
                     y=false;
                   }
                 }
                 if($("#forcity").val()=="")
                 {
-                  $("#forcity").addClass("parsley-error");
+                  $("#forcity").addClass("input-error");
                   y=false;
                 }
                 if($("#formobile").val()=="")
                 {
-                  $("#formobile").addClass("parsley-error");
+                  $("#formobile").addClass("input-error");
                   y=false;
                 }
                 if($("#formobile").val()!="")
@@ -437,7 +437,7 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
                   if((num.length!==10) || (isNaN(parseInt(num))) || (parseInt(num).toString().length  != num.length))
                    {
                        
-                       $("#formobile").addClass("parsley-error");
+                       $("#formobile").addClass("input-error");
                        $("#mobileerr").show();
                        y=false;
                    }
