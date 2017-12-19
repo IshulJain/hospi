@@ -836,7 +836,7 @@ app.controller('startup-cont', ['$scope', '$window', '$http' , function($scope, 
         x=false;
       }
      }
-     if(x)
+     if(x&&$scope.visible2)
      {
       if($scope.year=="Founding Year")
         {
