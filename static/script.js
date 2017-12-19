@@ -836,13 +836,16 @@ app.controller('startup-cont', ['$scope', '$window', '$http' , function($scope, 
         x=false;
       }
      }
-     if(x&&$scope.visible2)
+     if(x)
      {
-      if($scope.year=="Founding Year")
+      if($scope.year=="Founding Year"&&$scope.visible2)
         {
           $("#year").addClass("input-error");
           x=false;
         }
+      else if($scope.visible1){
+        $scope.year=0;
+      }
      }
      if(x&&$scope.visible2)
       {
