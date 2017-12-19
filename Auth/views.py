@@ -52,7 +52,8 @@ sheetUrls = {
     "automobile" : "https://script.google.com/macros/s/AKfycbxJVGyMPPT1Aa9DjPDqqcaw0ZbWC8dYqTuZPc50iwaMISf8MNg-/exec",
     "ethical-hacking" : "https://script.google.com/macros/s/AKfycbw_oQ_7Mxc-NpPeipvTlGYIt5Jau5PzVCYqcgMpuelCs37cVRuA/exec",
     "industrial-automation-plc-scada" : "https://script.google.com/macros/s/AKfycbxRDIbRTg4Y9lSoPnuorqv0Q3GujmdBR-j50vyYuVlg3BMjtog/exec",
-    "startup-fair" : "https://script.google.com/macros/s/AKfycbxygKcvs-AABLw45APySehart7e4H4a34gzAxKbb5lBV4BUEqs/exec",
+    "startup-fair-ventura" : "https://script.google.com/macros/s/AKfycbxygKcvs-AABLw45APySehart7e4H4a34gzAxKbb5lBV4BUEqs/exec",
+    "startup-fair-battle" : "https://script.google.com/macros/s/AKfycbxygKcvs-AABLw45APySehart7e4H4a34gzAxKbb5lBV4BUEqs/exec",
     "quiz-registartion" : "https://script.google.com/macros/s/AKfycbz7irBHUHPRt7E3RE9yhGUgnRN3Cy8XKZ4ux0tbjmd6J2_vuAhN/exec",
     "dhokebaaj" : "https://script.google.com/macros/s/AKfycbwcAYUhZMqjz2qudkp6m523HOaSdWMY1pzijYHMOP5ccdL0_TkJ/exec",
     "krackatdata" : "https://script.google.com/macros/s/AKfycbzP0aInZDkeoa2JWF4eWfLzuilGmJ2hWdFYWlmbyuaio3FuB2pH/exec",
@@ -1022,7 +1023,9 @@ Regards
             techprofile = request.user.techprofile
             # message = "Registration successful for StartupFair.\n TeamName:"+str(post['teamName'])+"\nVisit www.fb.com/technex for regular updates!  All the best, Team Technex"
             # send_sms_single(message,str(techprofile.mobileNumber))
+            
             startupfair_spreadsheet(sf)
+           
             return JsonResponse(response)
     else:
         response['status'] = 0
@@ -1888,7 +1891,10 @@ def startupfair_spreadsheet(team):
         btypes = btypes + str(p.name) + ","
     # dic['pindustry'] = pindustry
     dic['btypes'] = btypes
-    url = sheetUrls["startup-fair"]
+    if team.startuptype=="Ventura":
+        url = sheetUrls["startup-fair-ventura"]
+    else:
+        url = sheetUrls["startup-fair-battle"]
     print dic
     requests.post(url,data=dic)
 

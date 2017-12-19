@@ -88,11 +88,8 @@ fbq('track', 'PageView');
     text-align: center;
     overflow: hidden;
 }
-.input-err{
-    border-color: #e45d5d;
-}
-        .fb-btn
-        {
+.fb-btn
+{
             transition: box-shadow .3s; margin-bottom: 10px;background-color: #fff;color: #5a5b5e;padding: 0.5rem 1rem; text-align: left;border: 1px solid       #e9eaea; display: block; box-shadow: 0 4px 8px rgba(212,213,214,0.2); cursor: pointer; font-family: "Oxygen","Segoe UI","Helvetica Neue",sans-serif,"Helvetica",arial;
         }
         .fb-btn:hover
@@ -164,12 +161,12 @@ fbq('track', 'PageView');
 
             <!-- foundation tabs -->
             <ul class="tabs" data-tab="" >
-                <li class="tab-title active"><a href="#panelLogin" target="_self">Log In</a></li>
-                <li class="tab-title"><a href="#panelRegister" target="_self">Register</a></li>
+                <li class="tab-title"><a href="#panelLogin" target="_self">Log In</a></li>
+                <li class="tab-title active" id="register-tab"><a href="#panelRegister" target="_self">Register</a></li>
             </ul>
             <div class="large-12 columns">
             <div class="tabs-content">
-                <div class="content active" id="panelLogin">
+                <div class="content" id="panelLogin">
                     <div class="row">
 
                        <!--  <div class="large-12 columns" style="margin-top: 15px; margin-left: 5px;">
@@ -230,7 +227,7 @@ fbq('track', 'PageView');
                 </div>
 
 
-                <div class="content" id="panelRegister">
+                <div class="content active" id="panelRegister">
                     <div class="row">
                         <form role="form" action="" method="post" class="registration-form" >
                           {% csrf_token %}
@@ -431,14 +428,14 @@ fbq('track', 'PageView');
   
   <script>
     // sandbox disable popups
-    if (window.self !== window.top && window.name!="view1") {;
-      window.alert = function(){/*disable alert*/};
-      window.confirm = function(){/*disable confirm*/};
-      window.prompt = function(){/*disable prompt*/};
-      window.open = function(){/*disable open*/};
-    }
+    // if (window.self !== window.top && window.name!="view1") {;
+    //   window.alert = function(){/*disable alert*/};
+    //   window.confirm = function(){/*disable confirm*/};
+    //   window.prompt = function(){/*disable prompt*/};
+    //   window.open = function(){/*disable open*/};
+    // }
     
-    // prevent href=# click jump
+    /*// prevent href=# click jump
     document.addEventListener("DOMContentLoaded", function() {
       var links = document.getElementsByTagName("A");
       for(var i=0; i < links.length; i++) {
@@ -451,19 +448,19 @@ fbq('track', 'PageView');
                   return false;
                 }
                 else {
-                  /*
+                  
                   var el = document.getElementById(this.hash.replace(/#/, ""));
                   if (el) {
                     el.scrollIntoView(true);
                   }
-                  */
+                  
                 }
               }
               return false;
           })
         }
       }
-    }, false);
+    }, false);*/
   </script>
   
   <!--scripts loaded here-->
@@ -564,6 +561,7 @@ function fb_login() {
         if ('email' in response['context']) getData += '&email='+response['context']['email'];
         getData += '&uid='+response['context']['uid'];
         window.location = '/register/?'+getData;
+        
 
       }
     });
