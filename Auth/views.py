@@ -52,8 +52,10 @@ sheetUrls = {
     "automobile" : "https://script.google.com/macros/s/AKfycbxJVGyMPPT1Aa9DjPDqqcaw0ZbWC8dYqTuZPc50iwaMISf8MNg-/exec",
     "ethical-hacking" : "https://script.google.com/macros/s/AKfycbw_oQ_7Mxc-NpPeipvTlGYIt5Jau5PzVCYqcgMpuelCs37cVRuA/exec",
     "industrial-automation-plc-scada" : "https://script.google.com/macros/s/AKfycbxRDIbRTg4Y9lSoPnuorqv0Q3GujmdBR-j50vyYuVlg3BMjtog/exec",
-    "startup-fair-ventura" : "https://script.google.com/macros/s/AKfycbxygKcvs-AABLw45APySehart7e4H4a34gzAxKbb5lBV4BUEqs/exec",
-    "startup-fair-battle" : "https://script.google.com/macros/s/AKfycbxygKcvs-AABLw45APySehart7e4H4a34gzAxKbb5lBV4BUEqs/exec",
+
+    "startup-fair-ventura" : "https://script.google.com/a/technex.in/macros/s/AKfycby7bB2SOyJz-Lj0UvjzaymFyKKoM_mwCWXkvW2Q_xGUiUZmci0/exec", #Updated
+    "startup-fair-battle" : "https://script.google.com/a/technex.in/macros/s/AKfycbxklC9f27wTX4pMpnDO8VD4midp7Ygt_VfoFd4Lyh_Kiln6nuCp/exec", #Updated
+
     "quiz-registartion" : "https://script.google.com/macros/s/AKfycbz7irBHUHPRt7E3RE9yhGUgnRN3Cy8XKZ4ux0tbjmd6J2_vuAhN/exec",
     "dhokebaaj" : "https://script.google.com/macros/s/AKfycbwcAYUhZMqjz2qudkp6m523HOaSdWMY1pzijYHMOP5ccdL0_TkJ/exec",
     "krackatdata" : "https://script.google.com/macros/s/AKfycbzP0aInZDkeoa2JWF4eWfLzuilGmJ2hWdFYWlmbyuaio3FuB2pH/exec",
@@ -1897,6 +1899,23 @@ def startupfair_spreadsheet(team):
         url = sheetUrls["startup-fair-battle"]
     print dic
     requests.post(url,data=dic)
+
+
+def startup_spreadsheet_delete(team):
+    dic = {
+    "leaderName" :  team.teamLeader.user.first_name.encode("utf-8"),
+    "leaderEmail" : team.teamLeader.email.encode("utf-8"),
+    "leaderMobile" : str(team.teamLeader.mobileNumber),
+    "leaderCollege" : team.teamLeader.college.collegeName.encode("utf-8"),
+    "startupDelete" : 1
+    }
+    if team.startuptype=="Ventura":
+        url = sheetUrls["startup-fair-ventura"]
+    else:
+        url = sheetUrls["startup-fair-battle"]
+    print dic
+    requests.post(url,data=dic)
+
 
 def startupdatafill():
     teams = StartUpFair.objects.all()
