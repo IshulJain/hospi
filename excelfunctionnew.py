@@ -5,7 +5,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "technex17.settings")
 application = get_wsgi_application()
 from Auth.models import *
 import xlrd
-def eventSheetsTransfer():
+def eventSheetsTransfer2():
     events = Event.objects.all()
     w = Workbook()
     m = 0
@@ -25,8 +25,8 @@ def eventSheetsTransfer():
         sheet1.write(m,11,str(event.image))
         m = m+1
         
-    x = "eventsDataNew.xls"
-    w.save(x)
+    
+    w.save("eventsDataNew.xls")
 
 eventSheetsTransfer()
 
