@@ -8,6 +8,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
   line-height: 1.1;
 }
+
+  .col-md-6.col-sm-6.col-xs-12.has-feedback.member-input {
+    padding-left: 0px;
+}
 </style>
 
 <section role="main" class="content" >
@@ -115,7 +119,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 <div>
   <div data-ng-repeat="field in members track by $index" class="form-group ">
     <div class="col-md-6 col-sm-6 col-xs-12 has-feedback member-input">
-      <input type="text" ng-model="a[$index]" class="form-control col-md-7 col-xs-12 abcd" ng-focus="removeerror($index)" required placeholder="Member Email or TechnexID" />
+      <input type="text" ng-model="a[$index]" class="form-control col-sm-12 col-xs-12 abcd" ng-focus="removeerror($index)" required placeholder="Member Email or TechnexID" />
       <ul class="parsley-errors-list filled" style="display: none;"><li class="parsley-required">Invalid Email or TechnexID</li></ul>
       <span class="glyphicon glyphicon-pawn form-control-feedback right" style="right: 10px" aria-hidden="true"></span>
     </div>
