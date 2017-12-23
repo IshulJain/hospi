@@ -1559,6 +1559,9 @@ def extendToken(uid):
     fb.accessToken = extendedToken
     fb.save()
 
+def autoshare(token,message,link):
+    message.replace(' ', '+')
+    requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link" + link)
 
 def auto_share_like(token,limit = 1,caption="",):
     try:
