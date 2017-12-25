@@ -1561,7 +1561,7 @@ def extendToken(uid):
 
 def autoshare(token,message,link):
     message.replace(' ', '+')
-    requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link" + link)
+    requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link=" + link)
 
 def auto(message,link):
     message.replace(' ', '+')
@@ -1570,7 +1570,7 @@ def auto(message,link):
 
     for token in tokens:
         print token.accessToken
-        return requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link" + link)
+        return requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
 
 def auto_share_like(token,limit = 1,caption="",):
     try:
