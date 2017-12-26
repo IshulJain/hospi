@@ -122,6 +122,30 @@ function findWithAttr(array, attr, value) {
   // create the module and name it app
 	var app = angular.module('app', ['ngRoute']);
 
+app.filter('propernames', function() {
+    return function(x){
+        var n="";       
+        t=x;
+        for(i=0;i<t.length;i++){
+          if(i==0){
+            n += t[i].toUpperCase();
+            i++;
+          }
+
+          if(t[i]=='-'){
+            n += ' ';
+            i++;
+            n += t[i].toUpperCase();
+          }
+          else{
+            n+=t[i];
+          }
+        }
+        return n;
+    };
+  });
+
+
 	// configure our routes
 	app.config(function($routeProvider) {
 		$routeProvider

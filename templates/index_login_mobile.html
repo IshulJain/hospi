@@ -158,12 +158,12 @@ fbq('track', 'PageView');
 
             <!-- foundation tabs -->
             <ul class="tabs" data-tab="" >
-                <li class="tab-title active"><a href="#panelLogin" target="_self">Log In</a></li>
-                <li class="tab-title"><a href="#panelRegister" target="_self">Register</a></li>
+                <li class="tab-title"><a href="#panelLogin" target="_self">Log In</a></li>
+                <li class="tab-title active"><a href="#panelRegister" target="_self">Register</a></li>
             </ul>
             <div class="large-12 columns">
             <div class="tabs-content">
-                <div class="content active" id="panelLogin">
+                <div class="content" id="panelLogin">
                     <div class="row">
 
                        <!--  <div class="large-12 columns" style="margin-top: 15px; margin-left: 5px;">
@@ -224,7 +224,7 @@ fbq('track', 'PageView');
                 </div>
 
 
-                <div class="content" id="panelRegister">
+                <div class="content  active" id="panelRegister">
                     <div class="row">
                         <form role="form" action="" method="post" class="registration-form" >
                           {% csrf_token %}

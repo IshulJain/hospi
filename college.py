@@ -1,7 +1,7 @@
 import os
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "technexUser.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "technex17.settings")
 application = get_wsgi_application()
 # import django
 # django.setup()
