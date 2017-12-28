@@ -20,7 +20,7 @@ as:[1,1,1,1,1]
 {
 parentEvent: 'supernova',
 events:['scientists-utopia', 'astrophotography', 'astroquiz', 'exploring-interstellar'],
-max:[3,1,1,1],
+max:[3,1,1,2],
 as:[1,1,1,1]
 },
 {

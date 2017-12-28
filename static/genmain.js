@@ -158,8 +158,9 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
   $scope.user;
   $scope.leader = document.getElementById('userEmail').value;
   $scope.addMember = function(){
-  	if($scope.counter < $scope.max)
+  	if($scope.counter <= $scope.max)
   	$scope.members.push($scope.counter++);
+
   console.log($scope.a);
   	};
   $scope.removeMember = function(z){
