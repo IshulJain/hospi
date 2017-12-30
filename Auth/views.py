@@ -1413,7 +1413,7 @@ def registrationData(request):
     return render(request,'data.html',{'externalTeams':totalTeams-localTeams,'externalParticipation':totalRegistrations-localRegistrations,'totalTeams':totalTeams,'totalRegistrations':totalRegistrations,'localRegistrations':localRegistrations,'localTeams':localTeams,'workshopTeamsTotal':workshopTeamsTotal,'eventcount': eventcount, 'workshopcount':workshopcount})
 
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
-def publicity(request):
+def collegewise(request):
     colleges = College.objects.all().order_by('collegeName')
     if request.method == 'POST':
         college = College.objects.filter(collegeName = request.POST['college'])
@@ -3195,3 +3195,7 @@ def fill_registrations():
     profiles = TechProfile.objects.all()
     for prof in profiles:
         spreadsheetfill_register(prof)
+
+@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+def publicity(request):
+    return render(request,"buttons.html")

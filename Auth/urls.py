@@ -47,7 +47,7 @@ urlpatterns = [
     url(r'^botTest/',botTest,name='bot Test'),
     #url(r'^workshops/',workshop,name='WorkShop'),
     url(r'^data/',registrationData,name='data'),
-    url(r'^publicity/',publicity,name='publicity'),
+    url(r'^collegewise/',collegewise,name='collegewise'),
     url(r'^regtrack/', regtrack , name='regtrack'),
     url(r'^dpbx/',dropboxtest,name='dpbxs'),
     url(r'^uptry/',uploadtry, name='pldlds'),
@@ -94,5 +94,6 @@ urlpatterns = [
 	#url(r'^logout/$', LogoutView, name='logout'),
 	url(r'^googlec0c9e6f96a842b6d.html/',gverify,name='gverify'),
 	url(r'^initiative/$',initiative, name='initiativenew'),
+	url(r'^publicity/$',publicity, name='publicity'),
 
 ]
