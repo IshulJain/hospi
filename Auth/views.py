@@ -1340,7 +1340,7 @@ def event(request, key):
         response['status'] = 'Invalid Request'
         return JsonResponse(response)
 '''
-@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+@user_passes_test(lambda u: u.is_staff)
 def registrationData(request):
     eventcount = {}
     # eventcount['eventdata'] = []
@@ -1412,7 +1412,7 @@ def registrationData(request):
         print workshopcount
     return render(request,'data.html',{'externalTeams':totalTeams-localTeams,'externalParticipation':totalRegistrations-localRegistrations,'totalTeams':totalTeams,'totalRegistrations':totalRegistrations,'localRegistrations':localRegistrations,'localTeams':localTeams,'workshopTeamsTotal':workshopTeamsTotal,'eventcount': eventcount, 'workshopcount':workshopcount})
 
-@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+@user_passes_test(lambda u: u.is_staff)
 def collegewise(request):
     colleges = College.objects.all().order_by('collegeName')
     if request.method == 'POST':
@@ -2121,7 +2121,7 @@ def collegesStateCity():
         except:
             print collegeid
 
-@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+@user_passes_test(lambda u: u.is_staff)
 def statewise(request):
     if request.method == 'POST':
         # print request.POST['state']
@@ -3196,6 +3196,6 @@ def fill_registrations():
     for prof in profiles:
         spreadsheetfill_register(prof)
 
-@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+@user_passes_test(lambda u: u.is_staff)
 def publicity(request):
     return render(request,"buttons.html")
