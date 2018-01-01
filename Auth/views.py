@@ -1447,7 +1447,7 @@ def collegewise(request):
             referral.remove('')
         except:
             pass
-        return render(request,'publicity.html',{'colleges':colleges,'collegeWaleCount':collegeWaleCount,'collegeWale':zip(collegeWale,eventsData,workshopsData),'referral':referral})
+        return render(request,'collegewise.html',{'colleges':colleges,'collegeWaleCount':collegeWaleCount,'collegeWale':zip(collegeWale,eventsData,workshopsData),'referral':referral})
     else:
         return render(request,'publicity.html',{'colleges':colleges})
 
