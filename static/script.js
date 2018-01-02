@@ -68,45 +68,60 @@ as:[1,1,1]
 ];
 
 var workdata=[
-/*{
-  workshop: '3-d-printing',
-  max: 1
-},*/
+
 {
-  workshop: 'Internet of Things',
+  workshop: 'cryptocurrency',
+  
 },
 {
-  workshop: 'Autonomous Robotics (ArduBotics)',
+  workshop: 'amazon-alexa',
+  
 },
 {
-  workshop: 'Industrial Automation PLC & SCADA',
+  workshop: 'internet-of-things',
+  
 },
 {
-  workshop: 'Automobile Mechanics & IC Engines',
+  workshop: 'autonomous-robotics-ardubotics',
+  
 },
 {
-  workshop: 'Ethical Hacking & Information Security',
+  workshop: 'industrial-automation-plc-scada',
+  
 },
 {
-  workshop: 'Android Application Development',
+  workshop: 'automobile-mechanics-ic-engines',
+  
 },
 {
-  workshop: 'Sixthsense Robotics',
+  workshop: 'ethical-hacking-information-security',
+  
 },
 {
-  workshop: 'AI ML',
+  workshop: 'android-application-development',
+  
 },
 {
-  workshop: 'Augmented Reality',
+  workshop: 'sixthsense-robotics',
+  
 },
 {
-  workshop: 'Digital Marketing',
+  workshop: 'artificial-intelligence-machine-learning',
+  
 },
 {
-  workshop: 'E-Commerce',
+  workshop: 'augmented-reality',
+  
 },
 {
-  workshop: 'Bridge Design',
+  workshop: 'digital-marketing',
+},
+{
+  workshop: 'e-commerce',
+},
+{
+  workshop: 'bridge-design',
+  
 },
 ];
 function findWithAttr(array, attr, value) {
@@ -169,11 +184,11 @@ app.filter('propernames', function() {
 				controller  : 'evnt-control'
 			})
 
-			/*.when('/workshop', {
+			.when('/workshop', {
 				templateUrl : '/static/pages/form.html',
 				controller  : 'workshop-cont'
 			})
-*/
+
       .when('/startupreg/',{
                    templateUrl:'/static/pages/startupfair.html',
                    controller:'startup-cont'
@@ -337,7 +352,7 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
         };
         $scope.showteams = true;
         $scope.showDetails = false;
-        $scope.showWorkshops = false;
+        $scope.showWorkshops = true;
         $scope.teamArray = profileData.getTeamData();
         $scope.workshopArray = profileData.getWorkshopData();
         console.log($scope.workshopArray);
@@ -659,7 +674,7 @@ app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , f
           $("#parentevent").addClass("input-error");
         }
     }
-    if(x)
+    /*if(x)
     {
        if($scope.max!=1)
        {
@@ -670,7 +685,7 @@ app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , f
            }
        }
 
-    }
+    }*/
      if(x)
      {
       if($scope.leader=="")
@@ -723,7 +738,7 @@ app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , f
        console.log($scope.a);
        data={
         'workshopSlug':$scope.workshop,
-        'teamName': $scope.teamName,
+        'teamName': $scope.leader,
         'teamLeaderEmail': $scope.leader,
         'members':$scope.a
        }

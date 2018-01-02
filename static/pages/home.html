@@ -141,15 +141,15 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Team ID</th>
-                                    <th>Workshop</th>
+                                    <!-- <th>ID</th> -->
+                                    <th>Registered Workshops</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat='team in workshopArray track by $index'>
                                     <th scope="row">{{$index+1}}</th>
-                                    <td class="project_progress">{{team.teamId}}
-                                    </td>
+                                    <!-- <td class="project_progress">{{team.teamId}}
+                                    </td> -->
                                     <td class="project_progress">
                                         <h4>{{team.workshop}}</h4>
                                     </td>
