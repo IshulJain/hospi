@@ -1258,7 +1258,10 @@ def workshop(request):
     except:
         response['status']=0
     print response
-    return render(request,'workshopnew.html',{'workshops':response})
+    if(get_flavour(request) == 'full'):
+        return render(request,"workshopnew.html",{'workshops':response})
+    else:
+        return render(request,"workshopmobilenew.html",{'workshops':response}) 
 
 # @csrf_exempt
 # def workshop(request):
