@@ -137,7 +137,7 @@
 
 
 					<span class="ct--header__cta ct--header__cta--1 ">
-								<span class="ct--header__cta__label t t--dy t--header"><span class="t--mask"><img src="http://res.cloudinary.com/technex-iit-bhu/image/upload/v1509275486/imageedit_5_7155531026_bscm8p.png" style="width:30px;height:30px;background-color:rgba(0,0,0,.6);background-blend-mode: multiply;"/></span></span>
+								<span class="ct--header__cta__label t t--dy t--header"><span class="t--mask"><img src="http://res.cloudinary.com/technex-iit-bhu/image/upload/v1509275486/imageedit_5_7155531026_bscm8p.png" style="width:30px;height:30px;"/></span></span>
 				<span class="ct--header__cta__line t t--dy t--sy t--header"></span>
 			</span>
 
@@ -196,51 +196,26 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 				<div class="container1" >
                     <img src="{{workshop.image}}" class="image"  style="width:130%; margin-left:-45px;" >
                     <div class="middle">
-					<!-- 	<div class="middle">
-							<div class="text" style="text-align: center">{{member.number}}</div>
+                    <!--    <div class="middle">
+                            <div class="text" style="text-align: center">{{member.number}}</div>
                             <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>-->
-						</div>
-				</div>
+                        </div>
+                </div>
 
                 </a>
                     <p style="text-align: center;">{{workshop.title}}</p>
                     <p style="text-align: center; font-size: 13px;">{{workshop.order}}</p>
             </li>
             <div class="tingle-demo" style="display: none;" id="workshop{{forloop.counter}}">
-            <div class="cd-panel from-right {{workshop.order}}">
-        <header class="cd-panel-header" style="overflow:hidden;">
-    <div style="width: 100%" class="header_head">
-    <div style="width: 50%">
-            <h1>{{workshop.title}} </h1>
-      </div>
-      <div style="width: 50%">
-      <a href="{{workshop.sponlink}}">
-      <img src="{{workshop.sponimage}}" class="header_img"/>
-      </a>
-      </div>
-    </div>
-            <a href="#0" class="cd-panel-close">Close</a>
-        </header>
-        <div class="cd-panel-container">
-            <div class="cd-panel-content" style="color: black;">
-            <div style="width: 100%;display: table;margin: 0 auto;">
-                <a class="registerWorkshop" href="/dashboard/#/workshopreg/{{workshop.link}}">REGISTER</a>
-                </div>
-                <div class="cost"><span>COST: </span><span>₹{{workshop.workshopFees}}/ per person</span></div>
-                <br>
-                <div class="workshopDescription">
-                {{workshop.description | safe}}
-                </div>
-            </div> <!-- cd-panel-content -->
-        </div> <!-- cd-panel-container -->
-    </div> 
+            <div id=""><span style="margin-left: 35%;"><img src="{{workshop.image}}" class="image" style="height:80px; width: 80px;" ></span><span style="color: grey; text-align:right; margin-left:10px;position: relative; bottom:35px; font-weight:bold; ">{{workshop.title}}</span>
+             <span style="color: grey;" class="para" >{{workshop.description | safe}}</span></div>
+        </div>
 
            {% endfor %}
-		    </ul>
+            </ul>
 </div>
 
-		</section>
-
+        </section>
 							<footer class="footer">
 	<div class="container container--full">
 
