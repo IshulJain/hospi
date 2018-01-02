@@ -1105,89 +1105,89 @@ def workshopRegister(request):
         print data
         workshop = Workshops.objects.get(slug = data['workshopSlug'])
 
+        # try:
+        #     # print "here"
+        #     if data['teamName'] == '':
+        #         raise Exception('This is the exception you expect to handle')
+        #     else:
+        #         team = WorkshopTeam.objects.get(teamName = data['teamName'], workshop = workshop)
+        #         response['status'] = 0
+        #         response['error'] = "TeamName Already exists"
+        #         return JsonResponse(response)
+        # except:
         try:
-            # print "here"
-            if data['teamName'] == '':
-                raise Exception('This is the exception you expect to handle')
-            else:
-                team = WorkshopTeam.objects.get(teamName = data['teamName'], workshop = workshop)
+            teamLeader = TechProfile.objects.get(technexId = data['teamLeaderEmail'])
+            print teamLeader.college.collegeWebsite
+            print type(teamLeader.college.collegeWebsite)
+            if teamLeader.college.collegeWebsite == "190":
                 response['status'] = 0
-                response['error'] = "TeamName Already exists"
+                response['error'] = "Registration not Successfull!!"
                 return JsonResponse(response)
         except:
+            teamLeader = TechProfile.objects.get(email = data['teamLeaderEmail'])
+            print teamLeader.college.collegeWebsite
+            print type(teamLeader.college.collegeWebsite)
+            if teamLeader.college.collegeWebsite == "190":
+                response['status'] = 0
+                response['error'] = "Registration not Successfull!!"
+                return JsonResponse(response)
+        users = []
+        # print "here"
+        for member in data['members']:
             try:
-                teamLeader = TechProfile.objects.get(technexId = data['teamLeaderEmail'])
-                print teamLeader.college.collegeWebsite
-                print type(teamLeader.college.collegeWebsite)
-                if teamLeader.college.collegeWebsite == "190":
-                    response['status'] = 0
-                    response['error'] = "Registration not Successfull!!"
-                    return JsonResponse(response)
-            except:
-                teamLeader = TechProfile.objects.get(email = data['teamLeaderEmail'])
-                print teamLeader.college.collegeWebsite
-                print type(teamLeader.college.collegeWebsite)
-                if teamLeader.college.collegeWebsite == "190":
-                    response['status'] = 0
-                    response['error'] = "Registration not Successfull!!"
-                    return JsonResponse(response)
-            users = []
-            # print "here"
-            for member in data['members']:
                 try:
-                    try:
-                        user = TechProfile.objects.get(email = member)
-                        if user.college.collegeWebsite == "190":
-                            response['status'] = 0
-                            response['error'] = "Registration not Successfull!!"
-                            return JsonResponse(response)
-                        users.append(user)
-                    except:
-                        user = TechProfile.objects.get(technexId = member)
-                        if user.college.collegeWebsite == "190":
-                            response['status'] = 0
-                            response['error'] = "Registration not Successfull!!"
-                            return JsonResponse(response)
-                        users.append(user)
+                    user = TechProfile.objects.get(email = member)
+                    if user.college.collegeWebsite == "190":
+                        response['status'] = 0
+                        response['error'] = "Registration not Successfull!!"
+                        return JsonResponse(response)
+                    users.append(user)
                 except:
-                    response['status'] = 0
-                    response['error'] = 'Member not Registered('+str(member)+')'
-                    return JsonResponse(response)
+                    user = TechProfile.objects.get(technexId = member)
+                    if user.college.collegeWebsite == "190":
+                        response['status'] = 0
+                        response['error'] = "Registration not Successfull!!"
+                        return JsonResponse(response)
+                    users.append(user)
+            except:
+                response['status'] = 0
+                response['error'] = 'Member not Registered('+str(member)+')'
+                return JsonResponse(response)
 
-            users = list(set(users))
+        users = list(set(users))
+        try:
             try:
-                try:
-                    team = WorkshopTeam.objects.get(teamLeader = teamLeader,workshop = workshop)
-                    response['status'] = 0
-                    response['error'] = 'You have Already registered for this event!!'
-                    return JsonResponse(response)
-                except:
-                    team = Team.objects.get(workshop = workshop, members = teamLeader)
-                    response['status'] = 0
-                    response['error'] = 'You have Already registered for this event !!'
+                team = WorkshopTeam.objects.get(teamLeader = teamLeader,workshop = workshop)
+                response['status'] = 0
+                response['error'] = 'You have Already registered for this event!!'
+                return JsonResponse(response)
             except:
-                for u in users:
+                team = Team.objects.get(workshop = workshop, members = teamLeader)
+                response['status'] = 0
+                response['error'] = 'You have Already registered for this event !!'
+        except:
+            for u in users:
+                try:
                     try:
-                        try:
-                            team = WorkshopTeam.objects.get(workshop = workshop, members = u)
-                            response['status'] = 0
-                            response['error'] = u.email+' Already registered for this workshop !!!'
-                            return JsonResponse(response)
-                        except:
-                            team = WorkshopTeam.objects.get(workshop = workshop, teamLeader = u)
-                            response['status'] = 0
-                            response['error'] = u.email+' Already registered for this workshop !!!'
-                            return JsonResponse(response)
+                        team = WorkshopTeam.objects.get(workshop = workshop, members = u)
+                        response['status'] = 0
+                        response['error'] = u.email+' Already registered for this workshop !!!'
+                        return JsonResponse(response)
                     except:
-                        try:
-                            if teamLeader == u:
-                                users.remove(u)
-                        except:
-                            pass
-                team = WorkshopTeam(teamLeader = teamLeader,workshop = workshop, teamName = data['teamName'])
-                team.save()
-            subject = "[Technex'18] Successful Registration"
-            body = '''
+                        team = WorkshopTeam.objects.get(workshop = workshop, teamLeader = u)
+                        response['status'] = 0
+                        response['error'] = u.email+' Already registered for this workshop !!!'
+                        return JsonResponse(response)
+                except:
+                    try:
+                        if teamLeader == u:
+                            users.remove(u)
+                    except:
+                        pass
+            team = WorkshopTeam(teamLeader = teamLeader,workshop = workshop, teamName = data['teamName'])
+            team.save()
+        subject = "[Technex'18] Successful Registration"
+        body = '''
 Dear %s,
 
 Thanks for registering for %s Technex'18.
@@ -1213,17 +1213,17 @@ Regards
 
 Team Technex
 Regards
-            '''
-            memberEmails = ""
-            for user in users:
-                memberEmails += user.email+'  '
-                team.members.add(user)
-            send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
-            for user in users:
-               send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
-            response['status'] = 1
-            workshop_spreadsheet(team)
-            return JsonResponse(response)
+        '''
+        memberEmails = ""
+        for user in users:
+            memberEmails += user.email+'  '
+            team.members.add(user)
+        send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
+        for user in users:
+           send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
+        response['status'] = 1
+        # workshop_spreadsheet(team)
+        return JsonResponse(response)
     else:
         response['status'] = 0
         return render(request, 'eventRegistration.html',contextCall(request))
@@ -1310,7 +1310,59 @@ def workshop(request):
 #         response['status'] = 0
 #     print json.dumps(response)    
 #     return render(request,'workshopnew.html',{"eventdata":response,"response":json.dumps(response)})
+
+    # 
+
 '''
+@csrf_exempt
+def workshop(request):
+    response = {}
+    if True:#try:
+        workshops = Workshops.objects.all()
+        response['status'] = 1
+        response['type'] = 0
+        # response['data'] = []
+        data = []
+        dataObject = {}
+        dataObject['parentEventId'] = "workshops"
+        dataObject['events'] = []
+        dataObject['parentEventName'] = "Workshops"
+        WorkshopData = []
+        for workshop in workshops:
+            workshopData = {}
+            workshopData['event_name'] = workshop.title
+            workshopData['image'] = workshop.image
+            workshopData['event_content'] = workshop.description
+            workshopData['event_register'] = "Register"
+            workshopData['register_link'] = "#"
+            workshopData['workshopFees'] = workshop.workshopFees
+            workshopData['eventOrder'] = workshop.order
+            # workshopData['']
+            workshopData['eventSlug'] = workshop.slug
+            workshopData['eventId'] = workshop.slug
+            workshopData['sponlink'] = workshop.sponlink
+            workshopData['sponimage'] = workshop.sponimage
+            # workshopData['workshopId'] = workshop.slug
+            workshopData['eventOptions'] = []
+            workshopOptions = WorkshopOptions.objects.filter(workshop = workshop)
+            for workshopOption in workshopOptions:
+                workshopOptionData = {}
+                workshopOptionData['optionName'] = workshopOption.optionName
+                workshopOptionData['optionDescription'] = workshopOption.optionDescription
+                workshopOptionData['eventOptionOrder'] = workshopOption.optionOrder
+                workshopData['eventOptions'].append(workshopOptionData)
+            workshopData['eventOptions'].sort(key=lambda x: x['eventOptionOrder'])
+            dataObject['events'].append(workshopData)
+        data.append(dataObject)
+        # WorkshopData.sort(key=lambda x: x['order'])
+        # data.append(WorkshopData)
+        response['data'] = data
+    else:#except:
+        response['status'] = 0
+    print json.dumps(response)    
+    return render(request,'workshopnew.html',{"eventdata":response,"response":json.dumps(response)})
+
+''
 def event(request, key):
     response = {}
     if request.method == 'GET':
