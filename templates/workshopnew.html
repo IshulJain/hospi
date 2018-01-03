@@ -227,12 +227,12 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
             <div id=""><div class="cd-panel from-right {{workshop.order}}">
         <header class="cd-panel-header" style="overflow:hidden;">
     <div style="width: 100%" class="header_head">
-    <div style="width: 50%">
+    <div style="transform:translate3d(290px, 0px, 0px)">
             <u><h1>{{workshop.event_name}} </h1></u>
       </div>
-      <div style="width: 50%">
-      <a href="{{workshop.sponlink}}">
-      <img src="{{workshop.sponimage}}" height="20" width="20" />
+      <div style="transform:translate3d(490px, 0px, 0px)">
+     sponsored by: <a href="{{workshop.sponlink}}">
+      <img src="{{workshop.sponimage}}" height="30" width="30" />
       </a>
       </div>
     </div>
@@ -241,9 +241,9 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
         <div class="cd-panel-container">
             <div class="cd-panel-content" style="color: black;">
             <div style="width: 100%;display: table;margin: 0 auto;">
-                <a class="button9" style="padding:6px;">REGISTER</a>
+                <button><a class="button9" style="padding:6px;" href="/dashboard/#/workshopreg/{{workshop.register_link}}">REGISTER</a></button>
                 </div>
-                <div style="transform:translate3d(360px, 0px, 0px)"><span>COST: </span><span>₹{{workshop.workshopFees}}/ per person</span></div>
+                <div style="transform:translate3d(490px, 0px, 0px)"><span>COST: </span><span>₹{{workshop.workshopFees}}/ per person</span></div>
                 <br>
                 <div class="workshopDescription">
                 {{workshop.event_content | safe}}
