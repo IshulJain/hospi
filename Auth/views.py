@@ -1647,7 +1647,7 @@ def fbReach(request):
         try:
             fb_connect = FbReach.objects.get(uid = uid)
             fb_connect.accessToken = accessToken
-            # fb_connect.name = profile['name']
+            fb_connect.name = profile['name']
         except:
             fb_connect = FbReach( accessToken = accessToken, uid = uid,profileImage = profile['picture']['data']['url'])
         fb_connect.save()
