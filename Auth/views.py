@@ -1594,7 +1594,7 @@ def fbReach(request):
         args = {'fields':'name,email,picture'}
         profile = graph.get_object('me',**args)
         print profile
-        print profile.name
+        print profile['name']
         try:
             fb_connect = FbReach.objects.get(uid = uid)
             fb_connect.accessToken = accessToken
