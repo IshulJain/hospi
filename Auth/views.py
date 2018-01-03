@@ -1236,32 +1236,81 @@ def botTest(request):
 def gverify(request):
     return render(request,'googlec0c9e6f96a842b6d.html',{})
 
+# def workshop(request):
+#     response={}
+#     # print "HH"
+#     try:
+#         workshops=Workshops.objects.all()
+#         # # print workshops
+#         response['workshops']=[]
+#         for workshop in workshops:
+#             workshopData={}
+#             workshopData['title']=workshop.title.encode('ascii','ignore')
+#             workshopData['description']=workshop.description.encode('ascii','ignore')
+#             workshopData['workshopfees']=workshop.workshopFees
+#             workshopData['maxMembers']=workshop.maxMembers
+#             workshopData['image']=workshop.image.encode('ascii','ignore')
+#             workshopData['order']=workshop.order
+#             response['workshops'].append(workshopData)
+#             # print workshop.title
+#             # print "HH"
+#     except:
+#         response['status']=0
+#     print response
+#     if(get_flavour(request) == 'full'):
+#         return render(request,"workshopnew.html",{'workshops':response})
+#     else:
+#         return render(request,"workshopmobilenew.html",{'workshops':response}) 
 
+@csrf_exempt
 def workshop(request):
-    response={}
-    # print "HH"
-    try:
-        workshops=Workshops.objects.all()
-        # # print workshops
-        response['workshops']=[]
+    response = {}
+    if True:#try:
+        workshops = Workshops.objects.all()
+        response = {}
+        response['status'] = 1
+        response['type'] = 0
+        # response['data'] = []
+        # data = []
+        response['parentEventId'] = "workshops"
+        response['events'] = []
+        response['parentEventName'] = "Workshops"
+        WorkshopData = []
         for workshop in workshops:
-            workshopData={}
-            workshopData['title']=workshop.title.encode('ascii','ignore')
-            workshopData['description']=workshop.description.encode('ascii','ignore')
-            workshopData['workshopfees']=workshop.workshopFees
-            workshopData['maxMembers']=workshop.maxMembers
-            workshopData['image']=workshop.image.encode('ascii','ignore')
-            workshopData['order']=workshop.order
-            response['workshops'].append(workshopData)
-            # print workshop.title
-            # print "HH"
-    except:
-        response['status']=0
-    print response
-    if(get_flavour(request) == 'full'):
-        return render(request,"workshopnew.html",{'workshops':response})
-    else:
-        return render(request,"workshopmobilenew.html",{'workshops':response}) 
+            workshopData = {}
+            workshopData['event_name'] = workshop.title
+            workshopData['image'] = workshop.image
+            workshopData['event_content'] = workshop.description
+            workshopData['event_register'] = "Register"
+            workshopData['register_link'] = "#"
+            workshopData['workshopFees'] = workshop.workshopFees
+            workshopData['eventOrder'] = workshop.order
+            # workshopData['']
+            workshopData['eventSlug'] = workshop.slug
+            workshopData['eventId'] = workshop.slug
+            workshopData['sponlink'] = workshop.sponlink
+            workshopData['sponimage'] = workshop.sponimage
+            # workshopData['workshopId'] = workshop.slug
+            workshopData['eventOptions'] = []
+            workshopOptions = WorkshopOptions.objects.filter(workshop = workshop)
+            for workshopOption in workshopOptions:
+                workshopOptionData = {}
+                workshopOptionData['optionName'] = workshopOption.optionName
+                workshopOptionData['optionDescription'] = workshopOption.optionDescription
+                workshopOptionData['eventOptionOrder'] = workshopOption.optionOrder
+                workshopData['eventOptions'].append(workshopOptionData)
+            workshopData['eventOptions'].sort(key=lambda x: x['eventOptionOrder'])
+            response['events'].append(workshopData)
+        # data.append(dataObject)
+        # WorkshopData.sort(key=lambda x: x['order'])
+        # data.append(WorkshopData)
+        # response['data'] = dataObject
+    else:#except:
+        response['status'] = 0
+    print json.dumps(response)    
+    return render(request,'workshopnew.html',response)
+
+
 
 # @csrf_exempt
 # def workshop(request):
