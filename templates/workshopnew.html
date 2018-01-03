@@ -52,7 +52,7 @@
 
 <style>
 .button9 {
-    background-color: blue;
+    background-color: #87ceeb;
     border: none;
     color: white;
     padding: 15px 32px;
@@ -224,8 +224,33 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
                     <!-- <p style="text-align: center; font-size: 13px;">{{workshop.order}}</p> -->
             </li>
             <div class="tingle-demo" style="display: none;" id="workshop{{forloop.counter}}">
-            <div id=""><!-- <img src="{{workshop.image}}" class="image" style="height:80px; width: 80px;" > --><span style="margin-top:10px;">{{workshop.event_name}}</span><span></span><a class="button9" style="padding:6px; margin-top: 20px;">REGISTER</a><a href="{{workshop.sponlink}}"><span>sponsored by:{{workshop.sponimage}}</span></a><span><a class="button9" style="padding:6px; margin-top: 10px; background-color:white; ">{{ workshop.workshopfees }}</a></span>
-             <span style="color: grey;" class="para" >{{workshop.event_content | safe}}</span></div>
+            <div id=""><div class="cd-panel from-right {{workshop.order}}">
+        <header class="cd-panel-header" style="overflow:hidden;">
+    <div style="width: 100%" class="header_head">
+    <div style="width: 50%">
+            <u><h1>{{workshop.event_name}} </h1></u>
+      </div>
+      <div style="width: 50%">
+      <a href="{{workshop.sponlink}}">
+      <img src="{{workshop.sponimage}}" height="20" width="20" />
+      </a>
+      </div>
+    </div>
+            <!-- <a href="#0" class="cd-panel-close">Close</a> -->
+        </header>
+        <div class="cd-panel-container">
+            <div class="cd-panel-content" style="color: black;">
+            <div style="width: 100%;display: table;margin: 0 auto;">
+                <a class="button9" style="padding:6px;">REGISTER</a>
+                </div>
+                <div style="transform:translate3d(360px, 0px, 0px)"><span>COST: </span><span>₹{{workshop.workshopFees}}/ per person</span></div>
+                <br>
+                <div class="workshopDescription">
+                {{workshop.event_content | safe}}
+                </div>
+            </div> <!-- cd-panel-content -->
+        </div> <!-- cd-panel-container -->
+    </div></div>
         </div>
 
            {% endfor %}
