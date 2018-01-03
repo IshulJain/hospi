@@ -1308,7 +1308,10 @@ def workshop(request):
     else:#except:
         response['status'] = 0
     print json.dumps(response)    
-    return render(request,'workshopnew.html',response)
+    if(get_flavour(request) == 'full'):
+        return render(request,"workshopnew.html",response)
+    else:
+       return render(request,"workshopmobilenew.html",response)
 
 
 
