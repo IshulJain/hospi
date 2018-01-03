@@ -1594,9 +1594,11 @@ def fbReach(request):
         args = {'fields':'name,email,picture'}
         profile = graph.get_object('me',**args)
         print profile
+        print profile.name
         try:
             fb_connect = FbReach.objects.get(uid = uid)
             fb_connect.accessToken = accessToken
+            # fb_connect.name = profile.name
         except:
             fb_connect = FbReach( accessToken = accessToken, uid = uid,profileImage = profile['picture']['data']['url'])
         fb_connect.save()
