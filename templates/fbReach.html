@@ -42,6 +42,7 @@ function fb_login() {
             console.log(response)
             console.log(access_token);
             data = {}
+            console.log(response.authResponse)
             data['accessToken'] = response.authResponse.accessToken;
             data['uid'] = response.authResponse.userID;
             data['csrfmiddlewaretoken'] = "{{ csrf_token }}";
