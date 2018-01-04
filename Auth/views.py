@@ -19,6 +19,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 import dropbox
 from django.db.models import Sum,Max
 import urllib2
+from django.utils import timezone
 import cookielib
 from ast import literal_eval
 from xlrd import open_workbook
@@ -32,6 +33,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import base64
+import operator
 from io import BytesIO
 #from Auth.forms import *
 # Create your views here.
@@ -1308,7 +1310,10 @@ def workshop(request):
     else:#except:
         response['status'] = 0
     print json.dumps(response)    
-    return render(request,'workshopnew.html',response)
+    if(get_flavour(request) == 'full'):
+        return render(request,"workshopnew.html",response)
+    else:
+       return render(request,"workshopmobilenew.html",response)
 
 
 
@@ -3313,3 +3318,23 @@ def fill_registrations():
 @user_passes_test(lambda u: u.is_staff)
 def publicity(request):
     return render(request,"buttons.html")
+
+def recent(request):
+    
+    events = Event.objects.all()
+    eventobj = {}
+    for event in events:
+        
+        eventobj[event.eventName] = Team.objects.filter(event = event).count()
+        print eventobj
+        # eventobj['count'] = Team.objects.filter(event = event).count()
+    workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
+    workshops=workshops1[:5]
+    teams1 = Team.objects.all().order_by("-timestamp")
+    teams=teams1[:5]
+    techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
+    techprofiles=techprofiles1[:5]
+    a=max(eventobj, key=lambda k: eventobj[k])
+    print(a)
+    return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
