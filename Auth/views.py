@@ -3336,7 +3336,7 @@ def fill_registrations():
 def publicity(request):
     return render(request,"buttons.html")
 
-def recent(request):
+def recent_activities(request):
     
     events = Event.objects.all()
     eventobj = {}

@@ -74,10 +74,6 @@ var workdata=[
   
 },
 {
-  workshop: 'amazon-alexa',
-  
-},
-{
   workshop: 'internet-of-things',
   
 },

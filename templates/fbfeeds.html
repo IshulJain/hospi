@@ -7,13 +7,13 @@ scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:600px
 <div>{{max}}</div></br>
 <h1>workshop</h1>
 <div>{%for w in workshops%}
-{{w.teamLeader}}</br>{{w.timestamp}}</br>{%endfor%}</div></br></br>
+{{w.teamLeader}}</br>{{w.timestamp|timesince}}  ago</br>{%endfor%}</div></br></br>
 <h1>techprofiles</h1>
 <div>{%for t in techprofiles%}
-{{t.email}}</br>{{t.timestamp}}</br>{%endfor%}</div></br></br>
+{{t.email}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br></br>
 <h1>teams</h1>
 <div>{%for t in teams%}
-{{t.teamName}}</br>{{t.timestamp}}</br>{%endfor%}</div></br>
+{{t.teamName}}in{{t.event}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br>
 
 
 
