@@ -92,6 +92,7 @@ class TechProfile(models.Model):
     gender = models.CharField(max_length = 10, null = True , blank= True)
     arrivaldate = models.CharField(max_length = 15 , null =True , blank =True)
     confirmpart = models.ManyToManyField(Event , null = True ,blank =True)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     def __unicode__(self):
         return "%s -%s" %(self.user.first_name, self.college)
 
@@ -106,6 +107,7 @@ class Team(models.Model):
     teamLeader = models.ForeignKey(TechProfile,related_name = 'teamLeader')
     members = models.ManyToManyField(TechProfile,related_name = 'members',null = True)
     abstractstatus = models.SmallIntegerField(default = 0)
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     def __unicode__(self):
         return self.teamName
 
@@ -176,7 +178,8 @@ class WorkshopTeam(models.Model):
     workshop = models.ForeignKey(Workshops)
     teamLeader = models.ForeignKey(TechProfile,related_name = 'teamLeaderForWorkshop')
     members = models.ManyToManyField(TechProfile,related_name = 'members_for_workshop')
-
+    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    
     def __unicode__(self):
         return '%s %s'%(self.teamName,self.teamLeader.user.first_name)
 

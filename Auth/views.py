@@ -32,6 +32,7 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 import base64
+import operator
 from io import BytesIO
 #from Auth.forms import *
 # Create your views here.
@@ -3308,3 +3309,22 @@ def fill_registrations():
 @user_passes_test(lambda u: u.is_staff)
 def publicity(request):
     return render(request,"buttons.html")
+
+def recent(request):
+    
+    events = Event.objects.all()
+        
+    for event in events:
+        eventobj = {}
+        eventobj[event.eventName] = Team.objects.filter(event = event).count()
+        # eventobj['count'] = Team.objects.filter(event = event).count()
+        workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
+        workshops=workshops1[:5]
+        teams1 = Team.objects.all().order_by("-timestamp")
+        teams=teams1[:5]
+        techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
+        techprofiles=techprofiles1[:5]
+    a=max(eventobj.iteritems(), key=operator.itemgetter(1))[0]
+    print(a)
+    return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
