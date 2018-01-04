@@ -1671,42 +1671,27 @@ def extendToken(uid):
     fb.save()
 
 
-def autoshare(token,message,link):
+def autoshar(token,message,link):
     message.replace(' ', '+')
     requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link=" + link)
 
-def auto(message,link,last):
+def auto(message,link):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     print(tokens)
 
     for token in tokens:
         print token.accessToken
-        if token.accessToken % last:
-            requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
+        requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
 
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
-def autoshare_call(request):
+def autoshare(request):
     response = {}
-
-    if request.session.get('last_share'):
-        last_link = request.session['last_link']
-        last_share = request.session['last_share']
-        request.session['last_share'] = last_share + 1
-        if last_share == 10:
-            request.session['last_share'] = 0
-    else:
-        last_link = post['link']
-        request.session['last_link'] = last_link
-        last_share = 0
-        request.session['last_share'] = last_share
-
-
     if request.method == 'POST':
         post = request.POST
-        auto(post['message'],post['link'],last_share)
+        auto(post['message'],post['link'])
     else:
-        return render(request, 'autoshare.html',{'last':last_share},'last_link':last_link)
+        return render(request, 'autoshare.html')
 
 def auto_share_like(token,limit = 1,caption="",):
     try:
@@ -3336,7 +3321,7 @@ def fill_registrations():
 def publicity(request):
     return render(request,"buttons.html")
 
-def recent_activities(request):
+def recent(request):
     
     events = Event.objects.all()
     eventobj = {}
