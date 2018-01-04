@@ -1,10 +1,16 @@
 <form action="/action_page.php">
   Message: <input type="text" id="mess" name="message"><br>
   Link: <input type="text" id="link" name="link"><br>
-  <button type="button" onclick="fb_share()" >Share with Facebook</button>
+  Last share link:  {{ last_link }}
+  counter: {{ last }}
+  {% if last == '9' %}
+  <p>Change link</p>
+  {% endif %}
+  <button type="button" onclick="fb_share()">Share on Facebook</button>
 </form>
 
-<script>
+
+<script type="text/javascript" >
  function theAjax(uri,data){
  return $.ajax({
     type:"POST",
@@ -24,6 +30,7 @@ function fb_share(){
       if (response['status'] == 1)
       {
         alert("Successfully Done!!");
+        response.session['last_link'] = data['link']
       }
       else
       {
