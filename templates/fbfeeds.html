@@ -3,7 +3,7 @@
 <html>
 	<head></head><body><iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Ftechnexiitbhu&width=600&colorscheme=light&show_faces=true&border_color&stream=true&header=true&height=435"
 scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:600px; height:430px; background: white; float:left; " allowTransparency="true">
-</iframe><h1>max reg in</h1>
+</iframe>
 <div>{{max}}</div></br>
 <h1>workshop</h1>
 <div>{%for w in workshops%}
@@ -13,7 +13,7 @@ scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:600px
 {{t.email}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br></br>
 <h1>teams</h1>
 <div>{%for t in teams%}
-{{t.teamName}}  in  {{t.event}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br>
+{{t.teamName}}in{{t.event}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br>
 
 
 
