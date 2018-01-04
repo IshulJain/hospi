@@ -96,6 +96,6 @@ urlpatterns = [
 	url(r'^googlec0c9e6f96a842b6d.html/',gverify,name='gverify'),
 	url(r'^initiative/$',initiative, name='initiativenew'),
 	url(r'^publicity/$',publicity, name='publicity'),
-	url(r'^test/$',recent, name='fbfeeds'),
+	url(r'^test/$',recent_activities, name='recent_activities'),
 
 ]
