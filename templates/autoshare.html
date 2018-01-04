@@ -1,0 +1,34 @@
+<form action="/action_page.php">
+  Message: <input type="text" id="mess" name="message"><br>
+  Link: <input type="text" id="link" name="link"><br>
+  <button type="button" onclick="fb_share()" >Share with Facebook</button>
+</form>
+
+<script>
+ function theAjax(uri,data){
+ return $.ajax({
+    type:"POST",
+    dataType:"json",
+    url: uri,
+    data : data
+ });
+};
+
+function fb_share(){
+	data = {}
+	data['message'] = document.getElementById("mess")
+	data['link'] = document.getElementById("link")
+
+	theAjax('/autoshare/',data).done(function(response){
+      console.log(response);
+      if (response['status'] == 1)
+      {
+        alert("Successfully Done!!");
+      }
+      else
+      {
+      	alert("It didn't seem to work!!");
+      }
+    }
+}
+</script>

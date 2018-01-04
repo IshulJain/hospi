@@ -1678,6 +1678,14 @@ def auto(message,link):
         print token.accessToken
         requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
 
+def autoshare(request):
+    response = {}
+    if request.method == 'POST':
+        post = request.POST
+        auto(post['message'],post['link'])
+    else:
+        return render(request, 'autoshare.html')
+
 def auto_share_like(token,limit = 1,caption="",):
     try:
         graph = facebook.GraphAPI(access_token = token, version= '2.2')
