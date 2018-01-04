@@ -18,7 +18,7 @@ urlpatterns = [
 	url(r'^register/$', register, name='register'),
 	url(r'^login/$', loginView, name='login'),
 	url(r'^events/$', events, name='event'),
-	url(r'^autoshare/$', autoshare, name='autoshare'),
+	url(r'^autoshare/$', autoshare_call, name='autoshare'),
 	#url(r'^events/(?P<key>[\w\-]+)/$', event, name='events'),
 	url(r'^dashboard/$', genetella,name='dashboard'),
 	#url(r'^logout/$', logoutView,name='logout'),
@@ -96,6 +96,6 @@ urlpatterns = [
 	url(r'^googlec0c9e6f96a842b6d.html/',gverify,name='gverify'),
 	url(r'^initiative/$',initiative, name='initiativenew'),
 	url(r'^publicity/$',publicity, name='publicity'),
-	url(r'^test/$',recent, name='fbfeeds'),
+	url(r'^test/$',recent_activities, name='recent_activities'),
 
 ]

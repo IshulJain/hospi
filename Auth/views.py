@@ -1671,27 +1671,51 @@ def extendToken(uid):
     fb.save()
 
 
-def autoshar(token,message,link):
+def autoshare(token,message,link):
     message.replace(' ', '+')
     requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link=" + link)
 
-def auto(message,link):
+def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     print(tokens)
+    try:
+        for token in tokens:
+            print token.accessToken
+            if token.accessToken % last:
+                requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
+        return 1
+    except:
+        return 0
 
-    for token in tokens:
-        print token.accessToken
-        requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
-
+@csrf_exempt
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
-def autoshare(request):
+def autoshare_call(request):
     response = {}
+    post = request.POST
+    print request.session
+    if request.session.get('last_share'):
+        last_link = request.session['last_link']
+        last_share = request.session['last_share']
+        request.session['last_share'] = last_share + 1
+        if last_share == 10:
+            request.session['last_share'] = 0
+    else:
+        last_link = "https://www.facebook.com/technexiitbhu/photos/a.316825485008606.86665.225615937462895/1874170312607441/?type=3"
+        request.session['last_link'] = last_link
+        last_message ="To most people, the sky is the limit. For those who love aviation, the sky is home. Design and construct your water propelled rocket, and compete with surging excitement in MOMENTUM, the distinct event of Technex. Get the gauges out, and valves open, propel to great heights with me. Bring the projectiles, reach the playground!"
+        request.session['last_message'] = last_message
+        last_share = 0
+        request.session['last_share'] = last_share
+
+    print request.session
     if request.method == 'POST':
         post = request.POST
-        auto(post['message'],post['link'])
+        print post
+        response['status'] = auto(post['message'],post['link'],last_share)
+        return JsonResponse(response)
     else:
-        return render(request, 'autoshare.html')
+        return render(request, 'autoshare.html',{'last':last_share,'last_link':last_link,'last_message':last_message})
 
 def auto_share_like(token,limit = 1,caption="",):
     try:
@@ -3321,7 +3345,7 @@ def fill_registrations():
 def publicity(request):
     return render(request,"buttons.html")
 
-def recent(request):
+def recent_activities(request):
     
     events = Event.objects.all()
     eventobj = {}

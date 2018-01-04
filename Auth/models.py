@@ -427,7 +427,8 @@ class chutiyapa(models.Model):
         return '%s %s'%(self.quiz.quiz.name,self.question.question)
 
 class Notifications(models.Model):
-    token = models.TextField()
+    token = models.TextField(unique=True)
+    technexId = models.CharField(max_length = 30,null = True,blank = True)
     def __unicode__(self):
         return self.token
 

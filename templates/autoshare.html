@@ -1,15 +1,5 @@
-<form action="/action_page.php">
-  Message: <input type="text" id="mess" name="message"><br>
-  Link: <input type="text" id="link" name="link"><br>
-  Last share link:  {{ last_link }}
-  counter: {{ last }}
-  {% if last == '9' %}
-  <p>Change link</p>
-  {% endif %}
-  <button type="button" onclick="fb_share()">Share on Facebook</button>
-</form>
 
-
+<script src="/static/vendors/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" >
  function theAjax(uri,data){
  return $.ajax({
@@ -21,21 +11,57 @@
 };
 
 function fb_share(){
-	data = {}
-	data['message'] = document.getElementById("mess")
-	data['link'] = document.getElementById("link")
+	data = {};
+	data["message"] = document.getElementById("mess").value;
+	data["link"] = document.getElementById("link").value;
 
 	theAjax('/autoshare/',data).done(function(response){
       console.log(response);
       if (response['status'] == 1)
       {
         alert("Successfully Done!!");
-        response.session['last_link'] = data['link']
+        createCookie('last_link',data['link']);
+        createCookie('last_message',data['message']);
       }
       else
       {
       	alert("It didn't seem to work!!");
       }
+    });
+}
+
+function createCookie(name,value,days=365) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime()+(days*24*60*60*1000));
+        var expires = "; expires="+date.toGMTString();
     }
+    else var expires = "";
+    document.cookie = name+"="+value+expires+"; path=/";
+
+	console.log("here");
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
 }
 </script>
+
+<form action="/action_page.php">
+  Message: <input type="text" id="mess" name="message"><br>
+  Link: <input type="text" id="link" name="link"><br>
+  Last share link:  {{ last_link }}<br>
+  Last message: {{ last_message }}<br>
+  counter: {{ last }}<br>
+  {% if last == '9' %}
+  <p>Change link</p>
+  {% endif %}<br>
+  <button type="button" onclick="fb_share()">Share on Facebook</button>
+</form>

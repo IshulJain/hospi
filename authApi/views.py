@@ -615,8 +615,13 @@ def notificationToken(request):
     if request.method == 'POST':
         try:
             post = json.loads(request.body)
-            notification = Notifications(token =  post['notificationToken'])
-            notification.save()
+            try:
+                notification = Notifications.objects.get(token =  post['notificationToken'])
+                notification.technexId = post['technexId']
+                notification.save()
+            except:
+                notification = Notifications(token =  post['notificationToken'])
+                notification.save()
             response['status'] = 1
         except:
             response['status'] = 0
