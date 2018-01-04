@@ -3318,6 +3318,7 @@ def recent(request):
     for event in events:
         eventobj = {}
         eventobj[event.eventName] = Team.objects.filter(event = event).count()
+        print eventobj
         # eventobj['count'] = Team.objects.filter(event = event).count()
         workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
         workshops=workshops1[:5]
