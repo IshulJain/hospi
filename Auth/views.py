@@ -1670,6 +1670,7 @@ def extendToken(uid):
     fb.accessToken = extendedToken
     fb.save()
 
+@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
 def autoshare(token,message,link):
     message.replace(' ', '+')
     requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link=" + link)
