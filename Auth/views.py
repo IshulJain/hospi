@@ -3326,7 +3326,7 @@ def recent(request):
         teams=teams1[:5]
         techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
         techprofiles=techprofiles1[:5]
-    a=max(eventobj.iterkeys(), key=lambda k: eventobj[k])
+    a = max(eventobj.keys(), key=(lambda k: eventobj[k]))   
     print(a)
     return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
 
