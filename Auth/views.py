@@ -3314,18 +3314,18 @@ def publicity(request):
 def recent(request):
     
     events = Event.objects.all()
-        
+    eventobj = {}
     for event in events:
-        eventobj = {}
+        
         eventobj[event.eventName] = Team.objects.filter(event = event).count()
         print eventobj
         # eventobj['count'] = Team.objects.filter(event = event).count()
-        workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
-        workshops=workshops1[:5]
-        teams1 = Team.objects.all().order_by("-timestamp")
-        teams=teams1[:5]
-        techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
-        techprofiles=techprofiles1[:5]
+    workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
+    workshops=workshops1[:5]
+    teams1 = Team.objects.all().order_by("-timestamp")
+    teams=teams1[:5]
+    techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
+    techprofiles=techprofiles1[:5]
     a=max(eventobj, key=lambda k: eventobj[k])
     print(a)
     return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
