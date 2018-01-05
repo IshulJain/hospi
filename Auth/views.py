@@ -44,19 +44,19 @@ app_secret = 'v51fzo5r8or1bkl'
 flow = dropbox.client.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
 sheetUrls = {
 
-    "bridge-design": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "e-commerce": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "digital-marketing": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "augmented-reality": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "sixthsense-robotics": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "android-application-development": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "ethical-hacking-information-security": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "automobile-mechanics-ic-engines": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "autonomous-robotics-ardubotics": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
+    "bridge-design": "https://script.google.com/a/technex.in/macros/s/AKfycbwlDd9WTEzkNwrRQTaqKZMXMyp8UW9Z7ckqB1HSrT01wWDZHXIe/exec", #Updated
+    "e-commerce": "https://script.google.com/a/technex.in/macros/s/AKfycbxZXFxH1B7RmOEsQ0N5LGMMMg4aaiEjcrV_WJSR-kO9UpMqqeI/exec", #Updated
+    "digital-marketing": "https://script.google.com/a/technex.in/macros/s/AKfycbwVAyI4IFMKG-PJ0FclvXS0IXFtLOUVEZZ2vIorY-UrjQ3z3yk/exec", #Updated
+    "augmented-reality": "https://script.google.com/a/technex.in/macros/s/AKfycbydF9ZrXW7p1a6CXQlMRTsSeDVzqfYL1-tgNRAHfozgIUk360v-/exec", #Updated
+    "sixthsense-robotics": "https://script.google.com/a/technex.in/macros/s/AKfycbzI-0_8PDnS0LYo2QUJ53zcSpPhajV9V38s06V0yWwQOJ-h_uuJ/exec", #Updated
+    "android-application-development": "https://script.google.com/a/technex.in/macros/s/AKfycbwmuFO28O6lYFVLsClOVTMnCROVrS-vUTEmKdRq2-WpU0EdWfr_/exec", #Updated
+    "ethical-hacking-information-security": "https://script.google.com/a/technex.in/macros/s/AKfycbw-H8EBmdgeVWE05UcuL4CKmI67d-kLeWlGHW2zOEQod9SriA/exec", #Updated
+    "automobile-mechanics-ic-engines": "https://script.google.com/a/technex.in/macros/s/AKfycbw7eOBWS_BCbHpO5rdpcggBOjB-cb03lk2QLrykEXAGSPkBxn0K/exec", #Updated
+    "autonomous-robotics-ardubotics": "https://script.google.com/a/technex.in/macros/s/AKfycbx5DtU6OQQ3536xLdGuj6rbHRBcdE9evOwa0nBkcga8UAv_mVHX/exec", #Updated
     "cryptocurrency": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec", #Updated
-    "industrial-automation-plc-scada": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "internet-of-things": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
-    "artificial-intelligence-machine-learning": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec",
+    "industrial-automation-plc-scada": "https://script.google.com/a/technex.in/macros/s/AKfycbw9bviaV03HbJGLAIRpYDAOmCDI5-T0qBnEqAL-uOGNGpRFVE4K/exec", #Updated
+    "internet-of-things": "https://script.google.com/a/technex.in/macros/s/AKfycbwrkWl-IJRK5ujypg0HjKFhZEL05Unkdl5pWehNHxwUqmsx22cx/exec", #Updated
+    "artificial-intelligence-machine-learning": "https://script.google.com/a/technex.in/macros/s/AKfycbwHuRypXQrZvrv5mphBSDVN-7isE609xoPKA0qHSJUw3z2nHIU/exec", #Updated
     # "internet-of-things": "https://script.google.com/macros/s/AKfycbwLtFRKGpWk9ZxvvAoq409JqHMiykh2wWYHte6k6DUd94q7zLak/exec",
     # "data-mining" : "https://script.google.com/macros/s/AKfycbzLegitbfINZp8Ygu2aGBwLHMXaB-aQOW__B-lr6ZCD34NfliqM/exec",
     # "digital-marketing" : "https://script.google.com/macros/s/AKfycby1EOzmNiEpW5ddEbTwTIugmCidIf5H05GmMdDSxTZn15PD60c/exec",
