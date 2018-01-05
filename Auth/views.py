@@ -1208,12 +1208,6 @@ Dear %s,
 
 Thanks for registering for %s Technex'18.
 
-Your Team Details Are
-Team Name- %s
-Team Leader- %s
-Team Members- %s
-
-
 An important note to ensure that the team can contact you further:  If you find this email in Spam folder, please right click on the email and click on 'NOT SPAM'.
 
 
@@ -1230,13 +1224,14 @@ Regards
 Team Technex
 Regards
         '''
-        memberEmails = ""
-        for user in users:
-            memberEmails += user.email+'  '
-            team.members.add(user)
-        send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
-        for user in users:
-           send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
+        # memberEmails = ""
+        # for user in users:
+        #     memberEmails += user.email+'  '
+        #     team.members.add(user)
+        # send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
+        send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize()))
+        # for user in users:
+        #    send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
         response['status'] = 1
     
         workshop_spreadsheet(team)
@@ -1881,7 +1876,7 @@ def workshop_spreadsheet(team):
     requests.post(url, data = dic)
 
 
-def worshopdataFill():
+def workshopdataFill():
     teams = WorkshopTeam.objects.all()
     for team in teams:
         workshop_spreadsheet(team)
