@@ -1693,22 +1693,19 @@ def auto(message,link,last):
 def autoshare_call(request):
     response = {}
     post = request.POST
-    print request.session
-    if request.session.get('last_share'):
-        last_link = request.session['last_link']
-        last_share = request.session['last_share']
-        request.session['last_share'] = last_share + 1
-        if last_share == 10:
-            request.session['last_share'] = 0
+    if request.COOKIES.get('last_share') :
+        last_link = request.COOKIES['last_link']
+        last_share = request.COOKIES['last_share']
+        last_message = request.COOKIES['last_message']
     else:
-        last_link = "https://www.facebook.com/technexiitbhu/photos/a.316825485008606.86665.225615937462895/1874170312607441/?type=3"
-        request.session['last_link'] = last_link
-        last_message ="To most people, the sky is the limit. For those who love aviation, the sky is home. Design and construct your water propelled rocket, and compete with surging excitement in MOMENTUM, the distinct event of Technex. Get the gauges out, and valves open, propel to great heights with me. Bring the projectiles, reach the playground!"
-        request.session['last_message'] = last_message
+        last_link = ""
+        request.COOKIES['last_link'] = last_link
+        last_message = ""
+        request.COOKIES['last_message'] = last_message
         last_share = 0
-        request.session['last_share'] = last_share
+        request.COOKIES['last_share'] = last_share
 
-    print request.session
+    print request.COOKIES
     if request.method == 'POST':
         post = request.POST
         print post

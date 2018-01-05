@@ -22,6 +22,10 @@ function fb_share(){
         alert("Successfully Done!!");
         createCookie('last_link',data['link']);
         createCookie('last_message',data['message']);
+        createCookie('last_share',parseInt(data['last'])+1);
+        location.reload(true);
+        console.log(readCookie('last_link'))
+        console.log(readCookie('last_message'))
       }
       else
       {
@@ -30,14 +34,8 @@ function fb_share(){
     });
 }
 
-function createCookie(name,value,days=365) {
-    if (days) {
-        var date = new Date();
-        date.setTime(date.getTime()+(days*24*60*60*1000));
-        var expires = "; expires="+date.toGMTString();
-    }
-    else var expires = "";
-    document.cookie = name+"="+value+expires+"; path=/";
+function createCookie(name,value) {
+    document.cookie = name+"="+value+"; path=/";
 
 	console.log("here");
 }
@@ -57,11 +55,9 @@ function readCookie(name) {
 <form action="/action_page.php">
   Message: <input type="text" id="mess" name="message"><br>
   Link: <input type="text" id="link" name="link"><br>
-  Last share link:  {{ last_link }}<br>
   Last message: {{ last_message }}<br>
-  counter: {{ last }}<br>
-  {% if last == '9' %}
-  <p>Change link</p>
-  {% endif %}<br>
+  Last share link:  {{ last_link }}<br>
+  
+  counter:<p id="count"> {{ last }} </p><br>
   <button type="button" onclick="fb_share()">Share on Facebook</button>
 </form>
