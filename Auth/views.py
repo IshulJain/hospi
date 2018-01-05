@@ -43,17 +43,31 @@ app_key = 'rrevl3xuwa073fd'
 app_secret = 'v51fzo5r8or1bkl'
 flow = dropbox.client.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
 sheetUrls = {
-    "internet-of-things": "https://script.google.com/macros/s/AKfycbwLtFRKGpWk9ZxvvAoq409JqHMiykh2wWYHte6k6DUd94q7zLak/exec",
-    "data-mining" : "https://script.google.com/macros/s/AKfycbzLegitbfINZp8Ygu2aGBwLHMXaB-aQOW__B-lr6ZCD34NfliqM/exec",
-    "digital-marketing" : "https://script.google.com/macros/s/AKfycby1EOzmNiEpW5ddEbTwTIugmCidIf5H05GmMdDSxTZn15PD60c/exec",
-    "3-d-printing" : "https://script.google.com/macros/s/AKfycbz3LcIF1VOg-EJsDueeKU6Ncpl3velEbiu4D7dwCDzuVtLhGmKJ/exec",
-    "swarm-robotics" : "https://script.google.com/macros/s/AKfycbxEATq42TerLuSWCpA_mGf7meRLU5I_vNCz6HedPcsA70zTapw/exec",
-    "bridge-design" : "https://script.google.com/macros/s/AKfycbzYPXl8JSLaLt0Ih5H3YzE97o6AT1n139B-3RyUPC75pp3SYo-v/exec",
-    "android-app-development" : "https://script.google.com/macros/s/AKfycbyUauzei8mhLXoxTtGI7_8sfIVP_7RuIeRCbV9jMjiJiA6rYdg/exec",
-    "vision-botics" : "https://script.google.com/macros/s/AKfycbwqOaFMVHeePAC_gYSCvXLSjqEhn5KcnbLkCOUQx-gHs3wgVFfp/exec",
-    "automobile" : "https://script.google.com/macros/s/AKfycbxJVGyMPPT1Aa9DjPDqqcaw0ZbWC8dYqTuZPc50iwaMISf8MNg-/exec",
-    "ethical-hacking" : "https://script.google.com/macros/s/AKfycbw_oQ_7Mxc-NpPeipvTlGYIt5Jau5PzVCYqcgMpuelCs37cVRuA/exec",
-    "industrial-automation-plc-scada" : "https://script.google.com/macros/s/AKfycbxRDIbRTg4Y9lSoPnuorqv0Q3GujmdBR-j50vyYuVlg3BMjtog/exec",
+
+    "bridge-design": "https://script.google.com/a/technex.in/macros/s/AKfycbwlDd9WTEzkNwrRQTaqKZMXMyp8UW9Z7ckqB1HSrT01wWDZHXIe/exec", #Updated
+    "e-commerce": "https://script.google.com/a/technex.in/macros/s/AKfycbxZXFxH1B7RmOEsQ0N5LGMMMg4aaiEjcrV_WJSR-kO9UpMqqeI/exec", #Updated
+    "digital-marketing": "https://script.google.com/a/technex.in/macros/s/AKfycbwVAyI4IFMKG-PJ0FclvXS0IXFtLOUVEZZ2vIorY-UrjQ3z3yk/exec", #Updated
+    "augmented-reality": "https://script.google.com/a/technex.in/macros/s/AKfycbydF9ZrXW7p1a6CXQlMRTsSeDVzqfYL1-tgNRAHfozgIUk360v-/exec", #Updated
+    "sixthsense-robotics": "https://script.google.com/a/technex.in/macros/s/AKfycbzI-0_8PDnS0LYo2QUJ53zcSpPhajV9V38s06V0yWwQOJ-h_uuJ/exec", #Updated
+    "android-application-development": "https://script.google.com/a/technex.in/macros/s/AKfycbwmuFO28O6lYFVLsClOVTMnCROVrS-vUTEmKdRq2-WpU0EdWfr_/exec", #Updated
+    "ethical-hacking-information-security": "https://script.google.com/a/technex.in/macros/s/AKfycbw-H8EBmdgeVWE05UcuL4CKmI67d-kLeWlGHW2zOEQod9SriA/exec", #Updated
+    "automobile-mechanics-ic-engines": "https://script.google.com/a/technex.in/macros/s/AKfycbw7eOBWS_BCbHpO5rdpcggBOjB-cb03lk2QLrykEXAGSPkBxn0K/exec", #Updated
+    "autonomous-robotics-ardubotics": "https://script.google.com/a/technex.in/macros/s/AKfycbx5DtU6OQQ3536xLdGuj6rbHRBcdE9evOwa0nBkcga8UAv_mVHX/exec", #Updated
+    "cryptocurrency": "https://script.google.com/a/technex.in/macros/s/AKfycbxoPSwLXi4X-6kxIdC4Dloow65s0QuMN56VfcSjosSYA0kExdFB/exec", #Updated
+    "industrial-automation-plc-scada": "https://script.google.com/a/technex.in/macros/s/AKfycbw9bviaV03HbJGLAIRpYDAOmCDI5-T0qBnEqAL-uOGNGpRFVE4K/exec", #Updated
+    "internet-of-things": "https://script.google.com/a/technex.in/macros/s/AKfycbwrkWl-IJRK5ujypg0HjKFhZEL05Unkdl5pWehNHxwUqmsx22cx/exec", #Updated
+    "artificial-intelligence-machine-learning": "https://script.google.com/a/technex.in/macros/s/AKfycbwHuRypXQrZvrv5mphBSDVN-7isE609xoPKA0qHSJUw3z2nHIU/exec", #Updated
+    # "internet-of-things": "https://script.google.com/macros/s/AKfycbwLtFRKGpWk9ZxvvAoq409JqHMiykh2wWYHte6k6DUd94q7zLak/exec",
+    # "data-mining" : "https://script.google.com/macros/s/AKfycbzLegitbfINZp8Ygu2aGBwLHMXaB-aQOW__B-lr6ZCD34NfliqM/exec",
+    # "digital-marketing" : "https://script.google.com/macros/s/AKfycby1EOzmNiEpW5ddEbTwTIugmCidIf5H05GmMdDSxTZn15PD60c/exec",
+    # "3-d-printing" : "https://script.google.com/macros/s/AKfycbz3LcIF1VOg-EJsDueeKU6Ncpl3velEbiu4D7dwCDzuVtLhGmKJ/exec",
+    # "swarm-robotics" : "https://script.google.com/macros/s/AKfycbxEATq42TerLuSWCpA_mGf7meRLU5I_vNCz6HedPcsA70zTapw/exec",
+    # "bridge-design" : "https://script.google.com/macros/s/AKfycbzYPXl8JSLaLt0Ih5H3YzE97o6AT1n139B-3RyUPC75pp3SYo-v/exec",
+    # "android-app-development" : "https://script.google.com/macros/s/AKfycbyUauzei8mhLXoxTtGI7_8sfIVP_7RuIeRCbV9jMjiJiA6rYdg/exec",
+    # "vision-botics" : "https://script.google.com/macros/s/AKfycbwqOaFMVHeePAC_gYSCvXLSjqEhn5KcnbLkCOUQx-gHs3wgVFfp/exec",
+    # "automobile" : "https://script.google.com/macros/s/AKfycbxJVGyMPPT1Aa9DjPDqqcaw0ZbWC8dYqTuZPc50iwaMISf8MNg-/exec",
+    # "ethical-hacking" : "https://script.google.com/macros/s/AKfycbw_oQ_7Mxc-NpPeipvTlGYIt5Jau5PzVCYqcgMpuelCs37cVRuA/exec",
+    # "industrial-automation-plc-scada" : "https://script.google.com/macros/s/AKfycbxRDIbRTg4Y9lSoPnuorqv0Q3GujmdBR-j50vyYuVlg3BMjtog/exec",
 
     "startup-fair-ventura" : "https://script.google.com/a/technex.in/macros/s/AKfycby7bB2SOyJz-Lj0UvjzaymFyKKoM_mwCWXkvW2Q_xGUiUZmci0/exec", #Updated
     "startup-fair-battle" : "https://script.google.com/a/technex.in/macros/s/AKfycbxklC9f27wTX4pMpnDO8VD4midp7Ygt_VfoFd4Lyh_Kiln6nuCp/exec", #Updated
@@ -1194,12 +1208,6 @@ Dear %s,
 
 Thanks for registering for %s Technex'18.
 
-Your Team Details Are
-Team Name- %s
-Team Leader- %s
-Team Members- %s
-
-
 An important note to ensure that the team can contact you further:  If you find this email in Spam folder, please right click on the email and click on 'NOT SPAM'.
 
 
@@ -1216,15 +1224,17 @@ Regards
 Team Technex
 Regards
         '''
-        memberEmails = ""
-        for user in users:
-            memberEmails += user.email+'  '
-            team.members.add(user)
-        send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
-        for user in users:
-           send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
+        # memberEmails = ""
+        # for user in users:
+        #     memberEmails += user.email+'  '
+        #     team.members.add(user)
+        # send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
+        send_email(teamLeader.email,subject,body%(teamLeader.user.first_name,workshop.title.capitalize()))
+        # for user in users:
+        #    send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
         response['status'] = 1
-        # workshop_spreadsheet(team)
+    
+        workshop_spreadsheet(team)
         return JsonResponse(response)
     else:
         response['status'] = 0
@@ -1811,59 +1821,59 @@ def liteversion(request):
 def workshop_spreadsheet(team):
     members = team.members.all()
     dic = {
-    "teamName": team.teamName.encode("utf-8"),
+    # "teamName": team.teamName.encode("utf-8"),
     "leaderName" : team.teamLeader.user.first_name.encode("utf-8"),
     "leaderEmail" : team.teamLeader.email.encode("utf-8"),
     "leaderMobile":str(team.teamLeader.mobileNumber),
     "leaderCollege":team.teamLeader.college.collegeName.encode("utf-8"),
-    "teamId":team.teamId
+    # "teamId":team.teamId
     }
-    try:
-        dic['name1'] = members[0].user.first_name.encode("utf-8")
-        dic['member1'] = members[0].email.encode("utf-8")
-        dic['college1'] = members[0].college.collegeName.encode("utf-8")
-        dic['mobile1'] = members[0].mobileNumber
-    except:
-        dic['name1'] = 0
-        dic['member1'] = 0
-        dic['college1'] = 0
-        dic['mobile1'] = 0
-    try:
-        dic['name2'] = members[0].user.first_name.encode("utf-8")
-        dic['member2'] = members[1].email.encode("utf-8")
-        dic['college2'] = members[1].college.collegeName.encode("utf-8")
-        dic['mobile2'] = members[1].mobileNumber
-    except:
-        dic['name2'] = 0
-        dic['member2'] = 0
-        dic['college2'] = 0
-        dic['mobile2'] = 0
-    try:
-        dic['name3'] = members[0].user.first_name.encode("utf-8")
-        dic['member3'] = members[2].email.encode("utf-8")
-        dic['college3'] = members[2].college.collegeName.encode("utf-8")
-        dic['mobile3'] = members[2].mobileNumber
-    except:
-        dic['name3'] = 0
-        dic['member3'] = 0
-        dic['college3'] = 0
-        dic['mobile3'] = 0
-    try:
-        dic['name4'] = members[0].user.first_name.encode("utf-8")
-        dic['member4'] = members[3].email.encode("utf-8")
-        dic['college4'] = members[3].college.collegeName.encode("utf-8")
-        dic['mobile4'] = members[3].mobileNumber
-    except:
-        dic['name4'] = 0
-        dic['member4'] = 0
-        dic['college4'] = 0
-        dic['mobile4'] = 0
-    print dic
+    # try:
+    #     dic['name1'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member1'] = members[0].email.encode("utf-8")
+    #     dic['college1'] = members[0].college.collegeName.encode("utf-8")
+    #     dic['mobile1'] = members[0].mobileNumber
+    # except:
+    #     dic['name1'] = 0
+    #     dic['member1'] = 0
+    #     dic['college1'] = 0
+    #     dic['mobile1'] = 0
+    # try:
+    #     dic['name2'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member2'] = members[1].email.encode("utf-8")
+    #     dic['college2'] = members[1].college.collegeName.encode("utf-8")
+    #     dic['mobile2'] = members[1].mobileNumber
+    # except:
+    #     dic['name2'] = 0
+    #     dic['member2'] = 0
+    #     dic['college2'] = 0
+    #     dic['mobile2'] = 0
+    # try:
+    #     dic['name3'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member3'] = members[2].email.encode("utf-8")
+    #     dic['college3'] = members[2].college.collegeName.encode("utf-8")
+    #     dic['mobile3'] = members[2].mobileNumber
+    # except:
+    #     dic['name3'] = 0
+    #     dic['member3'] = 0
+    #     dic['college3'] = 0
+    #     dic['mobile3'] = 0
+    # try:
+    #     dic['name4'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member4'] = members[3].email.encode("utf-8")
+    #     dic['college4'] = members[3].college.collegeName.encode("utf-8")
+    #     dic['mobile4'] = members[3].mobileNumber
+    # except:
+    #     dic['name4'] = 0
+    #     dic['member4'] = 0
+    #     dic['college4'] = 0
+    #     dic['mobile4'] = 0
+    # print dic
     url = sheetUrls[team.workshop.slug.encode("utf-8")]
     requests.post(url, data = dic)
 
 
-def worshopdataFill():
+def workshopdataFill():
     teams = WorkshopTeam.objects.all()
     for team in teams:
         workshop_spreadsheet(team)

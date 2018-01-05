@@ -159,7 +159,7 @@
 
 
 		<div class="ct--header__background r r--16-9" >
-												<video style="opacity: .85;background-color:rgba(0,0,0,.6);background-blend-mode: multiply;" class="media" autoplay="autoplay" poster="/static/workshop/img/bcgimgfinal.jpg" loop="loop" muted="muted">
+												<video style="opacity: .85;background-color:rgba(0,0,0,.6);background-blend-mode: multiply;" class="media" autoplay="autoplay" poster="http://res.cloudinary.com/dpxbd37qm/image/upload/v1515062748/bgworkshop_x8x8nm.png" loop="loop" muted="muted">
 
 					</video>
 									</div>
@@ -167,9 +167,7 @@
 
 			<div class="container">
 			<div class="content m4 c6">
-				<p style="text-align: justify;">Technex has always been known for its stellar guest lecture series - 'Think Talks' - which have been becoming increasingly attractive over the years. Technex'16 witnessed personalities hailing from varied domains coming together to share their knowledge and experience with students from around the nation.  <br />
-
-India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs Rosaly Lopes and swarm robotics researcher - Mr Gianni Di Caro presented revolutionary ideas and advancements from their respective areas of research. Mr Prabhu Chawla, one of India's finest political journalists, spoke about the development of the country's scenario over the years he's been into the profession.</p>
+				<p style="text-align: justify;">Technex hosts a multitude of workshops in association with major technical training institutions and organizations to promote skills of engineering, management and technology among students. It is the most sought-after platform to provide two days of great interactive-learning experience and hours of hands-on training.</p>
 
 			</div>
 		</div> 
@@ -225,7 +223,7 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
             </li>
             <div class="tingle-demo" style="display: none;" id="workshop{{forloop.counter}}">
             <div id=""><div class="cd-panel from-right {{workshop.order}}">
-        <header class="cd-panel-header" style="overflow:hidden;">
+     <!--    <header class="cd-panel-header" style="overflow:hidden;">
     <div style="width: 100%" class="header_head">
     <div style="text-align:center;">
             <u><h1>{{workshop.event_name}} </h1></u>
@@ -236,15 +234,119 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
       </a>
       </div>
     </div>
-            <!-- <a href="#0" class="cd-panel-close">Close</a> -->
+            
+        </header> -->
+        <header style="width: 100%; height: 80px;margin-bottom: 15px;">
+        	
+        	<div style="display: table;margin: 0 auto;width: 50%;height: inherit;float: left;">
+        		<a href="{{workshop.sponlink}}" target="_blank"> 
+      <img src="{{workshop.sponimage}}"  />
+      </a>
+        	</div>
+        	<div style="display: table;margin: 0 auto;width: 50%;height: inherit;float: left;">
+        		<a href="/dashboard/#/workshopreg/{{workshop.register_link}}"  class="c5 m7" style="padding: 0px;display:table;margin: 0 auto;float: right;" target="_blank">
+				<button class="btn btn--rect btn--rect--center">
+                <span  class="btn__content" style="width: 100%;color: black;">
+            <span class="btn__content-label">Register</span>
+                            <span class="btn__content-layer" data-content="Register"></span>
+                    </span>
+        <span class="btn__loading">
+            <span class="btn__loading-container">
+                <span class="btn__loading-i btn__loading-i--first"></span>
+                <span class="btn__loading-i btn__loading-i--middle"></span>
+                <span class="btn__loading-i btn__loading-i--last"></span>
+                <div class="clear"></div>
+            </span>
+        </span>
+    </button>
+			</a>
+        	</div>
+    <!--     	<div style="display: table;margin: 0 auto;width: 33.33%;height: inherit;float: left;">
+        		<a href="" class="c5 m7" style="padding: 0px;margin: 0 auto;float: right;display:table;">
+				<button class="btn btn--rect btn--rect--center">
+                <span  class="btn__content" style="width: 100%;color: black;">
+            <span class="btn__content-label">₹ {{workshop.workshopFees}} per person</span>
+                            <span class="btn__content-layer" data-content="₹ {{workshop.workshopFees}} per person"></span>
+                    </span>
+        <span class="btn__loading">
+            <span class="btn__loading-container">
+                <span class="btn__loading-i btn__loading-i--first"></span>
+                <span class="btn__loading-i btn__loading-i--middle"></span>
+                <span class="btn__loading-i btn__loading-i--last"></span>
+                <div class="clear"></div>
+            </span>
+        </span>
+    </button>
+			</a>
+        	</div> -->
         </header>
+     <!--    <hr>
+        <hr> -->
+         <header style="width: 100%; height: 80px;margin-top: 20px;margin-bottom: 20px;">
+        	<!-- <div style="display: table;margin: 0 auto;width: 33.33%;height: inherit;float: left;">
+        		<a href="/dashboard/#/workshopreg/{{workshop.register_link}}"  class="c5 m7" style="padding: 0px;display:table;margin: 0 auto;float: left;" target="_blank">
+				<button class="btn btn--rect btn--rect--center">
+                <span  class="btn__content" style="width: 100%;color: black;">
+            <span class="btn__content-label">Register</span>
+                            <span class="btn__content-layer" data-content="Register"></span>
+                    </span>
+        <span class="btn__loading">
+            <span class="btn__loading-container">
+                <span class="btn__loading-i btn__loading-i--first"></span>
+                <span class="btn__loading-i btn__loading-i--middle"></span>
+                <span class="btn__loading-i btn__loading-i--last"></span>
+                <div class="clear"></div>
+            </span>
+        </span>
+    </button>
+			</a>
+        	</div>
+        	<div style="display: table;margin: 0 auto;width: 33.33%;height: inherit;float: left;">
+        		<a href="{{workshop.sponlink}}" target="_blank"> 
+      <img src="{{workshop.sponimage}}"  />
+      </a>
+        	</div> -->
+        		<div style="display: table;margin: 0 auto;width: 50%;height: inherit;float: left;">
+        		<h1 style="font-size: 30px;text-align: center;text-transform: uppercase;font-weight: bold;">{{workshop.event_name}}</h1>
+        	</div>
+        	<div style="display: table;margin: 0 auto;width: 33.33%;height: inherit;float: right;">
+        		<a href="" class="c5 m7" style="padding: 0px;margin: 0 auto;float: right;display:table;">
+				<button class="btn btn--rect btn--rect--center">
+                <span  class="btn__content" style="width: 100%;color: black;">
+            <span class="btn__content-label">₹ {{workshop.workshopFees}} per person</span>
+                            <span class="btn__content-layer" data-content="₹ {{workshop.workshopFees}} per person"></span>
+                    </span>
+        <span class="btn__loading">
+            <span class="btn__loading-container">
+                <span class="btn__loading-i btn__loading-i--first"></span>
+                <span class="btn__loading-i btn__loading-i--middle"></span>
+                <span class="btn__loading-i btn__loading-i--last"></span>
+                <div class="clear"></div>
+            </span>
+        </span>
+    </button>
+			</a>
+        	</div>
+        </header>
+
+     <!--    <hr>
+        <hr> -->
+
+
+        
+        <!-- <h1 style="width: 100%;font-size: 30px;text-align: center;margin-top: 12px;margin-bottom: 20px;">{{workshop.event_name}}</h1> -->
+        
+
+        <!-- <a href="#0" class="cd-panel-close">Close</a> -->
         <div class="cd-panel-container">
             <div class="cd-panel-content" style="color: black;">
-            <div>
+<!--             <div>
                 <button><a class="button9" style="padding:6px;" href="/dashboard/#/workshopreg/{{workshop.register_link}}" target="_blank">REGISTER</a></button>
                 </div>
-                <div style="transform:translate3d(490px, 0px, 0px)"><span>COST: </span><span>₹{{workshop.workshopFees}}/ per person</span></div>
-                <br>
+ -->
+                 <!-- <div style="transform:translate3d(490px, 0px, 0px)"><span>COST: </span><span>₹{{workshop.workshopFees}}/ per person</span></div> -->
+        
+         <br>
                 <div class="workshopDescription">
                 {{workshop.event_content | safe}}
                 </div>
