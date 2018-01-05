@@ -162,7 +162,7 @@ class Workshops(models.Model):
     sponlink=models.TextField(validators=[URLValidator()],blank=True,null = True)    
 
     def __unicode__(self):
-        return '%s'%(self.title)
+        return '%s - %s'%(self.title, self.slug)
 
 class WorkshopOptions(models.Model):
     optionName = models.CharField(max_length = 50, null = True)

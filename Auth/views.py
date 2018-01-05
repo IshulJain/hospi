@@ -1224,7 +1224,7 @@ Regards
         for user in users:
            send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
         response['status'] = 1
-        # workshop_spreadsheet(team)
+        workshop_spreadsheet(team)
         return JsonResponse(response)
     else:
         response['status'] = 0
@@ -1814,54 +1814,54 @@ def liteversion(request):
 def workshop_spreadsheet(team):
     members = team.members.all()
     dic = {
-    "teamName": team.teamName.encode("utf-8"),
+    # "teamName": team.teamName.encode("utf-8"),
     "leaderName" : team.teamLeader.user.first_name.encode("utf-8"),
     "leaderEmail" : team.teamLeader.email.encode("utf-8"),
     "leaderMobile":str(team.teamLeader.mobileNumber),
     "leaderCollege":team.teamLeader.college.collegeName.encode("utf-8"),
     "teamId":team.teamId
     }
-    try:
-        dic['name1'] = members[0].user.first_name.encode("utf-8")
-        dic['member1'] = members[0].email.encode("utf-8")
-        dic['college1'] = members[0].college.collegeName.encode("utf-8")
-        dic['mobile1'] = members[0].mobileNumber
-    except:
-        dic['name1'] = 0
-        dic['member1'] = 0
-        dic['college1'] = 0
-        dic['mobile1'] = 0
-    try:
-        dic['name2'] = members[0].user.first_name.encode("utf-8")
-        dic['member2'] = members[1].email.encode("utf-8")
-        dic['college2'] = members[1].college.collegeName.encode("utf-8")
-        dic['mobile2'] = members[1].mobileNumber
-    except:
-        dic['name2'] = 0
-        dic['member2'] = 0
-        dic['college2'] = 0
-        dic['mobile2'] = 0
-    try:
-        dic['name3'] = members[0].user.first_name.encode("utf-8")
-        dic['member3'] = members[2].email.encode("utf-8")
-        dic['college3'] = members[2].college.collegeName.encode("utf-8")
-        dic['mobile3'] = members[2].mobileNumber
-    except:
-        dic['name3'] = 0
-        dic['member3'] = 0
-        dic['college3'] = 0
-        dic['mobile3'] = 0
-    try:
-        dic['name4'] = members[0].user.first_name.encode("utf-8")
-        dic['member4'] = members[3].email.encode("utf-8")
-        dic['college4'] = members[3].college.collegeName.encode("utf-8")
-        dic['mobile4'] = members[3].mobileNumber
-    except:
-        dic['name4'] = 0
-        dic['member4'] = 0
-        dic['college4'] = 0
-        dic['mobile4'] = 0
-    print dic
+    # try:
+    #     dic['name1'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member1'] = members[0].email.encode("utf-8")
+    #     dic['college1'] = members[0].college.collegeName.encode("utf-8")
+    #     dic['mobile1'] = members[0].mobileNumber
+    # except:
+    #     dic['name1'] = 0
+    #     dic['member1'] = 0
+    #     dic['college1'] = 0
+    #     dic['mobile1'] = 0
+    # try:
+    #     dic['name2'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member2'] = members[1].email.encode("utf-8")
+    #     dic['college2'] = members[1].college.collegeName.encode("utf-8")
+    #     dic['mobile2'] = members[1].mobileNumber
+    # except:
+    #     dic['name2'] = 0
+    #     dic['member2'] = 0
+    #     dic['college2'] = 0
+    #     dic['mobile2'] = 0
+    # try:
+    #     dic['name3'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member3'] = members[2].email.encode("utf-8")
+    #     dic['college3'] = members[2].college.collegeName.encode("utf-8")
+    #     dic['mobile3'] = members[2].mobileNumber
+    # except:
+    #     dic['name3'] = 0
+    #     dic['member3'] = 0
+    #     dic['college3'] = 0
+    #     dic['mobile3'] = 0
+    # try:
+    #     dic['name4'] = members[0].user.first_name.encode("utf-8")
+    #     dic['member4'] = members[3].email.encode("utf-8")
+    #     dic['college4'] = members[3].college.collegeName.encode("utf-8")
+    #     dic['mobile4'] = members[3].mobileNumber
+    # except:
+    #     dic['name4'] = 0
+    #     dic['member4'] = 0
+    #     dic['college4'] = 0
+    #     dic['mobile4'] = 0
+    # print dic
     url = sheetUrls[team.workshop.slug.encode("utf-8")]
     requests.post(url, data = dic)
 
