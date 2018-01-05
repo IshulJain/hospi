@@ -1224,6 +1224,7 @@ Regards
         for user in users:
            send_email(user.email,subject,body%(user.user.first_name,workshop.title.capitalize(),team.teamName,teamLeader.email,memberEmails))
         response['status'] = 1
+    
         workshop_spreadsheet(team)
         return JsonResponse(response)
     else:
@@ -1819,7 +1820,7 @@ def workshop_spreadsheet(team):
     "leaderEmail" : team.teamLeader.email.encode("utf-8"),
     "leaderMobile":str(team.teamLeader.mobileNumber),
     "leaderCollege":team.teamLeader.college.collegeName.encode("utf-8"),
-    "teamId":team.teamId
+    # "teamId":team.teamId
     }
     # try:
     #     dic['name1'] = members[0].user.first_name.encode("utf-8")
