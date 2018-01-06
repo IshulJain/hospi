@@ -29,6 +29,24 @@
   <script src="/static/angular-route.js"></script>
   <script src="/static/script.js"></script>
   <style>
+  
+      #des {
+    display: inline;
+    }
+
+    #mob {
+    display: none;
+    }
+@media only screen and (max-width: 500px){
+    #des {
+    display: none;
+    }
+
+    #mob {
+    display: inline;
+    }
+}
+   
   .input-error 
     {
         border-color: red;
@@ -37,6 +55,58 @@
     .fa{
         color: #fff;
     }
+
+
+    .modal {
+   
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+.modal-content{    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+    .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #808080;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+
+}
+.close:hover,
+.close:focus {
+    color: #808080;
+    text-decoration: none;
+    cursor: pointer;
+}
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+
   </style>
   <!--<script src="/static/genmain.js"></script>-->
 </head>
@@ -103,6 +173,10 @@
 
                     <ul class="navigation" style="color: #fff;">
                         <li class="sb"><a href="#profile"><i class="fa fa-user" aria-hidden="true"></i> Profile</a></li>
+                         <li id="des"><a data-toggle="modal" data-target=".bs-example-modal-md"><i class="fa fa-facebook"></i> Facebook Feeds</a>
+                  </li>
+                  <li id="mob"><a data-toggle="modal" data-target=".bs-example-modal-mdd"><i class="fa fa-facebook"></i> Facebook Feeds</a>
+                  </li>
 
                   <!--      <li class="navigation__sub @@variantsactive">
                             <a href=""><i class="zmdi zmdi-view-week"></i> Variants</a>
@@ -151,6 +225,54 @@
     <!-- angular templating -->
 		<!-- this is where content will be injected -->
     <div ng-view></div>
+    	
+    
+    <div id="content-mobile">
+     <div class="modal fade bs-example-modal-mdd in" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 5%;padding-top:15%">
+     				<button type="button"  class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #ffffff;">×</span>
+                          </button>
+                    <div class="modal-dialog modal-md " style=" left: 5% ; max-width:770px">
+                    
+
+                      <div class="modal-content">
+
+              
+                 	 <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Ftechnexiitbhu&width=300&colorscheme=light&show_faces=true&border_color&stream=true&header=true&height=500"
+scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:300px; height:500px; background: white; float:left; " allowTransparency="true">
+</iframe>
+                       
+                        
+
+                      </div>
+                    </div>
+                  </div>
+
+                  </div>
+ <div id="content-desktop">
+     <div class="modal fade bs-example-modal-md in" tabindex="-1" role="dialog" aria-hidden="true" style="display: none; padding-right: 21px;">
+     				<button type="button"  class="close" data-dismiss="modal"><span aria-hidden="true" style="color: #ffffff;">×</span>
+                          </button>
+                    <div class="modal-dialog modal-md " style=" left: 0% ; max-width:770px">
+                    
+
+                      <div class="modal-content">
+
+                     
+                       
+                         
+                         
+                 	 <iframe src="http://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Ftechnexiitbhu&width=750&colorscheme=light&show_faces=true&border_color&stream=true&header=true&height=700"
+scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:500px; height:700px; background: white; float:left; " allowTransparency="true">
+</iframe>
+                       
+                        
+
+                      </div>
+                    </div>
+                  </div>
+
+                  </div>
+
     
 <input type='hidden' id='userEmail' value="{{ request.user.techprofile.email }}" /> 
   
