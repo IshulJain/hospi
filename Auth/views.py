@@ -1666,13 +1666,14 @@ def fbReach(request):
         except:
             fb_connect = FbReach( accessToken = accessToken, uid = uid,profileImage = profile['picture']['data']['url'])
         fb_connect.save()
+        extendToken(uid)
         response['status'] = 1
         return JsonResponse(response)
     else:
         return render(request, 'fbReach.html')
 
 def extendToken(uid):
-    fb = FbConnect.objects.get(uid = uid)
+    fb = FbReach.objects.get(uid = uid)
     app_id = '461359507257085'
     app_secret = '7be92fe7ee2c2d12cd2351d2a2c0dbb8'
     graph = facebook.GraphAPI(fb.accessToken)
