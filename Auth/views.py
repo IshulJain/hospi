@@ -1704,31 +1704,32 @@ def auto(message,link,last):
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
 def autoshare_call(request):
     response = {}
-    post = request.POST
-    if request.COOKIES.get('last_share') :
-        last_link = request.COOKIES['last_link']
-        last_share = request.COOKIES['last_share']
-        last_message = request.COOKIES['last_message']
-    else:
-        last_link = ""
-        request.COOKIES['last_link'] = last_link
-        last_message = ""
-        request.COOKIES['last_message'] = last_message
-        last_share = 0
-        request.COOKIES['last_share'] = last_share
+    # post = request.POST
+    # if request.COOKIES.get('last_share') :
+    #     last_link = request.COOKIES['last_link']
+    #     last_share = request.COOKIES['last_share']
+    #     last_message = request.COOKIES['last_message']
+    # else:
+    #     last_link = ""
+    #     request.COOKIES['last_link'] = last_link
+    #     last_message = ""
+    #     request.COOKIES['last_message'] = last_message
+    #     last_share = 0
+    #     request.COOKIES['last_share'] = last_share
 
-    print request.COOKIES
+    # print request.COOKIES
     if request.method == 'POST':
         post = request.POST
         print post
         try:
-            auto(post['message'],post['link'],last_share)
+
+            auto(post['message'],post['link'],post['last'])
             response['status'] = 1
         except:
             response['status'] = 0
         return JsonResponse(response)
     else:
-        return render(request, 'autoshare.html',{'last':last_share,'last_link':last_link,'last_message':last_message})
+        return render(request, 'autoshare.html')
 
 def auto_share_like(token,limit = 1,caption="",):
     try:

@@ -14,18 +14,13 @@ function fb_share(){
 	data = {};
 	data["message"] = document.getElementById("mess").value;
 	data["link"] = document.getElementById("link").value;
-	data["last"] = {{last}}
+	data["last"] = document.getElementById("last").value;
 	theAjax('/autoshare/',data).done(function(response){
       console.log(response);
       if (response['status'] == 1)
       {
         alert("Successfully Done!!");
-        createCookie('last_link',data['link']);
-        createCookie('last_message',data['message']);
-       	createCookie('last_share',(data['last']+1)%10);
-        location.reload(true);
-        console.log(readCookie('last_link'))
-        console.log(readCookie('last_message'))
+      
       }
       else
       {
@@ -33,7 +28,7 @@ function fb_share(){
       }
     });
 }
-
+/*
 function createCookie(name,value) {
     document.cookie = name+"="+value+"; path=/";
 
@@ -49,15 +44,13 @@ function readCookie(name) {
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
     }
     return null;
-}
+}*/
 </script>
 
 <form action="/action_page.php">
   Message: <input type="text" id="mess" name="message"><br>
   Link: <input type="text" id="link" name="link"><br>
-  Last message: {{ last_message }}<br>
-  Last share link:  {{ last_link }}<br>
-  
-  counter:<p id="count"> {{ last }} </p><br>
+  counter: <input type="text" id="last" name="last"><br>
+  <!-- last counter:<p id="count"> {{ last }} </p><br> -->
   <button type="button" onclick="fb_share()">Share on Facebook</button>
 </form>
