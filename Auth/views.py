@@ -57,6 +57,7 @@ sheetUrls = {
     "industrial-automation-plc-scada": "https://script.google.com/a/technex.in/macros/s/AKfycbw9bviaV03HbJGLAIRpYDAOmCDI5-T0qBnEqAL-uOGNGpRFVE4K/exec", #Updated
     "internet-of-things": "https://script.google.com/a/technex.in/macros/s/AKfycbwrkWl-IJRK5ujypg0HjKFhZEL05Unkdl5pWehNHxwUqmsx22cx/exec", #Updated
     "artificial-intelligence-machine-learning": "https://script.google.com/a/technex.in/macros/s/AKfycbwHuRypXQrZvrv5mphBSDVN-7isE609xoPKA0qHSJUw3z2nHIU/exec", #Updated
+    "voice-controlled-automation-using-amazon-alexa": "https://script.google.com/a/technex.in/macros/s/AKfycbzn0dDn6WCY6He2srW0BL9QhixBUBS5xcZmxLoFc6tsg7ktJIs/exec", #Updated
     # "internet-of-things": "https://script.google.com/macros/s/AKfycbwLtFRKGpWk9ZxvvAoq409JqHMiykh2wWYHte6k6DUd94q7zLak/exec",
     # "data-mining" : "https://script.google.com/macros/s/AKfycbzLegitbfINZp8Ygu2aGBwLHMXaB-aQOW__B-lr6ZCD34NfliqM/exec",
     # "digital-marketing" : "https://script.google.com/macros/s/AKfycby1EOzmNiEpW5ddEbTwTIugmCidIf5H05GmMdDSxTZn15PD60c/exec",
@@ -3359,8 +3360,36 @@ def fill_registrations():
 def publicity(request):
     return render(request,"buttons.html")
 
-def recent_activities(request):
+# def recent_activities(request):
     
+#     events = Event.objects.all()
+#     eventobj = {}
+#     for event in events:
+        
+#         eventobj[event.eventName] = Team.objects.filter(event = event).count()
+#         print eventobj
+#         # eventobj['count'] = Team.objects.filter(event = event).count()
+#     workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
+#     workshops=workshops1[:5]
+#     teams1 = Team.objects.all().order_by("-timestamp")
+#     teams=teams1[:5]
+#     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
+#     techprofiles=techprofiles1[:5]
+#     a=max(eventobj, key=lambda k: eventobj[k])
+#     print(a)
+#     return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
+
+@csrf_exempt
+@login_required(login_url='/register/')
+def recent_activities(request):
+    user = None
+    if request.user.is_authenticated():
+        t = request.user.techprofile
+        e = request.user.email
+        college=t.college
+        c=TechProfile.objects.filter(college=college).exclude(email=e)
+        
     events = Event.objects.all()
     eventobj = {}
     for event in events:
@@ -3375,6 +3404,7 @@ def recent_activities(request):
     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
     techprofiles=techprofiles1[:5]
     a=max(eventobj, key=lambda k: eventobj[k])
-    print(a)
-    return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+    print (c)
+
+    return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
 
