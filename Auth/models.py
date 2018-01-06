@@ -451,11 +451,3 @@ class suggestions(models.Model):
     suggestion = models.TextField(blank = True)
     def __unicode__(self):
         return self.tech.user.first_name
-
-
-class Certificate(models.Model):
-    key = models.CharField(primary_key = True, max_length = 250)
-    tech = models.ForeignKey(TechProfile, null = True, blank = True)
-    achievement = status = models.CharField(max_length = 50,null= True,blank = True)
-    description = models.CharField(max_length = 100,null= True,blank = True)
-    certificate = models.ImageField(upload_to='Certificates')

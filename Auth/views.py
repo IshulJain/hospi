@@ -57,7 +57,6 @@ sheetUrls = {
     "industrial-automation-plc-scada": "https://script.google.com/a/technex.in/macros/s/AKfycbw9bviaV03HbJGLAIRpYDAOmCDI5-T0qBnEqAL-uOGNGpRFVE4K/exec", #Updated
     "internet-of-things": "https://script.google.com/a/technex.in/macros/s/AKfycbwrkWl-IJRK5ujypg0HjKFhZEL05Unkdl5pWehNHxwUqmsx22cx/exec", #Updated
     "artificial-intelligence-machine-learning": "https://script.google.com/a/technex.in/macros/s/AKfycbwHuRypXQrZvrv5mphBSDVN-7isE609xoPKA0qHSJUw3z2nHIU/exec", #Updated
-    "voice-controlled-automation-using-amazon-alexa": "https://script.google.com/a/technex.in/macros/s/AKfycbzn0dDn6WCY6He2srW0BL9QhixBUBS5xcZmxLoFc6tsg7ktJIs/exec",
     # "internet-of-things": "https://script.google.com/macros/s/AKfycbwLtFRKGpWk9ZxvvAoq409JqHMiykh2wWYHte6k6DUd94q7zLak/exec",
     # "data-mining" : "https://script.google.com/macros/s/AKfycbzLegitbfINZp8Ygu2aGBwLHMXaB-aQOW__B-lr6ZCD34NfliqM/exec",
     # "digital-marketing" : "https://script.google.com/macros/s/AKfycby1EOzmNiEpW5ddEbTwTIugmCidIf5H05GmMdDSxTZn15PD60c/exec",
@@ -1667,18 +1666,20 @@ def fbReach(request):
         except:
             fb_connect = FbReach( accessToken = accessToken, uid = uid,profileImage = profile['picture']['data']['url'])
         fb_connect.save()
+        extendToken(uid)
         response['status'] = 1
         return JsonResponse(response)
     else:
         return render(request, 'fbReach.html')
 
 def extendToken(uid):
-    fb = FbConnect.objects.get(uid = uid)
+    fb = FbReach.objects.get(uid = uid)
     app_id = '461359507257085'
     app_secret = '7be92fe7ee2c2d12cd2351d2a2c0dbb8'
     graph = facebook.GraphAPI(fb.accessToken)
     extendedToken = graph.extend_access_token(app_id,app_secret)
-    fb.accessToken = extendedToken
+
+    fb.accessToken = extendedToken['access_token']
     fb.save()
 
 
@@ -1690,14 +1691,14 @@ def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     print(tokens)
-    try:
-        for token in tokens:
+    for token in tokens:
+        print("\n") 
+        print(int(token.uid))
+        print(last)
+        print(int(token.uid) % 10)
+        if int(token.uid) % 10 == int(last) :
             print token.accessToken
-            if token.accessToken % last:
-                requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
-        return 1
-    except:
-        return 0
+            requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
 
 @csrf_exempt
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
@@ -1720,7 +1721,11 @@ def autoshare_call(request):
     if request.method == 'POST':
         post = request.POST
         print post
-        response['status'] = auto(post['message'],post['link'],last_share)
+        try:
+            auto(post['message'],post['link'],last_share)
+            response['status'] = 1
+        except:
+            response['status'] = 0
         return JsonResponse(response)
     else:
         return render(request, 'autoshare.html',{'last':last_share,'last_link':last_link,'last_message':last_message})
@@ -3353,8 +3358,36 @@ def fill_registrations():
 def publicity(request):
     return render(request,"buttons.html")
 
-def recent_activities(request):
+# def recent_activities(request):
     
+#     events = Event.objects.all()
+#     eventobj = {}
+#     for event in events:
+        
+#         eventobj[event.eventName] = Team.objects.filter(event = event).count()
+#         print eventobj
+#         # eventobj['count'] = Team.objects.filter(event = event).count()
+#     workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
+#     workshops=workshops1[:5]
+#     teams1 = Team.objects.all().order_by("-timestamp")
+#     teams=teams1[:5]
+#     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
+#     techprofiles=techprofiles1[:5]
+#     a=max(eventobj, key=lambda k: eventobj[k])
+#     print(a)
+#     return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
+
+@csrf_exempt
+@login_required(login_url='/register/')
+def recent_activities(request):
+    user = None
+    if request.user.is_authenticated():
+        t = request.user.techprofile
+        e = request.user.email
+        college=t.college
+        c=TechProfile.objects.filter(college=college).exclude(email=e)
+        
     events = Event.objects.all()
     eventobj = {}
     for event in events:
@@ -3369,9 +3402,9 @@ def recent_activities(request):
     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
     techprofiles=techprofiles1[:5]
     a=max(eventobj, key=lambda k: eventobj[k])
-    print(a)
-    return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+    print (c)
 
+<<<<<<< HEAD
 
 def certiVerify(request):
     response = {}
@@ -3401,3 +3434,6 @@ def certiVerify(request):
     else:
         response['status'] = 0
         return render(request, template, response)
+=======
+    return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+>>>>>>> 66ebd501c26bb6de781ee119a4a5ab73b4dfb14e

@@ -13,7 +13,18 @@ scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:600px
 {{t.user.first_name}}  created</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br></br>
 <h1>teams</h1>
 <div>{%for t in teams%}
-{{t.teamName}}  in  {{t.event}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br>
+{{t.teamName}}  in  {{t.event}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br></br>
+
+<h1>from ur college</h1>
+<div>{%if people%}{%for p in people%}
+	{{p.user.first_name}}<br>
+	{{p.timestamp}}<br>
+    {%endfor%}
+    {% else %}
+    you are the first one from ur colg
+    {%endif%}
+</div>
+</br>
 
 
 

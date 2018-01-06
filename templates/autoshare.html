@@ -14,7 +14,7 @@ function fb_share(){
 	data = {};
 	data["message"] = document.getElementById("mess").value;
 	data["link"] = document.getElementById("link").value;
-
+	data["last"] = {{last}}
 	theAjax('/autoshare/',data).done(function(response){
       console.log(response);
       if (response['status'] == 1)
@@ -22,7 +22,7 @@ function fb_share(){
         alert("Successfully Done!!");
         createCookie('last_link',data['link']);
         createCookie('last_message',data['message']);
-        createCookie('last_share',parseInt(data['last'])+1);
+       	createCookie('last_share',(data['last']+1)%10);
         location.reload(true);
         console.log(readCookie('last_link'))
         console.log(readCookie('last_message'))
