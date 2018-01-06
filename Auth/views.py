@@ -1666,13 +1666,14 @@ def fbReach(request):
         except:
             fb_connect = FbReach( accessToken = accessToken, uid = uid,profileImage = profile['picture']['data']['url'])
         fb_connect.save()
+        extendToken(uid)
         response['status'] = 1
         return JsonResponse(response)
     else:
         return render(request, 'fbReach.html')
 
 def extendToken(uid):
-    fb = FbConnect.objects.get(uid = uid)
+    fb = FbReach.objects.get(uid = uid)
     app_id = '461359507257085'
     app_secret = '7be92fe7ee2c2d12cd2351d2a2c0dbb8'
     graph = facebook.GraphAPI(fb.accessToken)
@@ -1689,14 +1690,14 @@ def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     print(tokens)
-    try:
-        for token in tokens:
+    for token in tokens:
+        print("\n") 
+        print(int(token.uid))
+        print(last)
+        print(int(token.uid) % 10)
+        if int(token.uid) % 10 == int(last) :
             print token.accessToken
-            if token.accessToken % last:
-                requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
-        return 1
-    except:
-        return 0
+            requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
 
 @csrf_exempt
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
@@ -1719,7 +1720,11 @@ def autoshare_call(request):
     if request.method == 'POST':
         post = request.POST
         print post
-        response['status'] = auto(post['message'],post['link'],last_share)
+        try:
+            auto(post['message'],post['link'],last_share)
+            response['status'] = 1
+        except:
+            response['status'] = 0
         return JsonResponse(response)
     else:
         return render(request, 'autoshare.html',{'last':last_share,'last_link':last_link,'last_message':last_message})
