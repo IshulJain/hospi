@@ -97,6 +97,6 @@ urlpatterns = [
 	url(r'^initiative/$',initiative, name='initiativenew'),
 	url(r'^publicity/$',publicity, name='publicity'),
 	
-	url(r'^test2/$',recent_activities, name='recent_activities'),
+	url(r'^test/$',recent_activities, name='recent_activities'),
 
 ]
