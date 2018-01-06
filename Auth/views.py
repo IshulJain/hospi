@@ -1678,7 +1678,8 @@ def extendToken(uid):
     app_secret = '7be92fe7ee2c2d12cd2351d2a2c0dbb8'
     graph = facebook.GraphAPI(fb.accessToken)
     extendedToken = graph.extend_access_token(app_id,app_secret)
-    fb.accessToken = extendedToken
+
+    fb.accessToken = extendedToken['access_token']
     fb.save()
 
 
