@@ -32,8 +32,8 @@ as:[1,1,1,1,1,1]
 {
 parentEvent: 'riqueza',
 events:['analiticity', 'bulls-floor', 'krackat', 'manthan','economists-enigma'],
-max:[2,0,0,4,4],
-as:[1,1,1,1,1]
+max:[2,0,0,4],
+as:[1,1,1,1]
 },
 {
 parentEvent: 'byte-the-bits',
@@ -152,6 +152,9 @@ app.filter('propernames', function() {
             n+=t[i];
           }
         }
+        if(x=="bulls-floor"){
+          n = "Bulls On The Floor"
+        }
         return n;
     };
   });
@@ -184,6 +187,11 @@ app.filter('propernames', function() {
 				templateUrl : '/static/pages/form.html',
 				controller  : 'workshop-cont'
 			})
+			.when('/workshop/:param1', {
+				templateUrl : '/static/pages/form.html',
+				controller  : 'workshop-cont'
+			})
+
 
       .when('/startupreg/',{
                    templateUrl:'/static/pages/startupfair.html',
@@ -596,6 +604,7 @@ app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , f
   $scope.counter = 0;
   $scope.members = [];
   if (param1){
+  	console.log("ghjk")
     $scope.workshopObject = $.grep($scope.options,function(n,i){ return n.workshop == param1})[0];
     $scope.workshop = param1;
     $scope.max = $scope.workshopObject.max;

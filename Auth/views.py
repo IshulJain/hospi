@@ -1666,18 +1666,20 @@ def fbReach(request):
         except:
             fb_connect = FbReach( accessToken = accessToken, uid = uid,profileImage = profile['picture']['data']['url'])
         fb_connect.save()
+        extendToken(uid)
         response['status'] = 1
         return JsonResponse(response)
     else:
         return render(request, 'fbReach.html')
 
 def extendToken(uid):
-    fb = FbConnect.objects.get(uid = uid)
+    fb = FbReach.objects.get(uid = uid)
     app_id = '461359507257085'
     app_secret = '7be92fe7ee2c2d12cd2351d2a2c0dbb8'
     graph = facebook.GraphAPI(fb.accessToken)
     extendedToken = graph.extend_access_token(app_id,app_secret)
-    fb.accessToken = extendedToken
+
+    fb.accessToken = extendedToken['access_token']
     fb.save()
 
 
@@ -1689,40 +1691,41 @@ def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     print(tokens)
-    try:
-        for token in tokens:
+    for token in tokens:
+        print("\n") 
+        print(int(token.uid))
+        print(last)
+        print(int(token.uid) % 10)
+        if int(token.uid) % 10 == int(last) :
             print token.accessToken
-            if token.accessToken % last:
-                requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
-        return 1
-    except:
-        return 0
+            requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
 
 @csrf_exempt
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
 def autoshare_call(request):
     response = {}
     post = request.POST
-    print request.session
-    if request.session.get('last_share'):
-        last_link = request.session['last_link']
-        last_share = request.session['last_share']
-        request.session['last_share'] = last_share + 1
-        if last_share == 10:
-            request.session['last_share'] = 0
+    if request.COOKIES.get('last_share') :
+        last_link = request.COOKIES['last_link']
+        last_share = request.COOKIES['last_share']
+        last_message = request.COOKIES['last_message']
     else:
-        last_link = "https://www.facebook.com/technexiitbhu/photos/a.316825485008606.86665.225615937462895/1874170312607441/?type=3"
-        request.session['last_link'] = last_link
-        last_message ="To most people, the sky is the limit. For those who love aviation, the sky is home. Design and construct your water propelled rocket, and compete with surging excitement in MOMENTUM, the distinct event of Technex. Get the gauges out, and valves open, propel to great heights with me. Bring the projectiles, reach the playground!"
-        request.session['last_message'] = last_message
+        last_link = ""
+        request.COOKIES['last_link'] = last_link
+        last_message = ""
+        request.COOKIES['last_message'] = last_message
         last_share = 0
-        request.session['last_share'] = last_share
+        request.COOKIES['last_share'] = last_share
 
-    print request.session
+    print request.COOKIES
     if request.method == 'POST':
         post = request.POST
         print post
-        response['status'] = auto(post['message'],post['link'],last_share)
+        try:
+            auto(post['message'],post['link'],last_share)
+            response['status'] = 1
+        except:
+            response['status'] = 0
         return JsonResponse(response)
     else:
         return render(request, 'autoshare.html',{'last':last_share,'last_link':last_link,'last_message':last_message})
