@@ -57,6 +57,7 @@ sheetUrls = {
     "industrial-automation-plc-scada": "https://script.google.com/a/technex.in/macros/s/AKfycbw9bviaV03HbJGLAIRpYDAOmCDI5-T0qBnEqAL-uOGNGpRFVE4K/exec", #Updated
     "internet-of-things": "https://script.google.com/a/technex.in/macros/s/AKfycbwrkWl-IJRK5ujypg0HjKFhZEL05Unkdl5pWehNHxwUqmsx22cx/exec", #Updated
     "artificial-intelligence-machine-learning": "https://script.google.com/a/technex.in/macros/s/AKfycbwHuRypXQrZvrv5mphBSDVN-7isE609xoPKA0qHSJUw3z2nHIU/exec", #Updated
+    "voice-controlled-automation-using-amazon-alexa": "https://script.google.com/a/technex.in/macros/s/AKfycbzn0dDn6WCY6He2srW0BL9QhixBUBS5xcZmxLoFc6tsg7ktJIs/exec", #Updated
     # "internet-of-things": "https://script.google.com/macros/s/AKfycbwLtFRKGpWk9ZxvvAoq409JqHMiykh2wWYHte6k6DUd94q7zLak/exec",
     # "data-mining" : "https://script.google.com/macros/s/AKfycbzLegitbfINZp8Ygu2aGBwLHMXaB-aQOW__B-lr6ZCD34NfliqM/exec",
     # "digital-marketing" : "https://script.google.com/macros/s/AKfycby1EOzmNiEpW5ddEbTwTIugmCidIf5H05GmMdDSxTZn15PD60c/exec",
@@ -3405,35 +3406,6 @@ def recent_activities(request):
     print (c)
 
 <<<<<<< HEAD
-
-def certiVerify(request):
-    response = {}
-    # template = "certiVerify.html"
-
-    if request.method == 'POST':
-        data = request.POST
-        print data
-        key = data['key']
-        email = data['email']
-        try:
-            techprofile = TechProfile.objects.get(email=email)
-        except:
-            response['status'] = 0
-            messages.error(request,'Certificate is not Valid.',fail_silently=True)
-            return render(request, template, response)
-
-        try:
-            Certificate = Certificate.objects.get(key=key, tech=techprofile)
-        except:
-            response['status'] = 0
-            messages.error(request,'Certificate is not Valid.',fail_silently=True)
-            return render(request, template, response)
-
-        response['status'] = 1
-        return render(request, template, response)
-    else:
-        response['status'] = 0
-        return render(request, template, response)
 =======
     return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
 >>>>>>> 66ebd501c26bb6de781ee119a4a5ab73b4dfb14e
