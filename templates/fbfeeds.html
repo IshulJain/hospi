@@ -13,7 +13,15 @@ scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:600px
 {{t.user.first_name}}  created</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br></br>
 <h1>teams</h1>
 <div>{%for t in teams%}
-{{t.teamName}}  in  {{t.event}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br>
+{{t.teamName}}  in  {{t.event}}</br>{{t.timestamp|timesince}}  ago</br>{%endfor%}</div></br></br>
+<div>{%if people%}{%for p in people%}
+	{{p.user.first_name}}<br>
+    {%endfor%}
+    {% else %}
+    first
+    {%endif%}
+</div>
+</br>
 
 
 

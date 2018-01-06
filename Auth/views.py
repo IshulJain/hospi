@@ -3355,8 +3355,36 @@ def fill_registrations():
 def publicity(request):
     return render(request,"buttons.html")
 
-def recent_activities(request):
+# def recent_activities(request):
     
+#     events = Event.objects.all()
+#     eventobj = {}
+#     for event in events:
+        
+#         eventobj[event.eventName] = Team.objects.filter(event = event).count()
+#         print eventobj
+#         # eventobj['count'] = Team.objects.filter(event = event).count()
+#     workshops1 = WorkshopTeam.objects.all().order_by("-timestamp")
+#     workshops=workshops1[:5]
+#     teams1 = Team.objects.all().order_by("-timestamp")
+#     teams=teams1[:5]
+#     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
+#     techprofiles=techprofiles1[:5]
+#     a=max(eventobj, key=lambda k: eventobj[k])
+#     print(a)
+#     return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
+
+@csrf_exempt
+@login_required(login_url='/register/')
+def recent_activities(request):
+    user = None
+    if request.user.is_authenticated():
+        t = request.user.techprofile
+        e = request.user.email
+        college=t.college
+        c=TechProfile.objects.filter(college=college).exclude(email=e)
+        
     events = Event.objects.all()
     eventobj = {}
     for event in events:
@@ -3371,6 +3399,6 @@ def recent_activities(request):
     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
     techprofiles=techprofiles1[:5]
     a=max(eventobj, key=lambda k: eventobj[k])
-    print(a)
-    return render(request,'fbfeeds.html',{'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+    print (c)
 
+    return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})

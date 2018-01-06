@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html>
+	<head></head><body>
+
+
+<div>{%if people%}{%for p in people%}
+	{{p.user.first_name}}<br>
+    {%endfor%}
+    {% else %}
+    first
+    {%endif%}
+</div>
+</br>
+
+
+
+
+</body>
+</html>
