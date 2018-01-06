@@ -152,6 +152,9 @@ app.filter('propernames', function() {
             n+=t[i];
           }
         }
+        if(x=="bulls-floor"){
+          n = "Bulls On The Floor"
+        }
         return n;
     };
   });
