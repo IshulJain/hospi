@@ -3405,7 +3405,5 @@ def recent_activities(request):
     a=max(eventobj, key=lambda k: eventobj[k])
     print (c)
 
-<<<<<<< HEAD
-=======
     return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
->>>>>>> 66ebd501c26bb6de781ee119a4a5ab73b4dfb14e
+
