@@ -165,7 +165,15 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
+
+
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# WHITENOISE_MAX_AGE = 10368000
+
+# def cache_control(headers, path, url):
+#     if path.endswith('.jpg'):
+#         headers['Cache-Control'] = 'no-cache,must-revalidate'
+
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
