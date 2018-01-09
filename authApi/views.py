@@ -633,6 +633,43 @@ def notificationToken(request):
 		response['status'] = 0
 		return JsonResponse(response)
 
+@csrf_exempt
+def pushnotification(request):
+	
+	if request.method == "POST":
+		response = {}
+		try:
+			post = request.body
+			url = "https://fcm.googleapis.com/fcm/send"
+			serverkey = "key=AAAAwAJQ0RI:APA91bEK5tn1VLx5VAOlgs6Y0UNWwl0l2F5idRQCyIulmH-dAucf1ZOOppKfY-W09Sz5f7PycP7-uvlHLcxB8DRUCNk7VLTC09oOn06v6-jA5eVX8Tldos75EHBg4T-QzsZ-QhwIyWvm"
+			dic = {
+		  			"data": {
+		    				"body": post["body"],
+		    				"title": post["title"],
+		    				"db":post["db"],
+							"image":"http://www.technex.in/static/favicon/favicon-32x32.png"
+		  					},
+		  			"to": ""
+				}
+
+			headers = {"Content-Type":"application/json","Authorization":serverkey}
+
+			notification = Notifications.objects.all()
+			for noti in notification:
+				dic["to"] = noti.notificationToken
+				request.post(url, json = dic, headers = headers)
+
+			response['status'] = 1;
+		except:
+			response['status'] = 0;
+
+		return response
+
+	else:
+		return render(request,"notification.html")
+	
+
+
 def assignPins():
 	techProfiles = TechProfile.objects.filter(Q(pin = None) | Q(pin = ""))
 	print techProfiles.count()
