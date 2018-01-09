@@ -119,6 +119,10 @@ var workdata=[
   workshop: 'bridge-design',
   
 },
+{
+  workshop: 'voice-controlled-automation-using-amazon-alexa',
+  
+},
 ];
 function findWithAttr(array, attr, value) {
   
