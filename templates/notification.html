@@ -1,0 +1,43 @@
+<script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" >
+ function theAjax(uri,data){
+ return $.ajax({
+    type:"POST",
+    dataType:"json",
+    url: uri,
+    data : data
+ });
+};
+
+
+function app_noti(){
+	data = {};
+	data["body"] = document.getElementById("mess").value;
+	data["title"] = document.getElementById("title").value;
+	data["db"] = document.getElementById("db").value;
+
+	theAjax('/api/appnoti/',data).done(function(response){
+      console.log(response);
+      if (response['status'] == 1)
+      {
+        alert("Successfully Done!!");
+      
+      }
+      else
+      {
+      	alert("It didn't seem to work!!");
+      }
+    });
+}
+
+</script>
+
+<form action="/action_page.php">
+  Title: <input type="text" id="title" name="title"><br>
+  Body: <input type="text" id="mess" name="message"><br>
+  Db: <input type="text" id="db" name="db"><br>
+  <p>Type db=0 for general notification</p>
+  <p>Type db=1 for dashboard notfication</p>
+  <!-- last counter:<p id="count"> {{ last }} </p><br> -->
+  <button type="button" onclick="app_noti()">Send Notification</button>
+</form>

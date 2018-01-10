@@ -31,9 +31,9 @@ as:[1,1,1,1,1,1]
 },
 {
 parentEvent: 'riqueza',
-events:['analiticity', 'bulls-floor', 'krackat', 'manthan','economists-enigma'],
-max:[2,0,0,4,4],
-as:[1,1,1,1,1]
+events:['analiticity', 'bulls-floor', 'manthan','economists-enigma'],
+max:[2,0,4,4],
+as:[1,1,1,1]
 },
 {
 parentEvent: 'byte-the-bits',
@@ -124,6 +124,10 @@ var workdata=[
   
 },
 ];
+/*var dic={
+cryptocurrency:a, things:b, ardubotics:c
+  
+};*/
 function findWithAttr(array, attr, value) {
   
     for(var i = 0; i < array.length; i += 1) {
@@ -186,6 +190,7 @@ app.filter('propernames', function() {
 				templateUrl : '/static/pages/about.html',
 				controller  : 'evnt-control'
 			})
+			
 
 			.when('/workshop', {
 				templateUrl : '/static/pages/form.html',
@@ -219,7 +224,7 @@ app.filter('propernames', function() {
 
 			.when('/payment', {
 				templateUrl : '/static/pages/payment.html',
-				controller  : 'payController'
+				controller  : 'payCont'
 			})
 
 			// route for the contact page
@@ -597,6 +602,32 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
     }
 });
 
+app.controller('payCont', ['$scope', '$window', '$http', function($scope, $window,$http) {
+	console.log("ghjk");
+	
+	$scope.options = $window.workdata;
+	$scope.workshop='';
+	$scope.a=false;
+    	$scope.b=false;
+    	$scope.c=false;
+
+  $scope.change= function(item)
+    {
+    	console.log(item);
+    	//var x=dic[item];
+    	$scope.a=false;
+    	$scope.b=false;
+    	$scope.c=false;
+    	if(item=="cryptocurrency")
+    	$scope.a=true;
+    else if(item=="internet-of-things")
+    	$scope.b=true;
+    else if(item=="autonomous-robotics-ardubotics")
+    	$scope.c=true;
+    	//$scope.x=true;
+
+    };
+}]);
 app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , function($scope, $window,$http,$routeParams) {
    var param1 = $routeParams.param1;
    //var param2 = $routeParams.param2;
@@ -608,7 +639,7 @@ app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , f
   $scope.counter = 0;
   $scope.members = [];
   if (param1){
-  	console.log("ghjk")
+  	console.log("ghjk");
     $scope.workshopObject = $.grep($scope.options,function(n,i){ return n.workshop == param1})[0];
     $scope.workshop = param1;
     $scope.max = $scope.workshopObject.max;
