@@ -124,6 +124,35 @@ var workdata=[
   
 },
 ];
+var paymenttypes=[
+{
+  type: 'Technex registration without accommodation',
+},
+{
+  type: 'Technex registration with accommodation',
+},
+{
+  type: 'Startup Battle registration(StartupFair)',
+},
+{
+  type: 'Ventura registration(StartupFair) without accommodation',
+},
+{
+  type: 'Ventura registration(StartupFair) with accommodation',
+},
+{
+  type: 'Krackat registration with accommodation',
+},
+{
+  type: 'Krackat registration without accommodation',
+},
+{
+  type: 'Workshops',
+},
+{
+  type: 'Innovians Zonal Finals',
+},
+];
 /*var dic={
 cryptocurrency:a, things:b, ardubotics:c
   
@@ -608,6 +637,7 @@ app.controller('payCont', ['$scope', '$window', '$http', function($scope, $windo
 	$scope.options = $window.workdata;
 	$scope.workshop='';
 	$scope.a=false;
+  $scope.p = "0";
     	$scope.b=false;
     	$scope.c=false;
 

@@ -1,4 +1,21 @@
 <section role="main" class="content">
+<style type="text/css">
+    .col-md-4
+    {
+        max-width: 100%;
+        flex: 0 0 100%;
+        width: 100%;
+    }
+    h1
+    {
+        color: black;
+        font-size: 26px;
+    }
+    ul
+    {
+        text-align: left;
+    }
+</style>
                 <div class="content__inner">
                     <!-- <header class="content__title">
                         <h1>Pricing Tables - 1</h1>
@@ -79,63 +96,376 @@
                             <div class="row">
                                 <div class="col-md-12 col-sm-12 col-xs-12"> 
                     <div class="form-group">  
-                    	<select ng-options='f.workshop as (f.workshop |propernames) for f in options' ng-model="workshop" class="form-control" ng-change="change(workshop)"  id="parentevent">
-  <option value="">-- Select Category --</option>
-
-  </select>
-  </div>
+                    <select ng-model="p" value="0" class="form-control" id="parentevent">
+                            <option value="0" selected="true">-- Select Payment Type --</option>
+                            <option value="1">Technex registration without accommodation</option>
+                            <option value="2">Technex registration with accommodation</option>
+                            <option value="3">Startup Battle registration(StartupFair)</option>
+                            <option value="4">Ventura registration(StartupFair) without accommodation</option>
+                            <option value="5">Ventura registration(StartupFair) with accommodation</option>
+                            <option value="6">Krackat registration with accommodation</option>
+                            <option value="7">Krackat registration without accommodation</option>
+                            <option value="8">Workshops</option>
+                            <option value="9">Innovians Zonal Finals</option>
+                        </select>
+                        </div>
 
   					 
 
-  					 <div ng-show="a">
+  					 <div ng-if="p==1">
 						<div class="row price-table price-table--basic">
                                            <div class="col-md-4">
                             <div class="price-table__item">
                                 <header class="price-table__header">
-                                    <div class="price-table__title">ryptocurrency</div>
+                                    <div class="price-table__title">Technex registration without accommodation</div>
                                    
                                 </header>
                                 <div class="price-table__price" style="color: white;">
-                                    $124.90
+                                    Rs 1000
                                 </div>
                                 
-                                <a href="" class="price-table__action">Select Plan</a>
+                                <!-- <a href="" class="price-table__action">Select Plan</a> -->
                             </div>
+                            <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Participation in all the events (excluding Startup Fair and Krackat).</li>
+                                <li>Passes to all Think Talks.</li>
+                                <li>Passes for Corporate Conclave.</li>
+                                <li>Pass for Airshow.</li>
+                                <li>Pass for Panel Discussion on Cryptocurrency.</li>
+                                <li>Passes for Kaleidoscope.</li>
+                            </ul>
+
                         </div>
                         	</div>
                         	</div>
-                        	<div ng-show="b" >
+                        	<div ng-if="p==2">
                         	<div class=" price-table price-table--basic">
                         <div class="col-md-4">
                             <div class="price-table__item">
                                 <header class="price-table__header" >
-                                    <div class="price-table__title">Internet Of Things</div>
+                                    <div class="price-table__title">Technex registration with accommodation</div>
                                     
                                 </header>
                                 <div class="price-table__price">
-                                    $250.00 
+                                    Rs 1500
                                  </div>
-                              <a href="" class="price-table__action">Select Plan</a>
+                              <!-- <a href="" class="price-table__action">Select Plan</a> -->
                             </div>
+                            <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Participation in all the events (excluding Startup Fair and Krackat).</li>
+                                <li>Accomodation in campus for 5 days.</li>
+                                <li>Free Technex Tshirt<b>(Offer valid for first few payments only)</b></li>
+                                <li>Free Technex Hospitality Kit.</li>
+                                <li>Passes to all <b>Think Talks</b>.</li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Pass for <b>Seminar on Quant Finance</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+
+                            </ul>
                         </div>
                         </div>
                         </div>
-                       <div ng-show="c">
+                       <div ng-if="p==3">
                        <div class="row price-table price-table--basic">
                         <div class="col-md-4">
                             <div class="price-table__item">
                                 <header class="price-table__header" >
-                                    <div class="price-table__title">autonomous-robotics-ardubotics</div>
+                                    <div class="price-table__title">Startup Battle registration(StartupFair)</div>
+                                 
+                                </header>
+                                <div class="price-table__price">
+                                    Rs 2000
+                                </div>
+                                                 <!-- <a href="" class="price-table__action">Select Plan</a> -->
+                            </div>
+                      <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Participation in all the events (excluding Krackat).</li>
+                                <li>Free accommodation in campus for 5 days.</li>
+                                <li>Free Technex Tshirt<b>(Offer valid for first few payments only)</b></li>
+                                <li>Free Technex Hospitality Kit.</li>
+                                <li>Passes to all <b>Think Talks</b>.</li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Pass for <b>Seminar on Quant Finance</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+
+                            </ul>      
+                        </div>
+                        </div>
+                    </div>
+                    <div ng-if="p==4">
+                       <div class="row price-table price-table--basic">
+                        <div class="col-md-4">
+                            <div class="price-table__item">
+                                <header class="price-table__header" >
+                                    <div class="price-table__title">Ventura registration(StartupFair) without accommodation</div>
+                                 
+                                </header>
+                                <div class="price-table__price">
+                                    Rs 500
+                                </div>
+                                                 <!-- <a href="" class="price-table__action">Select Plan</a> -->
+                            </div>
+                            <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Passes to all <b>Think Talks</b>.</li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+
+                            </ul>    
+                            <STRONG>NOTE:</STRONG>Participants of Ventura won’t be allowed to participate in any other event. If
+someone wishes to participate in some other event along with Ventura, they will
+have to pay the Technex Registration Fee (1000).
+                        </div>
+                        </div>
+                    </div>
+                    <div ng-if="p==5">
+                       <div class="row price-table price-table--basic">
+                        <div class="col-md-4">
+                            <div class="price-table__item">
+                                <header class="price-table__header" >
+                                    <div class="price-table__title">Ventura registration(StartupFair) with accommodation</div>
+                                 
+                                </header>
+                                <div class="price-table__price">
+                                    Rs 1000
+                                </div>
+                                                 <!-- <a href="" class="price-table__action">Select Plan</a> -->
+                            </div>
+                            <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Accomodation in Campus for 5 days.</li>
+                                <li>Passes to all <b>Think Talks</b>.</li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+
+                            </ul>    
+                            <STRONG>NOTE:</STRONG>Participants of Ventura won’t be allowed to participate in any other event. If
+someone wishes to participate in some other event along with Ventura, they will
+have to pay the Technex Registration Fee (1000).
+
+                        </div>
+                        </div>
+                    </div>
+                    <div ng-if="p==6">
+                       <div class="row price-table price-table--basic">
+                        <div class="col-md-4">
+                            <div class="price-table__item">
+                                <header class="price-table__header" >
+                                    <div class="price-table__title">Krackat registration with accommodation</div>
+                                 
+                                </header>
+                                <div class="price-table__price">
+                                   Rs 500
+                                </div>
+                                                 <!-- <a href="" class="price-table__action">Select Plan</a> -->
+                            </div>
+                            <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Passes to all <b>Think Talks</b>.</li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+
+                            </ul>    
+                            <STRONG>NOTE:</STRONG>Participants of Krackat won’t be allowed to participate in any other event. If
+someone wishes to participate in some other event along with Krackat, they will
+have to pay the Technex Registration Fee (1000).
+                        </div>
+                        </div>
+                    </div>
+                    <div ng-if="p==7">
+                       <div class="row price-table price-table--basic">
+                        <div class="col-md-4">
+                            <div class="price-table__item">
+                                <header class="price-table__header" >
+                                    <div class="price-table__title">Krackat registration without accommodation</div>
                                  
                                 </header>
                                 <div class="price-table__price">
                                     $124.90
                                 </div>
-                                                 <a href="" class="price-table__action">Select Plan</a>
+                                                 <!-- <a href="" class="price-table__action">Select Plan</a> -->
                             </div>
+                            <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Accommodation in campus for 5 days.</li>
+                                <li>Passes to all <b>Think Talks</b>.</li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+
+                            </ul>    
+                            <STRONG>NOTE:</STRONG>Participants of Krackat won’t be allowed to participate in any other event. If
+someone wishes to participate in some other event along with Krackat, they will
+have to pay the Technex Registration Fee (1000).
                         </div>
                         </div>
                     </div>
+                    <div ng-if="p==8">
+                       <div class="row price-table price-table--basic">
+                        <div class="col-md-4">
+                            <div class="price-table__item">
+                                <header class="price-table__header" >
+                                    <div class="price-table__title">Workshops</div>
+                                 
+                                </header>
+                                <div class="price-table__price">
+                                    Workshop Fee + Rs 1000
+                                </div>
+                                                 <!-- <a href="" class="price-table__action">Select Plan</a> -->
+                            </div>
+                            <h1>Important Instructions:</h1>
+                            <ul>
+                                <li>All the participants have to pay the Technex Registration Fee (1000) along with the Workshop Fee (depends on the particular workshop).</li>
+                                <li>The workshop fees for the respective workshops are as follows:
+                                 <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>WORKSHOP</th>
+                          <th>FEES(in Rs)</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <th scope="row">1</th>
+                          <td>INTERNET OF THINGS</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">2</th>
+                          <td>AUTONOMOUS ROBOTICS(ARDUBOTICS)</td>
+                          <td>1400</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">3</th>
+                          <td>INDUSTRIAL AUTOMATION-PLC & SCADA</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">4</th>
+                          <td>AUTOMOBILE MECHANICS & IC ENGINES</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">5</th>
+                          <td>ETHICAL HACKING AND INFORMATION SECURITY</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">6</th>
+                          <td>ANDROID APPLICATION DEVELOPMENT</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">7</th>
+                          <td>SIXTHSENSE ROBOTICS</td>
+                          <td>1100</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">8</th>
+                          <td>ARTIFICIAL INTELLIGENCE & MACHINE LEARNING</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">9</th>
+                          <td>AUGMENTED REALITY</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">10</th>
+                          <td>DIGITAL MARKETING</td>
+                          <td>1000</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">11</th>
+                          <td>E-COMMERCE</td>
+                          <td>1000</td>
+                        </tr>
+                         <tr>
+                          <th scope="row">12</th>
+                          <td>BRIDGE DESIGN</td>
+                          <td>1275</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">13</th>
+                          <td>VOICE CONTROLLED AUTOMATION USING AMAZON ALEXA</td>
+                          <td>1200</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">14</th>
+                          <td>CRYPTOCURRENCY</td>
+                          <td>1000</td>
+                        </tr>
+                      </tbody>
+                    </table></li>
+                    <li>Both the payments(Workshop fees and Technex Registration fee) have to be done seperately.</li>
+                    <li><strong>Accommodation is free for few initial payments after which there is an extra charge of Rs 500 for availing accommodation i.e. you have to pay respective workshop fee along with an amount of Rs 1500.</strong></li>
+                    </ul>
+                    <h1>Benefits/Features:</h1>
+
+                                <ul>
+                                <li>Free accommodation in campus for 5 days<strong>(Only for first few payments)</strong></li>
+                                <li>Free Technex T-shirt<strong>(Only for first few payments)</strong></li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Free Technex hospitality kit<strong>(Only for first few payments).</strong></li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+
+                            </ul>    
+                            <STRONG>NOTE:</STRONG>Participants of Ventura won’t be allowed to participate in any other event. If
+someone wishes to participate in some other event along with Ventura, they will
+have to pay the Technex Registration Fee (1000).
+                        </div>
+                        </div>
+                    </div>
+                    <div ng-if="p==9">
+                       <div class="row price-table price-table--basic">
+                        <div class="col-md-4">
+                            <div class="price-table__item">
+                                <header class="price-table__header" >
+                                    <div class="price-table__title">Innovians Zonal Finals</div>
+                                 
+                                </header>
+                                <div class="price-table__price">
+                                    Rs 1000
+                                </div>
+                                                 <!-- <a href="" class="price-table__action">Select Plan</a> -->
+                            </div>
+                              <h1>Benefits/Features:</h1>
+                            <ul>
+                                <li>Free accommodation in campus for 5 days.</li>
+                                <li>Free Technex hospitality Kit</li>
+                                <li>Passes to all <b>Think Talks</b>.</li>
+                                <li>Passes for <b>Corporate Conclave</b>.</li>
+                                <li>Pass for <b>Airshow</b>.</li>
+                                <li>Pass for <b>Panel Discussion on Cryptocurrency</b>.</li>
+                                <li>Passes for <b>Kaleidoscope</b>.</li>
+                                <li>Pass for <b>Seminar on Quant Finance</b>.</li>
+
+                            </ul>    
+                            <STRONG>NOTE:</STRONG>Participants of this category won’t be allowed to participate in any other event. If
+someone wishes to participate in some other event, they will
+have to pay the Technex Registration Fee (1000).
+
+                        </div>
+                        </div>
+                    </div>
+         
 
                    </div> 
                    
@@ -148,7 +478,7 @@
 
 										                
  
-<button type="button" class="btn btn-success" onclick="location.href='#';">Pay Now</button>
+<button type="button" class="btn btn-success" onclick="location.href='https://www.thecollegefever.com/events/technex-brrV2AiFCV';">Pay Now</button>
                     <!-- <p>© TECHNEX 2018</p> -->
 
                    <!--  <ul class="nav footer__nav">
