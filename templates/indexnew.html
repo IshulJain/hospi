@@ -22,16 +22,42 @@
 		<link rel='stylesheet' id='stylesheet-css'  href="/static/history/css/main.css" type='text/css' media='all' />
 		<link rel='stylesheet' href='/static/tingle.css' type='text/css' media='all'>
 		<script type="text/javascript" src='/static/tingle.js'></script>
-		<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-68539305-2', 'auto');
-  ga('send', 'pageview');
+		<style type="text/css">
+			
+			#side:hover{
 
-</script>
+				animation-name: example; 
+				animation-duration: 1s;
+				transition-timing-function: ease;
+				animation-fill-mode: forwards;
+
+			}
+
+				@keyframes example {
+			 	from {width:1%; height: 11%;}
+  				to {width:14%; height: 11%;}
+			}
+
+			#side:hover #s1{
+				display: none;
+			}
+
+			#side:hover #s2{
+				display: block;
+			}
+
+			#s2{
+				display: none;
+			}
+
+
+			.default{
+				
+				 
+			}
+
+		</style>
 	</head>
 	<body class="device-desktop   " >
 		<header id="nav-header" class="shown" >
@@ -57,6 +83,16 @@
 				<header class="ct--header ct--header--center  fs">
 					<div class="wrapper fs">
 						<div class="ct--header__content c8">
+
+							<div id="side" style="position: fixed; left: 0;   margin: 1%; padding: 2%; background: linear-gradient(329deg, #333333, #dd1818);; " >
+								<span id="s1" style="font-weight: 700; text-orientation: upright; writing-mode: vertical-rl; ">KRACKCAT</span>
+								<div id="s2"  >
+									<h3 style="margin-bottom: 6%;">Free Online mock CAT on</h3>
+									<p style="margin-bottom: 6%;">13th-14th January</p>
+									<button style="padding:6%; border-radius: 3px;"><a href="http://krackat.technex.in" target="_blank" >Register</a></button>
+									
+								</div>
+							</div>
 							<!-- <span class="icon-wrapper"><span class="t t--dy t--alpha t--header"><svg class="i-header-wrap"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-header"></use></svg></span></span> -->
 							<div class="h4 t t--dy t--header">
 								<div class="t--mask">
@@ -353,6 +389,8 @@
 	<script type="text/javascript">
 
 
+		
+
 	</script>
 	
 
@@ -373,7 +411,12 @@
                     <strong>Campus Ambassador</strong>
                 </a>
             </li>
-          
+            <li>
+            	<a class="" href="/initiative/"><strong>Initiative</strong></a>
+            </li>
+            <li>
+                <a class="" href="/conclave/"><strong>Corporate Conclave</strong></a>
+            </li>
 
                 </ul>
 
