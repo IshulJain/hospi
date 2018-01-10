@@ -451,4 +451,3 @@ class suggestions(models.Model):
     suggestion = models.TextField(blank = True)
     def __unicode__(self):
         return self.tech.user.first_name
-

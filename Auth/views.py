@@ -57,6 +57,7 @@ sheetUrls = {
     "industrial-automation-plc-scada": "https://script.google.com/a/technex.in/macros/s/AKfycbw9bviaV03HbJGLAIRpYDAOmCDI5-T0qBnEqAL-uOGNGpRFVE4K/exec", #Updated
     "internet-of-things": "https://script.google.com/a/technex.in/macros/s/AKfycbwrkWl-IJRK5ujypg0HjKFhZEL05Unkdl5pWehNHxwUqmsx22cx/exec", #Updated
     "artificial-intelligence-machine-learning": "https://script.google.com/a/technex.in/macros/s/AKfycbwHuRypXQrZvrv5mphBSDVN-7isE609xoPKA0qHSJUw3z2nHIU/exec", #Updated
+    "voice-controlled-automation-using-amazon-alexa": "https://script.google.com/a/technex.in/macros/s/AKfycbzn0dDn6WCY6He2srW0BL9QhixBUBS5xcZmxLoFc6tsg7ktJIs/exec", #Updated
     # "internet-of-things": "https://script.google.com/macros/s/AKfycbwLtFRKGpWk9ZxvvAoq409JqHMiykh2wWYHte6k6DUd94q7zLak/exec",
     # "data-mining" : "https://script.google.com/macros/s/AKfycbzLegitbfINZp8Ygu2aGBwLHMXaB-aQOW__B-lr6ZCD34NfliqM/exec",
     # "digital-marketing" : "https://script.google.com/macros/s/AKfycby1EOzmNiEpW5ddEbTwTIugmCidIf5H05GmMdDSxTZn15PD60c/exec",
@@ -1704,31 +1705,32 @@ def auto(message,link,last):
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
 def autoshare_call(request):
     response = {}
-    post = request.POST
-    if request.COOKIES.get('last_share') :
-        last_link = request.COOKIES['last_link']
-        last_share = request.COOKIES['last_share']
-        last_message = request.COOKIES['last_message']
-    else:
-        last_link = ""
-        request.COOKIES['last_link'] = last_link
-        last_message = ""
-        request.COOKIES['last_message'] = last_message
-        last_share = 0
-        request.COOKIES['last_share'] = last_share
+    # post = request.POST
+    # if request.COOKIES.get('last_share') :
+    #     last_link = request.COOKIES['last_link']
+    #     last_share = request.COOKIES['last_share']
+    #     last_message = request.COOKIES['last_message']
+    # else:
+    #     last_link = ""
+    #     request.COOKIES['last_link'] = last_link
+    #     last_message = ""
+    #     request.COOKIES['last_message'] = last_message
+    #     last_share = 0
+    #     request.COOKIES['last_share'] = last_share
 
-    print request.COOKIES
+    # print request.COOKIES
     if request.method == 'POST':
         post = request.POST
         print post
         try:
-            auto(post['message'],post['link'],last_share)
+
+            auto(post['message'],post['link'],post['last'])
             response['status'] = 1
         except:
             response['status'] = 0
         return JsonResponse(response)
     else:
-        return render(request, 'autoshare.html',{'last':last_share,'last_link':last_link,'last_message':last_message})
+        return render(request, 'autoshare.html')
 
 def auto_share_like(token,limit = 1,caption="",):
     try:
@@ -3405,3 +3407,4 @@ def recent_activities(request):
     print (c)
 
     return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
