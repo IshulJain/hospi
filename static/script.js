@@ -622,7 +622,7 @@ app.controller('payCont', ['$scope', '$window', '$http', function($scope, $windo
     	$scope.a=true;
     else if(item=="internet-of-things")
     	$scope.b=true;
-    else if(item=="c")
+    else if(item=="autonomous-robotics-ardubotics")
     	$scope.c=true;
     	//$scope.x=true;
 
