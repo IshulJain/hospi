@@ -26,6 +26,40 @@
 		<style type="text/css">
 
 		</style>
+		   		<style type="text/css">
+			
+			#side:hover{
+
+				animation-name: example; 
+				animation-duration: 1s;
+				transition-timing-function: ease;
+				animation-fill-mode: forwards;
+
+			}
+
+				@keyframes example {
+			 	from {width:1%; height: 11%;}
+  				to {width:14%; height: 11%;}
+			}
+
+			#side:hover #s1{
+				display: none;
+			}
+
+			#side:hover #s2{
+				display: block;
+			}
+
+			#s2{
+				display: none;
+			}
+
+
+			.default{
+				
+				 
+			}
+		</style>
 
 		<link rel='stylesheet' href='/static/tingle.css' type='text/css' media='all'>
 		<script type="text/javascript" src='/static/tingle.js'></script>
