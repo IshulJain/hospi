@@ -835,6 +835,20 @@ app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , f
      }
 
   }
+  $scope.submitForm2 = function(event)
+  {
+    data ={
+      'email': document.getElementById('userEmail').value,
+    }
+    $http({
+      method: 'POST',
+      url: '/innoviansRegister/',
+      data: data
+    }).success(function(data){
+      alert("successfully Done");
+    });
+}
+
 
 }]);
 

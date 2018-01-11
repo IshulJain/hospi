@@ -79,7 +79,8 @@ sheetUrls = {
     "astroquizdata" : "https://script.google.com/macros/s/AKfycbyYzMh3r2jyG-pMI1eSeTljE6EDXmAcOqHGpfBaehV6EcfMBpzn/exec",
     "payments" : "https://script.google.com/macros/s/AKfycbzyki6cw6DkVBwpVW63pZ32X2C8K2ajaf90f4e4zB8SHrNVbloh/exec",
     "intellecxresult" : "https://script.google.com/macros/s/AKfycbysKSJ7spHDO5YMCVu82sDftLjhDTjom3r55b5tl3723_Slwsk/exec",
-    "tshirt" : "https://script.google.com/macros/s/AKfycbydgOTlQjdiBzHd_10hh_zGZ372uaeNGtFIFNdw3Cbl6gKIf-8/exec"
+    "tshirt" : "https://script.google.com/macros/s/AKfycbydgOTlQjdiBzHd_10hh_zGZ372uaeNGtFIFNdw3Cbl6gKIf-8/exec",
+    "innoviansfinal": "https://script.google.com/macros/s/AKfycbxs1WH83WjKaF24_6IeogV_ZOJdKw1fWRKt5ANACRTT-skzzKGN/exec"
     }
     
 @csrf_exempt
@@ -1111,6 +1112,27 @@ def checkunique(request):
         return False
     except:
         return True
+@csrf_exempt
+def innoviansRegister(request):    
+    response = {}
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        print data 
+        techProfile = TechProfile.objects.get(email = data['email'])
+        dic = {
+        "name" : techProfile.user.first_name.encode("utf-8"),
+        "email" : techProfile.email.encode("utf-8"),
+        "mobileNumber" : str(techProfile.mobileNumber),
+        "college" : techProfile.college.collegeName.encode("utf-8"),
+        "technexId" : techProfile.technexId.encode("utf-8")
+        }
+        url = sheetUrls['innoviansfinal']
+        print url
+        print dic
+        requests.post(url,data = dic)
+        return JsonResponse(response)
+        
+
 
 
 @csrf_exempt
@@ -3407,4 +3429,7 @@ def recent_activities(request):
     print (c)
 
     return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
+
+    
 
