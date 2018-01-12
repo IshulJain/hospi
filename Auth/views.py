@@ -79,7 +79,8 @@ sheetUrls = {
     "astroquizdata" : "https://script.google.com/macros/s/AKfycbyYzMh3r2jyG-pMI1eSeTljE6EDXmAcOqHGpfBaehV6EcfMBpzn/exec",
     "payments" : "https://script.google.com/macros/s/AKfycbzyki6cw6DkVBwpVW63pZ32X2C8K2ajaf90f4e4zB8SHrNVbloh/exec",
     "intellecxresult" : "https://script.google.com/macros/s/AKfycbysKSJ7spHDO5YMCVu82sDftLjhDTjom3r55b5tl3723_Slwsk/exec",
-    "tshirt" : "https://script.google.com/macros/s/AKfycbydgOTlQjdiBzHd_10hh_zGZ372uaeNGtFIFNdw3Cbl6gKIf-8/exec"
+    "tshirt" : "https://script.google.com/macros/s/AKfycbydgOTlQjdiBzHd_10hh_zGZ372uaeNGtFIFNdw3Cbl6gKIf-8/exec",
+    "innoviansfinal": "https://script.google.com/macros/s/AKfycbxs1WH83WjKaF24_6IeogV_ZOJdKw1fWRKt5ANACRTT-skzzKGN/exec"
     }
     
 @csrf_exempt
@@ -343,7 +344,7 @@ def register(request):
             return HttpResponse("Email Already Registered!")
         except:
             bugUsername = User.objects.latest('id').id
-            user = User.objects.create_user(username=str(bugUsername+1), email=email)
+            user = User.objects.create_user(username=str(bugUsername+15), email=email)
             techprofile = TechProfile(user = user,email = email)
 
         user.first_name = data.get('name',None)
@@ -1111,6 +1112,27 @@ def checkunique(request):
         return False
     except:
         return True
+@csrf_exempt
+def innoviansRegister(request):    
+    response = {}
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        print data 
+        techProfile = TechProfile.objects.get(email = data['email'])
+        dic = {
+        "name" : techProfile.user.first_name.encode("utf-8"),
+        "email" : techProfile.email.encode("utf-8"),
+        "mobileNumber" : str(techProfile.mobileNumber),
+        "college" : techProfile.college.collegeName.encode("utf-8"),
+        "technexId" : techProfile.technexId.encode("utf-8")
+        }
+        url = sheetUrls['innoviansfinal']
+        print url
+        print dic
+        requests.post(url,data = dic)
+        return JsonResponse(response)
+        
+
 
 
 @csrf_exempt
@@ -3407,4 +3429,54 @@ def recent_activities(request):
     print (c)
 
     return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
+
+
+def createTechP(data,college):
+    email = data[1]
+    try:
+        techProfile = TechProfile.objects.get(email = email)
+        return 2
+    except:
+        try:
+            techprofile = TechProfile.objects.get(technexId = data[3])
+            return 3
+        except:    
+            bugUsername = User.objects.latest('id').id
+            user = User.objects.create_user(username=str(bugUsername+1))
+            techprofile = TechProfile(user = user,email = email)
+    user.first_name = data[0]
+    password = hash(data[1])
+    user.set_password(password)
+    user.save()
+    techprofile.email = email
+    techprofile.technexId = data[3]
+    techprofile.college = college
+    techprofile.mobileNumber = int(data[5])
+    techprofile.year = int(data[4])
+    techprofile.city = data[6]
+    techprofile.save()
+    print user.first_name
+    return 1
+
+def fix(start,end):
+    book = open_workbook('Technex Registrations 2018.xlsx')
+    sheet = book.sheet_by_index(0)
+    error = {}
+    error['email'] = []
+    error['technexId'] = []
+    for i in range(start,end):
+        row = sheet.row_values(i)
+        college = College.objects.filter(collegeName = row[2])
+        if len(college) == 0:
+            collegee = College.objects.create(collegeName = row[2])
+        else:
+                collegee = college[0]
+        t = createTechP(row,collegee)
+        if t==2:
+            error['email'].append(i)
+        elif t==3:
+            error['technexId'].append(i)
+    print error
+    
+
 

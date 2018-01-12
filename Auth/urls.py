@@ -82,6 +82,7 @@ urlpatterns = [
 	url(r'simulation/$',simulation,name='simulation'),
         url(r'exhibitions/$',exhibitions,name='exhibitions'),
         url(r'conclave/$',conclave,name='conclave'),
+        url(r'innoviansRegister/$',innoviansRegister,name='innoviansRegister'),
         #url(r'sponsor/$',sponsor,name='sponsor'),
         
 

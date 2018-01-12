@@ -37,6 +37,9 @@ class optionsInline(admin.TabularInline):
 
 '''
 
+class workshopTeamsAdmin(admin.ModelAdmin):
+	search_fields = ('teamName','teamId','workshop__title', 'teamLeader__email')
+
 @admin.register(quizTeam2)
 class quizTeam2Admin(admin.ModelAdmin):
 	search_fields = ('quizTeamId', 'member1Email' , 'member2Email' , 'member1Phone' , 'member2Phone' , 'name1' , 'name2' )
@@ -64,7 +67,7 @@ admin.site.register(ForgotPass)
 admin.site.register(GuestLecture)
 #admin.site.register(Workshops)
 #admin.site.register(WorkshopOptions)
-admin.site.register(WorkshopTeam)
+admin.site.register(WorkshopTeam, workshopTeamsAdmin)
 admin.site.register(MetaTags)
 admin.site.register(SponsorshipType)
 admin.site.register(Sponsors)
