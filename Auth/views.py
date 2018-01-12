@@ -357,7 +357,7 @@ def register(request):
         except:
             college = College(collegeName = str(data.get('college')).strip())
             college.save()
-        techprofile.technexId = "TX"+str(10000+user.id)
+        techprofile.technexId = "TX"+str(100015+user.id)
         techprofile.college = college
         techprofile.mobileNumber = data.get('mobileNumber')
         techprofile.city = data.get('city')
