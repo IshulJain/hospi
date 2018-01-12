@@ -80,7 +80,7 @@ sheetUrls = {
     "payments" : "https://script.google.com/macros/s/AKfycbzyki6cw6DkVBwpVW63pZ32X2C8K2ajaf90f4e4zB8SHrNVbloh/exec",
     "intellecxresult" : "https://script.google.com/macros/s/AKfycbysKSJ7spHDO5YMCVu82sDftLjhDTjom3r55b5tl3723_Slwsk/exec",
     "tshirt" : "https://script.google.com/macros/s/AKfycbydgOTlQjdiBzHd_10hh_zGZ372uaeNGtFIFNdw3Cbl6gKIf-8/exec",
-    "innoviansfinal": "https://script.google.com/a/technex.in/macros/s/AKfycbxs1WH83WjKaF24_6IeogV_ZOJdKw1fWRKt5ANACRTT-skzzKGN/exec", #Updated
+    "innoviansfinal": "https://script.google.com/macros/s/AKfycbxs1WH83WjKaF24_6IeogV_ZOJdKw1fWRKt5ANACRTT-skzzKGN/exec"
     }
     
 @csrf_exempt
