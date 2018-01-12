@@ -3431,5 +3431,52 @@ def recent_activities(request):
     return render(request,'fbfeeds.html',{'people':c,'max':a,'teams':teams,'workshops':workshops,'techprofiles':techprofiles})
 
 
+def createTechP(data,college):
+    email = data[1]
+    try:
+        techProfile = TechProfile.objects.get(email = email)
+        return 2
+    except:
+        try:
+            techprofile = TechProfile.objects.get(technexId = data[3])
+            return 3
+        except:    
+            bugUsername = User.objects.latest('id').id
+            user = User.objects.create_user(username=str(bugUsername+1))
+            techprofile = TechProfile(user = user,email = email)
+    user.first_name = data[0]
+    password = hash(data[1])
+    user.set_password(password)
+    user.save()
+    techprofile.email = email
+    techprofile.technexId = data[3]
+    techprofile.college = college
+    techprofile.mobileNumber = int(data[5])
+    techprofile.year = int(data[4])
+    techprofile.city = data[6]
+    techprofile.save()
+    print user.first_name
+    return 1
+
+def fix(start,end):
+    book = open_workbook('Technex Registrations 2018.xlsx')
+    sheet = book.sheet_by_index(0)
+    error = {}
+    error['email'] = []
+    error['technexId'] = []
+    for i in range(start,end):
+        row = sheet.row_values(i)
+        college = College.objects.filter(collegeName = row[2])
+        if len(college) == 0:
+            collegee = College.objects.create(collegeName = row[2])
+        else:
+                collegee = college[0]
+        t = createTechP(row,collegee)
+        if t==2:
+            error['email'].append(i)
+        elif t==3:
+            error['technexId'].append(i)
+    print error
     
+
 
