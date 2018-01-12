@@ -3347,7 +3347,7 @@ def simulation(request):
 
 def exhibitions(request):
     if(get_flavour(request) == 'full'):
-        return render(request,"exhibitionnew.html")
+        return render(request,"exhibitions.html")
     else:
         return render(request,"exhibitionm.html")
 
@@ -3477,6 +3477,43 @@ def fix(start,end):
         elif t==3:
             error['technexId'].append(i)
     print error
-    
+
+
+workshopSheetName = ['',]
+workshopTitle = ['', '']
+workshopfiles = [{'workshoptitle': 'Voice Controlled Automation Using Amazon Alexa','sheetName':'Voice Controlled Automation Using Amazon Alexa.xlsx'},
+{'workshoptitle': 'Bridge Design','sheetName':'Bridge Design.xlsx'},
+{'workshoptitle': 'E-Commerce','sheetName':'E-Commerce.xlsx'},
+{'workshoptitle': 'Digital Marketing','sheetName':'Digital Marketing.xlsx'},
+{'workshoptitle': 'Augmented Reality','sheetName':'Augmented Reality.xlsx'},
+{'workshoptitle': 'Sixthsense Robotics','sheetName':'Sixthsense Robotics.xlsx'},
+{'workshoptitle': 'Android Application Development','sheetName':'Android Application Development.xlsx'},
+{'workshoptitle': 'Ethical Hacking and Information Security','sheetName':'Ethical Hacking and Information Security.xlsx'},
+{'workshoptitle': 'Automobile Mechanics and IC Engines','sheetName':'Automobile Mechanics and IC Engines.xlsx'},
+{'workshoptitle': 'Autonomous Robotics (ArduBotics)','sheetName':'Autonomous Robotics (ArduBotics).xlsx'},
+{'workshoptitle': 'Cryptocurrency','sheetName':'Cryptocurrency.xlsx'},
+{'workshoptitle': 'Industrial Automation PLC and SCADA','sheetName':'Industrial Automation PLC and SCADA.xlsx'},
+{'workshoptitle': 'Internet of Things','sheetName':'Internet of Things.xlsx'},
+{'workshoptitle': 'Artificial Intelligence and Machine Learning','sheetName':'Artificial Intelligence and Machine Learning.xlsx'}] 
+def workshoperror():
+    for workshopdata in workshopfiles:
+        book = open_workbook(workshopdata['sheetName'])
+        sheet = book.sheet_by_index(0)
+        print workshopdata['workshoptitle']
+        workshop = Workshops.objects.get(title = workshopdata['workshoptitle'])
+        
+        for i in range(1,sheet.nrows):
+            email = sheet.row_values(i)[1]
+            try:
+                workshopteam = WorkshopTeam.objects.get(teamName = email,workshop = workshop)
+            except:
+                try:
+                    techProfile = TechProfile.objects.get(email = email)
+                    workshopteam = WorkshopTeam(teamName = email,teamLeader = techProfile,workshop = workshop)
+                    workshopteam.save()
+                except:
+                    print email
+                        
+
 
 
