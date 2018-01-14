@@ -1714,14 +1714,25 @@ def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     print(tokens)
+    response = {}
+    response["success"] =[]
+    response["err"] = []
     for token in tokens:
         print("\n") 
         print(int(token.uid))
         print(last)
         print(int(token.uid) % 10)
-        if int(token.uid) % 10 == int(last) :
+        if int(token.uid) % 5 == int(last) :
             print token.accessToken
-            requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
+            try:
+                response["success"].append(str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
+                print(response["success"])
+            except:
+                print("In except")
+                response["err"].append(str(str(token.uid)+"    "+str(token.accessToken)))
+
+    print("In auto")
+    return response
 
 @csrf_exempt
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
@@ -1746,9 +1757,11 @@ def autoshare_call(request):
         print post
         try:
 
-            auto(post['message'],post['link'],post['last'])
+            response["res"] = auto(post['message'],post['link'],post['last'])
+            print(response['res'])
             response['status'] = 1
         except:
+            print("here")
             response['status'] = 0
         return JsonResponse(response)
     else:

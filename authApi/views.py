@@ -634,38 +634,39 @@ def notificationToken(request):
 		return JsonResponse(response)
 
 @csrf_exempt
+@user_passes_test(lambda u: u.is_staff)
 def pushnotification(request):
-	
+
 	if request.method == "POST":
 		response = {}
 		try:
-			post = request.body
+
+			post = request.POST
+
 			url = "https://fcm.googleapis.com/fcm/send"
 			serverkey = "key=AAAAwAJQ0RI:APA91bEK5tn1VLx5VAOlgs6Y0UNWwl0l2F5idRQCyIulmH-dAucf1ZOOppKfY-W09Sz5f7PycP7-uvlHLcxB8DRUCNk7VLTC09oOn06v6-jA5eVX8Tldos75EHBg4T-QzsZ-QhwIyWvm"
-			dic = {
-		  			"data": {
-		    				"body": post["body"],
-		    				"title": post["title"],
-		    				"db":post["db"],
-							"image":"http://www.technex.in/static/favicon/favicon-32x32.png"
-		  					},
-		  			"to": ""
-				}
+			
+			dic = {}
+			data = {"body": post["body"],"title": post["title"],"db":post["db"],"image":"http://www.technex.in/static/favicon/favicon-32x32.png"},
+			dic["data"] = data
 
 			headers = {"Content-Type":"application/json","Authorization":serverkey}
 
 			notification = Notifications.objects.all()
+
 			for noti in notification:
-				dic["to"] = noti.notificationToken
-				request.post(url, json = dic, headers = headers)
+				dic["to"] = noti.token
+				requests.post(url, json = dic, headers = headers)
 
 			response['status'] = 1;
 		except:
+
 			response['status'] = 0;
 
-		return response
+		return JsonResponse(response)
 
 	else:
+		print("5")
 		return render(request,"notification.html")
 	
 

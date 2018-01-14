@@ -12,9 +12,9 @@
 
 function app_noti(){
 	data = {};
-	data["body"] = document.getElementById("mess").value;
-	data["title"] = document.getElementById("title").value;
-	data["db"] = document.getElementById("db").value;
+	data['body'] = document.getElementById("mess").value;
+	data['title'] = document.getElementById("title").value;
+	data['db'] = document.getElementById("db").value;
 
 	theAjax('/api/appnoti/',data).done(function(response){
       console.log(response);
