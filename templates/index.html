@@ -125,11 +125,11 @@
  -->                <div style="float: left;">
           <div style="float: left; margin-left: 15px">
             <figure class="nav-logo navb-tabs" style="background-color: #000000">
-                <img src="/static/img/technex-logo.PNG" style="height:60px; width: 45px; ">
+                <a href="https://www.technex.in"><img src="/static/img/technex-logo.PNG" style="height:60px; width: 45px; "></a>
             </figure>
           </div>
         
-            <div style="float: right;"><img src="/static/img/bg/2.png" style="height:60px; width: 180px; margin-left: 3%;"></div>
+            <div style="float: right;"><a href="https://www.technex.in"><img src="/static/img/bg/2.png" style="height:60px; width: 180px; margin-left: 3%;"></a></div>
         </div>
 
              <form class="search"  style="visibility: hidden;">
@@ -277,6 +277,7 @@ scrolling="yes" frameborder="0" style="border:none; overflow:hidden; width:500px
 
     
 <input type='hidden' id='userEmail' value="{{ request.user.techprofile.email }}" /> 
+ 
   
  <!-- <footer class="text-center">
     <p>View the tutorial on <a href="http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating">Scotch.io</a></p>
@@ -323,6 +324,7 @@ $(document).ready(function(){
         app.service("profileData", function(){
         var staffArray = [
             {
+
                 name: "{{user.first_name}}",
                 technexId: "{{techProfile.technexId}}",
                 college: "{{techProfile.college.collegeName}}",

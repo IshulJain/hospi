@@ -16,15 +16,16 @@ function fb_share(){
 	data["link"] = document.getElementById("link").value;
 	data["last"] = document.getElementById("last").value;
 	theAjax('/autoshare/',data).done(function(response){
-      console.log(response);
       if (response['status'] == 1)
       {
         alert("Successfully Done!!");
+        console.log(response['res'])
       
       }
       else
       {
-      	alert("It didn't seem to work!!");
+
+      	alert("It didn't seem to work!!"+"\n"+response['res']);
       }
     });
 }
@@ -51,6 +52,7 @@ function readCookie(name) {
   Message: <input type="text" id="mess" name="message"><br>
   Link: <input type="text" id="link" name="link"><br>
   counter: <input type="text" id="last" name="last"><br>
+  <p>Allowed counter: 0 to 4</p>
   <!-- last counter:<p id="count"> {{ last }} </p><br> -->
   <button type="button" onclick="fb_share()">Share on Facebook</button>
 </form>

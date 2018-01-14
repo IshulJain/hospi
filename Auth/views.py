@@ -1714,14 +1714,25 @@ def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     print(tokens)
+    response = {}
+    response["success"] =[]
+    response["err"] = []
     for token in tokens:
         print("\n") 
         print(int(token.uid))
         print(last)
         print(int(token.uid) % 10)
-        if int(token.uid) % 10 == int(last) :
+        if int(token.uid) % 5 == int(last) :
             print token.accessToken
-            requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
+            try:
+                response["success"].append(str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
+                print(response["success"])
+            except:
+                print("In except")
+                response["err"].append(str(str(token.uid)+"    "+str(token.accessToken)))
+
+    print("In auto")
+    return response
 
 @csrf_exempt
 @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
@@ -1746,9 +1757,11 @@ def autoshare_call(request):
         print post
         try:
 
-            auto(post['message'],post['link'],post['last'])
+            response["res"] = auto(post['message'],post['link'],post['last'])
+            print(response['res'])
             response['status'] = 1
         except:
+            print("here")
             response['status'] = 0
         return JsonResponse(response)
     else:
@@ -3347,7 +3360,7 @@ def simulation(request):
 
 def exhibitions(request):
     if(get_flavour(request) == 'full'):
-        return render(request,"exhibitionnew.html")
+        return render(request,"exhibitions.html")
     else:
         return render(request,"exhibitionm.html")
 
@@ -3477,6 +3490,67 @@ def fix(start,end):
         elif t==3:
             error['technexId'].append(i)
     print error
-    
 
 
+workshopSheetName = ['',]
+workshopTitle = ['', '']
+workshopfiles = [{'workshoptitle': 'Voice Controlled Automation Using Amazon Alexa','sheetName':'Voice Controlled Automation Using Amazon Alexa.xlsx'},
+{'workshoptitle': 'Bridge Design','sheetName':'Bridge Design.xlsx'},
+{'workshoptitle': 'E-Commerce','sheetName':'E-Commerce.xlsx'},
+{'workshoptitle': 'Digital Marketing','sheetName':'Digital Marketing.xlsx'},
+{'workshoptitle': 'Augmented Reality','sheetName':'Augmented Reality.xlsx'},
+{'workshoptitle': 'Sixthsense Robotics','sheetName':'Sixthsense Robotics.xlsx'},
+{'workshoptitle': 'Android Application Development','sheetName':'Android Application Development.xlsx'},
+{'workshoptitle': 'Ethical Hacking and Information Security','sheetName':'Ethical Hacking and Information Security.xlsx'},
+{'workshoptitle': 'Automobile Mechanics and IC Engines','sheetName':'Automobile Mechanics and IC Engines.xlsx'},
+{'workshoptitle': 'Autonomous Robotics (ArduBotics)','sheetName':'Autonomous Robotics (ArduBotics).xlsx'},
+{'workshoptitle': 'Cryptocurrency','sheetName':'Cryptocurrency.xlsx'},
+{'workshoptitle': 'Industrial Automation PLC and SCADA','sheetName':'Industrial Automation PLC and SCADA.xlsx'},
+{'workshoptitle': 'Internet of Things','sheetName':'Internet of Things.xlsx'},
+{'workshoptitle': 'Artificial Intelligence and Machine Learning','sheetName':'Artificial Intelligence and Machine Learning.xlsx'}] 
+def workshoperror():
+    for workshopdata in workshopfiles:
+        book = open_workbook(workshopdata['sheetName'])
+        sheet = book.sheet_by_index(0)
+        print workshopdata['workshoptitle']
+        workshop = Workshops.objects.get(title = workshopdata['workshoptitle'])
+        
+        for i in range(1,sheet.nrows):
+            email = sheet.row_values(i)[1]
+            try:
+                workshopteam = WorkshopTeam.objects.get(teamName = email,workshop = workshop)
+            except:
+                try:
+                    techProfile = TechProfile.objects.get(email = email)
+                    workshopteam = WorkshopTeam(teamName = email,teamLeader = techProfile,workshop = workshop)
+                    workshopteam.save()
+                except:
+                    print email
+                        
+
+def innovians(request):
+    return redirect("https://goo.gl/forms/w3kHCh9D0tzdsIds1")
+
+def eisystems(request):
+    return redirect("https://goo.gl/forms/aOX51iDJTsOMLGOH3")
+
+def htindia(request):
+    return redirect("https://goo.gl/forms/nS1hLlU1RYXXoUO93")
+
+def exhibitionRegister(request):
+    return redirect("https://goo.gl/forms/XJxNsGjQkSevgko12")
+
+def ccregister(request):
+    return redirect("https://goo.gl/forms/3WRcuXr3Ic0fQBmH2")
+
+def talksregister(request):
+    return redirect("https://goo.gl/forms/DN7hBWjM2wgQPP7H2")
+
+def paneldiscussion(request):
+    return redirect("https://goo.gl/forms/pU01YhJH7iJWtBBi2")
+
+def quantfinance(request):
+    return redirect("https://goo.gl/forms/KxMHZ9SVg11ViSiA2")
+
+def vmware(request):
+    return redirect("https://goo.gl/forms/LKaNbatyCGTVaVGO2")    

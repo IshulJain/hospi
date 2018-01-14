@@ -88,13 +88,15 @@
                     <br>
 
                     <header class="content__title">
-                        <h1 >PAYMENTS</h1>                       <!--  <small>Basic 3 column pricing table</small> -->
+                        <h1 >PAYMENTS </h1>                       <!--  <small>Basic 3 column pricing table</small> -->
                     </header>
 
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body" ng-repeat="person in employeeArray track by $index">
                             <div class="row">
-                                <div class="col-md-12 col-sm-12 col-xs-12"> 
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                <h4 style="color:black;">Your TechnexId:{{person.technexId}}, use it during payment!</h4> 
+                                
                     <div class="form-group">  
                     <select ng-model="p" value="0" class="form-control" id="parentevent">
                             <option value="0" selected="true">-- Select Payment Type --</option>
@@ -114,8 +116,8 @@
 
   					 <div ng-if="p==1">
 						<div class="row price-table price-table--basic">
-                                           <div class="col-md-4">
-                            <div class="price-table__item">
+                                           <div class="col-md-4 ">
+                            <div class="price-table__item ">
                                 <header class="price-table__header">
                                     <div class="price-table__title">Technex registration without accommodation</div>
                                    

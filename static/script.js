@@ -631,33 +631,14 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
     }
 });
 
-app.controller('payCont', ['$scope', '$window', '$http', function($scope, $window,$http) {
+app.controller('payCont',function($scope, $window,profileData,$http) {
 	console.log("ghjk");
+	 $scope.employeeArray = profileData.getStaffArray();
+
 	
-	$scope.options = $window.workdata;
-	$scope.workshop='';
-	$scope.a=false;
-  $scope.p = "0";
-    	$scope.b=false;
-    	$scope.c=false;
-
-  $scope.change= function(item)
-    {
-    	console.log(item);
-    	//var x=dic[item];
-    	$scope.a=false;
-    	$scope.b=false;
-    	$scope.c=false;
-    	if(item=="cryptocurrency")
-    	$scope.a=true;
-    else if(item=="internet-of-things")
-    	$scope.b=true;
-    else if(item=="autonomous-robotics-ardubotics")
-    	$scope.c=true;
-    	//$scope.x=true;
-
-    };
-}]);
+	  $scope.p = "0";
+    
+});
 app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , function($scope, $window,$http,$routeParams) {
    var param1 = $routeParams.param1;
    //var param2 = $routeParams.param2;
@@ -845,7 +826,7 @@ app.controller('workshop-cont', ['$scope', '$window', '$http','$routeParams' , f
       url: '/innoviansRegister/',
       data: data
     }).success(function(data){
-      alert("successfully Done");
+       $(".inno-submit").html("Registered!!");
     });
 }
 
