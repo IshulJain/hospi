@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
     'Auth',
     'ckeditor',
     'authApi',
@@ -141,7 +141,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
-#STATIC_HOST = 'https://d1guaaup0pib3t.cloudfront.net' if not DEBUG else ''
+# STATIC_HOST = 'https://d1guaaup0pib3t.cloudfront.net' if not DEBUG else ''
 # STATIC_HOST = ''
 # STATIC_URL = STATIC_HOST + '/static/'
 
@@ -167,13 +167,24 @@ STATICFILES_DIRS = (
 )
 
 
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# WHITENOISE_MAX_AGE = 10368000
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_MAX_AGE = 86400
 
-# def cache_control(headers, path, url):
-#     if path.endswith('.jpg'):
-#         headers['Cache-Control'] = 'no-cache,must-revalidate'
+def cache_control(headers, path, url):
+    if path.endswith('.css'):
+        headers['Cache-Control'] = 'no-cache,must-revalidate; max-age=31536000'
+    if path.endswith('.js'):
+        headers['Cache-Control'] = 'no-cache,must-revalidate; max-age=31536000'
+    if path.endswith('.jpg'):
+        headers['Cache-Control'] = 'public; max-age=31536000'
+    if path.endswith('.PNG'):
+        headers['Cache-Control'] = 'public; max-age=31536000'
+    if path.endswith('.png'):
+        headers['Cache-Control'] = 'public; max-age=31536000'
+    if path.endswith('.svg'):
+        headers['Cache-Control'] = 'public; max-age=31536000'
 
+WHITENOISE_ADD_HEADERS_FUNCTION = cache_control
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
