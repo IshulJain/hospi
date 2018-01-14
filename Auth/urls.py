@@ -83,7 +83,7 @@ urlpatterns = [
         url(r'exhibitions/$',exhibitions,name='exhibitions'),
         url(r'conclave/$',conclave,name='conclave'),
         url(r'innoviansRegister/$',innoviansRegister,name='innoviansRegister'),
-        url(r'exhibitonregister/$',exhibitionRegister,name='exhibitionRegister'),
+        url(r'exhibitionregister/$',exhibitionRegister,name='exhibitionRegister'),
         #url(r'sponsor/$',sponsor,name='sponsor'),
         
 
@@ -113,3 +113,4 @@ urlpatterns = [
 
 
 ]
+
