@@ -3528,5 +3528,13 @@ def workshoperror():
                     print email
                         
 
+def innovians(request):
+    return redirect("https://goo.gl/forms/w3kHCh9D0tzdsIds1")
+
+def eisystems(request):
+    return redirect("https://goo.gl/forms/aOX51iDJTsOMLGOH3")
+
+def htindia(request):
+    return redirect("https://goo.gl/forms/nS1hLlU1RYXXoUO93")
 
 

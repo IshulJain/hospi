@@ -98,5 +98,8 @@ urlpatterns = [
 	url(r'^initiative/$',initiative, name='initiativenew'),
 	url(r'^publicity/$',publicity, name='publicity'),
 	url(r'^test/$',recent_activities, name='recent_activities'),
+	url(r'^innovians/$',innovians, name='innovians'),
+	url(r'^eisystems/$',eisystems, name='eisystems'),
+	url(r'^htindia/$',htindia, name='htindia'),
 
 ]
