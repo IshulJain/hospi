@@ -83,6 +83,7 @@ urlpatterns = [
         url(r'exhibitions/$',exhibitions,name='exhibitions'),
         url(r'conclave/$',conclave,name='conclave'),
         url(r'innoviansRegister/$',innoviansRegister,name='innoviansRegister'),
+        url(r'exhibitonregister/$',exhibitionRegister,name='exhibitionRegister'),
         #url(r'sponsor/$',sponsor,name='sponsor'),
         
 
@@ -101,5 +102,14 @@ urlpatterns = [
 	url(r'^innovians/$',innovians, name='innovians'),
 	url(r'^eisystems/$',eisystems, name='eisystems'),
 	url(r'^htindia/$',htindia, name='htindia'),
+	url(r'^ccregister/$',ccregister, name='ccregister'),
+	url(r'^talksregister/$',talksregister, name='talksregister'),
+	url(r'^paneldiscussion/$',paneldiscussion, name='paneldiscussion'),
+	url(r'^quantfinance/$',quantfinance, name='quantfinance'),
+	url(r'^vmware/$',vmware, name='vmware'),
+
+
+
+
 
 ]

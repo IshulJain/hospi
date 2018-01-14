@@ -3537,4 +3537,20 @@ def eisystems(request):
 def htindia(request):
     return redirect("https://goo.gl/forms/nS1hLlU1RYXXoUO93")
 
+def exhibitionRegister(request):
+    return redirect("https://goo.gl/forms/XJxNsGjQkSevgko12")
 
+def ccregister(request):
+    return redirect("https://goo.gl/forms/3WRcuXr3Ic0fQBmH2")
+
+def talksregister(request):
+    return redirect("https://goo.gl/forms/DN7hBWjM2wgQPP7H2")
+
+def paneldiscussion(request):
+    return redirect("https://goo.gl/forms/pU01YhJH7iJWtBBi2")
+
+def quantfinance(request):
+    return redirect("https://goo.gl/forms/KxMHZ9SVg11ViSiA2")
+
+def vmware(request):
+    return redirect("https://goo.gl/forms/LKaNbatyCGTVaVGO2")    
