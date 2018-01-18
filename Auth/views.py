@@ -353,7 +353,7 @@ def register(request):
         user.save()
         print 'code base 1'
         try:
-            college = College.objects.filter(collegeName = str(data.get('college')).strip())[0]
+            college = College.objects.get(collegeName = str(data.get('college')).strip())
         except:
             college = College(collegeName = str(data.get('college')).strip())
             college.save()
