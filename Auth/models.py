@@ -28,7 +28,7 @@ class College(models.Model):
     state = models.CharField(max_length=250,null = True, blank = True)
     collegeWebsite = models.CharField(max_length = 250, default = '0')
     def __unicode__(self):
-        return "%s - %s - %s - %s" %(self.collegeWebsite, self.collegeName, self.city, self.state)
+        return "%s - %s - %s - %s" %(self.collegeId, self.collegeName, self.city, self.state)
 class FbConnect(models.Model):
     uid = models.CharField(max_length = 200, null = True)
     accessToken = models.CharField(max_length = 250, null = True)
