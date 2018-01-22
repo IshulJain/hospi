@@ -353,7 +353,7 @@ def register(request):
         user.save()
         print 'code base 1'
         try:
-            college = College.objects.filter(collegeName = str(data.get('college')).strip())[0]
+            college = College.objects.get(collegeName = str(data.get('college')).strip())
         except:
             college = College(collegeName = str(data.get('college')).strip())
             college.save()
@@ -3528,5 +3528,29 @@ def workshoperror():
                     print email
                         
 
+def innovians(request):
+    return redirect("https://goo.gl/forms/w3kHCh9D0tzdsIds1")
 
+def eisystems(request):
+    return redirect("https://goo.gl/forms/aOX51iDJTsOMLGOH3")
 
+def htindia(request):
+    return redirect("https://goo.gl/forms/nS1hLlU1RYXXoUO93")
+
+def exhibitionRegister(request):
+    return redirect("https://goo.gl/forms/XJxNsGjQkSevgko12")
+
+def ccregister(request):
+    return redirect("https://goo.gl/forms/3WRcuXr3Ic0fQBmH2")
+
+def talksregister(request):
+    return redirect("https://goo.gl/forms/DN7hBWjM2wgQPP7H2")
+
+def paneldiscussion(request):
+    return redirect("https://goo.gl/forms/pU01YhJH7iJWtBBi2")
+
+def quantfinance(request):
+    return redirect("https://goo.gl/forms/KxMHZ9SVg11ViSiA2")
+
+def vmware(request):
+    return redirect("https://goo.gl/forms/LKaNbatyCGTVaVGO2")    
