@@ -3252,6 +3252,42 @@ def sheetWorkshopWale(payment):
 def coreteam(request):
     return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSdrnLbzzwmcUcFKdIj7rb8ablEnjJRbs_0Po1PD4V8axizmSA/viewform')    
 
+def exhibitionRegister(request):
+    return HttpResponseRedirect('https://goo.gl/forms/XJxNsGjQkSevgko12')
+
+def innovians(request):
+    return HttpResponseRedirect('https://goo.gl/forms/w3kHCh9D0tzdsIds1')    
+
+def eisystems(request):
+    return HttpResponseRedirect('https://goo.gl/forms/aOX51iDJTsOMLGOH3')
+
+def htindia(request):
+    return HttpResponseRedirect('https://goo.gl/forms/nS1hLlU1RYXXoUO93')
+
+def ccregister(request):
+    return HttpResponseRedirect('https://goo.gl/forms/3WRcuXr3Ic0fQBmH2')
+
+def talksregister(request):
+    return HttpResponseRedirect('https://goo.gl/forms/DN7hBWjM2wgQPP7H2')
+
+def digilnfy(request):
+    return HttpResponseRedirect('https://goo.gl/forms/21xCtip3iM8sgsJC3')
+
+def civilsimplified(request):
+    return HttpResponseRedirect('https://goo.gl/forms/MZMSlXKPZZSIW9eJ3')
+
+def techservices(request):
+    return HttpResponseRedirect('https://goo.gl/forms/zho9oyNnA3GuGEuF2')
+
+def paneldiscussion(request):
+    return HttpResponseRedirect('https://goo.gl/forms/pU01YhJH7iJWtBBi2')
+
+def quantfinance(request):
+    return HttpResponseRedirect('https://goo.gl/forms/KxMHZ9SVg11ViSiA2')
+
+def vmware(request):
+    return HttpResponseRedirect('https://goo.gl/forms/LKaNbatyCGTVaVGO2')
+
 def applink(request):
     return HttpResponseRedirect('https://play.google.com/store/apps/details?id=org.piratejester.technex17')
 
