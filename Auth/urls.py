@@ -80,10 +80,10 @@ urlpatterns = [
 	url(r'coreteam/$',coreteam,name='coreteams'),
 	url(r'app/$',applink,name='applink'),
 	url(r'simulation/$',simulation,name='simulation'),
-        url(r'exhibitions/$',exhibitions,name='exhibitions'),
-        url(r'conclave/$',conclave,name='conclave'),
-        url(r'innoviansRegister/$',innoviansRegister,name='innoviansRegister'),
-        url(r'exhi/$',exhibitionRegister,name='exhibitionRegister'),
+    url(r'exhibitions/$',exhibitions,name='exhibitions'),
+    url(r'conclave/$',conclave,name='conclave'),
+    url(r'innoviansRegister/$',innoviansRegister,name='innoviansRegister'),
+    # url(r'exhi/$',exhibitionRegister,name='exhibitionRegister'),
         #url(r'sponsor/$',sponsor,name='sponsor'),
         
 
@@ -99,14 +99,14 @@ urlpatterns = [
 	url(r'^initiative/$',initiative, name='initiativenew'),
 	url(r'^publicity/$',publicity, name='publicity'),
 	url(r'^test/$',recent_activities, name='recent_activities'),
-	url(r'^innovians/$',innovians, name='innovians'),
-	url(r'^eisystems/$',eisystems, name='eisystems'),
-	url(r'^htindia/$',htindia, name='htindia'),
-	url(r'^ccregister/$',ccregister, name='ccregister'),
-	url(r'^talksregister/$',talksregister, name='talksregister'),
-	url(r'^paneldiscussion/$',paneldiscussion, name='paneldiscussion'),
-	url(r'^quantfinance/$',quantfinance, name='quantfinance'),
-	url(r'^vmware/$',vmware, name='vmware'),
+	# url(r'^innovians/$',innovians, name='innovians'),
+	# url(r'^eisystems/$',eisystems, name='eisystems'),
+	# url(r'^htindia/$',htindia, name='htindia'),
+	# url(r'^ccregister/$',ccregister, name='ccregister'),
+	# url(r'^talksregister/$',talksregister, name='talksregister'),
+	# url(r'^paneldiscussion/$',paneldiscussion, name='paneldiscussion'),
+	# url(r'^quantfinance/$',quantfinance, name='quantfinance'),
+	# url(r'^vmware/$',vmware, name='vmware'),
 
 
 
