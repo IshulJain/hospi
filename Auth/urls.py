@@ -107,10 +107,5 @@ urlpatterns = [
 	# url(r'^paneldiscussion/$',paneldiscussion, name='paneldiscussion'),
 	# url(r'^quantfinance/$',quantfinance, name='quantfinance'),
 	# url(r'^vmware/$',vmware, name='vmware'),
-
-
-
-
-
-]
+	]
 

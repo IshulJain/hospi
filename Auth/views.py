@@ -1722,7 +1722,7 @@ def auto(message,link,last):
         print(int(token.uid))
         print(last)
         print(int(token.uid) % 10)
-        if int(token.uid) % 5 == int(last) :
+        if (int(token.uid) % 5 == int(last)) or (int(last) == 9) :
             print token.accessToken
             try:
                 response["success"].append(str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
@@ -1735,7 +1735,7 @@ def auto(message,link,last):
     return response
 
 @csrf_exempt
-@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+@user_passes_test(lambda u: u.is_staff)
 def autoshare_call(request):
     response = {}
     # post = request.POST
