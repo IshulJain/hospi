@@ -1722,7 +1722,7 @@ def auto(message,link,last):
         print(int(token.uid))
         print(last)
         print(int(token.uid) % 10)
-        if int(token.uid) % 5 == int(last) :
+        if (int(token.uid) % 5 == int(last)) || (int(last) == 9) :
             print token.accessToken
             try:
                 response["success"].append(str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
