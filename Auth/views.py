@@ -3396,7 +3396,7 @@ def simulation(request):
 
 def exhibitions(request):
     if(get_flavour(request) == 'full'):
-        return render(request,"exhibitions.html")
+        return render(request,"exhibitionnew.html")
     else:
         return render(request,"exhibitionm.html")
 
