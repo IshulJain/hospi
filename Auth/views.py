@@ -1715,8 +1715,8 @@ def auto(message,link,last):
     tokens = FbReach.objects.all()
     print(tokens)
     response = {}
-    response["success"] =[]
-    response["err"] = []
+    response["success"] ={}
+    response["err"] = {}
     for token in tokens:
         print("\n") 
         print(int(token.uid))
@@ -1725,11 +1725,11 @@ def auto(message,link,last):
         if (int(token.uid) % 5 == int(last)) or (int(last) == 9) :
             print token.accessToken
             try:
-                response["success"].append(str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
+                response["success"][token.uid] = (str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
                 print(response["success"])
             except:
                 print("In except")
-                response["err"].append(str(str(token.uid)+"    "+str(token.accessToken)))
+                response["err"][token.uid] = (str(str(token.uid)+"    "+str(token.accessToken)))
 
     print("In auto")
     return response
@@ -2994,6 +2994,8 @@ def krackatwork():
             }
             print dic
             requests.post(url,data=dic)
+
+
 def paymentdata(beginIndex,endIndex):
     rb = open_workbook('payments.xlsx')
     s = rb.sheet_by_index(0)
@@ -3396,7 +3398,7 @@ def simulation(request):
 
 def exhibitions(request):
     if(get_flavour(request) == 'full'):
-        return render(request,"exhibitions.html")
+        return render(request,"exhibitionnew.html")
     else:
         return render(request,"exhibitionm.html")
 
