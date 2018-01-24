@@ -3686,10 +3686,11 @@ def two_email2():
     for tech in t:
         e=tech.email
         f=e.lower()
+        if e==f:
         
-        try:
-            
-            techpro=TechProfile.objects.get(email=f)
-            
-        except:
-            print(f)
+            try:
+                
+                techpro=TechProfile.objects.get(email=f)
+                
+            except:
+                print(f)
