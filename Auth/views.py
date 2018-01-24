@@ -3681,7 +3681,7 @@ def two_email():
                 continue
 
 
-def two_email():
+def two_email2():
     t=TechProfile.objects.all()
     for tech in t:
         e=tech.email
