@@ -3010,7 +3010,7 @@ def payment_report(request):
             email = dic['email']
         except:
             try:
-                tx = dic['technexId']
+                tx = dic['technexId'].upper()
             except:
                 number = dic['number']
 
