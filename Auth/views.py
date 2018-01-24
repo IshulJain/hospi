@@ -338,6 +338,7 @@ def register(request):
         data = request.POST
         email = data.get('email',None)
         # print 'code base 0111'
+        email=email.lower()
         print email
         try:
             # print "code base 01"  
@@ -494,9 +495,9 @@ def loginView(request):
         post = request.POST
         try:
             try:
-                techProfile = TechProfile.objects.get(email = post['email'])
+                techProfile = TechProfile.objects.get(email = post['email'].lower())
             except:
-                techProfile = TechProfile.objects.get(technexId = post['email'])
+                techProfile = TechProfile.objects.get(technexId = post['email'].lower())
         except:
             response['status'] = 0
             response['error'] = "No User registered with the email!"
