@@ -3050,7 +3050,7 @@ def paymentdata():
     urls = sheetUrls["payments"]
     fail = 0
     try:
-        beginIndex = sheetpayment.objects.latest('row')
+        beginIndex = sheetpayment.objects.latest('row').row + 2
     except:
         beginIndex = 1
 
@@ -3062,7 +3062,7 @@ def paymentdata():
             pays = sheetpayment(tech = tp)
             pays.email = email
             pays.ticketId = literal_eval(str(s.cell(i,6)).split(':')[1]).encode("utf-8")
-            pays.row = literal_eval(str(s.cell(i,0)).split(':')[1]).encode("utf-8")
+            pays.row = literal_eval(str(s.cell(i,0)).split(':')[1])
             #pays.contact = literal_eval(str(s.cell(i,2)).split(':')[1])
             pays.ticketPrice = int(literal_eval(str(s.cell(i,7)).split(':')[1]))
             print pays.ticketPrice
