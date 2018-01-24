@@ -3681,3 +3681,15 @@ def two_email():
                 continue
 
 
+def two_email():
+    t=TechProfile.objects.all()
+    for tech in t:
+        e=tech.email
+        f=e.lower()
+        
+        try:
+            
+            techpro=TechProfile.objects.get(email=f)
+            
+        except:
+            print(f)
