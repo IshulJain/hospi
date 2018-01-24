@@ -3705,9 +3705,9 @@ def temp_email():
                 techpro=TechProfile.objects.get(email=f)
             except:
                 print(e)
-                # techp=TechProfile.objects.get(email=e)
-                # techp.email=f
-                # techp.save()
-                # techpro=TechProfile.objects.get(email=f)
-                # mail=techpro.email
-                # print(mail)
+                techp=TechProfile.objects.get(email=e)
+                techp.email=f
+                techp.save()
+                techpro=TechProfile.objects.get(email=f)
+                mail=techpro.email
+                print(mail)
