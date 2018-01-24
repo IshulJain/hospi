@@ -3629,3 +3629,20 @@ def cap_email():
         e=tech.email
         if not e.islower():
             print(e)
+
+def cap_to_small_email():
+    t=TechProfile.objects.all()
+    for tech in t:
+        e=tech.email
+        if not e.islower():
+            print(e)
+            techp=TechProfile.objects.get(email=e)
+            print(techp)
+            
+            f=e.lower()
+            print(f)
+            techp.email=f
+            techp.save()
+            techpro=TechProfile.objects.get(email=f)
+            mail=techpro.email
+            print(mail)
