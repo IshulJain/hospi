@@ -3035,7 +3035,7 @@ def payment_report(request):
         return render(request,'payreport.html')
 
 def paymentdata():
-    url = r'http://127.0.0.1:8000/static/Attendee_Report.xls'
+    url = r'http://technex.in/static/Attendee_Report.xls'
     tables = pd.read_html(url) # Returns list of all tables on page
     table = tables[0]
     table.to_csv('payment.csv')
