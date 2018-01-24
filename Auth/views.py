@@ -3694,3 +3694,20 @@ def two_email2():
                 
             except:
                 print(f)
+
+def temp_email():
+    t=TechProfile.objects.all()
+    for tech in t:
+        e=tech.email
+        f=e.lower()
+        if e!=f:
+            try:
+                techpro=TechProfile.objects.get(email=f)
+            except:
+                print(e)
+                # techp=TechProfile.objects.get(email=e)
+                # techp.email=f
+                # techp.save()
+                # techpro=TechProfile.objects.get(email=f)
+                # mail=techpro.email
+                # print(mail)
