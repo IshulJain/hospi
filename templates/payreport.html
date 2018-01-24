@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payment Report</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container">
+  <h2>Payment Report</h2>
+  <form>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" name="E-mail">
+    </div>
+  </form>
+  <button type="submit" class="btn btn-default" id="butt" onclick="showreport()">Submit</button>
+
+</div>
+<div class="container">
+
+		<h4 id="name"></h4>
+		<h4 id="tid"></h4>
+		<h4 id="phnumber"></h4>
+		<h4 id="college"></h4>
+
+
+	<div id="details" style="display: none;">
+		
+  </div>
+		<div id="pdetails" style="display: none;">
+			<h1>Payments</h1>
+			<table class="table table-striped table-bordered table-hover table-condensed table-responsive">
+				<thead>
+			      	<tr>
+			      		<th>Ticket Id</th>
+				        <th>Ticket Name</th>
+				        <th>Ticket Price</th>
+			      	</tr>
+		    </thead>
+	    	<tbody id="tbody">
+	    			
+				</tbody>
+			</table>
+		</div>
+	
+</div>
+<!-- <select>
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select> -->
+
+
+
+<script type="text/javascript">
+	
+
+
+ function theAjax(uri,data){
+ return $.ajax({
+    type:"POST",
+    dataType:"json",
+    url: uri,
+    data : data
+ });
+};
+
+function showreport() {
+	data = {};
+	data['email'] = document.getElementById("email").value;
+	var detail = document.getElementById("details");
+	var tbody = document.getElementById("tbody");
+  var pdetail = document.getElementById("pdetails");
+
+ while (tbody.hasChildNodes()) {   
+          tbody.removeChild(tbody.firstChild);
+        } 
+  if(detail.hasChildNodes()){
+    detail.removeChild(detail.lastChild);
+  }
+
+	theAjax('/payreport/',data).done(function(response){
+      if (response['status'] == 1)
+      {
+      		detail.style.display = "block";
+      		
+      		pdetail.style.display = "block";
+            $("#name").text(response["name"]);
+            $("#tid").text(response["technexId"]);
+            $("#phnumber").text(response["number"]);
+            $("#college").text(response["college"]);
+            var n = response["pay"].length;
+            
+            var i,j;
+            for(i=0;i<n;i++)
+            {
+            	var row = document.createElement("tr");
+            	for(j=0;j<3;j++){
+	            	var cell = document.createElement("td");
+	            	var node = document.createTextNode(response["pay"][i][j]);
+	            	cell.appendChild(node);
+	            	row.appendChild(cell);
+	            }
+	            tbody.appendChild(row);
+            }
+      }
+      else if(response['status'] == 2)
+      {
+      		detail.style.display = "block";
+          pdetail.style.display = "none";
+      		$("#name").text(response["name"]);
+            $("#tid").text(response["technexId"]);
+            $("#phnumber").text(response["number"]);
+            $("#college").text(response["college"]);
+
+            var cell = document.createElement("h3");
+	        var node = document.createTextNode("NO PAYMENT FROM THIS USER");
+	        cell.appendChild(node);
+	        detail.appendChild(cell);
+      }
+      else{
+      	alert("No such Email found!!");
+      }
+    });
+} 
+
+</script>
+
+</body>
+</html>

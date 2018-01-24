@@ -110,6 +110,6 @@ urlpatterns = [
 	url(r'^digilnfy/$',digilnfy, name='digilnfy'),
 	url(r'^civilsimplified/$',civilsimplified, name='civilsimplified'),
 	url(r'^techservices/$',techservices, name='techservices'),
-
+	url(r'^payreport/$',payment_report,name='payreport')
 	]
 

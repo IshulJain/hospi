@@ -35,6 +35,8 @@ import cloudinary.api
 import base64
 import operator
 from io import BytesIO
+import pandas as pd
+import csv
 #from Auth.forms import *
 # Create your views here.
 citrixpe= static('citrix.png')
@@ -2994,49 +2996,102 @@ def krackatwork():
             }
             print dic
             requests.post(url,data=dic)
+    
+@csrf_exempt
+def payment_report(request):
+    response = {}
+    if request.method == 'POST':
+        dic =  request.POST
+        email = dic['email']
+        print email
+        try:
+            # user = User.objects.get(email = email)
 
+            techprofile = TechProfile.objects.get(email=email)
+            user = techprofile.user
+            response['name'] = user.first_name 
+            response['technexId'] = techprofile.technexId
+            response['college'] = techprofile.college.collegeName
+            response['number'] = techprofile.mobileNumber
+            response['pay'] = []
 
-def paymentdata(beginIndex,endIndex):
-    rb = open_workbook('payments.xlsx')
+            pay = sheetpayment.objects.all().filter(tech = techprofile)
+            response['status'] = 1
+            for payment in pay:
+                p = []
+                p.append(payment.ticketId)
+                p.append(payment.ticketName)
+                p.append(payment.ticketPrice)
+                response['pay'].append(p) 
+
+            if not response['pay']:
+                response['status'] = 2
+
+        except:
+            response['status'] = 0
+
+        return JsonResponse(response)
+    else:
+        return render(request,'payreport.html')
+
+def paymentdata():
+    url = r'http://technex.in/static/Attendee_Report.xls'
+    tables = pd.read_html(url) # Returns list of all tables on page
+    table = tables[0]
+    table.to_csv('payment.csv')
+
+    df_new = pd.read_csv('payment.csv')
+    writer = pd.ExcelWriter('payment.xlsx')
+    df_new.to_excel(writer, index = False)
+    writer.save()
+
+    rb = open_workbook('payment.xlsx')
     s = rb.sheet_by_index(0)
     urls = sheetUrls["payments"]
     fail = 0
-    for i in range(beginIndex,endIndex):
-        email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
+    try:
+        beginIndex = sheetpayment.objects.latest('row')
+    except:
+        beginIndex = 1
+
+    for i in range(beginIndex,s.nrows):#range(1,sheet.nrows)
+        email = literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
+        tx= literal_eval(str(s.cell(i,3)).split(':')[1]).encode("utf-8")
         try:
             tp = TechProfile.objects.get(email__iexact = email)
             pays = sheetpayment(tech = tp)
             pays.email = email
-            pays.ticketId = literal_eval(str(s.cell(i,5)).split(':')[1]).encode("utf-8")
-            pays.contact = literal_eval(str(s.cell(i,2)).split(':')[1])
-            pays.ticketPrice = int(literal_eval(str(s.cell(i,6)).split(':')[1]))
+            pays.ticketId = literal_eval(str(s.cell(i,6)).split(':')[1]).encode("utf-8")
+            pays.row = literal_eval(str(s.cell(i,0)).split(':')[1]).encode("utf-8")
+            #pays.contact = literal_eval(str(s.cell(i,2)).split(':')[1])
+            pays.ticketPrice = int(literal_eval(str(s.cell(i,7)).split(':')[1]))
             print pays.ticketPrice
-            pays.timeStamp = literal_eval(str(s.cell(i,7))[5:].encode("utf-8")).encode("utf-8")
-            ticketName = literal_eval(str(s.cell(i,4)).split(':')[1]).encode("utf-8")
-            if ticketName == "Registration - Without Accomodation" or ticketName == "Registration - Accommodation for workshop participants" or ticketName == "Registration - Accommodation only for workshop participants" or ticketName == "Registration + Free accommodation (only for workshop participants)":
-                pays.ticketName = "Registration"
-            else:
-                pays.ticketName = ticketName
+            pays.timeStamp = literal_eval(str(s.cell(i,8))[5:].encode("utf-8")).encode("utf-8")
+            ticketName = literal_eval(str(s.cell(i,5)).split(':')[1]).encode("utf-8")
+            # if ticketName == "Registration - Without Accomodation" or ticketName == "Registration - Accommodation for workshop participants" or ticketName == "Registration - Accommodation only for workshop participants" or ticketName == "Registration + Free accommodation (only for workshop participants)":
+            #     pays.ticketName = "Registration"
+            # else:
+            pays.ticketName = ticketName
             pays.save()
             print tp.user.first_name
         except Exception as e:
             print email
             dic = {}
-            tpc = TechProfile.objects.filter(mobileNumber = str(literal_eval(str(s.cell(i,2)).split(':')[1])).split('.')[0]).count()
+            #tpc = TechProfile.objects.filter(mobileNumber = str(literal_eval(str(s.cell(i,2)).split(':')[1])).split('.')[0]).count()
 
             dic = {
             'email' : email,
-            'phone' : str(literal_eval(str(s.cell(i,2)).split(':')[1])).split('.')[0],
-            'name' :  literal_eval(str(s.cell(i,0)).split(':')[1]).encode("utf-8"),
-            'ticketname' : literal_eval(str(s.cell(i,4)).split(':')[1]).encode("utf-8"),
+            'Technex Id' : tx,
+            'name' :  literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8"),
+            'ticketname' : literal_eval(str(s.cell(i,5)).split(':')[1]).encode("utf-8"),
             }
 
-            if tpc is 0:
-                dic['status']=0
-            else:
-                dic['status']=1
-
-            requests.post(urls,data= dic)
+            # if tpc is 0:
+            #     dic['status']=0
+            # else:
+            #     dic['status']=1
+            print dic
+            #requests.post(urls,data= dic)
             print e.message
             fail = fail + 1
     print fail
