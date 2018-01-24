@@ -433,7 +433,8 @@ class Notifications(models.Model):
         return self.token
 
 
-class sheetpayment(models.Model):    
+class sheetpayment(models.Model):
+    row = models.IntegerField(null = True, unique=True)    
     tech = models.ForeignKey(TechProfile, null = True, blank = True)
     email = models.EmailField(max_length = 50, null = True, blank = True)
     status = models.CharField(max_length = 15,null= True,blank = True)
