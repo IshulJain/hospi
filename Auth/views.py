@@ -3652,3 +3652,18 @@ def cap_to_small_email():
             techpro=TechProfile.objects.get(email=f)
             mail=techpro.email
             print(mail)
+
+def two_email():
+    t=TechProfile.objects.all()
+    for tech in t:
+        e=tech.email
+        f=e.lower()
+        if e!=f:
+            try:
+                techp=TechProfile.objects.get(email=e)
+                techpro=TechProfile.objects.get(email=f)
+                print(e)
+            except:
+                continue
+
+
