@@ -2997,7 +2997,9 @@ def krackatwork():
             print dic
             requests.post(url,data=dic)
     
+
 @csrf_exempt
+@user_passes_test(lambda u: u.is_staff)
 def payment_report(request):
     response = {}
     if request.method == 'POST':
@@ -3058,7 +3060,10 @@ def paymentdata():
         email = literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
         tx= literal_eval(str(s.cell(i,3)).split(':')[1]).encode("utf-8")
         try:
-            tp = TechProfile.objects.get(email__iexact = email)
+            try:
+                tp = TechProfile.objects.get(email__iexact = email)
+            except:
+                tp = TechProfile.objects.get(technexId = tx)
             pays = sheetpayment(tech = tp)
             pays.email = email
             pays.ticketId = literal_eval(str(s.cell(i,6)).split(':')[1]).encode("utf-8")
