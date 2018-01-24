@@ -3568,3 +3568,9 @@ def workshoperror():
 
 
 
+def cap_email():
+    t=TechProfile.objects.all()
+    for tech in t:
+        e=tech.email
+        if not e.islower():
+            print(e)
