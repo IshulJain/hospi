@@ -13,20 +13,29 @@
   <h2>Payment Report</h2>
   <form>
     <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" class="form-control" id="email" name="E-mail">
+      <label for="sel1">Select Method of searching</label>
+      <select class="form-control" id="sel">
+        <option value="email">Email</option>
+        <option value="technexId">TechnexId</option>
+        <option value="number">Mobile Number</option>
+      </select>
+      <br>
+      <input type="text" class="form-control" id="infield" name="E-mail">
     </div>
   </form>
   <button type="submit" class="btn btn-default" id="butt" onclick="showreport()">Submit</button>
 
 </div>
+<br>
 <div class="container">
 
-		<h4 id="name"></h4>
-		<h4 id="tid"></h4>
-		<h4 id="phnumber"></h4>
-		<h4 id="college"></h4>
-
+    <div id="intro" style="display: none;">
+  		<h4 id="name"></h4>
+  		<h4 id="tid"></h4>
+      <h4 id="email"></h4>
+  		<h4 id="phnumber"></h4>
+  		<h4 id="college"></h4>
+    </div>
 
 	<div id="details" style="display: none;">
 		
@@ -72,12 +81,18 @@
 
 function showreport() {
 	data = {};
-	data['email'] = document.getElementById("email").value;
+  var meth = document.getElementById("sel").value;
+	data[meth] = document.getElementById("infield").value;
 	var detail = document.getElementById("details");
 	var tbody = document.getElementById("tbody");
   var pdetail = document.getElementById("pdetails");
+  var intro = document.getElementById('intro');
 
- while (tbody.hasChildNodes()) {   
+  pdetail.style.display = "none";
+  detail.style.display = "none";
+  intro.style.display = "none";
+
+  while (tbody.hasChildNodes()) {   
           tbody.removeChild(tbody.firstChild);
         } 
   if(detail.hasChildNodes()){
@@ -88,10 +103,11 @@ function showreport() {
       if (response['status'] == 1)
       {
       		detail.style.display = "block";
-      		
+      		intro.style.display = "block";
       		pdetail.style.display = "block";
             $("#name").text(response["name"]);
             $("#tid").text(response["technexId"]);
+            $("#email").text(response["email"]);
             $("#phnumber").text(response["number"]);
             $("#college").text(response["college"]);
             var n = response["pay"].length;
@@ -112,6 +128,7 @@ function showreport() {
       else if(response['status'] == 2)
       {
       		detail.style.display = "block";
+          intro.style.display = "block";
           pdetail.style.display = "none";
       		$("#name").text(response["name"]);
             $("#tid").text(response["technexId"]);
@@ -124,7 +141,7 @@ function showreport() {
 	        detail.appendChild(cell);
       }
       else{
-      	alert("No such Email found!!");
+      	alert("User not found!!");
       }
     });
 } 
