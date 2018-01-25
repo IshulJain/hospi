@@ -3012,7 +3012,7 @@ def payment_report(request):
                 techprofile = TechProfile.objects.get(email=data)
             except:
                 try:
-                    techprofile = TechProfile.objects.get(technexId = data)
+                    techprofile = TechProfile.objects.get(technexId = data.upper())
                 except:
                     techprofile = TechProfile.objects.get(mobileNumber = data)
             

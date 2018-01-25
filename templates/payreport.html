@@ -14,11 +14,10 @@
   <form>
     <div class="form-group">
       <h4>Search E-mail or TechnexId or Mobile Number</h4>
-      <input type="text" class="form-control" id="infield" name="E-mail">
+      <input type="text" class="form-control" id="infield" >
     </div>
-  </form>
-  <button type="submit" class="btn btn-default" id="butt" onclick="showreport()">Submit</button>
-
+   </form>
+ <button type="submit" class="btn btn-default" id="butt" onclick="showreport()">Submit</button>
 </div>
 <br>
 <div class="container">
@@ -62,7 +61,13 @@
 
 <script type="text/javascript">
 	
-
+$(document).on("keypress", 'form', function (e) {
+    var code = e.keyCode || e.which;
+    if (code == 13) {
+        e.preventDefault();
+        $("#butt").click()
+    }
+});
 
  function theAjax(uri,data){
  return $.ajax({
