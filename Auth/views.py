@@ -3005,24 +3005,16 @@ def payment_report(request):
     response = {}
     if request.method == 'POST':
         dic =  request.POST
-        
-        try:
-            email = dic['email']
-        except:
-            try:
-                tx = dic['technexId'].upper()
-            except:
-                number = dic['number']
-
+        data = dic['input']
         try:
             # user = User.objects.get(email = email)
             try:
-                techprofile = TechProfile.objects.get(email=email)
+                techprofile = TechProfile.objects.get(email=data)
             except:
                 try:
-                    techprofile = TechProfile.objects.get(technexId = tx)
+                    techprofile = TechProfile.objects.get(technexId = data)
                 except:
-                    techprofile = TechProfile.objects.get(mobileNumber = number)
+                    techprofile = TechProfile.objects.get(mobileNumber = data)
             
             user = techprofile.user
             response['name'] = user.first_name 
