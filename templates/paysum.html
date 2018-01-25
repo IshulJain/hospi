@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load humanize %}
 <html>
 <head>
 	<title>Payment Summary</title>
@@ -12,17 +13,21 @@
 	<table class="table table-striped table-bordered table-hover table-condensed table-responsive">
 		<thead>
 	      	<tr>
-		        <th>Ticket Name</th>
-		        <th>Ticket Price</th>
+		        <th>Ticket Names</th>
+		        <th>Total Ticket Price</th>
 	      	</tr>
 	</thead>
 	<tbody id="tbody">
 		{% for key, value in paysum.items %}
 		<tr>
 			<td>{{key}}</td>
-			<td>{{value}}</td>
+			<td>{{value|intcomma}}</td>
 		</tr>
 		{% endfor %}	
+		<tr>
+	        <th>Total</th>
+	        <th>{{total|intcomma}}</th>
+	    </tr>
 	</tbody>
 	</table>
 

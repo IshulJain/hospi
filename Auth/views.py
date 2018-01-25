@@ -3006,6 +3006,7 @@ def krackatwork():
 @user_passes_test(lambda u: u.is_staff)
 def payment_summary(request):
     dic = {}
+    total = 0
     dic['paysum'] = {}
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
@@ -3013,6 +3014,10 @@ def payment_summary(request):
             dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + ticket.ticketPrice
         else:
             dic['paysum'][ticket.ticketName] = ticket.ticketPrice
+
+        total = total + ticket.ticketPrice
+
+    dic['total'] = total
             
     return render(request,'paysum.html',dic)
 
