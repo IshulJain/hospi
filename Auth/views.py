@@ -2998,6 +2998,19 @@ def krackatwork():
             print dic
             requests.post(url,data=dic)
     
+@csrf_exempt
+@user_passes_test(lambda u: u.is_staff)
+def payment_summary(request):
+    dic = {}
+    dic['paysum'] = {}
+    sheet = sheetpayment.objects.all()
+    for ticket in sheet:
+        if ticket.ticketName in dic['paysum']:
+            dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + ticket.ticketPrice
+        else:
+            dic['paysum'][ticket.ticketName] = ticket.ticketPrice
+            
+    return render(request,'paysum.html',dic)
 
 @csrf_exempt
 @user_passes_test(lambda u: u.is_staff)
@@ -3063,6 +3076,7 @@ def paymentdata():
     except:
         beginIndex = 1
 
+    print beginIndex
     for i in range(beginIndex,s.nrows):#range(1,sheet.nrows)
         email = literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
         tx= literal_eval(str(s.cell(i,3)).split(':')[1]).encode("utf-8")
