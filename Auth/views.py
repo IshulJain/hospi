@@ -693,7 +693,11 @@ def events(request):
                 eventData['event_name'] = event.eventName
                 eventData['event_content'] = event.description
                 eventData['event_register'] = "Register Team"
-                eventData['register_link'] = "/dashboard/#/eventreg/"+parentEvent.nameSlug+"/"+event.nameSlug+"/"
+                if event.nameSlug=="krackat":
+                    eventData['register_link'] = "http://krackat.technex.in/"
+                else:
+                    eventData['register_link'] = "/dashboard/#/eventreg/"+parentEvent.nameSlug+"/"+event.nameSlug+"/"
+                # eventData['register_link'] = "/dashboard/#/eventreg/"+parentEvent.nameSlug+"/"+event.nameSlug+"/"
                 # eventData['deadLine'] = event.deadLine
                 eventData['prizeMoney'] = event.prizeMoney
                 eventData['maxMembers'] = event.maxMembers
