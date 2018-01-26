@@ -19,10 +19,13 @@
 	</thead>
 	<tbody id="tbody">
 		{% for key, value in paysum.items %}
+		{% if key == "test" %}
+		{% else %}
 		<tr>
 			<td>{{key}}</td>
 			<td>{{value|intcomma}}</td>
 		</tr>
+		{% endif %}
 		{% endfor %}	
 		<tr>
 	        <th>Total</th>

@@ -3017,7 +3017,7 @@ def payment_summary(request):
 
         total = total + 1
 
-    dic['total'] = total
+    dic['total'] = total-1
             
     return render(request,'paysum.html',dic)
 
