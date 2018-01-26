@@ -3011,11 +3011,11 @@ def payment_summary(request):
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
         if ticket.ticketName in dic['paysum']:
-            dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + ticket.ticketPrice
+            dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + 1
         else:
-            dic['paysum'][ticket.ticketName] = ticket.ticketPrice
+            dic['paysum'][ticket.ticketName] = 1
 
-        total = total + ticket.ticketPrice
+        total = total + 1
 
     dic['total'] = total
             
