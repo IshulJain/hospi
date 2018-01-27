@@ -493,11 +493,13 @@ def loginView(request):
     if request.method == 'POST':
 
         post = request.POST
+        print post['email']
         try:
             try:
                 techProfile = TechProfile.objects.get(email = post['email'].lower())
             except:
-                techProfile = TechProfile.objects.get(technexId = post['email'].lower())
+                print post['email']
+                techProfile = TechProfile.objects.get(technexId = post['email'])
         except:
             response['status'] = 0
             response['error'] = "No User registered with the email!"
