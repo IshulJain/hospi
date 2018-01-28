@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Publicity Mailing</title>
+<script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+<body>
+
+
+<div class="container">
+  <h2>Publicity Mailing</h2>
+  <form>
+    <div class="form-group">
+      <h4>Recipients </h4>
+      <input type="text" class="form-control" id="rece"><br>
+      <h4>Subject </h4>
+      <input type="text" class="form-control" id="sub"><br>
+      <h4>Body </h4>
+      <textarea class="form-control" rows="5" id="body"></textarea> <br>
+    </div>
+   </form>
+ <button type="submit" class="btn btn-default" id="butt" onclick="send()">Send</button>
+</div>
+
+
+<script type="text/javascript" >
+ function theAjax(uri,data){
+ return $.ajax({
+    type:"POST",
+    dataType:"json",
+    url: uri,
+    data : data
+ });
+};
+
+function send(){
+	data = {};
+	data["recipient"] = document.getElementById("rece").value;
+	data["subject"] = document.getElementById("sub").value;
+	data["body"] = document.getElementById("body").value;
+	theAjax('/publimail/',data).done(function(response){
+      alert("Successfully Done!!");
+      console.log(response['status']);
+    });
+}
+
+</script>
+</body>
+</html>

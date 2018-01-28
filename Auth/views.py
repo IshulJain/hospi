@@ -823,6 +823,30 @@ def send_email(recipient, subject, body):
               "subject": subject,
               "text": body})
 
+@csrf_exempt
+@user_passes_test(lambda u: u.is_staff)
+def send_publicity_mail(request):
+    response = {}
+    if request.method == 'POST':
+        post = request.POST
+        recipient = post['recipient']
+        subject = post['subject']
+        body = post['body']
+
+        response['status'] = str(requests.post(
+        "https://api.mailgun.net/v3/mgun.technex.in/messages",
+        auth=("api", "key-716da2426e77cc5296dacd1e4768672d"),
+        data={"from": "Technex<publicity@technex.in>",
+              "to": recipient,
+              "subject": subject,
+              "text": body}))
+
+        return JsonResponse(response)
+    else:
+        return render(request,"publicitymail.html")
+
+
+
 def send_email2(r,s,b):
     return requests.post("https://api.mailgun.net/v3/mg32.technex.in/messages",auth=("api", "key-817973280a90a2a4c81a917cfe9a8503"),data={"from":"Technex 2018 IIT(BHU) Varanasi India <technex@iitbhu.ac.in>","to":r,"subject":s,"text":b})
 
@@ -1722,45 +1746,29 @@ def autoshare(token,message,link):
 def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
-    print(tokens)
     response = {}
     response["success"] ={}
     response["err"] = {}
     for token in tokens:
         print("\n") 
         print(int(token.uid))
-        print(last)
-        print(int(token.uid) % 10)
         if (int(token.uid) % 5 == int(last)) or (int(last) == 9) :
-            print token.accessToken
             try:
                 response["success"][token.uid] = (str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
-                print(response["success"])
             except:
-                print("In except")
-                response["err"][token.uid] = (str(str(token.uid)+"    "+str(token.accessToken)))
+                try:
+                    print("In except")
+                    response["err"][token.uid] = str("error")
+                except:
+                    print("extreme error")
 
-    print("In auto")
+    print(response["err"])
     return response
 
 @csrf_exempt
 @user_passes_test(lambda u: u.is_staff)
 def autoshare_call(request):
     response = {}
-    # post = request.POST
-    # if request.COOKIES.get('last_share') :
-    #     last_link = request.COOKIES['last_link']
-    #     last_share = request.COOKIES['last_share']
-    #     last_message = request.COOKIES['last_message']
-    # else:
-    #     last_link = ""
-    #     request.COOKIES['last_link'] = last_link
-    #     last_message = ""
-    #     request.COOKIES['last_message'] = last_message
-    #     last_share = 0
-    #     request.COOKIES['last_share'] = last_share
-
-    # print request.COOKIES
     if request.method == 'POST':
         post = request.POST
         print post
