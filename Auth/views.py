@@ -1778,7 +1778,7 @@ def autoshare_call(request):
         print post
         try:
 
-            response["res"] = auto(post['message'],post['link'],post['last'])
+            response['res'] = auto(post['message'],post['link'],post['last'])
             print(response['res'])
             response['status'] = 1
         except:
@@ -3025,6 +3025,15 @@ def payment_summary(request):
     dic['paysum'] = {}
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
+        if "Registration" in ticket.ticketName and "Ventura" not in ticket.ticketName and "Kracket" not in ticket.ticketName:
+            techprofile = TechProfile.objects.get(email = sheet.email)
+            teams = Team.objects.get(teamLeader = techprofile)
+            for team in teams:
+                if team.event in dic['paysum']:
+                    dic['paysum'][team.event] = dic['paysum'][team.event] + 1
+                else:
+                    dic['paysum'][team.event] = 1
+
         if ticket.ticketName in dic['paysum']:
             dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + 1
         else:
