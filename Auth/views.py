@@ -950,7 +950,11 @@ def startupFair(request):
 def hospitality(request):
     return render(request, 'hospitality.html', {})
 def airshow(request):
-    return render(request, 'airshow.html',{})
+    if(get_flavour(request)=='full'):
+        return render(request, 'airshow.html',{})
+    else:
+        return render(request, 'airshowmobile.html',{})
+    
 
 @csrf_exempt
 def read(request):
