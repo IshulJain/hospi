@@ -3023,17 +3023,16 @@ def payment_summary(request):
     dic = {}
     total = 0
     dic['paysum'] = {}
+
+    parentevents = ParentEvent.objects.all()
+    for parent in parentevents:
+        events = Event.objects.all().filter(parentEvent = parent)
+        for event in events:
+            dic['paysum'][event.eventName] = 0
+            
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
         if "Registration" in ticket.ticketName and "Ventura" not in ticket.ticketName and "Kracket" not in ticket.ticketName:
-            
-            parentevents = ParentEvent.objects.all()
-            for parent in parentevents:
-                events = Event.objects.all().filter(parentEvent = parent)
-                for event in events:
-                    dic['paysum'][event.eventName] = 0
-
-
             techprofile = TechProfile.objects.filter(email = ticket.email)
             try:
                 teams = Team.objects.all().filter(teamLeader = techprofile[0])
