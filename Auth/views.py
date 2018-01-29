@@ -3041,11 +3041,6 @@ def payment_summary(request):
                         dic['paysum'][team.event.eventName] = dic['paysum'][team.event.eventName] + 1
             except:
                 print "error"
-                
-        if ticket.ticketName in dic['paysum']:
-            dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + 1
-        else:
-            dic['paysum'][ticket.ticketName] = 1
 
         total = total + 1
 
