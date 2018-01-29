@@ -2004,7 +2004,8 @@ def send_sms_single(message,number):
         up.save()
     return 1
 
-@user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+# @user_passes_test(lambda u: u.has_perm('Auth.permission_code'))
+@user_passes_test(lambda u: u.is_staff)
 def sendSms(request):
     if request.method=="POST":
         messages_left=Way2smsAccount.objects.all().aggregate(Sum('messages_left'))['messages_left__sum']
