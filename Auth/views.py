@@ -3026,7 +3026,11 @@ def payment_summary(request):
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
         if "Registration" in ticket.ticketName and "Ventura" not in ticket.ticketName and "Kracket" not in ticket.ticketName:
-            techprofile = TechProfile.objects.filter(email = ticket.email)
+            try:
+                techprofile = TechProfile.objects.get(email = ticket.email)
+            except:
+                techprofile = TechProfile.objects.filter(email = ticket.email)
+
             teams = Team.objects.all().filter(teamLeader = techprofile)
             for team in teams:
                 if team.event in dic['paysum']:
