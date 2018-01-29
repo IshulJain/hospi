@@ -3028,14 +3028,15 @@ def payment_summary(request):
         if "Registration" in ticket.ticketName and "Ventura" not in ticket.ticketName and "Kracket" not in ticket.ticketName:
             
             techprofile = TechProfile.objects.filter(email = ticket.email)
-
-            teams = Team.objects.all().filter(teamLeader = techprofile)
-            for team in teams:
-                if team.event in dic['paysum']:
-                    dic['paysum'][team.event] = dic['paysum'][team.event] + 1
-                else:
-                    dic['paysum'][team.event] = 1
-            
+            try:
+                teams = Team.objects.all().filter(teamLeader = techprofile[0])
+                for team in teams:
+                    if team.event in dic['paysum']:
+                        dic['paysum'][team.event] = dic['paysum'][team.event] + 1
+                    else:
+                        dic['paysum'][team.event] = 1
+            except:
+                print "error"
         if ticket.ticketName in dic['paysum']:
             dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + 1
         else:
