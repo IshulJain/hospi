@@ -3026,26 +3026,25 @@ def payment_summary(request):
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
         if "Registration" in ticket.ticketName and "Ventura" not in ticket.ticketName and "Kracket" not in ticket.ticketName:
-            print "1"
+            
             techprofile = TechProfile.objects.filter(email = ticket.email)
-            print "2"
+
             teams = Team.objects.all().filter(teamLeader = techprofile)
-            print "3"
             for team in teams:
                 if team.event in dic['paysum']:
                     dic['paysum'][team.event] = dic['paysum'][team.event] + 1
                 else:
                     dic['paysum'][team.event] = 1
-            print "4"
+            
         if ticket.ticketName in dic['paysum']:
             dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + 1
         else:
             dic['paysum'][ticket.ticketName] = 1
 
         total = total + 1
-        print "5"
+
     dic['total'] = total-1
-    print "6"
+            
     return render(request,'paysum.html',dic)
 
 @csrf_exempt
