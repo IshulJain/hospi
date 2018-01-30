@@ -49,22 +49,22 @@ for member in memberss:
 		
 
 finals=final[:5]
-# print(final)
-for mem in finals:
+print(finals)
+# for mem in finals:
 
-	dic = {
-	        "name" : mem.user.first_name,
-	        "email" : mem.email,
-	        "college" : mem.college.collegeName,
-	        "technexId" : mem.technexId,
-	        "year" : mem.year,
-	        "mobileNumber" : mem.mobileNumber,
-	        "city" : mem.city
-	        }
+# 	dic = {
+# 	        "name" : mem.user.first_name,
+# 	        "email" : mem.email,
+# 	        "college" : mem.college.collegeName,
+# 	        "technexId" : mem.technexId,
+# 	        "year" : mem.year,
+# 	        "mobileNumber" : mem.mobileNumber,
+# 	        "city" : mem.city
+# 	        }
 
-	url = "https://script.google.com/a/technex.in/macros/s/AKfycby347_r4AzmOqWdz2merV-ibi7umjzmeUuWiMWhPvAE_9k-WZVa/exec" #tech@technex.in
-	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
-	print(requests.post(url,data=dic))
+# 	url = "https://script.google.com/a/technex.in/macros/s/AKfycby347_r4AzmOqWdz2merV-ibi7umjzmeUuWiMWhPvAE_9k-WZVa/exec" #tech@technex.in
+# 	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
+# 	print(requests.post(url,data=dic))
 
 
 
