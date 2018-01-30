@@ -38,9 +38,12 @@ for member in members:
 		if member.technexId!=w.teamLeader.technexId:
 			final.append(member)
 
+url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
+
 
 for mem in final:
 
+	dic = {}
 	dic = {
 	        "name" : mem.user.first_name,
 	        "email" : mem.email,
@@ -51,7 +54,6 @@ for mem in final:
 	        "city" : mem.city
 	        }
 
-	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
 	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
 	    requests.post(url,data=dic)
 
