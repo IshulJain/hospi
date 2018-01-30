@@ -950,7 +950,11 @@ def startupFair(request):
 def hospitality(request):
     return render(request, 'hospitality.html', {})
 def airshow(request):
-    return render(request, 'airshow.html',{})
+    if(get_flavour(request)=='full'):
+        return render(request, 'airshow.html',{})
+    else:
+        return render(request, 'airshowmobile.html',{})
+    
 
 @csrf_exempt
 def read(request):
@@ -1774,7 +1778,7 @@ def autoshare_call(request):
         print post
         try:
 
-            response["res"] = auto(post['message'],post['link'],post['last'])
+            response['res'] = auto(post['message'],post['link'],post['last'])
             print(response['res'])
             response['status'] = 1
         except:
@@ -2529,7 +2533,8 @@ def dhokebaaj():
                         "name" : user.user.first_name,
                         "technexId" : user.technexId,
                         "college" : user.college.collegeName,
-                        "mobileNumber" : user.mobileNumber
+                        "mobileNumber" : user.mobileNumber,
+                        "email" : user.email
                         }
                         print dic
                         if str(user.college.collegeWebsite) != "190" :
@@ -3019,12 +3024,23 @@ def payment_summary(request):
     dic = {}
     total = 0
     dic['paysum'] = {}
+
+    parentevents = ParentEvent.objects.all()
+    for parent in parentevents:
+        events = Event.objects.all().filter(parentEvent = parent)
+        for event in events:
+            dic['paysum'][event.eventName] = 0
+            
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
-        if ticket.ticketName in dic['paysum']:
-            dic['paysum'][ticket.ticketName] =  dic['paysum'][ticket.ticketName] + 1
-        else:
-            dic['paysum'][ticket.ticketName] = 1
+        if "Registration" in ticket.ticketName and "Ventura" not in ticket.ticketName and "Kracket" not in ticket.ticketName:
+            techprofile = TechProfile.objects.filter(email = ticket.email)
+            try:
+                teams = Team.objects.all().filter(teamLeader = techprofile[0])
+                for team in teams:
+                        dic['paysum'][team.event.eventName] = dic['paysum'][team.event.eventName] + 1
+            except:
+                print "error"
 
         total = total + 1
 
