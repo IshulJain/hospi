@@ -8,9 +8,9 @@ from Auth.views import *
 
 
 pay = sheetpayment.objects.all()
-p=pay[:5]
-for pro in p:
-    print(pro)
+# p=pay[:5]
+for pro in pay:
+    
     dic = {
         "name" : pro.tech.user.first_name,
         "email" : pro.email,
