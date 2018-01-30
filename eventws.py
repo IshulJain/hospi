@@ -29,11 +29,11 @@ for t in teams:
 	members.append(leader)
 
 memberss=list(set(members))
-	
-print(len(memberss))
+len(members)
+len(memberss)
 
 work=WorkshopTeam.objects.all()
-print(len(work))
+len(work)
 final=[]
 for member in memberss:
 	c=0
@@ -46,8 +46,7 @@ for member in memberss:
 		final.append(member)
 
 # print(final)
-print(len(members)
-print(len(final))
+len(final)
 
 
 # for mem in final:
