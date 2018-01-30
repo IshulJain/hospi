@@ -86,7 +86,17 @@ urlpatterns = [
     url(r'exhi/$',exhibitionRegister,name='exhibitionRegister'),
         #url(r'sponsor/$',sponsor,name='sponsor'),
         
-
+    url(r'start_up_battle/$',start_up_battle,name='start_up_battle'),
+    url(r'hurdle_mania/$',hurdle_mania,name='hurdle_mania'),
+    url(r'ventura/$',ventura,name='ventura'),
+    url(r'momentum/$',momentum,name='momentum'),
+    url(r'modex/$',modex,name='modex'),
+    url(r'exploring_the_interstellar/$',exploring_the_interstellar,name='exploring_the_interstellar'),
+    url(r'greenx/$',greenX,name='greenX'),
+    url(r'vikalp/$',vikalp,name='vikalp'),
+    url(r'krackat/$',Krackat,name='Krackat'),
+    url(r'manthan/$',manthan,name='manthan'),
+    url(r'astroquiz/$',astroquiz,name='astroquiz'),
 
 	# url(r'^quiz/$',quizI, name='quiz'),
 	#url(r'^genetella/',genetella, name='Mission Dashboard'),

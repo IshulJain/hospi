@@ -3394,6 +3394,32 @@ def vmware(request):
 def applink(request):
     return HttpResponseRedirect('https://play.google.com/store/apps/details?id=org.piratejester.technex17')
 
+def start_up_battle(request):
+    return HttpResponseRedirect('https://goo.gl/forms/CHEJPbJKDik5A6TO2')
+
+def hurdle_mania(request):
+    return HttpResponseRedirect('https://goo.gl/forms/ocfCpcb7bmrFUe9N2')
+def ventura(request):
+    return HttpResponseRedirect('https://goo.gl/forms/SvcTvEKN6i5Z80713')
+def momentum(request):
+    return HttpResponseRedirect('https://goo.gl/forms/1BkzDyjv9QNXkxnz1')
+def modex(request):
+    return HttpResponseRedirect('https://goo.gl/forms/CQV2REFaoKvsJKqU2')
+def exploring_the_interstellar(request):
+    return HttpResponseRedirect('https://goo.gl/forms/U0BP7n8GuttkfTMf1')
+def greenX(request):
+    return HttpResponseRedirect('https://goo.gl/forms/nXwgiJS7eYRwciDU2')
+def vikalp(request):
+    return HttpResponseRedirect('https://goo.gl/forms/TvXiFXzaoDmKYxK03')
+
+def Krackat(request):
+    return HttpResponseRedirect('https://goo.gl/forms/4FcfDN9hLicnN5mv1')
+def manthan(request):
+    return HttpResponseRedirect('https://goo.gl/forms/0LWJYbWISYo1B0al1')
+def astroquiz(request):
+    return HttpResponseRedirect('https://goo.gl/forms/RhVP6eTWo6wMrsGX2')
+
+
 
 def tshirtdatafill():
     tp = TechProfile.objects.filter(tshirtdata = True)
