@@ -21,6 +21,6 @@ for pro in pay:
         "registeredOn" : pro.timeStamp,
         }
 
-    url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
+    url = "https://script.google.com/a/technex.in/macros/s/AKfycbxX16VxFckPcIaZ5sr0Yjmy9-LPymm8nwXOhMN62aLbirltmt3i/exec" #tech@technex.in
     #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
     print(requests.post(url,data=dic))
