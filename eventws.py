@@ -27,7 +27,7 @@ for t in teams:
 		members.append(mem)
 	
 	members.append(leader)
-	print(members)
+	# print(members)
 	
 	
 
@@ -37,9 +37,7 @@ for member in members:
 	for w in work:
 		if member.technexId!=w.teamLeader.technexId:
 			final.append(member)
-
-url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
-
+			break
 
 for mem in final:
 
@@ -54,6 +52,8 @@ for mem in final:
 	        "city" : mem.city
 	        }
 
+	url = "https://script.google.com/a/technex.in/macros/s/AKfycby347_r4AzmOqWdz2merV-ibi7umjzmeUuWiMWhPvAE_9k-WZVa/exec" #tech@technex.in
 	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
-	    requests.post(url,data=dic)
+	print(requests.post(url,data=dic))
+
 
