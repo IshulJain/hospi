@@ -11,7 +11,6 @@ pay = sheetpayment.objects.all()
 
 
 for pro in pay:
-    if (pro.row + 2) >= 897: 
         dic = {
             "name" : pro.tech.user.first_name,
             "email" : pro.email,
