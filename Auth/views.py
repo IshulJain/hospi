@@ -2533,7 +2533,8 @@ def dhokebaaj():
                         "name" : user.user.first_name,
                         "technexId" : user.technexId,
                         "college" : user.college.collegeName,
-                        "mobileNumber" : user.mobileNumber
+                        "mobileNumber" : user.mobileNumber,
+                        "email" : user.email
                         }
                         print dic
                         if str(user.college.collegeWebsite) != "190" :
