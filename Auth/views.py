@@ -3099,10 +3099,10 @@ def sheetpaywithcollege(pro):
         "email" : pro.email,
         "technexId" : pro.tech.technexId,
         "College" : pro.tech.college,
-        "Ticket Name" : pro.ticketName,
-        "Ticket Id" : pro.ticketId,
-        "Ticket Price" : pro.ticketPrice,
-        "Registered On" : pro.timeStamp,
+        "ticketName" : pro.ticketName,
+        "ticketId" : pro.ticketId,
+        "ticketprice" : pro.ticketPrice,
+        "registeredOn" : pro.timeStamp,
         }
 
     url = "https://script.google.com/a/technex.in/macros/s/AKfycbzi_JDir9HH9GWY6L6qZrL96CnytEcDyzR9t_M060mh7M5n7IY/exec"
