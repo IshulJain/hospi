@@ -3618,7 +3618,7 @@ def recent_activities(request):
     teams1 = Team.objects.all().order_by("-timestamp")
     teams=teams1[:5]
     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
-    techprofiles=techprofiles1[:5]
+    techprofiles=techprofiles1[:20]
     a=max(eventobj, key=lambda k: eventobj[k])
     print (c)
 
