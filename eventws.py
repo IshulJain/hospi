@@ -46,7 +46,7 @@ for member in memberss:
 
 # print(final)
 
-print(member.count())
+print(final.count())
 
 
 # for mem in final:
