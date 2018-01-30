@@ -31,6 +31,7 @@ for t in teams:
 	
 	
 
+
 # work=WorkshopTeam.objects.all()
 # final=[]
 # for member in members:
@@ -62,5 +63,6 @@ for t in teams:
 	# url = "https://script.google.com/a/technex.in/macros/s/AKfycby347_r4AzmOqWdz2merV-ibi7umjzmeUuWiMWhPvAE_9k-WZVa/exec" #tech@technex.in
 	#     #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
 	# print(requests.post(url,data=dic))
+
 
 
