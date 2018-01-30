@@ -27,42 +27,44 @@ for t in teams:
 		members.append(mem)
 	
 	members.append(leader)
-print(members)
-	
+# print(members)
+memberss=list(set(members))
 	
 
 
-# work=WorkshopTeam.objects.all()
-# final=[]
-# for member in members:
-# 	c=0
-# 	for w in work:
-# 		if member.technexId==w.teamLeader.technexId:
-# 			# final.append(member)
-# 			c=1
-# 			break
-# 	if c==1:
-# 		final.append(member)
+work=WorkshopTeam.objects.all()
+final=[]
+for member in memberss:
+	c=0
+	for w in work:
+		if member.technexId==w.teamLeader.technexId:
+			# final.append(member)
+			c=1
+			break
+	if c==0:
+		final.append(member)
+
+# print(final)
 
 		
 
-
+finals=final[:5]
 # print(final)
-# for mem in final:
+for mem in finals:
 
-# 	dic = {
-# 	        "name" : mem.user.first_name,
-# 	        "email" : mem.email,
-# 	        "college" : mem.college.collegeName,
-# 	        "technexId" : mem.technexId,
-# 	        "year" : mem.year,
-# 	        "mobileNumber" : mem.mobileNumber,
-# 	        "city" : mem.city
-# 	        }
+	dic = {
+	        "name" : mem.user.first_name,
+	        "email" : mem.email,
+	        "college" : mem.college.collegeName,
+	        "technexId" : mem.technexId,
+	        "year" : mem.year,
+	        "mobileNumber" : mem.mobileNumber,
+	        "city" : mem.city
+	        }
 
-	# url = "https://script.google.com/a/technex.in/macros/s/AKfycby347_r4AzmOqWdz2merV-ibi7umjzmeUuWiMWhPvAE_9k-WZVa/exec" #tech@technex.in
-	#     #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
-	# print(requests.post(url,data=dic))
+	url = "https://script.google.com/a/technex.in/macros/s/AKfycby347_r4AzmOqWdz2merV-ibi7umjzmeUuWiMWhPvAE_9k-WZVa/exec" #tech@technex.in
+	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
+	print(requests.post(url,data=dic))
 
 
 
