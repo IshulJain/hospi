@@ -3092,6 +3092,22 @@ def payment_report(request):
     else:
         return render(request,'payreport.html')
 
+def sheetpaywithcollege(pro):
+
+    dic = {
+        "name" : pro.tech.user.first_name,
+        "email" : pro.email,
+        "technexId" : pro.tech.technexId,
+        "College" : pro.tech.college,
+        "ticketName" : pro.ticketName,
+        "ticketId" : pro.ticketId,
+        "ticketprice" : pro.ticketPrice,
+        "registeredOn" : pro.timeStamp,
+        }
+
+    url = "https://script.google.com/a/technex.in/macros/s/AKfycbzi_JDir9HH9GWY6L6qZrL96CnytEcDyzR9t_M060mh7M5n7IY/exec"
+    requests.post(url,data=dic)
+
 def paymentdata():
     url = r'http://technex.in/static/Attendee_Report.xls'
     tables = pd.read_html(url) # Returns list of all tables on page
@@ -3135,6 +3151,10 @@ def paymentdata():
             # else:
             pays.ticketName = ticketName
             pays.save()
+            try:
+                sheetpaywithcollege(pays)
+            except:
+                pass
             print tp.user.first_name
         except Exception as e:
             print email
@@ -3618,7 +3638,7 @@ def recent_activities(request):
     teams1 = Team.objects.all().order_by("-timestamp")
     teams=teams1[:5]
     techprofiles1 = TechProfile.objects.all().order_by("-timestamp")
-    techprofiles=techprofiles1[:5]
+    techprofiles=techprofiles1[:20]
     a=max(eventobj, key=lambda k: eventobj[k])
     print (c)
 
