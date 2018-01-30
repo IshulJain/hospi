@@ -38,8 +38,7 @@ for member in members:
 		if member.technexId!=w.teamLeader.technexId:
 			final.append(member)
 
-
-
+print(final)
 for mem in final:
 
 	dic = {
