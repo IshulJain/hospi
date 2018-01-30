@@ -17,16 +17,23 @@ from Auth.views import *
 # # Find a workbook by name and open the first sheet
 # # Make sure you use the right name here.
 # sheet = client.open("ddetails").sheet1
+tech=TechProfile.objects.all()
+for t in tech[:1000]:
+	c=t.confirmpart.all()
+	print(c)
 
 teams=Team.objects.all()
 members=[]
-for t in teams:
+for t in teams[:10]:
 	m=t.members.all()
+	print(m)
 	leader=t.teamLeader
+	print(leader)
 	for mem in m:
 		members.append(mem)
 	
 	members.append(leader)
+	print(members)
 
 memberss=list(set(members))
 len(members)
