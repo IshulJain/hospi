@@ -15,12 +15,12 @@ for pro in pay:
         "email" : pro.email,
         "technexId" : pro.tech.technexId,
         "College" : pro.tech.college,
-        "Ticket Name" : pro.ticketName,
-        "Ticket Id" : pro.ticketId,
-        "Ticket Price" : pro.ticketPrice,
-        "Registered On" : pro.timeStamp,
+        "ticketName" : pro.ticketName,
+        "ticketId" : pro.ticketId,
+        "ticketprice" : pro.ticketPrice,
+        "registeredOn" : pro.timeStamp,
         }
 
     url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
     #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
-    requests.post(url,data=dic)
+    print(requests.post(url,data=dic))

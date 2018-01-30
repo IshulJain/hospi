@@ -37,6 +37,7 @@ for member in members:
 	for w in work:
 		if member.technexId!=w.teamLeader.technexId:
 			final.append(member)
+			break
 
 print(final)
 for mem in final:
