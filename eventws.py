@@ -48,9 +48,8 @@ for member in memberss:
 
 		
 
-finals=final[:5]
-print(finals)
-for mem in finals:
+
+for mem in final:
 
 	dic = {
 	        "name" : mem.user.first_name,
