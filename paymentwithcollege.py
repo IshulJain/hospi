@@ -8,7 +8,7 @@ from Auth.views import *
 
 
 pay = sheetpayment.objects.all()
-p=pay[0]
+p=pay[:5]
 for pro in p:
     print(pro)
     dic = {
@@ -22,6 +22,6 @@ for pro in p:
         "registeredOn" : pro.timeStamp,
         }
 
-    # url = "https://script.google.com/a/technex.in/macros/s/AKfycbxX16VxFckPcIaZ5sr0Yjmy9-LPymm8nwXOhMN62aLbirltmt3i/exec" #tech@technex.in
+    # url = "https://script.google.com/a/technex.in/macros/s/AKfycbzi_JDir9HH9GWY6L6qZrL96CnytEcDyzR9t_M060mh7M5n7IY/exec" #tech@technex.in
     # #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
     # print(requests.post(url,data=dic))
