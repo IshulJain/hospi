@@ -27,7 +27,7 @@ for t in teams:
 		members.append(mem)
 	
 	members.append(leader)
-print(len(members)
+
 memberss=list(set(members))
 	
 print(len(memberss))
@@ -46,7 +46,7 @@ for member in memberss:
 		final.append(member)
 
 # print(final)
-
+print(len(members)
 print(len(final))
 
 
