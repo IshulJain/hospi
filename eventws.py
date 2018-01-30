@@ -27,7 +27,7 @@ for t in teams:
 		members.append(mem)
 	
 	members.append(leader)
-	# print(members)
+print(members)
 	
 	
 
