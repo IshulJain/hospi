@@ -54,6 +54,6 @@ for mem in final:
 
 	url = "https://script.google.com/a/technex.in/macros/s/AKfycby347_r4AzmOqWdz2merV-ibi7umjzmeUuWiMWhPvAE_9k-WZVa/exec" #tech@technex.in
 	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
-	    requests.post(url,data=dic)
+	print(requests.post(url,data=dic))
 
 
