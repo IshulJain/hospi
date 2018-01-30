@@ -38,16 +38,20 @@ for member in members:
 		if member.technexId!=w.teamLeader.technexId:
 			final.append(member)
 
-dic = {
-        "name" : techprofile.user.first_name,
-        "email" : techprofile.email,
-        "college" : techprofile.college.collegeName,
-        "technexId" : techprofile.technexId,
-        "year" : techprofile.year,
-        "mobileNumber" : techprofile.mobileNumber,
-        "city" : techprofile.city
-        }
-url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
-    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
-    requests.post(url,data=dic)
+
+for mem in final:
+
+	dic = {
+	        "name" : mem.user.first_name,
+	        "email" : mem.email,
+	        "college" : mem.college.collegeName,
+	        "technexId" : mem.technexId,
+	        "year" : mem.year,
+	        "mobileNumber" : mem.mobileNumber,
+	        "city" : mem.city
+	        }
+
+	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwIXDuKjAipVNAWj8cjVAQrurLg7nWLU1s7nDCZD41yhSucG4I/exec" #tech@technex.in
+	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
+	    requests.post(url,data=dic)
 
