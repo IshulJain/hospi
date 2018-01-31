@@ -41,6 +41,7 @@ for w in work:
 
 workmems=list(set(workmem))
 techp=workmems+memberss
+techp=list(set(techp))
 
 pay = sheetpayment.objects.all()
 final=[]
