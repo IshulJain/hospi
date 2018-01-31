@@ -57,7 +57,7 @@ final=[]
 for techpobj in techp:
 	pays = sheetpayment.objects.filter(tech = techpobj)
 	print pays
-	if len(pays) == 0:
+	if len(pays) == 0 and not tech.college.collegeWebsite == "190":
 		final.append(techpobj)	
 		print techpobj.user.first_name
 
