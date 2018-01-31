@@ -3108,6 +3108,22 @@ def sheetpaywithcollege(pro):
     url = "https://script.google.com/a/technex.in/macros/s/AKfycbzi_JDir9HH9GWY6L6qZrL96CnytEcDyzR9t_M060mh7M5n7IY/exec"
     requests.post(url,data=dic)
 
+# def paymentcheck():
+#     rb = open_workbook('regwithoutpay.xlsx')
+#     s = rb.sheet_by_index(0)
+#     for i in range(0,s.nrows):
+#         email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
+#         tp = TechProfile.objects.get(email__iexact = email)
+#         try:
+#             sheetpayment.objects.get(tech = tp)
+#             print("this guy is asshole" + str(tp))
+#         except:
+#             pass
+
+# def remove_techp(tech):
+    
+
+
 def paymentdata():
     url = r'http://technex.in/static/Attendee_Report.xls'
     tables = pd.read_html(url) # Returns list of all tables on page
