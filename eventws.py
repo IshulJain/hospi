@@ -17,12 +17,12 @@ from Auth.views import *
 # # Find a workbook by name and open the first sheet
 # # Make sure you use the right name here.
 # sheet = client.open("ddetails").sheet1
-tech=TechProfile.objects.all()
-for t in tech[:1000]:
-	c=t.confirmpart.all()
-	print(c)
-
-teams=Team.objects.all()
+# tech=TechProfile.objects.all()
+# for t in tech[:1000]:
+# 	c=t.confirmpart.all()
+# 	print(c)
+tech=TechProfile.objects.get(email="vksaryan613@gmail.com")
+teams=Team.objects.all().filter(members=tech)
 members=[]
 for t in teams[:10]:
 	m=t.members.all()
