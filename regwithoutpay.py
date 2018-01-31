@@ -70,8 +70,10 @@ for mem in final:
 	        "technexId" : mem.technexId,
 	        "year" : mem.year,
 	        "mobileNumber" : mem.mobileNumber,
-	        "city" : mem.city
+	        "city" : mem.city,
+	        "status":0
 	        }
+    	print(dic['status'])
 
 	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwgg6rfk29Yhenn4zSNqc_2lSrciVMM3ixqbpS_9cQkSNvPzl0/exec" #tech@technex.in
 	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in

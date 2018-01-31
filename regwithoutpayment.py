@@ -11,12 +11,14 @@ rb = open_workbook('regwithoutpay (4).xlsx')
 s = rb.sheet_by_index(0)
 for i in range(0,s.nrows):
     email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
-    print(email)
-    break
-    tp = TechProfile.objects.filter(email__iexact = email)
-    
-    pay = sheetpayment.objects.get(tech = tp[0])
-    print(pay.tech.technexId)
-    print("this guy is asshole" + str(tp))
-    
+    tp = TechProfile.objects.filter(email = email)
+    try:
+        try:
+            pay = sheetpayment.objects.get(tech = tp[0])
+        except:
+            pay = sheetpayment.objects.get(tech = tp)
+        print(pay.tech.technexId)
+        print("this guy is asshole" + str(tp))
+    except:
+        pass
         
