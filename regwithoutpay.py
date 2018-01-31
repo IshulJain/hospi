@@ -4,7 +4,44 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "technex17.settings")
 application = get_wsgi_application()
 from Auth.models import * 
 from Auth.views import *
-techp=TechProfile.objects.all()
+# techp=TechProfile.objects.all()
+# pay = sheetpayment.objects.all()
+# final=[]
+# for t in techp:
+# 	c=0
+# 	for p in pay:
+# 		if t==p.tech:
+# 			c==1
+# 			break
+
+# 	if c==0:
+# 		final.append(t)
+
+# print(final[:5])
+
+teams=Team.objects.all()
+members=[]
+for t in teams:
+	m=t.members.all()
+	# print(m)
+	leader=t.teamLeader
+	# print(leader)
+	for mem in m:
+		members.append(mem)
+	
+	members.append(leader)
+	# print(members)
+
+memberss=list(set(members))
+
+work=WorkshopTeam.objects.all()
+workmem=[]
+for w in work:
+	workmem.append(w.teamLeader)
+
+workmems=list(set(workmem))
+techp=workmems+memberss
+
 pay = sheetpayment.objects.all()
 final=[]
 for t in techp:
@@ -16,9 +53,6 @@ for t in techp:
 
 	if c==0:
 		final.append(t)
-
-print(final[:5])
-
 for mem in final:
 
 	dic = {
