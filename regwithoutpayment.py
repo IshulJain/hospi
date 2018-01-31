@@ -7,7 +7,7 @@ from Auth.views import *
 
 
 
-rb = open_workbook('regwithoutpay (2).xlsx')
+rb = open_workbook('regwithoutpay (4).xlsx')
 s = rb.sheet_by_index(0)
 for i in range(0,s.nrows):
     email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
