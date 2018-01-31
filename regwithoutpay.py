@@ -55,7 +55,7 @@ final=[]
 # 	if c==0:
 # 		final.append(t)
 for techpobj in techp:
-	pays = sheetpayment.objects.filter(email = techpobj.email)
+	pays = sheetpayment.objects.filter(tech = techpobj)
 	print pays
 	if len(pays) == 0:
 		final.append(techpobj)	
@@ -71,11 +71,9 @@ for mem in final:
 	        "year" : mem.year,
 	        "mobileNumber" : mem.mobileNumber,
 	        "city" : mem.city,
-	        "status":0
 	        }
-    	print(dic['status'])
 
-	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwgg6rfk29Yhenn4zSNqc_2lSrciVMM3ixqbpS_9cQkSNvPzl0/exec" #tech@technex.in
+	url = "https://script.google.com/a/technex.in/macros/s/AKfycbxMmNuFsjqR5UZvhDg9UthvB8dUr61KGilCa1U9M_NGjUhx9qA/exec" #tech@technex.in
 	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
 	print(requests.post(url,data=dic))
 
