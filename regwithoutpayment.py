@@ -18,6 +18,7 @@ for i in range(0,s.nrows):
         except:
             pay = sheetpayment.objects.get(tech = tp)
         print(pay.tech.technexId)
+        print(pay.tech.email)
         print("this guy is asshole" + str(tp))
     except:
         pass
