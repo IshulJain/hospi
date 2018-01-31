@@ -44,25 +44,21 @@ techp=workmems+memberss
 
 pay = sheetpayment.objects.all()
 final=[]
-for t in techp:
-	c=0
-	for p in pay:
-		if t==p.tech:
-			c==1
-			break
+# for t in techp:
+# 	c=0
+# 	for p in pay:
+# 		if t==p.tech:
+# 			c==1
+# 			break
 
-	if c==0:
-		final.append(t)
-
-for mem in final:
-	try:
-		sheetpayment.objects.get(tech = mem)
-		print(mem)
-		final.remove(mem)
-	except:
-		pass
-
-
+# 	if c==0:
+# 		final.append(t)
+for techpobj in techp:
+	pays = sheetpayment.objects.filter(email = techpobj.email)
+	print pays
+	if len(pays) == 0:
+		final.append(techpobj)	
+		print techpobj.user.first_name
 
 for mem in final:
 

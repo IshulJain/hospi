@@ -13,7 +13,8 @@ for i in range(0,s.nrows):
     email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
     tp = TechProfile.objects.filter(email__iexact = email)
     try:
-        sheetpayment.objects.get(tech = tp[0])
+        pay = sheetpayment.objects.get(tech = tp[0])
+        print(pay.tech.technexId)
         print("this guy is asshole" + str(tp))
     except:
         pass
