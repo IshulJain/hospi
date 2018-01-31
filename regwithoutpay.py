@@ -41,6 +41,7 @@ for w in work:
 
 workmems=list(set(workmem))
 techp=workmems+memberss
+techp=list(set(techp))
 
 pay = sheetpayment.objects.all()
 final=[]
@@ -54,9 +55,9 @@ final=[]
 # 	if c==0:
 # 		final.append(t)
 for techpobj in techp:
-	pays = sheetpayment.objects.filter(email = techpobj.email)
+	pays = sheetpayment.objects.filter(tech = techpobj)
 	print pays
-	if len(pays) == 0:
+	if len(pays) == 0 and not techpobj.college.collegeWebsite == "190":
 		final.append(techpobj)	
 		print techpobj.user.first_name
 
@@ -69,10 +70,10 @@ for mem in final:
 	        "technexId" : mem.technexId,
 	        "year" : mem.year,
 	        "mobileNumber" : mem.mobileNumber,
-	        "city" : mem.city
+	        "city" : mem.city,
 	        }
 
-	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwgg6rfk29Yhenn4zSNqc_2lSrciVMM3ixqbpS_9cQkSNvPzl0/exec" #tech@technex.in
+	url = "https://script.google.com/a/technex.in/macros/s/AKfycbxMmNuFsjqR5UZvhDg9UthvB8dUr61KGilCa1U9M_NGjUhx9qA/exec" #tech@technex.in
 	    #url='https://script.google.com/a/technex.in/macros/s/AKfycbykHL9khnVUO0cM_pQ8W7MJ-avy_K8Go8d0K21HRlLFsgR1CrI/exec' #events@technex.in
 	print(requests.post(url,data=dic))
 
