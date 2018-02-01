@@ -7,8 +7,7 @@ from Auth.views import *
 
 
 
-rb = open_workbook('registrationwithoutpayment.xlsx')
-
+rb = open_workbook('reg_withoutanything.xlsx')
 s = rb.sheet_by_index(0)
 for i in range(0,s.nrows):
     email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
@@ -24,4 +23,6 @@ for i in range(0,s.nrows):
         print("this guy is asshole" + str(tp))
     except:
         pass
+
+
         
