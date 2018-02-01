@@ -10,7 +10,7 @@ pays = sheetpayment.objects.all()
 sheet={
 
 	"Digital Marketing":"https://script.google.com/macros/u/1/s/AKfycbz5Ymy5Vg7oSpmilfaRQ_rdTpROQ6U2ohivsMP7-e79OHvrgS6K/exec",
-	"Autonomous Robotics (ArduBotics)":"https://script.google.com/macros/u/1/s/AKfycbxXvylH4qpA0HFSIc-CMy-zY8GtTuYM94YqFiDGuJwzn3K0xS_u/exec",
+	"Autonomous Robotics (ArduBotics)":"https://script.google.com/a/technex.in/macros/s/AKfycbxXvylH4qpA0HFSIc-CMy-zY8GtTuYM94YqFiDGuJwzn3K0xS_u/exec",
 	"Android Application Development":"https://script.google.com/macros/u/1/s/AKfycbxqf1VqKo7uk2GCtG0LNgs2Z6_-Lv3VFYxS1iGWLfdXPqWaWbmJ/exec",
 	"Industrial Automation PLC and SCADA":"https://script.google.com/macros/u/1/s/AKfycbylymIu146g0KDABKUt6VOKsFETrIAZPDreO5nG0Ig9aZJpRF4O/exec",
 	"Ethical Hacking and Information Security":"https://script.google.com/macros/u/1/s/AKfycbyMMx4BCyx0XkkxWq9VvqZWCZAfSxK1b_h9ZQnLCAFVFLbRwi8/exec",
