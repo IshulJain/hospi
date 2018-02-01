@@ -28,8 +28,8 @@ sheet={
 for pay in pays:
     if "Registration" not in pay.ticketName and "Ventura" not in pay.ticketName and "Krackat" not in pay.ticketName and "Innovians" not in pay.ticketName:
     	
-    	url = sheet[pay.ticketName]
-
+    	url = sheet[str(pay.ticketName)]
+    	print(url)
 		dic = {
 	        "name" : pay.tech.user.first_name,
 	        "email" : pay.email,
