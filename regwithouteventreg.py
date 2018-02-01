@@ -32,9 +32,9 @@ total_reg=list(set(total_reg))
 no_reg = [x for x in techp if x not in total_reg]
 final=[]
 for no_regobj in no_reg:
-	pays = sheetpayment.objects.filter(tech = no_reg)
+	pays = sheetpayment.objects.filter(tech = no_regobj)
 	print pays
-	if len(pays) == 0 and not no_reg.college.collegeWebsite == "190":
+	if len(pays) == 0 and not no_regobj.college.collegeWebsite == "190":
 		final.append(no_regobj)	
 		print no_regobj.user.first_name
 
