@@ -22,6 +22,7 @@ from Auth.views import *
 #         print(pay.email)
 #         print("this guy is asshole" + str(tp))
 #     except:
+        # print(i)  
 #         pass
 techp=TechProfile.objects.all()
 teams=Team.objects.all()
@@ -56,10 +57,8 @@ for i in range(0,s.nrows):
         print(i)
         pass
     else:
-        print(pay.tech.technexId)
-        print(pay.tech.email)
-        print(pay.email)
-        print("this guy is asshole" + str(tp))
+        print("fasgayaaaaaaaaa") 
+
 
 
 
