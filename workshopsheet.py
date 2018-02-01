@@ -7,7 +7,22 @@ from Auth.models import *
 from Auth.views import *
 
 pays = sheetpayment.objects.all()
-
+url={
+	"Digital Marketing":""
+	"Autonomous Robotics (ArduBotics)":""
+	"Android Application Development":""
+	"Industrial Automation PLC and SCADA":""
+	"Ethical Hacking and Information Security":""
+	"Internet Of Things":""
+	"Artificial Intelligence and Machine Learning":""
+	"Sixthsense Robotics":""
+	"Bridge Design":""
+	"Cryptocurrency":""
+	"Augmented Reality":""
+	"Voice Controlled Automation Using Amazon Alexa":""
+	"Automobile Mechanics and IC Engines":""
+	"E-Commerce":""
+}
 for pay in pays:
     if "Registration" in pay.ticketName and "Ventura" not in pay.ticketName and "Kracket" not in pay.ticketName and "Innovians" not in pay.ticketName:
     	

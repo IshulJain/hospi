@@ -3471,7 +3471,7 @@ def exploring_the_interstellar(request):
 def greenX(request):
     return HttpResponseRedirect('https://goo.gl/forms/nXwgiJS7eYRwciDU2')
 def vikalp(request):
-    return HttpResponseRedirect('https://goo.gl/forms/TvXiFXzaoDmKYxK03')
+    return HttpResponseRedirect('https://goo.gl/forms/nnKrxsWsuzWXfk7u2')
 
 def Krackat(request):
     return HttpResponseRedirect('https://goo.gl/forms/4FcfDN9hLicnN5mv1')
