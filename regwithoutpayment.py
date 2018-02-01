@@ -52,8 +52,8 @@ s = rb.sheet_by_index(0)
 for i in range(0,s.nrows):
     email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
     tp = TechProfile.objects.filter(email = email)
-    if tp not in total_reg:
-        print("here")
+    if tp[0] not in total_reg and tp not in total_reg:
+        print(i)
         pass
     else:
         print(pay.tech.technexId)
