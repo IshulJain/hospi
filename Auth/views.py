@@ -3031,9 +3031,13 @@ def payment_summary(request):
         for event in events:
             dic['paysum'][event.eventName] = 0
             
+
+    dic['paysum']['Ventura'] = 0
+    dic['paysum']['StartUpBattle'] = 0
+
     sheet = sheetpayment.objects.all()
     for ticket in sheet:
-        if "Registration" in ticket.ticketName and "Kracket" not in ticket.ticketName:
+        if "Registration" in ticket.ticketName and "Ventura" not in ticket.ticketName and "Kracket" not in ticket.ticketName and "Innovians" not in ticket.ticketName:
             techprofile = TechProfile.objects.filter(email = ticket.email)
             try:
                 teams = Team.objects.all().filter(teamLeader = techprofile[0])
@@ -3042,6 +3046,11 @@ def payment_summary(request):
             except:
                 print "error"
 
+        if "Ventura" in ticket.ticketName:
+            dic['paysum']['Ventura'] = dic['paysum']['Ventura'] + 1
+
+        if "Startupfair" in ticket.ticketName:
+            dic['paysum']['StartUpBattle'] = dic['paysum']['StartUpBattle'] + 1
         total = total + 1
 
     dic['total'] = total-1
