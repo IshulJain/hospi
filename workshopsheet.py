@@ -26,7 +26,7 @@ sheet={
 
 }
 for pay in pays:
-	if "Registration" not in pay.ticketName and "Ventura" not in pay.ticketName and "Krackat" not in pay.ticketName and "Innovians" not in pay.ticketName:
+	if "Registration" not in pay.ticketName and "Ventura" not in pay.ticketName and "Krackat" not in pay.ticketName and "Innovians" not in pay.ticketName and "test" not in pay.ticketName:
 		
 		url = sheet[str(pay.ticketName)]
 		print(url)
