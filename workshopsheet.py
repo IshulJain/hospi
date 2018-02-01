@@ -15,13 +15,13 @@ url={
 	"Ethical Hacking and Information Security":""
 	"Internet Of Things":""
 	"Artificial Intelligence and Machine Learning":""
-	"Sixthsense Robotics":""
-	"Bridge Design":""
-	"Cryptocurrency":""
-	"Augmented Reality":""
-	"Voice Controlled Automation Using Amazon Alexa":""
-	"Automobile Mechanics and IC Engines":""
-	"E-Commerce":""
+	"Sixthsense Robotics":"https://script.google.com/a/technex.in/macros/s/AKfycbxcx3sEqeKGQZBV4zdvjwDzKJbYojStKWBEitw7SVOyBj8EQiQ/exec"
+	"Bridge Design":"https://script.google.com/a/technex.in/macros/s/AKfycbxjqVDylXCZMV8pKjW9-vj3r4y5V-nPYe2HD5domg7db14NHhjF/exec"
+	"Cryptocurrency":"https://script.google.com/a/technex.in/macros/s/AKfycbwiQhOAdl4ZcRYlLCfz_GwiEtfRWqROXLAJI9c--zSFho6tFK0/exec"
+	"Augmented Reality":"https://script.google.com/a/technex.in/macros/s/AKfycbzQquLebXqkjHM24bvfyo9FpYTOnuvylzFaF-APWw8i1fiXxOlT/exec"
+	"Voice Controlled Automation Using Amazon Alexa":"https://script.google.com/a/technex.in/macros/s/AKfycbx0d5ZmVN4RZLhcj8gBkli_Xg5sxSsVtN2vbXWoBj26jQ8L2GY/exec"
+	"Automobile Mechanics and IC Engines":"https://script.google.com/a/technex.in/macros/s/AKfycbyOT7t6hOeGYpXDERR801NZqbFLyTUqm5EZB1kvAYc7lmdoh3c/exec"
+	"E-Commerce":"https://script.google.com/a/technex.in/macros/s/AKfycbxgBa9H0QtAUot7m1y9BFzHOU58WbByfGIrKPy5HwI7vYbl030R/exec"
 }
 for pay in pays:
     if "Registration" in pay.ticketName and "Ventura" not in pay.ticketName and "Kracket" not in pay.ticketName and "Innovians" not in pay.ticketName:
