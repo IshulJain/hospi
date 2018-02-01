@@ -26,19 +26,19 @@ sheet={
 
 }
 for pay in pays:
-    if "Registration" not in pay.ticketName and "Ventura" not in pay.ticketName and "Krackat" not in pay.ticketName and "Innovians" not in pay.ticketName:
-    	
-    	url = sheet[str(pay.ticketName)]
-    	print(url)
+	if "Registration" not in pay.ticketName and "Ventura" not in pay.ticketName and "Krackat" not in pay.ticketName and "Innovians" not in pay.ticketName:
+		
+		url = sheet[str(pay.ticketName)]
+		print(url)
 		dic = {
-	        "name" : pay.tech.user.first_name,
-	        "email" : pay.email,
-	        "technexId" : pay.tech.technexId,
-	        "College" : pay.tech.college,
-	        "ticketName" : pay.ticketName,
-	        "ticketId" : pay.ticketId,
-	        "ticketprice" : pay.ticketPrice,
-	        "registeredOn" : pay.timeStamp,
-	        }
+			"name" : pay.tech.user.first_name,
+			"email" : pay.email,
+			"technexId" : pay.tech.technexId,
+			"College" : pay.tech.college,
+			"ticketName" : pay.ticketName,
+			"ticketId" : pay.ticketId,
+			"ticketprice" : pay.ticketPrice,
+			"registeredOn" : pay.timeStamp,
+			}
 
-	    print(requests.post(url,data=dic))
+		print(requests.post(url,data=dic))
