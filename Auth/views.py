@@ -46,6 +46,21 @@ app_secret = 'v51fzo5r8or1bkl'
 flow = dropbox.client.DropboxOAuth2FlowNoRedirect(app_key, app_secret)
 sheetUrls = {
 
+    "Digital Marketing":"https://script.google.com/a/technex.in/macros/s/AKfycbz5Ymy5Vg7oSpmilfaRQ_rdTpROQ6U2ohivsMP7-e79OHvrgS6K/exec",
+    "Autonomous Robotics (ArduBotics)":"https://script.google.com/a/technex.in/macros/s/AKfycbxXvylH4qpA0HFSIc-CMy-zY8GtTuYM94YqFiDGuJwzn3K0xS_u/exec",
+    "Android Application Development":"https://script.google.com/a/technex.in/macros/s/AKfycbxqf1VqKo7uk2GCtG0LNgs2Z6_-Lv3VFYxS1iGWLfdXPqWaWbmJ/exec",
+    "Industrial Automation PLC and SCADA":"https://script.google.com/a/technex.in/macros/s/AKfycbylymIu146g0KDABKUt6VOKsFETrIAZPDreO5nG0Ig9aZJpRF4O/exec",
+    "Ethical Hacking and Information Security":"https://script.google.com/a/technex.in/macros/s/AKfycbyMMx4BCyx0XkkxWq9VvqZWCZAfSxK1b_h9ZQnLCAFVFLbRwi8/exec",
+    "Internet Of Things":"https://script.google.com/a/technex.in/macros/s/AKfycbwLN1H5lzqjNwKO3X0dRKkTsf6m7CFt78OMKIwYky2vY6NM_A4T/exec",
+    "Artificial Intelligence and Machine Learning":"https://script.google.com/a/technex.in/macros/s/AKfycbznhBK3NJOPSkxpD_clpzPzWLG-3Fi72UFwcyBNp74rHXxsf0cv/exec",
+    "Sixthsense Robotics":"https://script.google.com/a/technex.in/macros/s/AKfycbxcx3sEqeKGQZBV4zdvjwDzKJbYojStKWBEitw7SVOyBj8EQiQ/exec",
+    "Bridge Design":"https://script.google.com/a/technex.in/macros/s/AKfycbxjqVDylXCZMV8pKjW9-vj3r4y5V-nPYe2HD5domg7db14NHhjF/exec",
+    "Cryptocurrency":"https://script.google.com/a/technex.in/macros/s/AKfycbwiQhOAdl4ZcRYlLCfz_GwiEtfRWqROXLAJI9c--zSFho6tFK0/exec",
+    "Augmented Reality":"https://script.google.com/a/technex.in/macros/s/AKfycbxWp0CzQOmx0NPv9XZc7AirbN_7qglzPtaQzWkGLaAd2JlkwGM/exec",
+    "Voice Controlled Automation Using Amazon Alexa":"https://script.google.com/a/technex.in/macros/s/AKfycbzvXYV3fMtaSjZAqbN4kpKklGEEG9J1JM_W5kTAdIjklI-PVdm9/exec",
+    "Automobile Mechanics and IC Engines":"https://script.google.com/a/technex.in/macros/s/AKfycbxJi5yTzScJ_rJwXlZ8MZ5QUB_t_oASeNkUueBhtddnz34ai_t2/exec",
+    "E-Commerce":"https://script.google.com/a/technex.in/macros/s/AKfycbxgBa9H0QtAUot7m1y9BFzHOU58WbByfGIrKPy5HwI7vYbl030R/exec",
+
     "bridge-design": "https://script.google.com/a/technex.in/macros/s/AKfycbwlDd9WTEzkNwrRQTaqKZMXMyp8UW9Z7ckqB1HSrT01wWDZHXIe/exec", #Updated
     "e-commerce": "https://script.google.com/a/technex.in/macros/s/AKfycbxZXFxH1B7RmOEsQ0N5LGMMMg4aaiEjcrV_WJSR-kO9UpMqqeI/exec", #Updated
     "digital-marketing": "https://script.google.com/a/technex.in/macros/s/AKfycbwVAyI4IFMKG-PJ0FclvXS0IXFtLOUVEZZ2vIorY-UrjQ3z3yk/exec", #Updated
@@ -1751,22 +1766,13 @@ def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     response = {}
-    response["success"] ={}
-    response["err"] = {}
+    response["status"] = 1
     for token in tokens:
-        print("\n") 
-        print(int(token.uid))
         if (int(token.uid) % 5 == int(last)) or (int(last) == 9) :
             try:
-                response["success"][token.uid] = (str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
+                requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
             except:
-                try:
-                    print("In except")
-                    response["err"][token.uid] = str("error")
-                except:
-                    print("extreme error")
-
-    print(response["err"])
+                response["status"] = 0
     return response
 
 @csrf_exempt
@@ -1777,12 +1783,9 @@ def autoshare_call(request):
         post = request.POST
         print post
         try:
-
             response['res'] = auto(post['message'],post['link'],post['last'])
-            print(response['res'])
             response['status'] = 1
         except:
-            print("here")
             response['status'] = 0
         return JsonResponse(response)
     else:
@@ -3117,20 +3120,21 @@ def sheetpaywithcollege(pro):
     url = "https://script.google.com/a/technex.in/macros/s/AKfycbzi_JDir9HH9GWY6L6qZrL96CnytEcDyzR9t_M060mh7M5n7IY/exec"
     requests.post(url,data=dic)
 
-# def paymentcheck():
-#     rb = open_workbook('regwithoutpay.xlsx')
-#     s = rb.sheet_by_index(0)
-#     for i in range(0,s.nrows):
-#         email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
-#         tp = TechProfile.objects.get(email__iexact = email)
-#         try:
-#             sheetpayment.objects.get(tech = tp)
-#             print("this guy is asshole" + str(tp))
-#         except:
-#             pass
+def workshopsheet(pay):
+    print(pay.ticketName)
+    url = sheetUrls[str(pay.ticketName)]
+    dic = {
+            "name" : pay.tech.user.first_name,
+            "email" : pay.email,
+            "technexId" : pay.tech.technexId,
+            "College" : pay.tech.college,
+            "ticketName" : pay.ticketName,
+            "ticketId" : pay.ticketId,
+            "ticketprice" : pay.ticketPrice,
+            "registeredOn" : pay.timeStamp,
+            }
 
-# def remove_techp(tech):
-    
+    requests.post(url,data=dic)
 
 
 def paymentdata():
@@ -3176,6 +3180,10 @@ def paymentdata():
             # else:
             pays.ticketName = ticketName
             pays.save()
+
+            if "Registration" not in pays.ticketName and "Ventura" not in pays.ticketName and "Krackat" not in pays.ticketName and "Innovians" not in pays.ticketName and "test" not in pays.ticketName:
+                workshopsheet(pays)
+
             try:
                 sheetpaywithcollege(pays)
             except:
@@ -3456,29 +3464,29 @@ def applink(request):
     return HttpResponseRedirect('https://play.google.com/store/apps/details?id=org.piratejester.technex17')
 
 def start_up_battle(request):
-    return HttpResponseRedirect('https://goo.gl/forms/CHEJPbJKDik5A6TO2')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSfBtiLChxVUvpPwdqPRpwLunKpBhddyn4o30J6reaiSjv43qg/viewform?usp=sf_link')
 
 def hurdle_mania(request):
-    return HttpResponseRedirect('https://goo.gl/forms/ocfCpcb7bmrFUe9N2')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSego6HF5CnF4TkZOAjilW1U4wh7aUqHT031wdR6KmzsTjFVxA/viewform?usp=sf_link')
 def ventura(request):
-    return HttpResponseRedirect('https://goo.gl/forms/SvcTvEKN6i5Z80713')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSci787ygBBVanWEQ7eY4XKWwOp0xr4GXH9zkerSAdDggIskbw/viewform?usp=sf_link')
 def momentum(request):
-    return HttpResponseRedirect('https://goo.gl/forms/1BkzDyjv9QNXkxnz1')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSfY86F-UqZbZKfzKYQG93fMWt34g9VA86IOI0i4fdlYO0BQWg/viewform?usp=sf_link')
 def modex(request):
-    return HttpResponseRedirect('https://goo.gl/forms/CQV2REFaoKvsJKqU2')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScjJrTZwRd8oRgfB8FvgyIthpNyBWxK6whDb54NUj9QE_Mu7A/viewform?usp=sf_link')
 def exploring_the_interstellar(request):
-    return HttpResponseRedirect('https://goo.gl/forms/U0BP7n8GuttkfTMf1')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScBARYR-NJZNdyHSBhcTOXpk1-jQiV_FSViRiku_WcpwK3LLQ/viewform?usp=sf_link')
 def greenX(request):
-    return HttpResponseRedirect('https://goo.gl/forms/nXwgiJS7eYRwciDU2')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSe8FMyAWmLs0jXcgjAUkR5jmuitYZ_lRd9-avErZ0PgyC0UbA/viewform?usp=sf_link')
 def vikalp(request):
     return HttpResponseRedirect('https://goo.gl/forms/nnKrxsWsuzWXfk7u2')
 
 def Krackat(request):
-    return HttpResponseRedirect('https://goo.gl/forms/4FcfDN9hLicnN5mv1')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScEPy53qMtzoSOB_eQVjkuJU0lf1MzEnO6wVK6wGrCknZvvlw/viewform?usp=sf_link')
 def manthan(request):
-    return HttpResponseRedirect('https://goo.gl/forms/0LWJYbWISYo1B0al1')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSeHWtqCpDMcjkmSJ_l-BkmL6LrBeh4rZIKf96ouht67Lj8_mw/viewform?usp=sf_link')
 def astroquiz(request):
-    return HttpResponseRedirect('https://goo.gl/forms/RhVP6eTWo6wMrsGX2')
+    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScu_fZV6gcR3xyD0UuUDfHfaXxWLifHXRN5LaaHNkJUle7b8A/viewform?usp=sf_link')
 
 
 
