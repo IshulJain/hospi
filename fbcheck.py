@@ -19,7 +19,7 @@ uids = [
 	"1122338601179430",
 	"1498440296941600",
 ]
-for key in uids:
+for key in range(0,len(uids)-1):
 	fb = FbReach.objects.get(uid=uids[key])
 	print(fb.accessToken)
 	r = requests.post("https://graph.facebook.com/me?access_token=" + fb.accessToken)
