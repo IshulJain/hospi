@@ -1766,22 +1766,13 @@ def auto(message,link,last):
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     response = {}
-    response["success"] ={}
-    response["err"] = {}
+    response["status"] = 1
     for token in tokens:
-        print("\n") 
-        print(int(token.uid))
         if (int(token.uid) % 5 == int(last)) or (int(last) == 9) :
             try:
-                response["success"][token.uid] = (str(requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)))
+                requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token.accessToken + "&link=" + link)
             except:
-                try:
-                    print("In except")
-                    response["err"][token.uid] = str("error")
-                except:
-                    print("extreme error")
-
-    print(response["err"])
+                response["status"] = 0
     return response
 
 @csrf_exempt
@@ -1792,12 +1783,9 @@ def autoshare_call(request):
         post = request.POST
         print post
         try:
-
             response['res'] = auto(post['message'],post['link'],post['last'])
-            print(response['res'])
             response['status'] = 1
         except:
-            print("here")
             response['status'] = 0
         return JsonResponse(response)
     else:
