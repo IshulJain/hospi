@@ -157,6 +157,43 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 
 <section class="master__section logos-grid container " >
 			<div class="ct--master ct--logos-grid c12 m" style="margin:2px auto;">
+
+				<h2 class="h1" style="text-align: center; margin-top: 50px;">
+			THINK TALKS
+		</h2>
+
+    <ul style="">
+    {% for lecture in lectures.lectures %}
+				                    <li style="margin:auto;">
+                <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}" onclick='
+                var modalBigContent = new tingle.modal();
+                modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
+                modalBigContent.open();
+
+
+                '>
+				<div class="container1" >
+                    <img src="{{lecture.photo}}" class="image"  style="width:130%; margin-left:-45px;" >
+                    <div class="middle">
+					<!-- 	<div class="middle">
+							<div class="text" style="text-align: center">{{member.number}}</div>
+                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>-->
+						</div>
+				</div>
+
+                </a>
+                    <p style="text-align: center;">{{lecture.title}}</p>
+                    <p style="text-align: center; font-size: 13px;">{{lecture.designation}}</p>
+            </li>
+            <div class="tingle-demo" style="display: none;" id="lecture{{forloop.counter}}">
+            <div id=""><span style="margin-left: 35%;"><img src="{{lecture.photo}}" class="image" style="height:80px; width: 80px;" ></span><span style="color: grey; text-align:right; margin-left:10px;position: relative; bottom:35px; font-weight:bold; ">{{lecture.title}}</span> <span style="color: grey;" class="para" >{{lecture.description | safe}}</span></div>
+        </div>
+
+           {% endfor %}
+		    </ul>
+		    <hr>
+
+
 				<h2 class="h1" style="text-align: center;">
 			Panel Discussion : Cryptocurrency
 		</h2>
@@ -244,41 +281,9 @@ India's leading high energy physicist - Mr Atul Gurtu, planetary geologist - Mrs
 		    </ul>
 
 		    <p style="margin-top: 50px; margin-bottom:30px; text-align: justify;font-family: Calibri;" >Cryptocurrency is one of the most trending and burning topics in the modern day world of technology and finance. With the values of Bitcoins rocketing every few days and new currencies like Ripple popping up, it is quintessential that engineering students have enough knowledge about these developments. A comprehensive understanding of the merits and loopholes of the concept of cryptocurrency must be present in the minds of students. Such a panel discussion ensures this. Membered by a Bitcoin wllet CEO, a cyber security expert and an ethical hacker, the panel guarantees an unbiased discussion which will bring out the finest details that go into the working of the cryptocurrency world. </p>
-		    	<hr>
+		    	
 
-    		<h2 class="h1" style="text-align: center; margin-top: 50px;">
-			OUR PREVIOUS YEAR'S THINK TALKS
-		</h2>
-
-    <ul style="">
-    {% for lecture in lectures.lectures %}
-				                    <li style="margin:auto;">
-                <a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}" onclick='
-                var modalBigContent = new tingle.modal();
-                modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
-                modalBigContent.open();
-
-
-                '>
-				<div class="container1" >
-                    <img src="{{lecture.photo}}" class="image"  style="width:130%; margin-left:-45px;" >
-                    <div class="middle">
-					<!-- 	<div class="middle">
-							<div class="text" style="text-align: center">{{member.number}}</div>
-                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>-->
-						</div>
-				</div>
-
-                </a>
-                    <p style="text-align: center;">{{lecture.title}}</p>
-                    <p style="text-align: center; font-size: 13px;">{{lecture.designation}}</p>
-            </li>
-            <div class="tingle-demo" style="display: none;" id="lecture{{forloop.counter}}">
-            <div id=""><span style="margin-left: 35%;"><img src="{{lecture.photo}}" class="image" style="height:80px; width: 80px;" ></span><span style="color: grey; text-align:right; margin-left:10px;position: relative; bottom:35px; font-weight:bold; ">{{lecture.title}}</span> <span style="color: grey;" class="para" >{{lecture.description | safe}}</span></div>
-        </div>
-
-           {% endfor %}
-		    </ul>
+    		
 </div>
 
 		</section>
