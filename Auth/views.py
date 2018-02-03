@@ -1763,8 +1763,8 @@ def autoshare(token,message,link):
     requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link=" + link)
 
 def auto(message,link,last):
-    message = urllib.quote_plus(message)
     message.replace(' ', '+')
+    message = urllib.quote_plus(message)
     tokens = FbReach.objects.all()
     response = {}
     response["status"] = 1
