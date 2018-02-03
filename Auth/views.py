@@ -1763,6 +1763,7 @@ def autoshare(token,message,link):
     requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + token + "&link=" + link)
 
 def auto(message,link,last):
+    message = message.decode("utf-8")
     message.replace(' ', '+')
     tokens = FbReach.objects.all()
     response = {}
