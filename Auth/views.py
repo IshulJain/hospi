@@ -2037,7 +2037,7 @@ def sendSms(request):
         for m in mobile_list:
             number = m
             count+=1
-            print m,count
+            # print m,count
             if current_possible==0:
                 up_max=Way2smsAccount.objects.all().aggregate(Max('messages_left'))['messages_left__max']
                 up=Way2smsAccount.objects.filter(messages_left=up_max)[0]
@@ -2047,6 +2047,8 @@ def sendSms(request):
             sent=send_sms(username,password,message,number)
             # print number+username
             if sent:
+                print(number)
+                print("success")
                 sent_numbers.append(number)
                 current_possible-=1
                 up.messages_left-=1
