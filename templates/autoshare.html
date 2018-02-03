@@ -15,6 +15,7 @@ function fb_share(){
 	data["message"] = document.getElementById("mess").value;
 	data["link"] = document.getElementById("link").value;
 	data["last"] = document.getElementById("last").value;
+  data["message"] = encodeURI(data["message"])
 	theAjax('/autoshare/',data).done(function(response){
       if (response['status'] == 1)
       {
