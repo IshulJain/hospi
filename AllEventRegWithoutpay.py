@@ -5,6 +5,7 @@ application = get_wsgi_application()
 from Auth.models import * 
 from Auth.views import *
 
+teams=Team.objects.all()
 members=[]
 for team in teams:
 	team_members=team.members.all()
