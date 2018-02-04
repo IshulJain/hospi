@@ -19,12 +19,9 @@ for team in teams:
 	members.append(leader)
 
 	for member in members:
-		final=[]
+		
 		pays = sheetpayment.objects.filter(tech = member)
 		if len(pays) == 0 and not member.college.collegeWebsite == "190":
-			final.append(member)	
-			print member.user.first_name
-		if len(final) != 0:
 			print(member.email)
 			print(team.event)
 
