@@ -166,6 +166,45 @@ enrich themselves. Technex'18 promises to stand up to the expectations of the pa
 
 				<section class="master__section logos-grid container ">
 			<div class="ct--master ct--logos-grid c12 m1">
+
+				<h2 class="h1"style="text-align: center;">
+			THIS YEAR'S THINK TALKS
+		</h2>
+
+
+
+			<ul style="">
+			{% for lecture in lectures.lectures %}
+				                    <li style="width:100%">
+                	<a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}" onclick='
+                var modalBigContent = new tingle.modal();
+                modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
+                modalBigContent.open();
+
+
+                '>
+				<div class="container1">
+                    <img src="{{lecture.photo}}" class="image" >
+					<!-- 	<div class="middle">
+							<div class="text" style="text-align: center">{{member.number}}</div>
+                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>
+						</div> -->
+				</div>
+
+                </a>
+                <p style="text-align: center;">{{lecture.title}}</p>
+                <p style="text-align: center;">{{lecture.designation}}</p>
+            </li>
+            <div class="tingle-demo" style="display: none; text-align: justify;" id="lecture{{forloop.counter}}">
+            <div id=""><span style="margin-left: 15%;"><img src="{{lecture.photo}}" class="image" style="height:80px; width: 80px;" ></span><span style="color: grey; text-align:right; margin-left:10px;position: relative; bottom:35px; font-weight:bold; ">{{lecture.title}}</span> <span style="color: grey;" class="para" >{{lecture.description | safe}}</span></div>
+        </div>
+
+	 {% endfor %}
+</ul>
+
+
+
+				
 				<h2 class="h1"style="text-align: center;">
 			Panel Discussion : Cryptocurrency
 		</h2>
@@ -250,40 +289,7 @@ enrich themselves. Technex'18 promises to stand up to the expectations of the pa
 </p></div></div>
 
 
-    		<h2 class="h1"style="text-align: center;">
-			THIS YEAR'S THINK TALKS
-		</h2>
-
-
-
-			<ul style="">
-			{% for lecture in lectures.lectures %}
-				                    <li style="width:100%">
-                	<a href="#" class="r r--57-32" id="lecturemain{{forloop.counter}}" onclick='
-                var modalBigContent = new tingle.modal();
-                modalBigContent.setContent(document.getElementById("lecture{{forloop.counter}}").innerHTML);
-                modalBigContent.open();
-
-
-                '>
-				<div class="container1">
-                    <img src="{{lecture.photo}}" class="image" >
-					<!-- 	<div class="middle">
-							<div class="text" style="text-align: center">{{member.number}}</div>
-                            <div class="text" style="text-align: center; font-size: 13px;">{{member.email}}</div>
-						</div> -->
-				</div>
-
-                </a>
-                <p style="text-align: center;">{{lecture.title}}</p>
-                <p style="text-align: center;">{{lecture.designation}}</p>
-            </li>
-            <div class="tingle-demo" style="display: none; text-align: justify;" id="lecture{{forloop.counter}}">
-            <div id=""><span style="margin-left: 15%;"><img src="{{lecture.photo}}" class="image" style="height:80px; width: 80px;" ></span><span style="color: grey; text-align:right; margin-left:10px;position: relative; bottom:35px; font-weight:bold; ">{{lecture.title}}</span> <span style="color: grey;" class="para" >{{lecture.description | safe}}</span></div>
-        </div>
-
-	 {% endfor %}
-</ul>
+    		
 
 
 </div>

@@ -3464,29 +3464,29 @@ def applink(request):
     return HttpResponseRedirect('https://play.google.com/store/apps/details?id=org.piratejester.technex17')
 
 def start_up_battle(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSfBtiLChxVUvpPwdqPRpwLunKpBhddyn4o30J6reaiSjv43qg/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/CHEJPbJKDik5A6TO2')
 
 def hurdle_mania(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSego6HF5CnF4TkZOAjilW1U4wh7aUqHT031wdR6KmzsTjFVxA/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/ocfCpcb7bmrFUe9N2')
 def ventura(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSci787ygBBVanWEQ7eY4XKWwOp0xr4GXH9zkerSAdDggIskbw/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/SvcTvEKN6i5Z80713')
 def momentum(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSfY86F-UqZbZKfzKYQG93fMWt34g9VA86IOI0i4fdlYO0BQWg/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/1BkzDyjv9QNXkxnz1')
 def modex(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScjJrTZwRd8oRgfB8FvgyIthpNyBWxK6whDb54NUj9QE_Mu7A/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/CQV2REFaoKvsJKqU2')
 def exploring_the_interstellar(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScBARYR-NJZNdyHSBhcTOXpk1-jQiV_FSViRiku_WcpwK3LLQ/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/U0BP7n8GuttkfTMf1')
 def greenX(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSe8FMyAWmLs0jXcgjAUkR5jmuitYZ_lRd9-avErZ0PgyC0UbA/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/nXwgiJS7eYRwciDU2')
 def vikalp(request):
     return HttpResponseRedirect('https://goo.gl/forms/nnKrxsWsuzWXfk7u2')
 
 def Krackat(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScEPy53qMtzoSOB_eQVjkuJU0lf1MzEnO6wVK6wGrCknZvvlw/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/4FcfDN9hLicnN5mv1')
 def manthan(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLSeHWtqCpDMcjkmSJ_l-BkmL6LrBeh4rZIKf96ouht67Lj8_mw/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/0LWJYbWISYo1B0al1')
 def astroquiz(request):
-    return HttpResponseRedirect('https://docs.google.com/forms/d/e/1FAIpQLScu_fZV6gcR3xyD0UuUDfHfaXxWLifHXRN5LaaHNkJUle7b8A/viewform?usp=sf_link')
+    return HttpResponseRedirect('https://goo.gl/forms/RhVP6eTWo6wMrsGX2')
 
 
 
