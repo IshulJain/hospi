@@ -25,6 +25,9 @@ for team in teams:
 			print(member.email)
 			print(event)
 			print(member.college.collegeWebsite)
+			print(member.college.collegeName)
+			print("-----")
+
 
 
 
