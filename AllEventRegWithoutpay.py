@@ -26,7 +26,7 @@ for team in teams:
 			print member.user.first_name
 		if len(final) != 0:
 			print(member.email)
-			print(member.event)
+			print(team.event)
 
 
 
