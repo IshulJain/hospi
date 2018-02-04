@@ -7,22 +7,23 @@ application = get_wsgi_application()
 from Auth.models import *
 from Auth.views import *
 
-url = "https://script.google.com/a/technex.in/macros/s/AKfycbxrH97fDg5QAzcPpMOyqykBIgs7s8OJJdpFdNBSHVW_5jyEnWu3/exec"
-teams = Team.objects.all()
+url = "https://script.google.com/a/technex.in/macros/s/AKfycbybsllkn-T7-FMDB2avLBelNPaUZMCx0G1a7iIUA0TCKYpw8VEV/exec"
+teams = WorkshopTeam.objects.all()
+memberss = []
 
 for team in teams:
-	memberss = []
-	for mem in team.members.all():
-		memberss.append(mem)
 	memberss.append(team.teamLeader)
-	for member in memberss:
-		pay = sheetpayment.objects.filter(tech = member)
-		if len(pay) == 0 and member.college.collegeWebsite != "190":
-			dic = {
-				"name": member.user.first_name,
-				"technexId":member.technexId,
-				"college":member.college,
-				"mobileNumber":member.mobileNumber,
-				"email":member.email,
-			}
-			print(requests.post(url,data=dic))
+
+members = list(set(memberss))
+
+for member in members:
+	pay = sheetpayment.objects.filter(tech = member)
+	if len(pay) == 0 and member.college.collegeWebsite != "190" and "Registration" not in pays.ticketName and "Ventura" not in pays.ticketName and "Krackat" not in pays.ticketName and "Innovians" not in pays.ticketName and "test" not in pays.ticketName:
+		dic = {
+			"name": member.user.first_name,
+			"technexId":member.technexId,
+			"college":member.college,
+			"mobileNumber":member.mobileNumber,
+			"email":member.email,
+		}
+		print(requests.post(url,data=dic))
