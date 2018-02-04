@@ -23,7 +23,8 @@ for team in teams:
 		pays = sheetpayment.objects.filter(tech = member)
 		if len(pays) == 0 and not member.college.collegeWebsite == "190":
 			print(member.email)
-			print(team.event)
+			print(event)
+			print(member.college.collegeWebsite)
 
 
 
