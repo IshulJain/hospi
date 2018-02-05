@@ -11,14 +11,15 @@ from Auth.views import *
 
 fbs = FbReach.objects.all()
 
-
+urls = [
+	"",
+]
 
 for fb in fbs:
-	print(fb.uid)
-	message = "Crypto-currency has been looked upon as onset of easier monetary exchanges and has often been deemed as a dawn of new economy. Also, with an exponential rise in prices of some means of Cryptocurrency, the Indian Ministry of Finance has cautioned people against the risks of investing in virtual currencies that are not backed by government fiat.Join me in the panel discussion on ‘Cryptocurrency - Funny Money: The future of currency...or a scam?’ Professionals in business and experts with acumen are here to make it the most sought-after deliberation!#Technex18 #TranscendingInnovation #InnovationIsContagious #StayTechnexed"
+	message = urllib.quote_plus('#Staytechnexed')
 	message.replace(' ', '+')
-	message=urllib.quote_plus(message)
-	link = "https://www.facebook.com/technexiitbhu/photos/a.316825485008606.86665.225615937462895/1881274401897032/?type=3"
-	r =	requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + fb.accessToken + "&link=" + link)
-	# r = requests.get("https://graph.facebook.com/me?access_token=" + fb.accessToken)
-	print(r)
+	for url in urls:
+		link = url
+		r =	requests.post("https://graph.facebook.com/me/feed/?message=" + message + "&access_token=" + fb.accessToken + "&link=" + link)
+		# r = requests.get("https://graph.facebook.com/me?access_token=" + fb.accessToken)
+		print(r)
