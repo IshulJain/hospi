@@ -706,3 +706,20 @@ def fixPins():
 				print stringR
 				gogas.pin = stringR
 				gogas.save()
+
+@csrf_exempt
+def coreTeam(request):
+	response = {}
+	response['team'] = []
+	team = TeamMembers.objects.all()
+	for member in team:
+		mem = {}
+		mem['name'] = member.name
+		mem['email']=member.email
+		mem['photo']=member.photo
+		mem['designation']=member.designation
+		mem['number']=member.number
+		mem['order']=member.order
+		response['team'].append(mem)
+
+	return JsonResponse(response)
