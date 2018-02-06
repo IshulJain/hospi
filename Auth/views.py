@@ -2886,7 +2886,7 @@ def watermark(request):
         url = "http://graph.facebook.com/" + id_ + "/picture?width=9999&height=9999"
         file1 = cStringIO.StringIO(urllib.urlopen(url).read())
         background = Image.open(file1)
-        file2 = cStringIO.StringIO(urllib.urlopen("http://res.cloudinary.com/dpxbd37qm/image/upload/v1486651834/ver_1_mudorm.png").read())
+        file2 = cStringIO.StringIO(urllib.urlopen("http://res.cloudinary.com/dlvrwjxot/image/upload/v1517846133/Tekk_Overlay.png").read())
         overlay = Image.open(file2)
         width = background.getbbox()[2]
         height = background.getbbox()[3]
@@ -2896,9 +2896,9 @@ def watermark(request):
 
         background.save(id_ + ".png","PNG")
         cloudinary.config(
-          cloud_name = "dpxbd37qm",
-          api_key = "484116559961356",
-          api_secret = "2bSWYpE5HUFHjImNyZkuCeepvYE"
+          cloud_name = "dlvrwjxot",
+          api_key = "682868955162224",
+          api_secret = "e92MJYvYL6nt9II31rPr-grjvrc"
         )
         x = cloudinary.uploader.upload(id_+".png")
 
@@ -2939,7 +2939,7 @@ def slowConnection(request):
         url = "http://graph.facebook.com/" + id_ + "/picture?width=9999&height=9999"
         file1 = cStringIO.StringIO(urllib.urlopen(url).read())
         background = Image.open(file1)
-        file2 = cStringIO.StringIO(urllib.urlopen("http://res.cloudinary.com/dpxbd37qm/image/upload/v1486651834/ver_1_mudorm.png").read())
+        file2 = cStringIO.StringIO(urllib.urlopen("http://res.cloudinary.com/dlvrwjxot/image/upload/v1517846133/Tekk_Overlay.png").read())
         overlay = Image.open(file2)
         width = background.getbbox()[2]
         height = background.getbbox()[3]
@@ -2949,9 +2949,9 @@ def slowConnection(request):
 
         background.save(id_ + ".png","PNG")
         cloudinary.config(
-          cloud_name = "dpxbd37qm",
-          api_key = "484116559961356",
-          api_secret = "2bSWYpE5HUFHjImNyZkuCeepvYE"
+          cloud_name = "dlvrwjxot",
+          api_key = "682868955162224",
+          api_secret = "e92MJYvYL6nt9II31rPr-grjvrc"
         )
         x = cloudinary.uploader.upload(id_+".png")
         graph = facebook.GraphAPI(access_token = post['accessToken'], version= '2.2')

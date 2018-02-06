@@ -22,11 +22,21 @@ for team in teams:
 		
 		pays = sheetpayment.objects.filter(tech = member)
 		if len(pays) == 0 and not member.college.collegeWebsite == "190":
-			print(member.email)
-			print(event)
-			print(member.college.collegeWebsite)
-			print(member.college.collegeName)
-			print("-----")
+			dic = {
+	        "name" : member.user.first_name,
+	        "email" : member.email,
+	        "college" : member.college.collegeName,
+	        "technexId" : member.technexId,
+	        "year" : member.year,
+	        "mobileNumber" : member.mobileNumber,
+	        "city" : member.city,
+	        "event":event
+	        }
+
+			url = "https://script.google.com/a/technex.in/macros/s/AKfycbzJJQ9DWazICJKUu9fiyJBvDdBS0P9gdYhT4EjtaCNb9dq_ods/exec" #tech@technex.in
+			    
+			print(requests.post(url,data=dic))
+
 
 
 
