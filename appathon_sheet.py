@@ -24,7 +24,7 @@ def fill_teams():
 		if team.event.nameSlug=="appathon":
 			
 	
-		spreadsheetfill_register(team)
+			spreadsheetfill_register(team)
 
 def spreadsheetfill_register(team):
 	members = team.members.all()
