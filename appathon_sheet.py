@@ -82,7 +82,7 @@ def spreadsheetfill_register(team):
 			dic['mobile4'] = 0
 			dic['name4'] = 0
 		# print dic
-		if team.members.all().count()==4:
+		if team.members.all().count()==3:
 			url = "https://script.google.com/a/technex.in/macros/s/AKfycbyt8pRm_MEs6uW_DCRD2uxGhUt2guofhP2_b2lNKUBfxau9sPs/exec"
 			
 		else:
