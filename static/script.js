@@ -106,10 +106,6 @@ var workdata=[
   
 },
 {
-  workshop: 'augmented-reality',
-  
-},
-{
   workshop: 'digital-marketing',
 },
 {
