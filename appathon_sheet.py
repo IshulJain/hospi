@@ -29,7 +29,8 @@ def fill_teams():
     a=0
     for team in teams:
     	if team.event.nameSlug=="appathon":
-    		a++
+    		print(team.event.nameSlug)
+    		a+=1
 	print(a)
         # spreadsheetfill_register(team)
 
