@@ -122,6 +122,6 @@ urlpatterns = [
 	url(r'^techservices/$',techservices, name='techservices'),
 	url(r'^payreport/$',payment_report,name='payreport'),
 	url(r'^paysummary/$',payment_summary,name='paysum'),
-	url(r'^publimail/$',send_publicity_mail,name='sendpublimail'),
+	url(r'^eventsmail/$',send_publicity_mail,name='sendpublimail'),
 	]
 
