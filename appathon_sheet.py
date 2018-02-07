@@ -85,4 +85,4 @@ def spreadsheetfill_register(team):
 		dic['name4'] = 0
 	# print dic
 	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwVePylbCmmP_8zn5iX51Prw468DtjU-fzlIgNfSHPdS1zw5aTz/exec"
-	requests.post(url,data=dic)
+	print(requests.post(url,data=dic))
