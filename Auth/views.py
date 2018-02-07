@@ -851,7 +851,7 @@ def send_publicity_mail(request):
         response['status'] = str(requests.post(
         "https://api.mailgun.net/v3/mgun.technex.in/messages",
         auth=("api", "key-716da2426e77cc5296dacd1e4768672d"),
-        data={"from": "Technex<publicity@technex.in>",
+        data={"from": "Technex<events@technex.in>",
               "to": recipient,
               "subject": subject,
               "text": body}))
