@@ -23,15 +23,15 @@ from Auth.views import *
 # 	print dic
 # 	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwVePylbCmmP_8zn5iX51Prw468DtjU-fzlIgNfSHPdS1zw5aTz/exec"
 # 	print(requests.post(url,data=dic))
-
+a=0
 def fill_teams():
     teams = Team.objects.all()
-    a=0
+    
     for team in teams:
     	if team.event.nameSlug=="appathon":
     		print(team.event.nameSlug)
     		a+=1
-	print(a)
+	
         # spreadsheetfill_register(team)
 
 # def spreadsheetfill_register(team):
@@ -94,3 +94,4 @@ def fill_teams():
 		# print(requests.post(url,data=dic))
 
 fill_teams()
+print(a)
