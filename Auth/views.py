@@ -966,9 +966,9 @@ def hospitality(request):
     return render(request, 'hospitality.html', {})
 def airshow(request):
     if(get_flavour(request)=='full'):
-        return render(request, 'airshow.html',{})
+        return render(request, 'airshownew.html',{})
     else:
-        return render(request, 'airshowmobile.html',{})
+        return render(request, 'airshowmobilenew.html',{})
     
 
 @csrf_exempt
