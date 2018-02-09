@@ -3269,15 +3269,15 @@ def tshirt(request):
             return JsonResponse(response)
         else:
             tp.tshirtsize= data['size']
-            tp.color = data['color']
+            # tp.color = data['color']
             tp.gender = data['gender']
             tp.arrivaldate = data['date'].split('-')[2]
             tp.tshirtdata = True
             tp.save()
             suggestion = suggestions(tech = tp, suggestion = data['suggestions'])
-            for event in data['events']:
-                even = Event.objects.get(eventName = event)
-                tp.confirmpart.add(even)
+            # for event in data['events']:
+            #     even = Event.objects.get(eventName = event)
+            #     tp.confirmpart.add(even)
             suggestion.save()
             tp.save()
 

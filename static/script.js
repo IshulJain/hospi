@@ -254,6 +254,10 @@ app.filter('propernames', function() {
 				templateUrl : '/static/pages/payment.html',
 				controller  : 'payCont'
 			})
+      .when('/tshirt', {
+        templateUrl : '/static/pages/tshirtinfo.html',
+        controller  : 'shirtdata'
+      })
 
 			// route for the contact page
 			.when('/contact', {
@@ -1142,9 +1146,9 @@ app.controller("shirtdata" , function($scope, profileData, $http){
        $(".team-reg-submit").html("Submitting. Please Wait!");
       data = {
         'size' : $("#size").val(),
-        'color' : $("#color").val(),
+        /*'color' : $("#color").val(),*/
         'gender' : $("#gender").val(),
-        'events' : $("#events").val(),
+        /*'events' : $("#events").val(),*/
         'date' : $("#date").val(),
         'suggestions' : $("#suggestions").val()
  }
@@ -1174,6 +1178,4 @@ app.controller("shirtdata" , function($scope, profileData, $http){
 
   };
 
-});
-
-  
+});  
