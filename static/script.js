@@ -37,9 +37,9 @@ as:[1,1,1,1]
 },
 {
 parentEvent: 'byte-the-bits',
-events:['international-coding-marathon', 'appathon', 'capture-the-flag'],
-max:[0,2,0],
-as:[0,0,1]
+events:['international-coding-marathon', 'capture-the-flag'],
+max:[0,0],
+as:[0,1]
 },
 {
 parentEvent: 'extreme-engineering',

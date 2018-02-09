@@ -709,11 +709,19 @@ def events(request):
                 eventData = {}
                 eventData['event_name'] = event.eventName
                 eventData['event_content'] = event.description
-                eventData['event_register'] = "Register Team"
+                if event.eventName == "Hackathon":
+                    eventData['event_register'] = "Registrations are Closed"
+                else:
+                    eventData['event_register'] = "Register Team"
+
                 if event.nameSlug=="krackat":
                     eventData['register_link'] = "http://krackat.technex.in/"
+                elif event.nameSlug=="hackathon":
+                    eventData['register_link'] = "#"
                 else:
                     eventData['register_link'] = "/dashboard/#/eventreg/"+parentEvent.nameSlug+"/"+event.nameSlug+"/"
+
+
                 # eventData['register_link'] = "/dashboard/#/eventreg/"+parentEvent.nameSlug+"/"+event.nameSlug+"/"
                 # eventData['deadLine'] = event.deadLine
                 eventData['prizeMoney'] = event.prizeMoney
@@ -3118,7 +3126,7 @@ def sheetpaywithcollege(pro):
         }
 
     url = "https://script.google.com/a/technex.in/macros/s/AKfycbzi_JDir9HH9GWY6L6qZrL96CnytEcDyzR9t_M060mh7M5n7IY/exec"
-    requests.post(url,data=dic)
+    print(requests.post(url,data=dic))
 
 def workshopsheet(pay):
     print(pay.ticketName)
@@ -3134,7 +3142,7 @@ def workshopsheet(pay):
             "registeredOn" : pay.timeStamp,
             }
 
-    requests.post(url,data=dic)
+    print(requests.post(url,data=dic))
 
 
 def paymentdata():
