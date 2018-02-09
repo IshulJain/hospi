@@ -216,7 +216,10 @@ app.filter('propernames', function() {
 				controller  : 'evnt-control'
 			})
 			
-
+      .when('/tshirt', {
+        templateUrl : '/static/tshirtinfo.html',
+        controller  : 'shirtdata'
+      })
 			.when('/workshop', {
 				templateUrl : '/static/pages/form.html',
 				controller  : 'workshop-cont'
@@ -1110,4 +1113,67 @@ app.controller('startup-cont', ['$scope', '$window', '$http' , function($scope, 
       }
   };
  }]);
+
+app.controller("shirtdata" , function($scope, profileData, $http){
+  $scope.events = profileData.getEventData();
+  console.log($scope.events);
+  $scope.abcd= "";
+
+  $scope.submit = function()
+  {
+    var x= true;
+    if($("#size").val()=="NONE")
+    {
+      $("#size").addClass("input-error");
+      x = false;
+    }
+    if($("#color").val()=="NONE")
+    {
+      $("#color").addClass("input-error");
+      x = false;
+    }
+    if($("#gender").val()=="NONE")
+    {
+      $("#gender").addClass("input-error");
+      x = false;
+    }
+    if(x)
+    {
+       $(".team-reg-submit").html("Submitting. Please Wait!");
+      data = {
+        'size' : $("#size").val(),
+        'color' : $("#color").val(),
+        'gender' : $("#gender").val(),
+        'events' : $("#events").val(),
+        'date' : $("#date").val(),
+        'suggestions' : $("#suggestions").val()
+ }
+ $http({
+  method : 'POST',
+  url : '/tshirtinfo/',
+  data : data
+ }).success(function(data){
+  if(data.status == 0)
+    {
+      $("#error-message-display").html(data.message);
+      $("#error-message").show();
+      $(".team-reg-submit").html("Submit");
+
+    }
+    if(data.status === 1)
+    {
+
+      window.location.assign("#profile");
+      location.reload(true);
+
+    }
+ });
+    }
+
+
+
+  };
+
+});
+
   

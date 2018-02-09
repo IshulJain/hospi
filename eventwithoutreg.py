@@ -27,3 +27,21 @@ for member in members:
 			"email":member.email,
 		}
 		print(requests.post(url,data=dic))
+
+
+
+teams = Team.objects.all()
+dic={}
+total = 1
+for team in teams:
+	if team.event.nameSlug in dic:
+		total = 1 + total
+		dic[team.event.nameSlug] = 1 + dic[team.event.nameSlug]
+	else:
+		
+		dic[team.event.nameSlug] = 1
+
+for key in dic:
+	print(key + " " + str(dic[key]))
+
+print("total :" + str(total))
