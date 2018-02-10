@@ -91,6 +91,6 @@ from Auth.views import *
 
 # fill_teams()
 def saksham():
-	teams = Team.objects.all().filter(teamName="Players",event.nameSlug="saksham")
+	teams = Team.objects.objects.get(teamName="Players",event.nameSlug="saksham")
 	print(teams)
 	print(teams.timestamp)
