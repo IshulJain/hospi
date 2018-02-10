@@ -95,3 +95,5 @@ def saksham():
 	for team in teams:
 		print(team)
 		print(team.timestamp)
+
+saksham()
