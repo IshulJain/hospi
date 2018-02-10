@@ -91,7 +91,7 @@ from Auth.views import *
 
 # fill_teams()
 def saksham():
-	teams = Team.objects.objects.filter(teamName="Players")
+	teams = Team.objects.filter(teamName="Players")
 	for team in teams:
 		print(team)
 		print(team.timestamp)
