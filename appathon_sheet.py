@@ -21,7 +21,7 @@ from Auth.views import *
 def fill_teams():
 	teams = Team.objects.all()
 	for team in teams:
-		if team.event.nameSlug=="appathon":
+		if team.event.nameSlug=="saksham":
 			
 	
 			spreadsheetfill_register(team)
@@ -32,7 +32,7 @@ def spreadsheetfill_register(team):
 	#print members[0].college.collegeName
 	#for m in team.members.all():
 	#	members.append(m.email.encode("utf-8"))
-	if team.event.nameSlug=="appathon":
+	if team.event.nameSlug=="saksham":
 		dic = {
 		"teamName":team.teamName,
 		"leaderEmail":team.teamLeader.email,
@@ -82,11 +82,11 @@ def spreadsheetfill_register(team):
 			dic['mobile4'] = 0
 			dic['name4'] = 0
 		# print dic
-		if team.members.all().count()==3:
-			url = "https://script.google.com/a/technex.in/macros/s/AKfycbyt8pRm_MEs6uW_DCRD2uxGhUt2guofhP2_b2lNKUBfxau9sPs/exec"
+		
+		url = "https://script.google.com/a/technex.in/macros/s/AKfycby6whvdtv_U9XIzW4FwchhRCyZui2WI4ykRegJQP2kYJ-NT9392/exec"
 			
-		else:
-			url = "https://script.google.com/a/technex.in/macros/s/AKfycbwVePylbCmmP_8zn5iX51Prw468DtjU-fzlIgNfSHPdS1zw5aTz/exec"
+		# else:
+		# 	url = "https://script.google.com/a/technex.in/macros/s/AKfycbwVePylbCmmP_8zn5iX51Prw468DtjU-fzlIgNfSHPdS1zw5aTz/exec"
 		print(requests.post(url,data=dic))
 
 fill_teams()
