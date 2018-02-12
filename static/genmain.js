@@ -7,39 +7,39 @@ as:[1,1,1,1]
 },
 {
 parentEvent: 'modex',
-events:['modex'],
-max:[4],
-as:[1]
+events:['green-tech', 'open-hardware', 'open-software'],
+max:[4,4,4],
+as:[1,1,1]
 },
 {
 parentEvent: 'pahal',
-events:['greenx', 'sampann', 'vikalp', 'saksham', 'aagaz'],
+events:['greenx', 'vision', 'swachch', 'sampann', 'aagaz'],
 max:[4,4,4,4,4],
 as:[1,1,1,1,1]
 },
 {
 parentEvent: 'supernova',
-events:['scientists-utopia', 'astrophotography', 'astroquiz', 'exploring-interstellar'],
-max:[3,1,1,2],
+events:['scientists-utopia', 'astrophotography', 'astroquiz', 'exploring-interstellar',],
+max:[3,1,1,1],
 as:[1,1,1,1]
 },
 {
 parentEvent: 'creatrix',
 events:['minimize', 'iso', 'collage', 'avant-garde', 'animaze', '2d'],
-max:[4,4,4,4,4,1],
+max:[4,4,4,4,4,4],
 as:[1,1,1,1,1,1]
 },
 {
 parentEvent: 'riqueza',
-events:['analiticity', 'bulls-floor', 'krackat', 'manthan'],
-max:[2,0,0,4],
-as:[1,1,1,1]
+events:['analiticity', 'bulls-floor', 'krackat', 'manthan', 'economists-enigma'],
+max:[2,0,0,4,4],
+as:[1,1,1,1,1]
 },
 {
 parentEvent: 'byte-the-bits',
-events:[ 'international-coding-marathon', 'appathon', 'capture-the-flag'],
-max:[0,3,0],
-as:[0,0,1]
+events:['mlware', 'international-coding-marathon', 'appathon', 'capture-the-flag'],
+max:[1,0,3,0],
+as:[0,0,0,1]
 },
 {
 parentEvent: 'extreme-engineering',
@@ -52,6 +52,7 @@ parentEvent: 'robonex',
 events:['robowars', 'pixelate', 'hurdlemania', 'mazeXplorer'],
 max:[5,4,4,4],
 as:[1,1,1,1]
+
 },
 {
 parentEvent: 'game-dungeon',
@@ -64,13 +65,26 @@ as:[1,1,1]
   events: ['classroom-furniture','classroom-cooling','classroom-sound-absorber','hostel-room-furniture' ,'mess-furniture'],
   max:[1,1,1,1,1],
   as:[1,1,1,1]
+
 }
 ];
 var workdata=[
 {
+  workshop: 'data-mining',
+  max: 1
+},
+{
+  workshop: 'digital-marketing',
+  max: 1
+},
+{
   workshop: '3-d-printing',
   max: 1
-}
+},
+{
+  workshop: 'swarm-robotics',
+  max: 5
+},
 ];
 function findWithAttr(array, attr, value) {
 	
@@ -126,6 +140,10 @@ app.config(function ($routeProvider) {
              .when("/payment/",{
               templateUrl: '/static/payments.html', 
              })
+              .when("/tshirtinfo/",{
+              templateUrl: '/static/tshirtinfo.html',
+              controller: 'shirtdata', 
+             })
              
             
             .otherwise({
@@ -158,9 +176,8 @@ app.controller('evnt-control', ['$scope', '$window', '$http' ,'$routeParams', fu
   $scope.user;
   $scope.leader = document.getElementById('userEmail').value;
   $scope.addMember = function(){
-  	if($scope.counter <= $scope.max)
+  	if($scope.counter < $scope.max)
   	$scope.members.push($scope.counter++);
-
   console.log($scope.a);
   	};
   $scope.removeMember = function(z){

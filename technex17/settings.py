@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'authApi',
     'django_mobile',
     'Events',
+    'reg',
+    'payment',
 ]
 MIDDLEWARE_CLASSES = [
     #'django.middleware.cache.UpdateCacheMiddleware',
@@ -94,13 +96,24 @@ WSGI_APPLICATION = 'technex17.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME':'hospi',
+        'USER':'postgres',
+        'PASSWORD' :'123456789',
+        'HOST':'localhost',
+        'PORT':'',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators

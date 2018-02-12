@@ -86,46 +86,28 @@ jQuery(document).ready(function() {
     $("#reset-message").hide();
   })
 
-
-
-
-
   $("#login-btn").on("click",function(){
     var x=true;
-    console.log("i am here");
       if($("#login-id").val()=="")
       {
-        $(".login-invalid").show();
-          $("#login-id").css("border-color","#e45d5d");
+        $("#login-id").addClass("input-error");
         x=false;
-      }
-      else{
-          $("#login-id").css("border-color","#ccc");
       }
       if($("#login-pass").val()=="")
       {
-         $(".login-pass-invalid").show();
-          $("#login-pass").css("border-color","#e45d5d");
-         
+         $("#login-pass").addClass("input-error");
           x=false; 
 
-      }
-      else{
-          $("#login-pass").css("border-color","#ccc");
-
-      }
+               }
        if(x)
        {
          x=(loginemailvalidation() || technexIdValidation())
          if(!x){
           $(".login-invalid").show();
-          $("#login-id").css("border-color","#e45d5d");
          }
        }        
        if(x)
        {
-        $("#login-id").css("border-color","#ccc");
-        $("#login-pass").css("border-color","#ccc");
          $("#login-btn").html("Logging you in");
           data = {
             "email":$("#login-id").val(),
@@ -142,6 +124,7 @@ jQuery(document).ready(function() {
             if(response.status==0)
             {
                $("#login-btn").html("Login");
+               $(".login-error-message").html(response.error);
                $(".login-error").show();
             }
           })
@@ -254,13 +237,11 @@ function technexIdValidation()
         if(re.test(email) == false)
         {
              $('#email-error').show();
-             $('#laluram').css("border-color","#e45d5d");
              return false;
         }
         else
         { 
               $("#email-error").hide();
-              $('#laluram').css("border-color","#ccc");
               return true;
         }
         
@@ -275,13 +256,11 @@ function technexIdValidation()
         if(re.test(email) == false)
         {
              $('#email-error').show();
-             $('#laluram').css("border-color","#e45d5d");
              return false;
         }
         else
         { 
               $("#email-error").hide();
-              $('#laluram').css("border-color","#ccc");
               return true;
         }
         
@@ -295,13 +274,11 @@ function technexIdValidation()
         if(re.test(email) == false)
         {
              $('#invalid-referral').show();
-             $('#laluram').css("border-color","#e45d5d");
              return false;
         }
         else
         { 
               $("#invalid-referral").hide();
-              $('#laluram').css("border-color","#ccc");
               return true;
         }
         
@@ -313,21 +290,19 @@ function validatePassword(){
 
       if((password.value != confirm_password.value) || (password.value == "") || (confirm_password.value=="")) {
         $('.alert-confirm-password').show();
-        $('#confirm_password').css("border-color","#e45d5d");
         return false;
       } else {
         $('.alert-confirm-password').hide();
-        $("#confirm_password").css("border-color","#ccc");
         return true;
       }
     }                                    
     $('.registration-form fieldset:first-child').fadeIn('slow');
     
     $('.registration-form input[type="text"], .registration-form input[type="password"], .registration-form textarea, .registration-form select').on('focus', function() {
-        $(this).css("border-color","#ccc");
+        $(this).removeClass('input-error');
     });
     $('.login-form input[type="text"], .registration-form input[type="password"], .registration-form textarea, .registration-form select').on('focus', function() {
-        $(this).css("border-color","#ccc");
+        $(this).removeClass('input-error');
     });
     $('#btn-next').on('click', function() {
         var parent_fieldset = $(this).parents('fieldset');
@@ -335,7 +310,7 @@ function validatePassword(){
         
         parent_fieldset.find('input[type="text"], input[type="password"], textarea').each(function() {
             if( $(this).val() == "" ) {
-                $(this).css("border-color","#e45d5d");
+                $(this).addClass('input-error');
                 next_step = false;
             }});
               if(next_step){
@@ -363,7 +338,7 @@ function validatePassword(){
                 $(this).next().fadeIn();
                 $($(this).next()).find('input[type="text"], input[type="password"], textarea, select').each(function()
                 {
-                $(this).css("border-color","#ccc");   
+                $(this).removeClass('input-error');   
                });
             });
         }
@@ -398,7 +373,7 @@ function validatePassword(){
                 $(this).next().fadeIn();
                 $($(this).next()).find('input[type="text"], input[type="password"], textarea').each(function()
                 {
-                // $(this).css("border-color","#e45d5d");   
+                $(this).removeClass('input-error');   
                });
 
             });
@@ -485,30 +460,30 @@ $('#btn-next-page').on('click', function(e) {
 
         var parent_fieldset = $(this).parents('fieldset');
         var next_step = true;
-        if($('#id_year option:selected').text() == "--Select Your Year--")
+        if($('#id_year option:selected').text() == "--SELECT YOUR YEAR--")
             {
-              $("#id_year").css("border-color","#e45d5d");
+              $("#id_year").addClass('input-error');
               next_step =false;
             }
             else
                 {
-                    $("#id_year").css("border-color","#ccc");
+                    $("#id_year").removeClass('input-error');
                 }   
         if($("#form-college").val() == "" && !($('#someSwitchOptionInfo').is(":checked")))
         {
-          $(".select2-selection").css("border-color","#e45d5d");
+          $(".select2-selection").addClass("input-error");
           next_step = false;
         }
         else
         {
-          $(".select2-selection").css("border-color","#ccc");
+          $(".select2-selection").removeClass("input-error");
         }        
         
        parent_fieldset.find('input[type="text"], input[type="password"], textarea').each(function() {
             if( $(this).val() == "" && $(this).prop('disabled') != true) {
               
               e.preventDefault();
-                $(this).css("border-color","#e45d5d");
+                $(this).addClass('input-error');
                 next_step = false;
             }});
              if(next_step)
@@ -538,14 +513,13 @@ $('#btn-next-page').on('click', function(e) {
                   "mobileNumber":$("#form-mobile").val(),
                   "uid":$("#uid").val(),
                   "city":$("#form-city").val(),
-                  "referral":$("#referral-email").val(),
                   "csrfmiddlewaretoken":$("input[name=csrfmiddlewaretoken]").val()
                 };
                 if(!$("#referral-email").prop("disabled")) data['referral'] = $("#referral-email").val();
                 console.log(data);
                 $("#btn-next-page").attr("disabled",true);
 
-                $("#btn-next-page").html("Submitting!");
+                $("#btn-next-page").html("Submitting Info Please Wait !!");
 
                 theAjax('/register/',data).done(function(response){
                   if( response == '1') {
@@ -568,8 +542,8 @@ $('#btn-next-page').on('click', function(e) {
                 })
                 .fail(function(){
                   $("#btn-next-page").attr("disabled",false);
-                  $("#btn-next-page").html("SUBMIT");
-                  alert("Error Registeration. Report error at tech@technex.in");
+                  $("#btn-next-page").html("Next");
+                  alert("Error Registeration. Report error at bikram.bharti99@gmail.com");
                 });
                 
                };
