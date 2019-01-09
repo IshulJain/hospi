@@ -3146,17 +3146,17 @@ def workshopsheet(pay):
 
 
 def paymentdata():
-    url = r'http://technex.in/static/Attendee_Report.xls'
-    tables = pd.read_html(url) # Returns list of all tables on page
-    table = tables[0]
-    table.to_csv('payment.csv')
+    # url = r'http://technex.in/static/Attendee_Report.xls'
+    # tables = pd.read_html(url) # Returns list of all tables on page
+    # table = tables[0]
+    # table.to_csv('payment.csv')
 
-    df_new = pd.read_csv('payment.csv')
-    writer = pd.ExcelWriter('payment.xlsx')
-    df_new.to_excel(writer, index = False)
-    writer.save()
+    # df_new = pd.read_csv('payment.csv')
+    # writer = pd.ExcelWriter('payment.xlsx')
+    # df_new.to_excel(writer, index = False)
+    # writer.save()
 
-    rb = open_workbook('payment.xlsx')
+    rb = open_workbook('Attendee_Report.xlsx')
     s = rb.sheet_by_index(0)
     urls = sheetUrls["payments"]
     fail = 0
@@ -3167,8 +3167,9 @@ def paymentdata():
 
     print beginIndex
     for i in range(beginIndex,s.nrows):#range(1,sheet.nrows)
-        email = literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
-        tx= literal_eval(str(s.cell(i,3)).split(':')[1]).encode("utf-8")
+        email = literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8")
+        tx= literal_eval(str(s.cell(i,2)).split(':')[1]).encode("utf-8")
+        print email,tx
         try:
             try:
                 tp = TechProfile.objects.get(email__iexact = email)
@@ -3176,27 +3177,28 @@ def paymentdata():
                 tp = TechProfile.objects.get(technexId = tx)
             pays = sheetpayment(tech = tp)
             pays.email = email
-            pays.ticketId = literal_eval(str(s.cell(i,6)).split(':')[1]).encode("utf-8")
-            pays.row = literal_eval(str(s.cell(i,0)).split(':')[1])
+            pays.ticketId = literal_eval(str(s.cell(i,5)).split(':')[1]).encode("utf-8")
+            # pays.row = literal_eval(str(s.cell(i,0)).split(':')[1])
+            pays.row = i+100
             #pays.contact = literal_eval(str(s.cell(i,2)).split(':')[1])
-            pays.ticketPrice = int(literal_eval(str(s.cell(i,7)).split(':')[1]))
+            pays.ticketPrice = int(literal_eval(str(s.cell(i,6)).split(':')[1]))
             print pays.ticketPrice
-            pays.timeStamp = literal_eval(str(s.cell(i,8))[5:].encode("utf-8")).encode("utf-8")
-            ticketName = literal_eval(str(s.cell(i,5)).split(':')[1]).encode("utf-8")
+            pays.timeStamp = literal_eval(str(s.cell(i,7))[5:].encode("utf-8")).encode("utf-8")
+            ticketName = literal_eval(str(s.cell(i,4)).split(':')[1]).encode("utf-8")
             # if ticketName == "Registration - Without Accomodation" or ticketName == "Registration - Accommodation for workshop participants" or ticketName == "Registration - Accommodation only for workshop participants" or ticketName == "Registration + Free accommodation (only for workshop participants)":
             #     pays.ticketName = "Registration"
             # else:
             pays.ticketName = ticketName
-            pays.save()
+            pays.save() # pays.save()
 
-            if "Registration" not in pays.ticketName and "Ventura" not in pays.ticketName and "Krackat" not in pays.ticketName and "Innovians" not in pays.ticketName and "test" not in pays.ticketName:
-                workshopsheet(pays)
+            # if "Registration" not in pays.ticketName and "Ventura" not in pays.ticketName and "Krackat" not in pays.ticketName and "Innovians" not in pays.ticketName and "test" not in pays.ticketName:
+            #     workshopsheet(pays)
 
-            try:
-                sheetpaywithcollege(pays)
-            except:
-                pass
-            print tp.user.first_name
+            # try:
+            #     sheetpaywithcollege(pays)
+            # except:
+            #     pass
+            # print tp.user.first_name
         except Exception as e:
             print email
             dic = {}
@@ -3205,8 +3207,8 @@ def paymentdata():
             dic = {
             'email' : email,
             'Technex Id' : tx,
-            'name' :  literal_eval(str(s.cell(i,1)).split(':')[1]).encode("utf-8"),
-            'ticketname' : literal_eval(str(s.cell(i,5)).split(':')[1]).encode("utf-8"),
+            'name' :  literal_eval(str(s.cell(i,0)).split(':')[1]).encode("utf-8"),
+            'ticketname' : literal_eval(str(s.cell(i,4)).split(':')[1]).encode("utf-8"),
             }
 
             # if tpc is 0:
@@ -3840,3 +3842,436 @@ def temp_email():
                 techpro=TechProfile.objects.get(email=f)
                 mail=techpro.email
                 print(mail)
+
+def workshopdata():
+    workshops = Workshops.objects.all()
+    print 1
+    for work in workshops:
+        # wb = Workbook()
+        w = Workbook()
+        # m = 0
+        Sheet1 = w.add_sheet('Sheet1')
+        # ops = OffLineProfile.objects.filter(hostel = hostel)
+        # Sheet1 = wb.add_sheet('sheet1')
+        x = 0
+        ops = OffLineProfile.objects.filter(workshop = work)
+        for op in ops:
+            Sheet1.write(x,0,op.techProfile.user.first_name)
+            Sheet1.write(x,1,op.techProfile.email)
+            Sheet1.write(x,2,op.techProfile.mobileNumber)
+            Sheet1.write(x,3,op.techProfile.technexId)
+            Sheet1.write(x,4,op.techProfile.college.collegeName)
+            Sheet1.write(x,5,op.techProfile.city)
+            x = x+1   
+        y ="workshop_sheets/" + (work.title) + ".xls" 
+        print "Hi"       
+        w.save(y)
+
+def print_workshopdata():
+    profiles=OffLineProfile.objects.all()
+    dic={}
+    for pro in profiles:
+        if pro.workshop:
+            try: 
+                dic[pro.workshop.title]=dic[pro.workshop.title]+1
+            except:
+                dic[pro.workshop.title]=1
+    a=0
+
+    for key in dic:
+        print str(dic[key]) + " " + key
+        a=a+ dic[key]
+
+    print a
+
+
+
+# def print_workshopdata_debug():
+#     profiles=OffLineProfile.objects.all()
+#     dic={}
+#     for pro in profiles:
+#         if pro.workshop:
+#             try: 
+#                 dic[pro.workshop.title]=dic[pro.workshop.title]+1
+#             except:
+#                 dic[pro.workshop.title]=1
+
+#     for key in dic:
+#         print str(dic[key]) + " " + key
+
+def print_payment_data():
+    transactions=Transaction.objects.all()
+    basetime = timezone.make_aware(datetime.datetime.strptime('Wed Feb 14 18:00:00 IST 2018','%a %b %d %X IST %Y'))
+    dic={}
+    for trans in transactions:
+        time =datetime.datetime.strptime(str(trans.timeStamp),'%a %b %d %X IST %Y')
+        if time>basetime:
+            try: 
+                dic[trans.facility.name]=dic[trans.facility.name]+1
+            except:
+                dic[trans.facility.name]=1
+
+    for key in dic:
+        print str(dic[key]) + " " + key
+
+
+
+
+
+# basetime = datetime.datetime.strptime('Mon Feb 9 01:00:00 IST 2017','%a %b %d %X IST %Y')
+#     counter = 0
+#     for payment in payments:
+#         print "reached"
+#         time = datetime.datetime.strptime(payment.timeStamp,'%a %b %d %X IST %Y')
+
+
+
+def eventsheetfilling():
+    events = Event.objects.all()
+    for event in events:
+        w = Workbook()
+        m = 0
+        Sheet1 = w.add_sheet('Sheet1')
+        teams = Team.objects.filter(event = event)
+        for team in teams:
+            try:
+                
+                x = team.teamLeader
+                tl = OffLineProfile.objects.get(techProfile = x)
+                Sheet1.write(m,1,str(x.email))
+                Sheet1.write(m,2,str(x.mobileNumber))
+                m = m+1
+                Sheet1.write(m,0,str(team.technexTeamId))
+                ops = team.members.all()
+                # ops = OffLineProfile.objects.filter(Q(techProfile = y))
+                for op in ops:
+                    try:
+                        opg = OffLineProfile.objects.get(techProfile = op)
+                        Sheet1.write(m,1,str(opg.techProfile.email))
+                        Sheet1.write(m,2,str(opg.techProfile.mobileNumber))
+                        m = m+1
+                    except:
+                        pass
+
+            except:    
+                ops = team.members.all()
+                # ops = OffLineProfile.objects.filter(Q(techProfile = y))
+                for op in ops:
+                    try:
+                        Sheet1.write(m,0,str(team.technexTeamId))
+                        opg = OffLineProfile.objects.get(techProfile = op)
+                        Sheet1.write(m,1,str(opg.techProfile.email))
+                        Sheet1.write(m,2,str(opg.techProfile.mobileNumber))
+                        m = m+1
+                    except:
+                        pass
+            x = "event_sheets/" + event.eventName+".xls"
+            w.save(x)
+
+def hostelsheetfilling():
+    #events = Event.objects.all()
+    profile = OffLineProfile.objects.all()
+
+    w = Workbook()
+    m = 0
+    Sheet1 = w.add_sheet('Sheet1')
+    for pro in profile:
+        Sheet1.write(m,0,pro.techProfile.user.first_name)
+        Sheet1.write(m,1,pro.techProfile.college.collegeName)
+        Sheet1.write(m,2,pro.techProfile.email)
+        Sheet1.write(m,3,pro.techProfile.mobileNumber)
+        Sheet1.write(m,5,pro.techProfile.technexId)
+        try:
+            Sheet1.write(m,4,str(pro.hostel.name))
+        except:
+            pass    
+        m=m+1
+
+    w.save("AccodWise2.xls")
+
+
+def hostelsheetfilling1():
+    #events = Event.objects.all()
+    profile = OffLineProfile.objects.all()
+
+    w = Workbook()
+    m = 0
+    Sheet1 = w.add_sheet('Sheet1')
+    for pro in profile:
+        try:
+            Sheet1.write(m,2,str(pro.hostel.name))
+        except:    
+            Sheet1.write(m,0,pro.techProfile.user.first_name)
+            Sheet1.write(m,1,pro.techProfile.college.collegeName)   
+            Sheet1.write(m,2,pro.techProfile.email)
+            Sheet1.write(m,3,pro.techProfile.mobileNumber) 
+        m=m+1
+
+    w.save("NoAccodWise.xls")  
+
+
+
+def hostelsheetfilling2():
+    #events = Event.objects.all()
+    profile = OffLineProfile.objects.all()
+    s = "BHU"
+    w = Workbook()
+    m = 0
+    Sheet1 = w.add_sheet('Sheet1')
+    for pro in profile:
+        try:
+            pro.hostel.name
+            if pro.techProfile.college.collegeName.find(s):
+                Sheet1.write(m,0,pro.techProfile.user.first_name)
+                Sheet1.write(m,1,pro.techProfile.college.collegeName) 
+                Sheet1.write(m,2,pro.techProfile.email)
+                Sheet1.write(m,3,pro.techProfile.mobileNumber)
+
+        except:    
+            pass    
+        m=m+1
+
+    w.save("NoAccodBHUWise.xls") 
+
+def offlinedata():
+    wb = Workbook()
+    ops = OffLineProfile.objects.all()
+    Sheet1 = wb.add_sheet('Sheet1')
+    x = 0
+    for op in ops:
+        Sheet1.write(x,0,op.techProfile.user.first_name)
+        Sheet1.write(x,1,op.techProfile.email)
+        Sheet1.write(x,2,op.techProfile.mobileNumber)
+        Sheet1.write(x,3,op.techProfile.college.collegeName)
+        Sheet1.write(x,4,op.techProfile.college.collegeWebsite)
+        Sheet1.write(x,5,op.techProfile.city)
+        x = x+1 
+
+        
+    y = 'allexternal.xls' 
+    wb.save(y)
+                   
+def hello(request):
+    return HttpResponse("Hello World !!")
+
+def check_allotment():
+    pay=sheetpayment.objects.all()
+    a=[]
+    basetime = datetime.datetime.strptime('Sun Feb 4 23:59:59 IST 2017','%a %b %d %X IST %Y')
+    # counter = 0
+    # for payment in payments:
+    #     print "reached"
+        # time = datetime.datetime.strptime(payment.timeStamp,'%a %b %d %X IST %Y')
+    for p in pay:
+        time = datetime.datetime.strptime(p.timeStamp,'%a %b %d %X IST %Y')
+        if p.ticketName == "Registration + Accomodation" or p.ticketName == "Innovians Final of Zonal Round" or p.ticketName == "Technex Registration for Workshop(Free Accommodation)" or p.ticketName == "Startupfair Registration with accomodation" or p.ticketName=="Ventura Registration + Accommodation" or p.ticketName=="Krackat Registration + Accomodation"  or p.ticketName=="Technex Registration for Workshop with Accomodation":
+            a.append(p)
+        elif p.ticketName=="Technex Registration for Workshop without Accommodation" and time<basetime :
+            a.append(p)
+
+
+    print len(a)
+    c=[]
+    trans=Transaction.objects.filter(amount=200)
+    for pro in trans:
+        c.append(pro.creditor)
+
+
+    print len(c)
+    tech2=[]
+    # final=[x for x in c and x in a ]
+    for hi in a:
+        tech2.append(hi.tech)
+    for hi in tech2:
+        if hi in c:
+            final.append(hi)
+
+    
+    print len(final)
+
+
+def wrokshop_pos_neg():
+    desk=DeskTeam.objects.get(user__username="Tech")
+    transactions=Transaction.objects.all()
+    offline_trans=[]
+    for trans in transactions:
+        if trans.reciever !=desk:
+            offline_trans.append(trans)
+
+
+    workshops=[]
+    work=Workshops.objects.all()
+    for w in work:
+        workshops.append(str(w.title))
+
+    
+    # work2=['E-Commerce', 'Digital Marketing', 'Sixthsense Robotics', 'Android Application Development', 'Ethical Hacking and Information Security', 'Internet of Things', 'Bridge Design', 'Cryptocurrency', 'Industrial Automation PLC and SCADA', 'Voice Controlled Automation Using Amazon Alexa', 'Autonomous Robotics (ArduBotics)', 'Artificial Intelligence and Machine Learning', 'Automobile Mechanics and IC Engines']
+
+    
+
+    pos=0
+    neg=0
+    for off in offline_trans:
+        # print off.amount
+        if off.facility.name in workshops:
+            print off.amount
+            if off.amount>0:
+                pos=pos+off.amount
+            else:
+                print off.amount
+                neg=neg+off.amount
+
+def eventsheetfilling_one():
+    events = Event.objects.all()
+    w = Workbook()
+    m = 0
+    Sheet1 = w.add_sheet('Sheet1')
+    for event in events:
+        
+        # Sheet1 = w.add_sheet('Sheet1')
+        teams = Team.objects.filter(event = event)
+        for team in teams:
+            try:
+                
+                x = team.teamLeader
+                tl = OffLineProfile.objects.get(techProfile = x)
+                Sheet1.write(m,1,str(x.email))
+                Sheet1.write(m,2,str(x.mobileNumber))
+                m = m+1
+                Sheet1.write(m,0,str(team.technexTeamId))
+                ops = team.members.all()
+                # ops = OffLineProfile.objects.filter(Q(techProfile = y))
+                for op in ops:
+                    try:
+                        opg = OffLineProfile.objects.get(techProfile = op)
+                        Sheet1.write(m,1,str(opg.techProfile.email))
+                        Sheet1.write(m,2,str(opg.techProfile.mobileNumber))
+                        m = m+1
+                    except:
+                        pass
+
+            except:    
+                ops = team.members.all()
+                # ops = OffLineProfile.objects.filter(Q(techProfile = y))
+                for op in ops:
+                    try:
+                        Sheet1.write(m,0,str(team.technexTeamId))
+                        opg = OffLineProfile.objects.get(techProfile = op)
+                        Sheet1.write(m,1,str(opg.techProfile.email))
+                        Sheet1.write(m,2,str(opg.techProfile.mobileNumber))
+                        m = m+1
+                    except:
+                        pass
+        x = "event_sheets/" + "all_events.xls"
+        w.save(x)
+
+
+# def workshopsheetfilling_one():
+#     events = Workshops.objects.all()
+#     w = Workbook()
+#     m = 0
+#     Sheet1 = w.add_sheet('Sheet1')
+#     for event in events:
+        
+#         # Sheet1 = w.add_sheet('Sheet1')
+#         teams = WorkshopTeam.objects.filter(workshop = event)
+#         for team in teams:
+#             try:
+                
+#                 x = team.teamLeader
+#                 tl = OffLineProfile.objects.get(techProfile = x)
+#                 Sheet1.write(m,1,str(x.email))
+#                 Sheet1.write(m,2,str(x.mobileNumber))
+#                 m = m+1
+#                 Sheet1.write(m,0,str(team.technexTeamId))
+#                 ops = team.members.all()
+#                 # ops = OffLineProfile.objects.filter(Q(techProfile = y))
+#                 for op in ops:
+#                     try:
+#                         opg = OffLineProfile.objects.get(techProfile = op)
+#                         Sheet1.write(m,1,str(opg.techProfile.email))
+#                         Sheet1.write(m,2,str(opg.techProfile.mobileNumber))
+#                         m = m+1
+#                     except:
+#                         pass
+
+#             except:    
+#                 ops = team.members.all()
+#                 # ops = OffLineProfile.objects.filter(Q(techProfile = y))
+#                 for op in ops:
+#                     try:
+#                         Sheet1.write(m,0,str(team.technexTeamId))
+#                         opg = OffLineProfile.objects.get(techProfile = op)
+#                         Sheet1.write(m,1,str(opg.techProfile.email))
+#                         Sheet1.write(m,2,str(opg.techProfile.mobileNumber))
+#                         m = m+1
+#                     except:
+#                         pass
+#         x = "event_sheets/" + "all_events.xls"
+#         w.save(x)
+
+
+def profit():
+    desk=DeskTeam.objects.get(user__username="Tech")
+    transactions=Transaction.objects.all()
+    offline_trans=[]
+    for trans in transactions:
+        if trans.reciever !=desk:
+            offline_trans.append(trans)
+
+
+    h=0
+
+    for t in offline_trans:
+        if t.amount!=200 and t.amount!=-200:
+            h=h+t.amount
+            print t.amount
+
+    print h
+
+
+
+
+def Contacts_new():
+    wb = Workbook()
+    ops = Team.objects.all()
+    Sheet1 = wb.add_sheet('Sheet1')
+    x = 0
+    p=0
+    for op in ops:
+        if op.event.parentEvent.categoryName == "Supernova" or op.event.parentEvent.categoryName == "supernova":
+            Sheet1.write(x,0,op.teamLeader.user.first_name)
+            Sheet1.write(x,1,op.teamLeader.email)
+            Sheet1.write(x,2,op.teamLeader.mobileNumber)
+            Sheet1.write(x,3,op.teamLeader.college.collegeName)
+            Sheet1.write(x,4,op.teamLeader.college.collegeWebsite)
+            Sheet1.write(x,5,op.teamLeader.city)
+            Sheet1.write(x,6,op.teamName)
+            Sheet1.write(x,7,op.event.eventName)
+            Sheet1.write(x,8,op.event.parentEvent.categoryName)
+            teamMate = op.members.all()
+            for tm in teamMate:
+                p=p+1
+                Sheet1.write(x+p,0,tm.user.first_name)
+                Sheet1.write(x+p,1,tm.email)
+                Sheet1.write(x+p,2,tm.mobileNumber)
+                Sheet1.write(x+p,3,tm.college.collegeName)
+                Sheet1.write(x+p,4,tm.college.collegeWebsite)
+                Sheet1.write(x+p,5,tm.city)
+                Sheet1.write(x+p,6,op.teamName)
+                Sheet1.write(x+p,7,op.event.eventName)
+                Sheet1.write(x+p,8,op.event.parentEvent.categoryName)
+
+            
+            x = x + p + 2
+            p = 0
+
+        
+    y = 'all_contacts_new.xlsx' 
+    wb.save(y)
+
+
+
+
+
+

@@ -108,16 +108,25 @@ def intro(request):
 def offLineRegister(request):
 	response = {}
 	post = request.POST
+	# post['idCard']
 	try:
-		offLineProfile = OffLineProfile.objects.get(techProfile__email = post['email'])
-		response['status'] = 2 # Already registered 
+		try:
+			offLineProfile = OffLineProfile.objects.get(techProfile__email = post['email'])
+			response['status'] = 2 # Already registered 
+		except:
+			offLineProfile = OffLineProfile.objects.get(techProfile__technexId = post['techids'])
+			response['status'] = 2 # Already registered
 		return JsonResponse(response)
 	except:
 		try:
-			techprofile = TechProfile.objects.get(email = post['email'])
+			try:
+				techprofile = TechProfile.objects.get(email = post['email'])
+			except:
+				techprofile = TechProfile.objects.get(technexId = post['techids'])
 		except:
 			techprofile = register(request)
 		offLineProfile = OffLineProfile(techProfile = techprofile,gender = int(post['gender']))
+
 		if int(post['hospiKit']) == 1:
 			techprofile.botInfo = 'given'
 			techprofile.save()
@@ -133,7 +142,7 @@ def offLineRegister(request):
 			if hostel.capacity <= count:
 				response['status'] = 0
 				return JsonResponse(response)
-			accomFacility = Facility.objects.get(name = 'Accommodation')
+			accomFacility = Facility.objects.get(name = 'Accomodation')
 			accomtransaction = Transaction(creditor = techprofile, amount = 500, facility = accomFacility, reciever = request.user.deskteam)
 			accomtransaction.save()
 			offLineProfile.hostel = hostel
@@ -154,6 +163,8 @@ def details(request):
 		offLineProfile = OffLineProfile.objects.get(techProfile__email = post['email'])
 		response['status'] = 2 # Already registered
 		techprofile = offLineProfile.techProfile
+		#response['IdCard'] = techprofile.apploginStatus
+		print(response)
 		total = 0
 		transactions = Transaction.objects.filter(creditor = techprofile)
 		transactionsData = json.loads(serializers.serialize('json',transactions, fields=('amount','timeStamp','facility')))
@@ -196,10 +207,13 @@ def details(request):
 			response['hospiKit'] = 1
 		else:
 			response['hospiKit'] = 0
+		
 		return JsonResponse(response)
 	except:
 		try:
 			techProfile = TechProfile.objects.filter(email = post['email'])
+			# response['IdCard'] = techProfile.apploginStatus
+			print(response)
 			data = json.loads(serializers.serialize('json', techProfile, fields=('technexId','city','year','mobileNumber')))		
 			data[0]['fields']['name'] = techProfile[0].user.first_name
 			data[0]['fields']['college'] = techProfile[0].college.collegeName
@@ -217,6 +231,7 @@ def details(request):
 				response['accommodation'] = 1
 			else:
 				response['accommodation'] = 0
+			
 			return JsonResponse(response)
 		except:
 			response['status'] = 0 #Not registered TechProfile
@@ -274,6 +289,7 @@ def details1(request):
 			response['hospiKit'] = 1
 		else:
 			response['hospiKit'] = 0
+		# response['IdCard'] = techprofile.apploginStatus	
 		return JsonResponse(response)
 	except:
 		try:
@@ -295,6 +311,7 @@ def details1(request):
 				response['accommodation'] = 1
 			else:
 				response['accommodation'] = 0
+			# response['IdCard'] = techProfile.apploginStatus
 			return JsonResponse(response)
 		except:
 			response['status'] = 0 #Not registered TechProfile
@@ -344,6 +361,7 @@ def hostelPortal(request):
 def generateCode(techprofile):
 	try:
 		id = IdCard.objects.get(techProfile = techprofile)
+		print id
 		return id.pin
 	except:	
 		position = random.randint(0,3)
@@ -411,7 +429,7 @@ def hostelAllot(request):
 	# 	profile = OffLineProfile(techProfile=techp)
 	# 	profile.save()
 	print profile
-	facility = Facility.objects.get(name = 'Accommodation')
+	# facility = Facility.objects.get(name = 'Accommodation')
 	
 	count = hostel.offlineprofile_set.all().count()
 	if hostel.capacity <= count:
@@ -426,26 +444,35 @@ def hostelAllot(request):
 		response['hostelName'] = hostel.name
 		response['status'] = 1
 	profile.save()
-	pin = generateCode(profile.techProfile)
+	#pin = generateCode(profile.techProfile)
 	return JsonResponse(response)
 
 @csrf_exempt
 def createIdCard(request):
 	response = {}
-	post = request.POST
-	try:
-		techProfile = TechProfile.objects.get(email = post['identifier'])
-		print "HI"
-	except:
-		techProfile = TechProfile.objects.get(technexId = post['identifier'])
-		print "BYR"
-	pin = generateCode(techProfile)
-	print pin
-	response['status'] = 1
-	response['pin'] = pin
-	message = "your security pin is " + str(pin) + "\n#StayTechnexed" 
-	print message
-	number = str(techProfile.mobileNumber)
+	# post = request.POST
+	# try:
+	# 	techProfile = TechProfile.objects.get(email = post['identifier'])
+	# 	print "HI"
+	# except:
+	# 	techProfile = TechProfile.objects.get(technexId = post['identifier'])
+	# 	print "BYR"
+	# try:
+	# 	idCard = IdCard.objects.get(techProfile = techProfile)
+	# 	response["status"]=1
+	# except:
+	# 	response["status"]=0
+
+
+
+
+	# pin = generateCode(techProfile)
+	# print pin
+	# response['status'] = 1
+	# response['pin'] = pin
+	# message = "your security pin is " + str(pin) + "\n#StayTechnexed" 
+	# print message
+	# number = str(techProfile.mobileNumber)
 	# try:	
 	# 	send_sms_single(message.encode("utf-8"),number)
 	# except:
@@ -500,3 +527,69 @@ def accomFlag(techprofile):
 			    	return True
 			        #send_email(payment.email,subject,body)	
 	return False
+
+@csrf_exempt
+def IdCard(request):
+	y = request.POST['identifier']
+	response = {}
+	try:
+		try:
+			t = TechProfile.objects.get(technexId = y)
+		except:
+			t = TechProfile.objects.get(email = y)
+		t.apploginStatus = True
+		t.save()
+		response['status'] = 1
+	except:
+		response['status'] = 0
+		
+	return JsonResponse(response)
+
+workshopsList =['E-Commerce', 'Digital Marketing', 'Sixthsense Robotics', 'Android Application Development', 'Ethical Hacking and Information Security', 'Internet of Things', 'Bridge Design', 'Cryptocurrency', 'Industrial Automation PLC and SCADA', 'Voice Controlled Automation Using Amazon Alexa', 'Autonomous Robotics (ArduBotics)', 'Artificial Intelligence and Machine Learning', 'Automobile Mechanics and IC Engines']
+# @user_passes_test(lambda u: u.is_staff)
+def dataA():
+	t = Transaction.objects.all()
+	d = DeskTeam.objects.get(user__username = 'Tech')
+	pSecurity = t.filter(amount = 200)
+	nSecurity = t.filter(amount = -200)
+	wks = []
+	others = []
+	for k in t:
+		if k.reciever != d:
+			if k.facility.name in workshopsList:
+				wks.append(k)
+			elif k.amount != 200 and k.amount != -200:
+				others.append(k)
+
+	mPwks = 0
+	mNwks = 0
+	mNs = 0
+	mPs = 0
+	mPothers = 0
+	mNothers = 0
+	for k in pSecurity:
+		mPs += k.amount
+	for k in nSecurity:
+		mNs += k.amount
+	for k in wks:
+		if k.amount > 0:
+			mPwks += k.amount
+		else:
+			mNwks += k.amount
+	for k in others:
+		if k.amount > 0:
+			mPothers += k.amount
+		else:
+			mNothers += k.amount
+	response = {}
+	response['pWks'] = mPwks
+	response['nWks'] = mNwks
+	response['Wks'] = mPwks+mNwks
+	response['pS'] = mPs
+	response['nS'] = mNs
+	response['S'] = mPs+mNs
+	response['POther'] = mPothers
+	response['NOther'] = mNothers
+	response['Other'] = mPothers+mNothers
+	response['T'] = mPwks+mNwks+mPs+mNs+mPothers+mNothers
+	print response

@@ -433,21 +433,21 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                        <button type="button" class="btn btn-primary" id="registration-only">REGISTRATION ONLY(800)</button>
+                        <button type="button" class="btn btn-primary" id="registration-only">REGISTRATION ONLY(1000)</button>
                       </div>
                       </div>
                       <div class="ln_solid"></div>
-                      <div class="form-group">
+                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                        <button type="button" class="btn btn-primary" id="upgrade-to-accod">UPGRATE TO ACCOMODATION(500)</button>
+                        <button type="button" class="btn btn-danger" id="upgrade-to-accod">RETURN SECURITY(-200)</button>
                         </div>
-                      </div>
+                      </div> 
                       <div class="ln_solid"></div>
-                      <div class="form-group">
+                      <!-- <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                        <button type="button" class="btn btn-primary" id="accomodation-registration">ACCOMODATION + REGISTRATION(1300)</button>  
+                        <button type="button" class="btn btn-primary" id="accomodation-registration">ACCOMODATION + REGISTRATION(1500)</button>  
                          </div>
-                        </div>
+                        </div> -->
                         <div class="ln_solid"></div>
 
                          <div class="form-group">
@@ -990,7 +990,7 @@ $(document).ready(function() {
 
     }
     else{
-      $("#workshopResponse").html("Workshop Already Filled!!(Select Other Hostel)");
+      $("#workshopResponse").html("No workshop selected");
 
     }
     });
@@ -1397,10 +1397,10 @@ $("#upgrade-to-accod").click(function(event) {
 		x = $("#facility option");
 		for(var i=0;i<x.length;i++)
 		{
-			if(x[i].text == "Accommodation")
+			if(x[i].text == "Return Security")
 			{
 				$(x[i]).prop("selected","true");
-		$("input[name='amount']").val(500);
+		$("input[name='amount']").val(-200);
 		$("#payment").trigger("click");
     break;
 			}
@@ -1410,7 +1410,7 @@ $("#accomodation-registration").click(function(event) {
 		x = $("#facility option");
 		for(var i=0;i<x.length;i++)
 		{
-			if(x[i].text == "accomoPlusRegistration")
+			if(x[i].text == "Registration + Accomodation")
 			{
 				$(x[i]).prop("selected","true");
 		$("input[name='amount']").val(1500);
@@ -1421,7 +1421,8 @@ $("#accomodation-registration").click(function(event) {
 	});
 
 	$("#registration").click(function(event) {
-		data = {
+
+		/*data = {
 			
 	"name":$("#name").val(),
 	"college":$("#college").val(),
@@ -1431,7 +1432,38 @@ $("#accomodation-registration").click(function(event) {
 	"year":$("#year").val(),
 	"hostel":$("select[name=hostel]").val()
 
-		}
+		}*/
+
+    if($("#email").val()){
+      data = {
+      
+  "name":$("#name").val(),
+  "college":$("#college").val(),
+  "mobileNumber":$("#mobileNumber").val(),
+  "email":$("#email").val(),
+  "gender":$("input[name=gender]:checked" , techProfile).val(),
+  "year":$("#year").val(),
+  "hostel":$("select[name=hostel]").val()
+
+    }
+    }
+    else if($("#techids").val()){
+      data = {
+      
+  "name":$("#name").val(),
+  "college":$("#college").val(),
+  "mobileNumber":$("#mobileNumber").val(),
+  "techids":'TX' + $("#techids").val(),
+  "gender":$("input[name=gender]:checked" , techProfile).val(),
+  "year":$("#year").val(),
+  "hostel":$("select[name=hostel]").val()
+
+    }
+
+  }
+
+
+
 		if($("input[name=security").prop("checked"))
 		{
 			data['security'] = 1;
@@ -1474,7 +1506,8 @@ $("#accomodation-registration").click(function(event) {
 				});
 				$("#paymentHistory").html(html);
         $("#offline-register").css('background-color','green');
-				$("#email").trigger('click');
+				  if($("#email").val()) {$("#email").trigger('click');}
+          else if($("#email").val()){$("#techids").trigger('click');}
         // if(data['security'] == 1)
         // {
         //   $("#security-fee-status").css('background-color','green');
@@ -1496,7 +1529,8 @@ $("#accomodation-registration").click(function(event) {
 			$("#response").html("Please Assign Current Hostel!!!");
 		})
 	});
-	$("#email").trigger('click');
+	if($("#email").val()) {$("#email").trigger('click');}
+  else if($("#email").val()){$("#techids").trigger('click');}
 
 
 

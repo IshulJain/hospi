@@ -214,7 +214,13 @@ def workshopChange(request):
 
 		user = techprofile.user
 		#deskteam = DeskTeam.objects.get(user = user)
-		wrkshp = Workshops.objects.get(title = post['workshopName'])
+		try:
+			wrkshp = Workshops.objects.get(title = post['workshopName'])
+			response['workshopName'] = wrkshp.title	
+		except:
+			response['status']=0
+			return JsonResponse(response)
+
 		try:
 			offline = OffLineProfile.objects.get(techProfile = techprofile)
 			offline.workshop = wrkshp
@@ -222,7 +228,7 @@ def workshopChange(request):
 		except:
 			offline = OffLineProfile(techProfile = techprofile, workshop = wrkshp)	
 			offline.save()
-		response['worksopName'] = wrkshp	
+		
 		response['status']=1
 		print response
 		return JsonResponse(response)

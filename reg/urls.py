@@ -16,4 +16,5 @@ urlpatterns = [
 	url(r'^hostelChange/$',hostelAllot, name='Hostel Change'),
 	url(r'createID/$',createIdCard,name = 'createID'),
 	url(r'submitID/$',submitId,name = 'submitID'),
+	url(r'^idCard/$',IdCard, name='idCard'),
 ]
