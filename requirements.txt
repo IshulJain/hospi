@@ -33,7 +33,7 @@ psycopg2==2.7.3
 pyasn1==0.1.9
 pyasn1-modules==0.0.8
 pycparser==2.18
-PyJWT==1.5.3
+PyJWT==2.4.0
 python-dateutil==2.6.1
 python-http-client==1.2.3
 python-openid==2.2.5
